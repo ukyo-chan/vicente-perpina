@@ -1,77 +1,81 @@
-# Vicente Perpiñá Giner — Portfolio v1.1
+# Vicente Perpiñá — migración a Astro · Slice 1
 
-Segunda versión pública del portfolio profesional.
+Este slice introduce el esqueleto de Astro y el nuevo despliegue por GitHub Actions **sin retirar todavía las páginas estáticas de la v1.1**.
 
-La v1.1 mantiene la estructura técnica sencilla de la v1 (HTML + CSS + JS sin dependencias), pero cambia el equilibrio del contenido para reflejar mejor el perfil híbrido de Vicente: artista, ilustrador, autor/editor de cómic y docente.
+## Qué cambia en este slice
 
-## Qué cambia respecto a v1
+- La portada (`/`) ya se genera con Astro.
+- Se crean `BaseLayout`, `Header` y `Footer` reutilizables.
+- Se añade configuración de Astro para `https://vicenteperpina.com`.
+- Se añade el workflow de GitHub Pages con GitHub Actions.
+- Las páginas `portfolio.html`, `docencia.html`, `trayectoria.html` y `contacto.html` se copian temporalmente a `public/` para que sigan funcionando exactamente como en la v1.1 mientras se migran en el Slice 2.
+- Los CSS, JS y la imagen actual también se mantienen temporalmente en `public/assets/`.
 
-- `index.html`
-  - nueva presentación de portada;
-  - la obra pasa a ser el acceso principal;
-  - proyectos destacados: Oceanogràfic, 37 Il·lustres y DKV Grand Tour;
-  - hitos recientes y mejor equilibrio entre arte y docencia.
+## Importante: no borres todavía los HTML antiguos de raíz
 
-- `portfolio.html`
-  - deja de ser una página «Próximamente»;
-  - pasa a llamarse visualmente **Obra y proyectos**;
-  - incluye cuatro bloques:
-    - obra y exposiciones;
-    - cómic y edición;
-    - ilustración editorial;
-    - animación y audiovisual.
+En el Slice 1 pueden coexistir los HTML antiguos de raíz con el nuevo proyecto Astro. Cuando GitHub Pages use GitHub Actions, el despliegue se construye desde Astro y esos HTML de raíz dejan de intervenir. Se eliminarán de forma ordenada en el Slice 2.
 
-- `docencia.html`
-  - Xirivella actualizado a 2018–actualidad;
-  - «Infantil» sustituido por «Niños y jóvenes»;
-  - se añade preparación de Dibujo Técnico para selectividad;
-  - nuevo bloque sobre cómo la experiencia artística se traslada al aula.
+## Publicación
 
-- `trayectoria.html`
-  - incorpora una cronología artística y profesional;
-  - mantiene formación, idiomas y formación complementaria.
-
-- `contacto.html`
-  - copy ampliado para encargos de ilustración, talleres, edición y proyectos docentes.
-
-- `assets/css/styles.css`
-  - nuevos componentes de proyectos, cronología, navegación interna y destacados;
-  - responsive ampliado;
-  - animaciones respetan `prefers-reduced-motion`;
-  - el contenido permanece visible si JavaScript no funciona.
-
-- `assets/js/main.js`
-  - menú móvil mejorado;
-  - cierre con Escape;
-  - comportamiento robusto si `IntersectionObserver` no está disponible.
-
-## Qué NO incluye todavía
-
-- PDFs o CV descargable;
-- programaciones didácticas;
-- trabajos de alumnado;
-- imágenes ficticias de portfolio;
-- una galería exhaustiva de obra.
-
-La selección visual puede incorporarse posteriormente sin cambiar la arquitectura.
-
-## Despliegue
-
-Copia todo el contenido de este ZIP sobre la raíz del repositorio local y acepta **sobreescribir** los archivos existentes.
-
-No hay que borrar ningún archivo de la v1.
-
-Después:
+Después de copiar este slice encima del repositorio:
 
 ```bash
 git add .
-git commit -m "Portfolio v1.1"
+git commit -m "Migración Astro - Slice 1"
 git push
 ```
 
-GitHub Pages publicará el cambio automáticamente.
+Luego, una sola vez en GitHub:
 
-## URLs
+1. `Settings` → `Pages`.
+2. En `Build and deployment`, cambia `Source` a **GitHub Actions**.
+3. Comprueba que `Custom domain` sigue siendo `vicenteperpina.com`.
+4. Comprueba que `Enforce HTTPS` permanece activado.
+5. En `Actions`, abre **Deploy to GitHub Pages** y verifica que termina correctamente.
 
-- Web: `https://vicenteperpina.com`
-- Blog: `https://blog.vicenteperpina.com`
+A partir de ese momento cada push a `main` compilará y publicará Astro automáticamente.
+
+## Desarrollo local (opcional)
+
+Con Node instalado:
+
+```bash
+npm install
+npm run dev
+```
+
+Build de producción:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Estructura temporal del Slice 1
+
+```text
+.github/workflows/deploy.yml
+public/
+  CNAME
+  portfolio.html
+  docencia.html
+  trayectoria.html
+  contacto.html
+  assets/
+src/
+  components/
+    Header.astro
+    Footer.astro
+  layouts/
+    BaseLayout.astro
+  pages/
+    index.astro
+astro.config.mjs
+package.json
+tsconfig.json
+.gitignore
+```
+
+## Próximo slice
+
+El Slice 2 migrará las cuatro páginas estáticas restantes a `src/pages/`, trasladará estilos/scripts al árbol fuente cuando convenga, cambiará las URLs a rutas limpias y retirará los HTML legacy.
