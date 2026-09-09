@@ -1,38 +1,71 @@
-# Vicente Perpiñá Giner — Portfolio v1
+# Vicente Perpiñá Giner — Portfolio v1.1
 
-Primera versión pública y deliberadamente sencilla del portfolio.
+Segunda versión pública del portfolio profesional.
 
-## Qué incluye
+La v1.1 mantiene la estructura técnica sencilla de la v1 (HTML + CSS + JS sin dependencias), pero cambia el equilibrio del contenido para reflejar mejor el perfil híbrido de Vicente: artista, ilustrador, autor/editor de cómic y docente.
 
-- `index.html` — portada
-- `docencia.html` — experiencia docente
-- `portfolio.html` — estructura del futuro portfolio artístico
-- `trayectoria.html` — formación y perfil
-- `contacto.html` — contacto profesional
-- `assets/css/styles.css` — estilos compartidos
-- `assets/js/main.js` — menú móvil + animaciones suaves
-- `assets/img/vicente.png` — retrato
+## Qué cambia respecto a v1
+
+- `index.html`
+  - nueva presentación de portada;
+  - la obra pasa a ser el acceso principal;
+  - proyectos destacados: Oceanogràfic, 37 Il·lustres y DKV Grand Tour;
+  - hitos recientes y mejor equilibrio entre arte y docencia.
+
+- `portfolio.html`
+  - deja de ser una página «Próximamente»;
+  - pasa a llamarse visualmente **Obra y proyectos**;
+  - incluye cuatro bloques:
+    - obra y exposiciones;
+    - cómic y edición;
+    - ilustración editorial;
+    - animación y audiovisual.
+
+- `docencia.html`
+  - Xirivella actualizado a 2018–actualidad;
+  - «Infantil» sustituido por «Niños y jóvenes»;
+  - se añade preparación de Dibujo Técnico para selectividad;
+  - nuevo bloque sobre cómo la experiencia artística se traslada al aula.
+
+- `trayectoria.html`
+  - incorpora una cronología artística y profesional;
+  - mantiene formación, idiomas y formación complementaria.
+
+- `contacto.html`
+  - copy ampliado para encargos de ilustración, talleres, edición y proyectos docentes.
+
+- `assets/css/styles.css`
+  - nuevos componentes de proyectos, cronología, navegación interna y destacados;
+  - responsive ampliado;
+  - animaciones respetan `prefers-reduced-motion`;
+  - el contenido permanece visible si JavaScript no funciona.
+
+- `assets/js/main.js`
+  - menú móvil mejorado;
+  - cierre con Escape;
+  - comportamiento robusto si `IntersectionObserver` no está disponible.
 
 ## Qué NO incluye todavía
 
-- PDFs
-- documentos descargables
-- programaciones descargables
-- trabajos de alumnado
-- muestras de proyectos
-- imágenes ficticias de portfolio
-- CV descargable
+- PDFs o CV descargable;
+- programaciones didácticas;
+- trabajos de alumnado;
+- imágenes ficticias de portfolio;
+- una galería exhaustiva de obra.
 
-## Para desplegar en el repo clonado
+La selección visual puede incorporarse posteriormente sin cambiar la arquitectura.
 
-Copia el contenido de esta carpeta en la raíz del repositorio, sobreescribiendo el
-`index.html` de prueba.
+## Despliegue
+
+Copia todo el contenido de este ZIP sobre la raíz del repositorio local y acepta **sobreescribir** los archivos existentes.
+
+No hay que borrar ningún archivo de la v1.
 
 Después:
 
 ```bash
 git add .
-git commit -m "Portfolio v1"
+git commit -m "Portfolio v1.1"
 git push
 ```
 
@@ -40,11 +73,5 @@ GitHub Pages publicará el cambio automáticamente.
 
 ## URLs
 
-La navegación usa rutas relativas, por lo que funciona tanto en:
-
-- `https://ukyo-chan.github.io/vicente-perpina/`
-- `https://vicenteperpina.com`
-
-El enlace del blog está configurado como:
-
-`https://blog.vicenteperpina.com`
+- Web: `https://vicenteperpina.com`
+- Blog: `https://blog.vicenteperpina.com`
