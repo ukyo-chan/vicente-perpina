@@ -1,40 +1,12 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Trayectoria artística, editorial, audiovisual y docente de Vicente Perpiñá Giner, junto con su formación académica e idiomas.">
-  <meta name="theme-color" content="#609493">
-  <link rel="canonical" href="https://vicenteperpina.com/trayectoria.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Trayectoria · Vicente Perpiñá Giner">
-  <meta property="og:description" content="Más de quince años de recorrido en ilustración, cómic, animación, exposiciones y docencia artística.">
-  <meta property="og:url" content="https://vicenteperpina.com/trayectoria.html">
-  <meta property="og:image" content="https://vicenteperpina.com/assets/img/vicente.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>Trayectoria · Vicente Perpiñá Giner</title>
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="container navbar">
-    <a class="brand" href="index.html">VICENTE PERPIÑÁ GINER</a>
-    <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="portfolio.html">Obra</a>
-      <a href="docencia.html">Docencia</a>
-      <a href="trayectoria.html" aria-current="page">Trayectoria</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="page-hero">
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Trayectoria · Vicente Perpiñá Giner"
+  description="Trayectoria artística, editorial, audiovisual y docente de Vicente Perpiñá Giner, junto con su formación académica e idiomas."
+>
+  <main>
+<section class="page-hero">
     <div class="container">
       <p class="eyebrow">Una mirada completa</p>
       <h1>Trayectoria</h1>
@@ -215,21 +187,5 @@
       </aside>
     </div>
   </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-row">
-    <div>© <span data-year></span> Vicente Perpiñá Giner</div>
-    <div class="footer-links">
-      <a href="portfolio.html">Obra</a>
-      <a href="docencia.html">Docencia</a>
-      <a href="trayectoria.html">Trayectoria</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/main.js"></script>
-
-</body>
-</html>
+  </main>
+</BaseLayout>

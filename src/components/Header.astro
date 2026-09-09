@@ -1,17 +1,21 @@
 ---
 const pathname = Astro.url.pathname;
-const isHome = pathname === '/';
+
+const isCurrent = (route) => {
+  if (route === '/') return pathname === '/';
+  return pathname === route || pathname.startsWith(`${route}`);
+};
 ---
 <header class="site-header">
   <div class="container navbar">
     <a class="brand" href="/">VICENTE PERPIÑÁ GINER</a>
     <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="nav-links" aria-label="Navegación principal">
-      <a href="/" aria-current={isHome ? 'page' : undefined}>Inicio</a>
-      <a href="/portfolio.html">Obra</a>
-      <a href="/docencia.html">Docencia</a>
-      <a href="/trayectoria.html">Trayectoria</a>
-      <a href="/contacto.html">Contacto</a>
+      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Inicio</a>
+      <a href="/obra/" aria-current={isCurrent('/obra/') ? 'page' : undefined}>Obra</a>
+      <a href="/docencia/" aria-current={isCurrent('/docencia/') ? 'page' : undefined}>Docencia</a>
+      <a href="/trayectoria/" aria-current={isCurrent('/trayectoria/') ? 'page' : undefined}>Trayectoria</a>
+      <a href="/contacto/" aria-current={isCurrent('/contacto/') ? 'page' : undefined}>Contacto</a>
       <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
     </nav>
   </div>
