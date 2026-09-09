@@ -12,7 +12,7 @@ const isCurrent = (route) => {
     <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="nav-links" aria-label="Navegación principal">
       <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Inicio</a>
-      <a href="/obra/" aria-current={isCurrent('/obra/') ? 'page' : undefined}>Obra</a>
+      <a href="/obra/" aria-current={(isCurrent('/obra/') || pathname.startsWith('/proyectos/')) ? 'page' : undefined}>Obra</a>
       <a href="/docencia/" aria-current={isCurrent('/docencia/') ? 'page' : undefined}>Docencia</a>
       <a href="/trayectoria/" aria-current={isCurrent('/trayectoria/') ? 'page' : undefined}>Trayectoria</a>
       <a href="/contacto/" aria-current={isCurrent('/contacto/') ? 'page' : undefined}>Contacto</a>

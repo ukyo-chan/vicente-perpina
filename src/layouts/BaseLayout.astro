@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
   title,
   description,
-  image = '/assets/img/vicente.png'
+  image = '/assets/img/vicente.png',
+  ogType = 'website'
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -27,12 +29,15 @@ const socialImage = new URL(image, Astro.site);
     <meta name="theme-color" content="#609493" />
     <link rel="canonical" href={canonical} />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
 
     <title>{title}</title>
     <script is:inline>document.documentElement.classList.add('js');</script>

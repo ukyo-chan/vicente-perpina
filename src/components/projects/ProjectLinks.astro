@@ -1,0 +1,20 @@
+---
+interface Props {
+  links: Array<{ texto: string; url: string }>;
+}
+
+const { links = [] } = Astro.props;
+---
+{links.length > 0 && (
+  <section class="project-links" aria-labelledby="enlaces-proyecto">
+    <h2 id="enlaces-proyecto">Más información</h2>
+    <div class="project-links-list">
+      {links.map(link => (
+        <a href={link.url} target="_blank" rel="noopener">
+          <span>{link.texto}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

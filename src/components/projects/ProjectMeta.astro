@@ -1,0 +1,30 @@
+---
+interface Props {
+  project: any;
+}
+
+const { project } = Astro.props;
+const { data } = project;
+
+const rows = [
+  ['Año', data.fechaTexto ?? String(data.anio)],
+  ['Rol', data.rol],
+  ['Entidad / proyecto', data.entidad],
+  ['Lugar', data.lugar],
+  ['Fechas', data.fechas],
+  ['Colaboración', data.colaboradores?.length ? data.colaboradores.join(' · ') : undefined]
+].filter(([, value]) => Boolean(value));
+---
+{rows.length > 0 && (
+  <aside class="project-facts" aria-label="Datos del proyecto">
+    <p class="eyebrow">Ficha</p>
+    <dl>
+      {rows.map(([label, value]) => (
+        <div>
+          <dt>{label}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
+    </dl>
+  </aside>
+)}

@@ -1,0 +1,20 @@
+---
+interface Props {
+  images: Array<{ src: string; alt: string; pie?: string }>;
+}
+
+const { images = [] } = Astro.props;
+---
+{images.length > 0 && (
+  <section class="project-gallery" aria-labelledby="galeria-proyecto">
+    <h2 id="galeria-proyecto">Galería</h2>
+    <div class="project-gallery-grid">
+      {images.map(image => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          {image.pie && <figcaption>{image.pie}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </section>
+)}

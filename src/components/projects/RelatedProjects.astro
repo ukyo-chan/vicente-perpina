@@ -1,0 +1,22 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: any[];
+}
+
+const { projects = [] } = Astro.props;
+---
+{projects.length > 0 && (
+  <section class="related-projects" aria-labelledby="proyectos-relacionados">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Seguir explorando</p>
+        <h2 id="proyectos-relacionados">Proyectos relacionados</h2>
+      </div>
+    </div>
+    <div class="related-project-grid">
+      {projects.map(project => <ProjectCard project={project} />)}
+    </div>
+  </section>
+)}

@@ -1,0 +1,67 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/projects/ProjectHeader.astro';
+import ProjectMeta from '../../components/projects/ProjectMeta.astro';
+import ProjectGallery from '../../components/projects/ProjectGallery.astro';
+import ProjectLinks from '../../components/projects/ProjectLinks.astro';
+import RelatedProjects from '../../components/projects/RelatedProjects.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('proyectos', ({ data }) => data.publicar);
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project }
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'proyectos'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const allProjects = await getCollection('proyectos', ({ data }) => data.publicar);
+const relatedProjects = project.data.relacionados
+  .map(id => allProjects.find(candidate => candidate.id === id))
+  .filter((candidate): candidate is CollectionEntry<'proyectos'> => Boolean(candidate));
+
+const title = project.data.seo?.title ?? `${project.data.titulo} · Vicente Perpiñá Giner`;
+const description = project.data.seo?.description ?? project.data.resumen;
+const socialImage = project.data.imagenPrincipal?.src ?? '/assets/img/vicente.png';
+const gallery = project.data.imagenPrincipal
+  ? [project.data.imagenPrincipal, ...project.data.galeria.filter(image => image.src !== project.data.imagenPrincipal?.src)]
+  : project.data.galeria;
+---
+<BaseLayout title={title} description={description} image={socialImage} ogType="article">
+  <main>
+    <ProjectHeader project={project} />
+
+    <section class="section project-detail-section">
+      <div class="container project-detail-layout">
+        <article class="project-content">
+          <Content />
+        </article>
+        <ProjectMeta project={project} />
+      </div>
+    </section>
+
+    {gallery.length > 0 && (
+      <section class="section soft project-detail-extra">
+        <div class="container">
+          <ProjectGallery images={gallery} />
+        </div>
+      </section>
+    )}
+
+    <section class="section project-detail-extra">
+      <div class="container">
+        <ProjectLinks links={project.data.enlaces} />
+        <RelatedProjects projects={relatedProjects} />
+        <div class="project-detail-footer">
+          <a class="btn secondary" href="/obra/">← Volver a Obra</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

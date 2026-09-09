@@ -1,132 +1,189 @@
-# Vicente Perpiñá — migración a Astro · Slice 2
+# Vicente Perpiñá — Astro · Slice 3
 
-Este slice completa la migración de las páginas públicas de la v1.1 a Astro. A partir de aquí, la web principal ya no depende de los HTML legacy ni de los CSS/JS estáticos antiguos.
+Este slice incorpora el **modelo estructurado de proyectos y las fichas reutilizables**. La web principal sigue manteniendo el contenido de la v1.1/v1.2, pero ya existe una única plantilla capaz de generar una URL propia por proyecto a partir de un fichero Markdown.
 
-## Qué cambia
+## Qué incorpora
 
-- Inicio, Obra, Docencia, Trayectoria y Contacto se generan ya con Astro.
-- Las rutas públicas principales pasan a ser limpias:
-  - `/`
-  - `/obra/`
-  - `/docencia/`
-  - `/trayectoria/`
-  - `/contacto/`
-- `Header.astro`, `Footer.astro` y `BaseLayout.astro` son compartidos por todas las páginas.
-- El CSS global pasa a `src/styles/global.css` y Astro lo procesa durante el build.
-- El JavaScript común pasa a `src/scripts/main.js` y Astro lo empaqueta durante el build.
-- Se conservan redirects estáticos desde las URL antiguas `.html` para no romper enlaces existentes.
-- El contenido y el diseño siguen siendo los de la v1.1; este slice no introduce todavía el modelo de proyectos/fichas del Slice 3.
+- Colección Astro `proyectos` definida y validada en `src/content.config.ts`.
+- Un fichero Markdown por proyecto en `src/content/proyectos/`.
+- Una única ruta dinámica estática: `src/pages/proyectos/[slug].astro`.
+- Componentes reutilizables para cabecera, metadatos, etiquetas, enlaces, galería, tarjetas y proyectos relacionados.
+- SEO/Open Graph por ficha usando los datos del proyecto.
+- Campos internos de verificación que **no se muestran públicamente**.
+- Soporte de imágenes y galerías, aunque las primeras fichas funcionan correctamente sin imágenes.
+- Enlaces `Ver ficha →` desde seis proyectos de la página Obra, sin hacer todavía que toda la página Obra dependa de la colección.
 
-## Estructura relevante
+## Primeras fichas publicadas
 
 ```text
-.github/workflows/deploy.yml
+/proyectos/oceanografic-2026/
+/proyectos/37-ilustres-2025/
+/proyectos/vinyetari-5/
+/proyectos/cuentos-populares-2015/
+/proyectos/dkv-grand-tour-2012/
+/proyectos/gianni-markel-2011/
+```
+
+Estas seis fichas sirven como casos de prueba de distintos tipos de proyecto: ilustración/divulgación, exposición colectiva, cómic/editorial, exposición individual, beca artística y audiovisual.
+
+## Estructura nueva
+
+```text
+src/
+  content.config.ts
+  content/
+    proyectos/
+      37-ilustres-2025.md
+      cuentos-populares-2015.md
+      dkv-grand-tour-2012.md
+      gianni-markel-2011.md
+      oceanografic-2026.md
+      vinyetari-5.md
+  components/
+    projects/
+      ProjectCard.astro
+      ProjectGallery.astro
+      ProjectHeader.astro
+      ProjectLinks.astro
+      ProjectMeta.astro
+      ProjectTags.astro
+      RelatedProjects.astro
+  lib/
+    projects.ts
+  pages/
+    proyectos/
+      [slug].astro
 public/
-  CNAME
-  portfolio.html      # redirect legacy -> /obra/
-  docencia.html       # redirect legacy -> /docencia/
-  trayectoria.html    # redirect legacy -> /trayectoria/
-  contacto.html       # redirect legacy -> /contacto/
   assets/
     img/
-      vicente.png
-src/
-  components/
-    Header.astro
-    Footer.astro
-  layouts/
-    BaseLayout.astro
-  pages/
-    index.astro
-    obra/
-      index.astro
-    docencia/
-      index.astro
-    trayectoria/
-      index.astro
-    contacto/
-      index.astro
-  scripts/
-    main.js
-  styles/
-    global.css
-astro.config.mjs
-package.json
-tsconfig.json
-.gitignore
+      proyectos/
 ```
 
-## Limpieza necesaria en el repositorio
+## Modelo de proyecto
 
-El ZIP no puede borrar archivos que ya existen. Después de copiarlo encima del repo, elimina los restos de la web pre-Astro que siguen en la raíz:
+Cada proyecto tiene datos estructurados en el frontmatter y contenido editorial en Markdown.
+
+Ejemplo simplificado:
+
+```yaml
+---
+titulo: "Vinyetari 5"
+subtitulo: "Una data, totes les dates"
+anio: 2025
+tipoPrincipal: comic
+categorias:
+  - comic
+  - edicion
+resumen: "..."
+rol: "Coautor de la historieta"
+colaboradores:
+  - "Marc Zanón"
+publicar: true
+destacado: true
+enlaces:
+  - texto: "Selección del V Premi ARA de Còmic"
+    url: "https://..."
+verificacion:
+  estado: externa
+  notas: "..."
+  fuentes:
+    - nombre: "Diari ARA"
+      url: "https://..."
+---
+
+## El proyecto
+
+Texto largo de la ficha...
+```
+
+### Campos de control interno
+
+`verificacion` permite mantener dentro del proyecto información útil para documentar de dónde sale cada dato:
+
+- `externa`: confirmado por fuentes públicas.
+- `vicente`: confirmado directamente por Vicente.
+- `mixta`: combinación de ambas.
+- `pendiente`: todavía en investigación.
+
+Estos campos **no se renderizan en la web**. Como el repositorio es público, no deben contener secretos ni información que no queramos que sea visible al consultar el código en GitHub.
+
+`publicar: false` permite además guardar una ficha en el repositorio sin generar todavía una página pública.
+
+## Cómo añadir un proyecto nuevo
+
+1. Crear `src/content/proyectos/mi-proyecto.md`.
+2. Rellenar el frontmatter según el esquema.
+3. Escribir el contenido de la ficha en Markdown.
+4. Añadir, si procede, imágenes en:
 
 ```text
-/CNAME
-/index.html
-/portfolio.html
-/docencia.html
-/trayectoria.html
-/contacto.html
-/assets/
+public/assets/img/proyectos/mi-proyecto/
 ```
 
-El `CNAME` válido pasa a ser `public/CNAME`; el `CNAME` antiguo de raíz se puede borrar.
+5. Hacer el push habitual.
 
-La carpeta `/assets/` de raíz se puede borrar completa: la imagen necesaria ya está en `/public/assets/img/` y los estilos/scripts viven ahora en `/src/`.
-
-También elimina, si siguen existiendo tras extraer el ZIP, estos dos archivos temporales del Slice 1:
+Astro generará automáticamente:
 
 ```text
-/public/assets/css/styles.css
-/public/assets/js/main.js
+https://vicenteperpina.com/proyectos/mi-proyecto/
 ```
 
-NO elimines los siguientes HTML de `public/`, porque ahora son redirects de compatibilidad:
+No hay que crear ningún HTML ni registrar manualmente la ruta.
 
-```text
-/public/portfolio.html
-/public/docencia.html
-/public/trayectoria.html
-/public/contacto.html
+## Imágenes
+
+El modelo ya admite:
+
+```yaml
+imagenPrincipal:
+  src: "/assets/img/proyectos/mi-proyecto/principal.webp"
+  alt: "Descripción accesible de la imagen"
+
+galeria:
+  - src: "/assets/img/proyectos/mi-proyecto/obra-01.webp"
+    alt: "Descripción de la obra"
+    pie: "Pie opcional"
 ```
 
-Tampoco elimines:
+Las fichas actuales no usan placeholders: si no hay imágenes seleccionadas, la galería simplemente no aparece.
 
-```text
-/public/CNAME
-/public/assets/img/vicente.png
-```
+## Qué NO hace todavía este slice
+
+Para mantener separada la validación del modelo de la integración global, este slice todavía no:
+
+- genera toda la página Obra desde la colección;
+- genera los destacados de Inicio desde la colección;
+- genera la cronología artística de Trayectoria desde la colección;
+- añade filtros por categoría.
+
+Eso corresponde al Slice 4.
+
+## Archivos a eliminar
+
+**Ninguno.**
+
+Este slice se puede copiar directamente encima del Slice 2. No añade restos temporales ni sustituye rutas legacy que requieran limpieza.
 
 ## Publicación
 
 ```bash
 git add -A
-git commit -m "Migración Astro - Slice 2"
+git commit -m "Astro - Slice 3 - fichas de proyectos"
 git push
 ```
 
-Usa `git add -A` en este slice para que Git registre también correctamente las eliminaciones.
-
-GitHub Pages debe seguir configurado con **Source: GitHub Actions**. No es necesario volver a tocar DNS ni el dominio personalizado.
+GitHub Pages sigue usando **GitHub Actions**. No hay que modificar Pages, DNS ni el dominio personalizado.
 
 ## Comprobaciones tras publicar
 
-Comprueba estas URL:
+Además de las páginas principales, prueba al menos:
 
-- `https://vicenteperpina.com/`
-- `https://vicenteperpina.com/obra/`
-- `https://vicenteperpina.com/docencia/`
-- `https://vicenteperpina.com/trayectoria/`
-- `https://vicenteperpina.com/contacto/`
+- `https://vicenteperpina.com/proyectos/oceanografic-2026/`
+- `https://vicenteperpina.com/proyectos/vinyetari-5/`
+- `https://vicenteperpina.com/proyectos/cuentos-populares-2015/`
 
-Y verifica que una URL antigua como:
-
-- `https://vicenteperpina.com/portfolio.html#vinyetari`
-
-redirige a:
-
-- `https://vicenteperpina.com/obra/#vinyetari`
+Desde `/obra/`, los seis proyectos piloto deben mostrar un enlace `Ver ficha →`.
 
 ## Próximo slice
 
-El Slice 3 introducirá el modelo estructurado de proyectos, una colección de contenido y la plantilla reutilizable `/proyectos/[slug]/`.
+El Slice 4 hará que Inicio, Obra y la cronología artística reutilicen esta misma colección de proyectos y podrá incorporar filtros por categorías, eliminando la duplicación actual de datos.

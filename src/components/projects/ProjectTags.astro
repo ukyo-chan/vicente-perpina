@@ -1,0 +1,12 @@
+---
+import { projectCategoryLabel } from '../../lib/projects';
+
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+<div class="project-tags" aria-label="Categorías del proyecto">
+  {categories.map(category => <span>{projectCategoryLabel(category)}</span>)}
+</div>
