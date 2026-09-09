@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vicente Perpiñá Giner</title>
+  <style>
+    :root {
+      --verde: #609493;
+      --verde-oscuro: #1E311D;
+      --fondo: #eef7f6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fondo);
+      color: var(--verde-oscuro);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--verde);
+    }
+
+    p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 16px;
+      border: 2px solid var(--verde);
+      border-radius: 999px;
+      color: var(--verde-oscuro);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button:hover {
+      background: var(--verde);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>Vicente Perpiñá Giner</h1>
+      <p class="subtitle">Profesor de dibujo · Ilustración · Educación artística</p>
+      <p>Portfolio docente y artístico en construcción.</p>
+      <p>Esta página sirve como prueba inicial para GitHub Pages.</p>
+
+      <a class="button" href="mailto:vicenteperpinyaginer@gmail.com">Contacto</a>
+    </section>
+  </main>
+</body>
+</html>
