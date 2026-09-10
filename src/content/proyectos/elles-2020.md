@@ -7,7 +7,7 @@ categorias:
 - edicion
 - proyecto-social
 seccion: comic-edicion
-resumen: Proyecto coral de cómic sobre identidad de género. Vicente participa en el proyecto editorial desde Edicions Anònimes.
+resumen: Proyecto coral de cómic sobre identidad de género. Participo en el proyecto editorial desde Edicions Anònimes.
 entidad: Edicions Anònimes
 publicar: true
 detalle: false

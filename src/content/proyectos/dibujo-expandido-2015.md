@@ -6,7 +6,7 @@ categorias:
 - dibujo
 - exposicion
 seccion: obra-exposiciones
-resumen: Obra de Vicente formó parte de la selección de dibujo contemporáneo de la Colección DKV presentada en el Museo ABC,
+resumen: Mi obra formó parte de la selección de dibujo contemporáneo de la Colección DKV presentada en el Museo ABC,
   junto a artistas emergentes y de media carrera.
 entidad: Museo ABC · Colección DKV
 lugar: Madrid

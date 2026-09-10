@@ -6,7 +6,7 @@ categorias:
 - ilustracion
 - divulgacion
 seccion: ilustracion-editorial
-resumen: Participación vinculada al Congreso Internacional de Ilustración Ilustrafic 2 de la Universitat Politècnica de València.
+resumen: Participé en el Congreso Internacional de Ilustración Ilustrafic 2 de la Universitat Politècnica de València.
 publicar: true
 detalle: false
 mostrarObra: false

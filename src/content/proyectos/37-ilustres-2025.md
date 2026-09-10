@@ -7,7 +7,7 @@ fechaFin: "2025-09-21"
 tipoPrincipal: exposicion
 categorias: [ilustracion, exposicion, dibujo]
 seccion: obra-exposiciones
-resumen: "Exposición colectiva en el Centre del Carme en la que ilustradores contemporáneos dialogaron con figuras de la pintura valenciana. Vicente reinterpretó a Manuela Ballester."
+resumen: "Participé en una exposición colectiva del Centre del Carme en la que ilustradores contemporáneos dialogaron con figuras de la pintura valenciana. Reinterpreté a Manuela Ballester."
 rol: "Ilustrador participante"
 entidad: "Consorci de Museus de la Comunitat Valenciana"
 lugar: "Centre del Carme Cultura Contemporània · València"
@@ -18,7 +18,7 @@ mostrarObra: true
 mostrarTrayectoria: true
 aparienciaObra: lead
 anchor: 37-ilustres
-obraResumen: "Proyecto colectivo que propone un diálogo entre ilustradores actuales y figuras de la pintura valenciana. Vicente reinterpretó a Manuela Ballester."
+obraResumen: "En este proyecto colectivo, ilustradores actuales dialogaron con figuras de la pintura valenciana. Reinterpreté a Manuela Ballester."
 obraMeta: "Centre del Carme"
 destacadoHome: true
 ordenHome: 2
@@ -45,8 +45,8 @@ verificacion:
 
 La muestra se presentó en la **Sala Contraforts del Centre del Carme** y estuvo comisariada por Catalina Martín Lloris y MacDiego.
 
-## Participación de Vicente
+## Mi participación
 
-Vicente Perpiñá trabajó a partir de la figura de **Manuela Ballester**, artista valenciana vinculada a la ilustración, el cartelismo, la pintura y el compromiso cultural. Su intervención se integra así en un proyecto donde la ilustración funciona también como lectura crítica y recuperación de referentes.
+Trabajé a partir de la figura de **Manuela Ballester**, artista valenciana vinculada a la ilustración, el cartelismo, la pintura y el compromiso cultural. Mi intervención forma parte de un proyecto donde la ilustración funciona también como lectura crítica y recuperación de referentes.
 
-Cuando dispongamos de la imagen de la obra y de material expositivo propio, esta ficha podrá incorporar una galería específica.
+Cuando tenga la imagen de la obra y material expositivo propio, podré incorporar una galería específica a esta ficha.

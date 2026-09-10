@@ -5,7 +5,7 @@ anio: 2012
 tipoPrincipal: beca
 categorias: [beca, dibujo, exposicion]
 seccion: obra-exposiciones
-resumen: "Vicente Perpiñá fue ganador de la quinta edición de la Beca DKV Grand Tour, con destino Nueva York, dentro del programa de la Cátedra DKV Arte y Salud de la UPV."
+resumen: "Gané la quinta edición de la Beca DKV Grand Tour, con destino Nueva York, dentro del programa de la Cátedra DKV Arte y Salud de la UPV."
 rol: "Artista becado"
 entidad: "Cátedra DKV Arte y Salud · Universitat Politècnica de València"
 lugar: "Nueva York · Estados Unidos"
@@ -16,13 +16,13 @@ mostrarTrayectoria: true
 aparienciaObra: accent
 anchor: grand-tour
 obraTitulo: "Nueva York"
-obraResumen: "Ganador de la Beca DKV Grand Tour 2012. La estancia en Nueva York dio lugar a un proyecto vinculado a la Cátedra DKV Arte y Salud y a un recorrido expositivo posterior."
+obraResumen: "Gané la Beca DKV Grand Tour 2012. La estancia en Nueva York dio lugar a un proyecto vinculado a la Cátedra DKV Arte y Salud y a un recorrido expositivo posterior."
 obraMeta: "Beca DKV Grand Tour"
 destacadoHome: true
 ordenHome: 3
 homeTitulo: "Nueva York"
 homeTipo: "Beca · DKV Grand Tour"
-homeResumen: "Ganador de la Beca DKV Grand Tour 2012, vinculada a la Cátedra DKV Arte y Salud de la UPV."
+homeResumen: "Gané la Beca DKV Grand Tour 2012, vinculada a la Cátedra DKV Arte y Salud de la UPV."
 trayectoriaFecha: "2012"
 trayectoriaTitulo: "Beca DKV Grand Tour"
 trayectoriaDetalle: "Ganador · estancia en Nueva York"
@@ -45,12 +45,12 @@ verificacion:
 ---
 ## La beca
 
-Vicente Perpiñá fue uno de los ganadores de la **quinta edición de las Becas DKV Grand Tour**, un programa vinculado a la Cátedra DKV Arte y Salud de la Universitat Politècnica de València destinado a apoyar la investigación y la creación de jóvenes artistas.
+Fui uno de los ganadores de la **quinta edición de las Becas DKV Grand Tour**, un programa vinculado a la Cátedra DKV Arte y Salud de la Universitat Politècnica de València destinado a apoyar la investigación y la creación de jóvenes artistas.
 
-Su beca tuvo como destino **Nueva York**, mientras que la otra artista premiada en aquella edición, Paula Valero, desarrolló su estancia en Polonia.
+Mi beca tuvo como destino **Nueva York**, mientras que la otra artista premiada en aquella edición, Paula Valero, desarrolló su estancia en Polonia.
 
 ## Vida y obra en Nueva York
 
-El catálogo de la edición recoge el proyecto de Vicente bajo el título **Vida y obra en Nueva York**. La estancia se incorporó a una práctica artística donde experiencia cotidiana, relato personal y construcción de la figura del artista se relacionan de forma directa.
+El catálogo de la edición recoge mi proyecto bajo el título **Vida y obra en Nueva York**. La estancia pasó a formar parte de mi práctica artística, donde experiencia cotidiana, relato personal y construcción de la figura del artista se relacionan de forma directa.
 
 El programa Grand Tour incluía además la presentación posterior de los trabajos dentro del circuito expositivo asociado a las becas, dando continuidad pública a la experiencia de creación desarrollada durante el viaje.

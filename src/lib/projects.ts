@@ -28,28 +28,28 @@ export const PROJECT_SECTIONS = [
     id: 'obra-exposiciones',
     number: '01',
     title: 'Obra y exposiciones',
-    description: 'Proyectos individuales y colectivos en los que el dibujo y la ilustración dialogan con el espacio expositivo.',
+    description: 'Aquí reúno proyectos individuales y colectivos en los que el dibujo y la ilustración dialogan con el espacio expositivo.',
     layout: 'grid'
   },
   {
     id: 'comic-edicion',
     number: '02',
     title: 'Cómic y edición',
-    description: 'Creación gráfica, autoedición y proyectos colectivos en los que la publicación es también un espacio de encuentro.',
+    description: 'Aquí comparto creación gráfica, autoedición y proyectos colectivos en los que la publicación es también un espacio de encuentro.',
     layout: 'grid'
   },
   {
     id: 'ilustracion-editorial',
     number: '03',
     title: 'Ilustración editorial',
-    description: 'Encargos de portada e interior, publicaciones locales y proyectos donde la ilustración acompaña y amplía el texto.',
+    description: 'Aquí reúno encargos de portada e interior, publicaciones locales y proyectos donde la ilustración acompaña y amplía el texto.',
     layout: 'editorial'
   },
   {
     id: 'animacion-audiovisual',
     number: '04',
     title: 'Animación y audiovisual',
-    description: 'Una línea de trabajo nacida de la formación en Bellas Artes, Animación y Arte y Tecnología, y desarrollada en proyectos reales.',
+    description: 'Mi línea de trabajo en animación y audiovisual parte de la formación en Bellas Artes, Animación y Arte y Tecnología, y se desarrolla en proyectos reales.',
     layout: 'media'
   }
 ] as const;

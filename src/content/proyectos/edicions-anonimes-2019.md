@@ -7,7 +7,7 @@ categorias:
 - comic
 - edicion
 seccion: comic-edicion
-resumen: Vicente y Carlos Mercé impulsan un proyecto de autoedición y la revista de cómic Plaça del Mercat, combinando creación,
+resumen: Con Carlos Mercé impulso un proyecto de autoedición y la revista de cómic Plaça del Mercat, combinando creación,
   edición y comunidad alrededor de la narrativa gráfica.
 rol: Impulsor / editor
 colaboradores:

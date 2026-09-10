@@ -6,7 +6,7 @@ categorias:
 - animacion
 - audiovisual
 seccion: animacion-audiovisual
-resumen: Participación en animación, rotoscopia y diseño para el videoclip dirigido por Miquel Guillem.
+resumen: Trabajé en la animación, la rotoscopia y el diseño del videoclip dirigido por Miquel Guillem.
 rol: Animación · rotoscopia · diseño
 publicar: true
 detalle: false

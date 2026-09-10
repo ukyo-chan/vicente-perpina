@@ -8,7 +8,7 @@ categorias:
 - proyecto-social
 - exposicion
 seccion: comic-edicion
-resumen: Participación con Antonio Javier García en Odisea Interior y autor de El segon Miracle dels peixets, historieta dedicada
+resumen: Participé con Antonio Javier García en Odisea Interior y fui autor de El segon Miracle dels peixets, historieta dedicada
   a Per l'Horta. El proyecto tuvo publicación y exposición en el Centre del Carme.
 entidad: Fundació Horta Sud · Centre del Carme
 publicar: true

@@ -6,7 +6,7 @@ categorias:
 - animacion
 - audiovisual
 seccion: animacion-audiovisual
-resumen: Trabajo en decorados y vehículos para un spot stop-motion dirigido por Pablo Llorens.
+resumen: Trabajé en decorados y vehículos para un spot stop-motion dirigido por Pablo Llorens.
 rol: Decorados · vehículos
 publicar: true
 detalle: false

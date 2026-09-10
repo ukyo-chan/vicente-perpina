@@ -6,7 +6,7 @@ categorias:
 - edicion
 - ilustracion
 seccion: comic-edicion
-resumen: Proyecto editorial publicado mediante crowdfunding. La campaña incluyó una ilustración exclusiva de Vicente como
+resumen: Proyecto editorial publicado mediante crowdfunding. La campaña incluyó una ilustración exclusiva mía como
   una de sus recompensas.
 entidad: Edicions Anònimes
 publicar: true

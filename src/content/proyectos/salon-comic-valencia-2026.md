@@ -5,7 +5,7 @@ tipoPrincipal: comic
 categorias:
 - comic
 seccion: comic-edicion
-resumen: Vicente Perpiñá participó como autor invitado en el Salón del Cómic de València 2026.
+resumen: Participé como autor invitado en el Salón del Cómic de València 2026.
 publicar: true
 detalle: false
 mostrarObra: false

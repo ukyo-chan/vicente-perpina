@@ -6,7 +6,7 @@ categorias:
 - exposicion
 - ilustracion
 seccion: obra-exposiciones
-resumen: Participación en la exposición dedicada a la historia del movimiento asociativo y a las transformaciones sociales
+resumen: Participé en la exposición dedicada a la historia del movimiento asociativo y a las transformaciones sociales
   impulsadas por la ciudadanía organizada.
 entidad: Centre del Carme Cultura Contemporània
 publicar: true

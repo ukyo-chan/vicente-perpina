@@ -41,12 +41,12 @@ verificacion:
 ---
 ## El proyecto
 
-**Cuentos populares** fue una exposición individual de Vicente Perpiñá centrada en dibujos y bocetos vinculados al imaginario de los relatos tradicionales. Se celebró entre el **15 de abril y el 17 de mayo de 2015** en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural.
+Con **Cuentos populares** presenté una exposición individual centrada en dibujos y bocetos vinculados al imaginario de los relatos tradicionales. Se celebró entre el **15 de abril y el 17 de mayo de 2015** en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural.
 
-La muestra contó además con **catálogo propio**, un elemento especialmente valioso para documentar esta etapa de su producción artística.
+La muestra contó además con **catálogo propio**, un elemento especialmente valioso para documentar esta etapa de mi producción artística.
 
 ## Una línea de investigación y creación
 
-El interés por los cuentos populares no aparece de forma aislada en su trayectoria. En esos años Vicente investigó también la transformación histórica y visual de los relatos tradicionales y su relación con la animación y el imaginario colectivo.
+Mi interés por los cuentos populares no aparece de forma aislada en mi trayectoria. En esos años investigué también la transformación histórica y visual de los relatos tradicionales y su relación con la animación y el imaginario colectivo.
 
-La futura incorporación de reproducciones del catálogo y de una selección de obra permitirá que esta ficha funcione también como pequeña exposición digital.
+Cuando incorpore reproducciones del catálogo y una selección de obra, esta ficha podrá funcionar también como pequeña exposición digital.

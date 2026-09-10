@@ -6,7 +6,7 @@ categorias:
 - ilustracion
 - edicion
 seccion: ilustracion-editorial
-resumen: Publicación municipal con ilustraciones originales de Vicente Perpiñá.
+resumen: Publicación municipal con mis ilustraciones originales.
 entidad: Ajuntament d’Alfafar
 publicar: true
 detalle: false

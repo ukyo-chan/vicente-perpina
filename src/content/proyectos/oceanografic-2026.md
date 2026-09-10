@@ -5,7 +5,7 @@ anio: 2026
 tipoPrincipal: ilustracion
 categorias: [ilustracion, divulgacion, exposicion]
 seccion: obra-exposiciones
-resumen: "Participación como uno de los ilustradores locales en una galería interactiva del Oceanogràfic articulada en trece módulos sobre los polos y el cambio climático."
+resumen: "Participé como uno de los ilustradores locales en una galería interactiva del Oceanogràfic articulada en trece módulos sobre los polos y el cambio climático."
 rol: "Ilustrador participante"
 entidad: "Oceanogràfic de València"
 lugar: "València"
@@ -15,12 +15,12 @@ mostrarObra: true
 mostrarTrayectoria: true
 aparienciaObra: lead
 anchor: oceanografic
-obraResumen: "Participación como uno de los ilustradores locales en una galería interactiva articulada en trece módulos. Cada artista desarrolló una propuesta visual a partir del contenido científico bajo la dirección gráfica de MacDiego."
+obraResumen: "Participé como uno de los ilustradores locales en una galería interactiva articulada en trece módulos. Cada artista desarrolló una propuesta visual a partir del contenido científico bajo la dirección gráfica de MacDiego."
 obraMeta: "Oceanogràfic de València"
 destacadoHome: true
 ordenHome: 1
 homeTipo: "Ilustración · Oceanogràfic"
-homeResumen: "Participación en el proyecto visual de trece módulos, coordinado gráficamente por MacDiego."
+homeResumen: "Participé en el proyecto visual de trece módulos, coordinado gráficamente por MacDiego."
 trayectoriaFecha: "2026"
 trayectoriaDetalle: "Oceanogràfic de València · ilustración"
 ordenTrayectoria: 2026
@@ -42,8 +42,8 @@ El Oceanogràfic incorporó en 2026 una galería interactiva concebida para acer
 
 La propuesta combina contenido científico, divulgación y lenguaje gráfico. La dirección visual del conjunto estuvo coordinada por **MacDiego**, mientras que cada artista desarrolló su propia respuesta al tema asignado.
 
-## Participación de Vicente
+## Mi participación
 
-Vicente Perpiñá formó parte del grupo de ilustradores locales invitados a intervenir en el proyecto. Su participación sitúa la ilustración en un contexto especialmente afín a su perfil: una imagen creada no solo como obra, sino también como herramienta de **comunicación y divulgación**.
+Formé parte del grupo de ilustradores locales invitados a intervenir en el proyecto. Mi participación sitúa la ilustración en un contexto especialmente afín a mi trabajo: una imagen creada no solo como obra, sino también como herramienta de **comunicación y divulgación**.
 
-La ficha podrá ampliarse cuando dispongamos de fotografías propias de la instalación y de la identificación exacta del módulo desarrollado por Vicente.
+Podré ampliar la ficha cuando tenga fotografías propias de la instalación y la identificación exacta del módulo que desarrollé.
