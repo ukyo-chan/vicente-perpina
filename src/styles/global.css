@@ -500,16 +500,6 @@ a:focus-visible {
   border-color: var(--teal-dark);
 }
 
-.project-card--accent .project-meta,
-.project-card--accent p,
-.project-card--accent .text-link {
-  color: rgba(255,255,255,.84);
-}
-
-.project-card--accent .project-meta span:first-child {
-  color: white;
-}
-
 .project-meta {
   display: flex;
   flex-wrap: wrap;
@@ -546,6 +536,26 @@ a:focus-visible {
 }
 
 .text-link:hover { text-decoration: underline; }
+
+.project-card--accent .project-meta,
+.project-card--accent p,
+.project-card--accent h3,
+.project-card--accent .text-link {
+  color: rgba(255,255,255,.9);
+}
+
+.project-card--accent .project-meta span:first-child {
+  color: white;
+}
+
+.project-card--accent .text-link:hover,
+.project-card--accent .text-link:focus-visible {
+  color: white;
+}
+
+.project-card--accent .text-link:focus-visible {
+  outline-color: rgba(255,255,255,.9);
+}
 
 .archive-panel {
   margin-top: 20px;
