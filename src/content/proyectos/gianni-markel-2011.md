@@ -3,15 +3,22 @@ titulo: "Gianni Markel. La historia de un artista"
 subtitulo: "Proyecto documental"
 anio: 2011
 tipoPrincipal: audiovisual
-categorias:
-  - audiovisual
+categorias: [audiovisual]
+seccion: animacion-audiovisual
 resumen: "Proyecto videográfico realizado conjuntamente por Vicente Perpiñá y Luis Miguel Alonso en el marco del Máster en Producción Artística de la UPV."
 rol: "Coautor · realización audiovisual"
-colaboradores:
-  - "Luis Miguel Alonso"
+colaboradores: ["Luis Miguel Alonso"]
 entidad: "Máster en Producción Artística · Universitat Politècnica de València"
-destacado: false
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+anchor: gianni-markel
+obraResumen: "Proyecto documental realizado con Luis Miguel Alonso y proyectado en sección oficial del Matamoros Cultural Fest, México."
+trayectoriaFecha: "2009–11"
+trayectoriaDetalle: "Proyecto documental · Luis Miguel Alonso y Vicente Perpiñá"
+ordenTrayectoria: 2009
+ordenTrayectoriaItem: 50
 enlaces:
   - texto: "Memoria del proyecto en RIUNet"
     url: "https://riunet.upv.es/bitstreams/4694d9b4-e8aa-4d64-bfa5-9c16c887bf3d/download"

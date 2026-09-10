@@ -1,322 +1,135 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioProjectCard from '../../components/projects/PortfolioProjectCard.astro';
+import { PROJECT_SECTIONS, getObraArchiveProjects, getObraProjects, loadProjects } from '../../lib/projects';
+
+const projects = await loadProjects();
+const filters = [
+  ['todos', 'Todos'],
+  ['ilustracion', 'Ilustración'],
+  ['exposicion', 'Exposición'],
+  ['comic', 'Cómic'],
+  ['edicion', 'Edición'],
+  ['animacion', 'Animación'],
+  ['audiovisual', 'Audiovisual']
+] as const;
 ---
 <BaseLayout
   title="Obra y proyectos · Vicente Perpiñá Giner"
   description="Obra y proyectos de Vicente Perpiñá Giner: ilustración, exposiciones, cómic, edición, animación y audiovisual."
 >
   <main>
-<section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Trabajo artístico</p>
-      <h1>Obra y proyectos</h1>
-      <p>
-        Una selección de proyectos que recorre ilustración y dibujo, exposiciones, cómic y edición,
-        encargos editoriales, animación y creación audiovisual.
-      </p>
-      <div class="tag-list">
-        <span class="tag">Ilustración</span>
-        <span class="tag">Dibujo</span>
-        <span class="tag">Cómic</span>
-        <span class="tag">Edición</span>
-        <span class="tag">Animación</span>
-        <span class="tag">Audiovisual</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-nav-wrap">
-    <nav class="container section-nav" aria-label="Secciones de obra">
-      <a href="#obra-exposiciones">Obra y exposiciones</a>
-      <a href="#comic-edicion">Cómic y edición</a>
-      <a href="#ilustracion-editorial">Ilustración editorial</a>
-      <a href="#animacion-audiovisual">Animación y audiovisual</a>
-    </nav>
-  </div>
-
-  <section class="section" id="obra-exposiciones">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">01</p>
-          <h2>Obra y exposiciones</h2>
-        </div>
-        <p>Proyectos individuales y colectivos en los que el dibujo y la ilustración dialogan con el espacio expositivo.</p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card project-card--lead reveal" id="oceanografic">
-          <div class="project-meta"><span>2026</span><span>Oceanogràfic de València</span></div>
-          <h3>Galería interactiva sobre los polos</h3>
-          <p>
-            Participación como uno de los ilustradores locales en una galería interactiva articulada en trece módulos.
-            Cada artista desarrolló una propuesta visual a partir del contenido científico bajo la dirección gráfica de MacDiego.
-          </p>
-          <div class="project-actions">
-            <a class="text-link" href="/proyectos/oceanografic-2026/">Ver ficha →</a>
-            <a class="text-link text-link--muted" href="https://www.europapress.es/comunitat-valenciana/noticia-oceanografic-estrena-galeria-interactiva-advertir-efecto-calentamiento-global-polos-20260327155848.html" target="_blank" rel="noopener">Fuente ↗</a>
-          </div>
-        </article>
-
-        <article class="project-card project-card--lead reveal" id="37-ilustres">
-          <div class="project-meta"><span>2025</span><span>Centre del Carme</span></div>
-          <h3>37 Il·lustres x 37 Il·lustrats</h3>
-          <p>
-            Proyecto colectivo que propone un diálogo entre ilustradores actuales y figuras de la pintura valenciana.
-            Vicente reinterpretó a Manuela Ballester.
-          </p>
-          <div class="project-actions">
-            <a class="text-link" href="/proyectos/37-ilustres-2025/">Ver ficha →</a>
-            <a class="text-link text-link--muted" href="https://www.consorcimuseus.gva.es/exposicion/37-il%C2%B7lustres-x-37-il%C2%B7lustrats/" target="_blank" rel="noopener">Fuente ↗</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" id="dana-un-any-despres">
-          <div class="project-meta"><span>2025</span><span>Exposición itinerante</span></div>
-          <h3>La DANA: un any després</h3>
-          <p>
-            Exposición impulsada por el Colectivo Cultural Benetússer y APIV. Doce ilustradores vinculados a los municipios afectados
-            aportaron una mirada gráfica sobre la riada, la memoria y sus consecuencias.
-          </p>
-          <a class="text-link" href="https://cridempelclima.com/eventos/expo-ilustradoras-dana-la-dana-un-any-despres/" target="_blank" rel="noopener">Más información ↗</a>
-        </article>
-
-        <article class="project-card reveal" id="les-victories">
-          <div class="project-meta"><span>2023</span><span>Centre del Carme</span></div>
-          <h3>Les victòries cal saber veure-les</h3>
-          <p>
-            Participación en la exposición dedicada a la historia del movimiento asociativo y a las transformaciones sociales impulsadas
-            por la ciudadanía organizada.
-          </p>
-          <a class="text-link" href="https://www.consorcimuseus.gva.es/centro-del-carmen/exposicion/les-victories-cal-saber-veure-les/?lang=es" target="_blank" rel="noopener">Ver exposición ↗</a>
-        </article>
-
-        <article class="project-card reveal" id="cuentos-populares">
-          <div class="project-meta"><span>2015</span><span>Exposición individual</span></div>
-          <h3>Cuentos populares</h3>
-          <p>
-            Muestra de dibujos y bocetos celebrada del 15 de abril al 17 de mayo en Nuevo Centro Espai d'Art,
-            dentro del programa de Ámbito Cultural. La exposición contó con catálogo propio.
-          </p>
-          <div class="project-actions">
-            <a class="text-link" href="/proyectos/cuentos-populares-2015/">Ver ficha →</a>
-            <a class="text-link text-link--muted" href="https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050" target="_blank" rel="noopener">Catálogo ↗</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" id="room-art">
-          <div class="project-meta"><span>2015</span><span>La Nau · Universitat de València</span></div>
-          <h3>Room Art 2015 · Migraciones visuales</h3>
-          <p>
-            Exposición colectiva en la Sala Acadèmia de La Nau. Doce artistas abordaron la migración y su influencia sobre el proceso creativo
-            mediante pintura, dibujo, fotografía, instalación y videocreación.
-          </p>
-          <a class="text-link" href="https://www.uv.es/uvweb/universidad/es/listado-noticias/-room-art-2015-muestra-nau-afectan-migraciones-creatividad-1285846070123/Noticia.html?id=1285928968885" target="_blank" rel="noopener">Más información ↗</a>
-        </article>
-
-        <article class="project-card reveal" id="dibujo-expandido">
-          <div class="project-meta"><span>2015</span><span>Museo ABC · Madrid</span></div>
-          <h3>Dibujo Expandido · Colección DKV</h3>
-          <p>
-            Obra de Vicente formó parte de la selección de dibujo contemporáneo de la Colección DKV presentada en el Museo ABC,
-            junto a artistas emergentes y de media carrera.
-          </p>
-          <a class="text-link" href="https://museo.abc.es/exposiciones/2015/09/dibujo-expandido/172958" target="_blank" rel="noopener">Ver exposición ↗</a>
-        </article>
-
-        <article class="project-card project-card--accent reveal" id="grand-tour">
-          <div class="project-meta"><span>2012</span><span>Beca DKV Grand Tour</span></div>
-          <h3>Nueva York</h3>
-          <p>
-            Ganador de la Beca DKV Grand Tour 2012. La estancia en Nueva York dio lugar a un proyecto vinculado a la Cátedra DKV Arte y Salud
-            y a un recorrido expositivo posterior.
-          </p>
-          <div class="project-actions">
-            <a class="text-link" href="/proyectos/dkv-grand-tour-2012/">Ver ficha →</a>
-            <a class="text-link text-link--muted" href="https://www.upv.es/contenidos/DKVARTE/info/907343normalc.html" target="_blank" rel="noopener">Fuente ↗</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section soft" id="comic-edicion">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">02</p>
-          <h2>Cómic y edición</h2>
-        </div>
-        <p>Creación gráfica, autoedición y proyectos colectivos en los que la publicación es también un espacio de encuentro.</p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card project-card--lead reveal" id="vinyetari">
-          <div class="project-meta"><span>2025</span><span>Editorial Finestres</span></div>
-          <h3>Vinyetari 5 · Una data, totes les dates</h3>
-          <p>
-            Historieta de Marc Zanón y Vicente Perpiñá seleccionada para formar parte de <em>Vinyetari 5</em>,
-            antología de obras de la quinta edición del Premi ARA de Còmic en Català.
-          </p>
-          <div class="project-actions">
-            <a class="text-link" href="/proyectos/vinyetari-5/">Ver ficha →</a>
-            <a class="text-link text-link--muted" href="https://es.ara.cat/cultura/leer/alegado-antirracista-ed-carosia-lluc-silvestre-gana-premio-ara-comic_1_5230314.html" target="_blank" rel="noopener">Fuente ↗</a>
-          </div>
-        </article>
-
-        <article class="project-card project-card--lead reveal" id="edicions-anonimes">
-          <div class="project-meta"><span>2019 →</span><span>Proyecto editorial</span></div>
-          <h3>Edicions Anònimes · Plaça del Mercat</h3>
-          <p>
-            Vicente y Carlos Mercé impulsan un proyecto de autoedición y la revista de cómic <em>Plaça del Mercat</em>,
-            combinando creación, edición y comunidad alrededor de la narrativa gráfica.
-          </p>
-        </article>
-
-        <article class="project-card reveal" id="elles">
-          <div class="project-meta"><span>2020</span><span>Cómic colectivo</span></div>
-          <h3>EL·LE(s)</h3>
-          <p>
-            Proyecto coral de cómic sobre identidad de género. Vicente participa en el proyecto editorial desde Edicions Anònimes.
-          </p>
-        </article>
-
-        <article class="project-card reveal" id="histories-superacio">
-          <div class="project-meta"><span>2021–2022</span><span>Fundació Horta Sud · CCCC</span></div>
-          <h3>Històries de Superació II</h3>
-          <p>
-            Participación con Antonio Javier García en <em>Odisea Interior</em> y autor de <em>El segon Miracle dels peixets</em>,
-            historieta dedicada a Per l'Horta. El proyecto tuvo publicación y exposición en el Centre del Carme.
-          </p>
-          <a class="text-link" href="https://fundaciohortasud.org/portfolio-item/histories-de-superacio-2/" target="_blank" rel="noopener">Ver proyecto ↗</a>
-        </article>
-
-        <article class="project-card reveal" id="migajas">
-          <div class="project-meta"><span>2023</span><span>Edicions Anònimes</span></div>
-          <h3>Migajas</h3>
-          <p>
-            Proyecto editorial publicado mediante crowdfunding. La campaña incluyó una ilustración exclusiva de Vicente como una de sus recompensas.
-          </p>
-        </article>
-
-        <article class="project-card reveal" id="la-corbella">
-          <div class="project-meta"><span>2008</span><span>Publicación personal</span></div>
-          <h3>La Corbella</h3>
-          <p>
-            Libro personal de ilustraciones publicado por el Departamento de Dibujo de la Facultad de Bellas Artes de la UPV.
-          </p>
-        </article>
-      </div>
-
-      <div class="archive-panel reveal">
-        <p class="eyebrow">Autoedición y colaboraciones</p>
-        <h3>Otros proyectos gráficos</h3>
-        <div class="archive-tags">
-          <span>MOM!C · números 1–3</span>
-          <span>Mr. Awaka · números 1–2</span>
-          <span>MAÑANA / Mareo Comics</span>
-          <span>GOOD GOD & Friends</span>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Trabajo artístico</p>
+        <h1>Obra y proyectos</h1>
+        <p>
+          Una selección de proyectos que recorre ilustración y dibujo, exposiciones, cómic y edición,
+          encargos editoriales, animación y creación audiovisual.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Ilustración</span>
+          <span class="tag">Dibujo</span>
+          <span class="tag">Cómic</span>
+          <span class="tag">Edición</span>
+          <span class="tag">Animación</span>
+          <span class="tag">Audiovisual</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="ilustracion-editorial">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">03</p>
-          <h2>Ilustración editorial</h2>
+    <div class="section-nav-wrap">
+      <nav class="container section-nav" aria-label="Secciones de obra">
+        {PROJECT_SECTIONS.map(section => <a href={`#${section.id}`}>{section.title}</a>)}
+      </nav>
+    </div>
+
+    <section class="portfolio-filter-wrap" aria-label="Filtrar proyectos">
+      <div class="container portfolio-filter-inner">
+        <div class="portfolio-filters" role="group" aria-label="Categoría">
+          {filters.map(([value, label], index) => (
+            <button
+              class="portfolio-filter"
+              type="button"
+              data-project-filter={value}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              {label}
+            </button>
+          ))}
         </div>
-        <p>Encargos de portada e interior, publicaciones locales y proyectos donde la ilustración acompaña y amplía el texto.</p>
+        <p class="portfolio-filter-status" data-filter-status aria-live="polite"></p>
       </div>
+    </section>
 
-      <div class="editorial-grid">
-        <article class="editorial-card reveal">
-          <span class="project-year">2017</span>
-          <h3>Llibre de Festes d'Alfafar</h3>
-          <p>Publicación municipal con ilustraciones originales de Vicente Perpiñá.</p>
-        </article>
+    {PROJECT_SECTIONS.map(section => {
+      const sectionProjects = getObraProjects(projects, section.id);
+      const archiveProjects = getObraArchiveProjects(projects, section.id);
+      const soft = section.id === 'comic-edicion' || section.id === 'animacion-audiovisual';
 
-        <article class="editorial-card reveal">
-          <span class="project-year">Alfafar</span>
-          <h3>Publicaciones y memoria local</h3>
-          <p>
-            Ilustraciones para publicaciones vinculadas a la historia, las fiestas y el patrimonio de Alfafar,
-            entre ellas la publicación conmemorativa del 350 Aniversari del Títol Canònic de la Mare de Déu del Do.
-          </p>
-        </article>
+      return (
+        <section
+          class:list={['section', soft && 'soft']}
+          id={section.id}
+          data-project-section
+        >
+          <div class="container">
+            <div class="section-heading reveal">
+              <div>
+                <p class="eyebrow">{section.number}</p>
+                <h2>{section.title}</h2>
+              </div>
+              <p>{section.description}</p>
+            </div>
 
-        <article class="editorial-card editorial-card--note reveal">
-          <span class="project-year">Encargos</span>
-          <h3>Portadas e ilustración interior</h3>
-          <p>
-            La ilustración por encargo ha formado parte de su práctica profesional de manera continuada,
-            tanto en libros como en publicaciones culturales y locales.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
+            {section.layout === 'grid' && (
+              <div class="project-grid">
+                {sectionProjects.map(project => <PortfolioProjectCard project={project} layout="grid" />)}
+              </div>
+            )}
 
-  <section class="section soft" id="animacion-audiovisual">
-    <div class="container">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">04</p>
-          <h2>Animación y audiovisual</h2>
-        </div>
-        <p>Una línea de trabajo nacida de la formación en Bellas Artes, Animación y Arte y Tecnología, y desarrollada en proyectos reales.</p>
-      </div>
+            {section.layout === 'editorial' && (
+              <div class="editorial-grid">
+                {sectionProjects.map(project => <PortfolioProjectCard project={project} layout="editorial" />)}
+              </div>
+            )}
 
-      <div class="media-timeline">
-        <article class="media-item reveal">
-          <span class="media-year">2011</span>
-          <div>
-            <h3>Gianni Markel. La historia de un artista</h3>
-            <p>Proyecto documental realizado con Luis Miguel Alonso y proyectado en sección oficial del Matamoros Cultural Fest, México.</p>
-            <a class="text-link" href="/proyectos/gianni-markel-2011/">Ver ficha →</a>
+            {section.layout === 'media' && (
+              <div class="media-timeline">
+                {sectionProjects.map(project => <PortfolioProjectCard project={project} layout="media" />)}
+              </div>
+            )}
+
+            {archiveProjects.length > 0 && (
+              <div class="archive-panel reveal" data-project-archive>
+                <p class="eyebrow">Autoedición y colaboraciones</p>
+                <h3>Otros proyectos gráficos</h3>
+                <div class="archive-tags">
+                  {archiveProjects.map(project => (
+                    <span
+                      data-project-item
+                      data-project-categories={project.categories.join(' ')}
+                    >
+                      {project.title}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {section.id === 'animacion-audiovisual' && (
+              <div class="portfolio-note reveal">
+                <strong>Archivo vivo.</strong> Esta selección prioriza proyectos documentados y representativos. La web se irá enriqueciendo con obra visual propia,
+                fotografías de exposiciones y publicaciones seleccionadas, sin convertirla en un archivo exhaustivo.
+              </div>
+            )}
           </div>
-        </article>
-
-        <article class="media-item reveal">
-          <span class="media-year">2010</span>
-          <div>
-            <h3>Al Vent</h3>
-            <p>Participación en animación, rotoscopia y diseño para el videoclip dirigido por Miquel Guillem.</p>
-          </div>
-        </article>
-
-        <article class="media-item reveal">
-          <span class="media-year">2010</span>
-          <div>
-            <h3>MEGA BLOKS · Halo Assault on Squad 45</h3>
-            <p>Trabajo en decorados y vehículos para un spot stop-motion dirigido por Pablo Llorens.</p>
-          </div>
-        </article>
-
-        <article class="media-item reveal">
-          <span class="media-year">2009</span>
-          <div>
-            <h3>Broquebac II</h3>
-            <p>Proyecto de animación seleccionado en sección oficial de Animadrid 2009.</p>
-          </div>
-        </article>
-
-        <article class="media-item reveal">
-          <span class="media-year">2009</span>
-          <div>
-            <h3>La Taronja</h3>
-            <p>Cortometraje de animación tradicional con presencia en Animadrid 2009 y Cortomieres 2010.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="portfolio-note reveal">
-        <strong>Archivo vivo.</strong> Esta selección prioriza proyectos documentados y representativos. La web se irá enriqueciendo con obra visual propia,
-        fotografías de exposiciones y publicaciones seleccionadas, sin convertirla en un archivo exhaustivo.
-      </div>
-    </div>
-  </section>
+        </section>
+      );
+    })}
   </main>
+
+  <script>
+    import '../../scripts/portfolio-filter.js';
+  </script>
 </BaseLayout>

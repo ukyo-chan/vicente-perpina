@@ -3,23 +3,37 @@ titulo: "Beca DKV Grand Tour 2012"
 subtitulo: "Nueva York"
 anio: 2012
 tipoPrincipal: beca
-categorias:
-  - beca
-  - dibujo
-  - exposicion
+categorias: [beca, dibujo, exposicion]
+seccion: obra-exposiciones
 resumen: "Vicente Perpiñá fue ganador de la quinta edición de la Beca DKV Grand Tour, con destino Nueva York, dentro del programa de la Cátedra DKV Arte y Salud de la UPV."
 rol: "Artista becado"
 entidad: "Cátedra DKV Arte y Salud · Universitat Politècnica de València"
 lugar: "Nueva York · Estados Unidos"
-destacado: true
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+aparienciaObra: accent
+anchor: grand-tour
+obraTitulo: "Nueva York"
+obraResumen: "Ganador de la Beca DKV Grand Tour 2012. La estancia en Nueva York dio lugar a un proyecto vinculado a la Cátedra DKV Arte y Salud y a un recorrido expositivo posterior."
+obraMeta: "Beca DKV Grand Tour"
+destacadoHome: true
+ordenHome: 3
+homeTitulo: "Nueva York"
+homeTipo: "Beca · DKV Grand Tour"
+homeResumen: "Ganador de la Beca DKV Grand Tour 2012, vinculada a la Cátedra DKV Arte y Salud de la UPV."
+trayectoriaFecha: "2012"
+trayectoriaTitulo: "Beca DKV Grand Tour"
+trayectoriaDetalle: "Ganador · estancia en Nueva York"
+ordenTrayectoria: 2012
+ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Ganador Beca DKV Grand Tour 2012 · UPV"
     url: "https://www.upv.es/contenidos/DKVARTE/info/907343normalc.html"
   - texto: "Catálogo de la 5ª edición"
     url: "https://www.upv.es/contenidos/DKVARTE/info/U0749556.pdf"
-relacionados:
-  - cuentos-populares-2015
+relacionados: [cuentos-populares-2015]
 verificacion:
   estado: externa
   notas: "La UPV documenta a Vicente como ganador de la beca con destino Nueva York y conserva el catálogo de la edición."

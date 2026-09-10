@@ -1,0 +1,20 @@
+---
+import type { Project } from '../../lib/projects';
+import { projectDateLabel, projectPrimaryHref, projectTypeLabel } from '../../lib/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const title = project.homeTitle ?? project.title;
+const type = project.homeType ?? projectTypeLabel(project.type);
+const summary = project.homeSummary ?? project.summary;
+---
+<a class="featured-card reveal" href={projectPrimaryHref(project)}>
+  <span class="project-year">{projectDateLabel(project)}</span>
+  <span class="project-type">{type}</span>
+  <h3>{title}</h3>
+  {summary && <p>{summary}</p>}
+  <span class="card-link">Ver proyecto →</span>
+</a>

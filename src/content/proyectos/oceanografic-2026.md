@@ -3,21 +3,32 @@ titulo: "Galería interactiva sobre los polos"
 subtitulo: "Ilustración para un proyecto de divulgación científica"
 anio: 2026
 tipoPrincipal: ilustracion
-categorias:
-  - ilustracion
-  - divulgacion
-  - exposicion
+categorias: [ilustracion, divulgacion, exposicion]
+seccion: obra-exposiciones
 resumen: "Participación como uno de los ilustradores locales en una galería interactiva del Oceanogràfic articulada en trece módulos sobre los polos y el cambio climático."
 rol: "Ilustrador participante"
 entidad: "Oceanogràfic de València"
 lugar: "València"
-destacado: true
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+aparienciaObra: lead
+anchor: oceanografic
+obraResumen: "Participación como uno de los ilustradores locales en una galería interactiva articulada en trece módulos. Cada artista desarrolló una propuesta visual a partir del contenido científico bajo la dirección gráfica de MacDiego."
+obraMeta: "Oceanogràfic de València"
+destacadoHome: true
+ordenHome: 1
+homeTipo: "Ilustración · Oceanogràfic"
+homeResumen: "Participación en el proyecto visual de trece módulos, coordinado gráficamente por MacDiego."
+trayectoriaFecha: "2026"
+trayectoriaDetalle: "Oceanogràfic de València · ilustración"
+ordenTrayectoria: 2026
+ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Noticia sobre la galería interactiva"
     url: "https://www.europapress.es/comunitat-valenciana/noticia-oceanografic-estrena-galeria-interactiva-advertir-efecto-calentamiento-global-polos-20260327155848.html"
-relacionados:
-  - 37-ilustres-2025
+relacionados: [37-ilustres-2025]
 verificacion:
   estado: externa
   notas: "La fuente pública confirma la participación de Vicente Perpiñá entre los ilustradores locales y la estructura de trece módulos."

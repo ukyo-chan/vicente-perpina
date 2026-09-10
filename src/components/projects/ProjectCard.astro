@@ -1,22 +1,22 @@
 ---
 import ProjectTags from './ProjectTags.astro';
-import { projectTypeLabel } from '../../lib/projects';
+import type { Project } from '../../lib/projects';
+import { projectDateLabel, projectTypeLabel } from '../../lib/projects';
 
 interface Props {
-  project: any;
+  project: Project;
 }
 
 const { project } = Astro.props;
-const { data } = project;
 ---
 <a class="project-related-card" href={`/proyectos/${project.id}/`}>
   <div class="project-related-meta">
-    <span>{data.fechaTexto ?? data.anio}</span>
-    <span>{projectTypeLabel(data.tipoPrincipal)}</span>
+    <span>{projectDateLabel(project)}</span>
+    <span>{projectTypeLabel(project.type)}</span>
   </div>
-  <h3>{data.titulo}</h3>
-  {data.subtitulo && <p class="project-related-subtitle">{data.subtitulo}</p>}
-  <p>{data.resumen}</p>
-  <ProjectTags categories={data.categorias.slice(0, 3)} />
+  <h3>{project.title}</h3>
+  {project.subtitle && <p class="project-related-subtitle">{project.subtitle}</p>}
+  {project.summary && <p>{project.summary}</p>}
+  <ProjectTags categories={project.categories.slice(0, 3)} />
   <span class="project-related-link">Ver proyecto →</span>
 </a>

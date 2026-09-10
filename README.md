@@ -1,189 +1,177 @@
-# Vicente Perpiñá — Astro · Slice 3
+# Vicente Perpiñá — Astro · Slice 4
 
-Este slice incorpora el **modelo estructurado de proyectos y las fichas reutilizables**. La web principal sigue manteniendo el contenido de la v1.1/v1.2, pero ya existe una única plantilla capaz de generar una URL propia por proyecto a partir de un fichero Markdown.
+Este slice cierra la migración estructural del portfolio: la colección de proyectos pasa a ser la **fuente de verdad** de Inicio, Obra, la cronología artística de Trayectoria y las fichas individuales.
 
 ## Qué incorpora
 
-- Colección Astro `proyectos` definida y validada en `src/content.config.ts`.
-- Un fichero Markdown por proyecto en `src/content/proyectos/`.
-- Una única ruta dinámica estática: `src/pages/proyectos/[slug].astro`.
-- Componentes reutilizables para cabecera, metadatos, etiquetas, enlaces, galería, tarjetas y proyectos relacionados.
-- SEO/Open Graph por ficha usando los datos del proyecto.
-- Campos internos de verificación que **no se muestran públicamente**.
-- Soporte de imágenes y galerías, aunque las primeras fichas funcionan correctamente sin imágenes.
-- Enlaces `Ver ficha →` desde seis proyectos de la página Obra, sin hacer todavía que toda la página Obra dependa de la colección.
+- Catálogo ampliado a **28 registros** de proyecto/hito/práctica ya presentes en la web.
+- Separación entre:
+  - `publicar`: el registro puede usarse públicamente;
+  - `detalle`: genera o no una ficha `/proyectos/<slug>/`;
+  - `mostrarObra`: aparece o no en Obra;
+  - `mostrarTrayectoria`: aparece o no en la cronología;
+  - `archivoObra`: aparece como elemento compacto del archivo de autoedición.
+- `seccion` independiente de `categorias`, para que un proyecto pueda pertenecer editorialmente a una sección y a la vez tener varias categorías.
+- Inicio generado desde `destacadoHome` y `hitoHome`.
+- Obra generada completamente desde la colección.
+- Filtros de Obra por Ilustración, Exposición, Cómic, Edición, Animación y Audiovisual.
+- Cronología artística de Trayectoria generada desde la colección.
+- Relacionados: primero respeta los slugs declarados y, si faltan, completa automáticamente por afinidad de categorías/sección.
+- Soporte explícito para fechas ISO (`fechaInicio`, `fechaFin`) además de la presentación editorial (`fechaTexto`, `fechas`).
+- Sitemap estático generado en `/sitemap.xml` y `robots.txt` apuntando a él.
+- Capa `Project` intermedia para que componentes y páginas no dependan directamente del Markdown. Esto deja preparada una futura sustitución de Content Collections por Supabase/PostgreSQL u otra fuente de datos.
 
-## Primeras fichas publicadas
+## Modelo de publicación
 
-```text
-/proyectos/oceanografic-2026/
-/proyectos/37-ilustres-2025/
-/proyectos/vinyetari-5/
-/proyectos/cuentos-populares-2015/
-/proyectos/dkv-grand-tour-2012/
-/proyectos/gianni-markel-2011/
-```
-
-Estas seis fichas sirven como casos de prueba de distintos tipos de proyecto: ilustración/divulgación, exposición colectiva, cómic/editorial, exposición individual, beca artística y audiovisual.
-
-## Estructura nueva
-
-```text
-src/
-  content.config.ts
-  content/
-    proyectos/
-      37-ilustres-2025.md
-      cuentos-populares-2015.md
-      dkv-grand-tour-2012.md
-      gianni-markel-2011.md
-      oceanografic-2026.md
-      vinyetari-5.md
-  components/
-    projects/
-      ProjectCard.astro
-      ProjectGallery.astro
-      ProjectHeader.astro
-      ProjectLinks.astro
-      ProjectMeta.astro
-      ProjectTags.astro
-      RelatedProjects.astro
-  lib/
-    projects.ts
-  pages/
-    proyectos/
-      [slug].astro
-public/
-  assets/
-    img/
-      proyectos/
-```
-
-## Modelo de proyecto
-
-Cada proyecto tiene datos estructurados en el frontmatter y contenido editorial en Markdown.
-
-Ejemplo simplificado:
+Un registro puede existir sin ficha larga:
 
 ```yaml
----
-titulo: "Vinyetari 5"
-subtitulo: "Una data, totes les dates"
-anio: 2025
-tipoPrincipal: comic
-categorias:
-  - comic
-  - edicion
-resumen: "..."
-rol: "Coautor de la historieta"
-colaboradores:
-  - "Marc Zanón"
 publicar: true
-destacado: true
-enlaces:
-  - texto: "Selección del V Premi ARA de Còmic"
-    url: "https://..."
-verificacion:
-  estado: externa
-  notas: "..."
-  fuentes:
-    - nombre: "Diari ARA"
-      url: "https://..."
----
-
-## El proyecto
-
-Texto largo de la ficha...
+detalle: false
+mostrarObra: true
+mostrarTrayectoria: true
 ```
 
-### Campos de control interno
+En ese caso aparece en Obra/Trayectoria, pero Astro no genera una URL propia.
 
-`verificacion` permite mantener dentro del proyecto información útil para documentar de dónde sale cada dato:
-
-- `externa`: confirmado por fuentes públicas.
-- `vicente`: confirmado directamente por Vicente.
-- `mixta`: combinación de ambas.
-- `pendiente`: todavía en investigación.
-
-Estos campos **no se renderizan en la web**. Como el repositorio es público, no deben contener secretos ni información que no queramos que sea visible al consultar el código en GitHub.
-
-`publicar: false` permite además guardar una ficha en el repositorio sin generar todavía una página pública.
-
-## Cómo añadir un proyecto nuevo
-
-1. Crear `src/content/proyectos/mi-proyecto.md`.
-2. Rellenar el frontmatter según el esquema.
-3. Escribir el contenido de la ficha en Markdown.
-4. Añadir, si procede, imágenes en:
-
-```text
-public/assets/img/proyectos/mi-proyecto/
-```
-
-5. Hacer el push habitual.
-
-Astro generará automáticamente:
-
-```text
-https://vicenteperpina.com/proyectos/mi-proyecto/
-```
-
-No hay que crear ningún HTML ni registrar manualmente la ruta.
-
-## Imágenes
-
-El modelo ya admite:
+Una ficha completa usa:
 
 ```yaml
-imagenPrincipal:
-  src: "/assets/img/proyectos/mi-proyecto/principal.webp"
-  alt: "Descripción accesible de la imagen"
-
-galeria:
-  - src: "/assets/img/proyectos/mi-proyecto/obra-01.webp"
-    alt: "Descripción de la obra"
-    pie: "Pie opcional"
+publicar: true
+detalle: true
 ```
 
-Las fichas actuales no usan placeholders: si no hay imágenes seleccionadas, la galería simplemente no aparece.
+y genera automáticamente:
 
-## Qué NO hace todavía este slice
+```text
+/proyectos/<slug>/
+```
 
-Para mantener separada la validación del modelo de la integración global, este slice todavía no:
+Los seis proyectos que ya tenían ficha en el Slice 3 mantienen `detalle: true`.
 
-- genera toda la página Obra desde la colección;
-- genera los destacados de Inicio desde la colección;
-- genera la cronología artística de Trayectoria desde la colección;
-- añade filtros por categoría.
+## Campos editoriales principales
 
-Eso corresponde al Slice 4.
+Además de los datos generales del proyecto, el esquema admite:
+
+```yaml
+seccion: obra-exposiciones
+categorias:
+  - ilustracion
+  - exposicion
+
+anchor: oceanografic
+aparienciaObra: lead
+
+obraTitulo: "..."
+obraResumen: "..."
+obraMeta: "..."
+
+destacadoHome: true
+ordenHome: 1
+homeTitulo: "..."
+homeTipo: "..."
+homeResumen: "..."
+
+hitoHome: true
+ordenHitoHome: 1
+homeHitoTexto: "..."
+
+trayectoriaFecha: "2025"
+trayectoriaTitulo: "..."
+trayectoriaDetalle: "..."
+ordenTrayectoria: 2025
+ordenTrayectoriaItem: 10
+```
+
+Los campos específicos de Home/Obra/Trayectoria son opcionales: si no existen, se reutilizan los datos generales.
+
+## Fuente de datos y futura base de datos
+
+La web ya no pasa los `CollectionEntry` de Astro a los componentes visuales. `src/lib/projects.ts` adapta el contenido Markdown al modelo común `Project`:
+
+```text
+Astro Content Collection
+        ↓
+projectFromEntry()
+        ↓
+Project
+        ↓
+Home / Obra / Trayectoria / componentes
+```
+
+En el futuro se puede sustituir la primera parte por:
+
+```text
+Supabase / PostgreSQL
+        ↓
+Project
+        ↓
+Home / Obra / Trayectoria / componentes
+```
+
+sin reescribir la presentación.
+
+La única excepción lógica es la ruta de ficha, que sigue usando `render(entry)` para renderizar el cuerpo Markdown. Si la fuente se migra a base de datos, esa sería la capa concreta que se sustituiría por el cuerpo almacenado en BD/CMS.
+
+## Filtros de Obra
+
+Los filtros son JavaScript progresivo. Sin JavaScript se muestran todos los proyectos; con JS aparecen los botones de filtrado y se ocultan automáticamente las secciones que no tengan resultados para la categoría elegida.
+
+No se ha añadido Vue/React: para este caso un script pequeño es suficiente.
+
+## Compatibilidad de anchors
+
+Se conservan los anchors históricos importantes, por ejemplo:
+
+```text
+/obra/#oceanografic
+/obra/#37-ilustres
+/obra/#vinyetari
+/obra/#cuentos-populares
+/obra/#grand-tour
+```
+
+por lo que los enlaces antiguos y los redirects del Slice 2 siguen siendo útiles.
+
+## SEO técnico
+
+Además del canonical y Open Graph que ya existían:
+
+```text
+/sitemap.xml
+/robots.txt
+```
+
+El sitemap incluye las cinco páginas principales y todas las fichas con `detalle: true`.
 
 ## Archivos a eliminar
 
 **Ninguno.**
 
-Este slice se puede copiar directamente encima del Slice 2. No añade restos temporales ni sustituye rutas legacy que requieran limpieza.
+Copia el ZIP encima del Slice 3 y sobrescribe los archivos existentes.
 
 ## Publicación
 
 ```bash
 git add -A
-git commit -m "Astro - Slice 3 - fichas de proyectos"
+git commit -m "Astro - Slice 4 - catalogo integrado"
 git push
 ```
 
-GitHub Pages sigue usando **GitHub Actions**. No hay que modificar Pages, DNS ni el dominio personalizado.
+No hay que modificar GitHub Pages, GitHub Actions, DNS ni el dominio.
 
-## Comprobaciones tras publicar
+## Comprobaciones recomendadas
 
-Además de las páginas principales, prueba al menos:
+Después de que la Action termine en verde:
 
-- `https://vicenteperpina.com/proyectos/oceanografic-2026/`
-- `https://vicenteperpina.com/proyectos/vinyetari-5/`
-- `https://vicenteperpina.com/proyectos/cuentos-populares-2015/`
+1. `/` debe seguir mostrando tres destacados y tres hitos.
+2. `/obra/` debe mostrar todo el catálogo y los filtros.
+3. Los anchors legacy de Obra deben seguir llevando al proyecto correcto.
+4. `/trayectoria/` debe construir la cronología desde los proyectos.
+5. Las seis fichas del Slice 3 deben seguir funcionando.
+6. Una ficha debe mostrar dos relacionados aunque no tenga dos slugs explícitos, gracias al fallback por afinidad.
+7. `/sitemap.xml` y `/robots.txt` deben responder correctamente.
 
-Desde `/obra/`, los seis proyectos piloto deben mostrar un enlace `Ver ficha →`.
+## Siguiente fase
 
-## Próximo slice
-
-El Slice 4 hará que Inicio, Obra y la cronología artística reutilicen esta misma colección de proyectos y podrá incorporar filtros por categorías, eliminando la duplicación actual de datos.
+La migración estructural queda cerrada. A partir de aquí el trabajo puede centrarse en contenido y presentación: fotografías, imágenes de obra, nuevas fichas detalladas, revisión de proyectos históricos y, cuando tenga sentido, una posible migración de la fuente de datos a Supabase/PostgreSQL o un CMS.

@@ -2,24 +2,34 @@
 titulo: "Cuentos populares"
 subtitulo: "Exposición individual de dibujos y bocetos"
 anio: 2015
+fechaInicio: "2015-04-15"
+fechaFin: "2015-05-17"
 tipoPrincipal: exposicion
-categorias:
-  - dibujo
-  - ilustracion
-  - exposicion
+categorias: [dibujo, ilustracion, exposicion]
+seccion: obra-exposiciones
 resumen: "Exposición individual presentada en Nuevo Centro Espai d'Art dentro del programa de Ámbito Cultural, acompañada por un catálogo propio."
 rol: "Artista · exposición individual"
 entidad: "Nuevo Centro Espai d'Art · Ámbito Cultural"
 lugar: "València"
 fechas: "15 de abril – 17 de mayo de 2015"
-destacado: true
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+anchor: cuentos-populares
+obraResumen: "Muestra de dibujos y bocetos celebrada del 15 de abril al 17 de mayo en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural. La exposición contó con catálogo propio."
+obraMeta: "Exposición individual"
+hitoHome: true
+ordenHitoHome: 3
+homeHitoTexto: "Cuentos populares · exposición individual"
+trayectoriaFecha: "2015"
+trayectoriaDetalle: "Exposición individual · Nuevo Centro Espai d'Art"
+ordenTrayectoria: 2015
+ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Ficha del catálogo en la Universitat de València"
     url: "https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050"
-relacionados:
-  - 37-ilustres-2025
-  - dkv-grand-tour-2012
+relacionados: [37-ilustres-2025, dkv-grand-tour-2012]
 verificacion:
   estado: externa
   notas: "La ficha bibliográfica confirma la exposición, las fechas, el espacio y la existencia del catálogo."

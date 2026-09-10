@@ -1,37 +1,45 @@
 ---
-import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/projects/ProjectHeader.astro';
 import ProjectMeta from '../../components/projects/ProjectMeta.astro';
 import ProjectGallery from '../../components/projects/ProjectGallery.astro';
 import ProjectLinks from '../../components/projects/ProjectLinks.astro';
 import RelatedProjects from '../../components/projects/RelatedProjects.astro';
+import {
+  getRelatedProjects,
+  loadProjectEntries,
+  projectFromEntry,
+  type ProjectEntry
+} from '../../lib/projects';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('proyectos', ({ data }) => data.publicar);
-  return projects.map(project => ({
-    params: { slug: project.id },
-    props: { project }
-  }));
+  const entries = await loadProjectEntries();
+  return entries
+    .filter(entry => entry.data.publicar && entry.data.detalle)
+    .map(entry => ({
+      params: { slug: entry.id },
+      props: { entry }
+    }));
 }
 
 interface Props {
-  project: CollectionEntry<'proyectos'>;
+  entry: ProjectEntry;
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project);
-const allProjects = await getCollection('proyectos', ({ data }) => data.publicar);
-const relatedProjects = project.data.relacionados
-  .map(id => allProjects.find(candidate => candidate.id === id))
-  .filter((candidate): candidate is CollectionEntry<'proyectos'> => Boolean(candidate));
+const { entry } = Astro.props;
+const project = projectFromEntry(entry);
+const { Content } = await render(entry);
+const allEntries = await loadProjectEntries();
+const allProjects = allEntries.map(projectFromEntry).filter(candidate => candidate.published);
+const relatedProjects = getRelatedProjects(project, allProjects, 2);
 
-const title = project.data.seo?.title ?? `${project.data.titulo} · Vicente Perpiñá Giner`;
-const description = project.data.seo?.description ?? project.data.resumen;
-const socialImage = project.data.imagenPrincipal?.src ?? '/assets/img/vicente.png';
-const gallery = project.data.imagenPrincipal
-  ? [project.data.imagenPrincipal, ...project.data.galeria.filter(image => image.src !== project.data.imagenPrincipal?.src)]
-  : project.data.galeria;
+const title = project.seo?.title ?? `${project.title} · Vicente Perpiñá Giner`;
+const description = project.seo?.description ?? project.summary;
+const socialImage = project.image?.src ?? '/assets/img/vicente.png';
+const gallery = project.image
+  ? [project.image, ...project.gallery.filter(image => image.src !== project.image?.src)]
+  : project.gallery;
 ---
 <BaseLayout title={title} description={description} image={socialImage} ogType="article">
   <main>
@@ -56,7 +64,7 @@ const gallery = project.data.imagenPrincipal
 
     <section class="section project-detail-extra">
       <div class="container">
-        <ProjectLinks links={project.data.enlaces} />
+        <ProjectLinks links={project.links} />
         <RelatedProjects projects={relatedProjects} />
         <div class="project-detail-footer">
           <a class="btn secondary" href="/obra/">← Volver a Obra</a>

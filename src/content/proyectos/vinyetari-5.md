@@ -3,16 +3,28 @@ titulo: "Vinyetari 5"
 subtitulo: "Una data, totes les dates"
 anio: 2025
 tipoPrincipal: comic
-categorias:
-  - comic
-  - edicion
+categorias: [comic, edicion]
+seccion: comic-edicion
 resumen: "Historieta de Marc Zanón y Vicente Perpiñá seleccionada para formar parte de Vinyetari 5, antología vinculada a la quinta edición del Premi ARA de Còmic en Català."
 rol: "Coautor de la historieta"
-colaboradores:
-  - "Marc Zanón"
+colaboradores: ["Marc Zanón"]
 entidad: "Editorial Finestres · Diari ARA"
-destacado: true
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+aparienciaObra: lead
+anchor: vinyetari
+obraTitulo: "Vinyetari 5 · Una data, totes les dates"
+obraResumen: "Historieta de Marc Zanón y Vicente Perpiñá seleccionada para formar parte de Vinyetari 5, antología de obras de la quinta edición del Premi ARA de Còmic en Català."
+obraMeta: "Editorial Finestres"
+hitoHome: true
+ordenHitoHome: 2
+homeHitoTexto: "Obra seleccionada · Vinyetari 5"
+trayectoriaFecha: "2025"
+trayectoriaDetalle: "Una data, totes les dates · Marc Zanón y Vicente Perpiñá"
+ordenTrayectoria: 2025
+ordenTrayectoriaItem: 20
 enlaces:
   - texto: "Selección del V Premi ARA de Còmic"
     url: "https://es.ara.cat/cultura/leer/alegado-antirracista-ed-carosia-lluc-silvestre-gana-premio-ara-comic_1_5230314.html"

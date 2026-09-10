@@ -2,24 +2,36 @@
 titulo: "37 Il·lustres x 37 Il·lustrats"
 subtitulo: "Relectura gráfica de Manuela Ballester"
 anio: 2025
+fechaInicio: "2025-05-30"
+fechaFin: "2025-09-21"
 tipoPrincipal: exposicion
-categorias:
-  - ilustracion
-  - exposicion
-  - dibujo
+categorias: [ilustracion, exposicion, dibujo]
+seccion: obra-exposiciones
 resumen: "Exposición colectiva en el Centre del Carme en la que ilustradores contemporáneos dialogaron con figuras de la pintura valenciana. Vicente reinterpretó a Manuela Ballester."
 rol: "Ilustrador participante"
 entidad: "Consorci de Museus de la Comunitat Valenciana"
 lugar: "Centre del Carme Cultura Contemporània · València"
 fechas: "30 de mayo – 21 de septiembre de 2025"
-destacado: true
 publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+aparienciaObra: lead
+anchor: 37-ilustres
+obraResumen: "Proyecto colectivo que propone un diálogo entre ilustradores actuales y figuras de la pintura valenciana. Vicente reinterpretó a Manuela Ballester."
+obraMeta: "Centre del Carme"
+destacadoHome: true
+ordenHome: 2
+homeTipo: "Exposición · Centre del Carme"
+homeResumen: "Reinterpretación gráfica de la artista valenciana Manuela Ballester."
+trayectoriaFecha: "2025"
+trayectoriaDetalle: "Centre del Carme · reinterpretación de Manuela Ballester"
+ordenTrayectoria: 2025
+ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Ficha oficial de la exposición"
     url: "https://www.consorcimuseus.gva.es/exposicion/37-il%C2%B7lustres-x-37-il%C2%B7lustrats/"
-relacionados:
-  - oceanografic-2026
-  - cuentos-populares-2015
+relacionados: [oceanografic-2026, cuentos-populares-2015]
 verificacion:
   estado: externa
   notas: "La exposición y la participación de Vicente están documentadas; la prensa del proyecto identifica a Manuela Ballester como la figura reinterpretada por él."

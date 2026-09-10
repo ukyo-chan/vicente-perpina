@@ -1,8 +1,9 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+import type { Project } from '../../lib/projects';
 
 interface Props {
-  projects: any[];
+  projects: Project[];
 }
 
 const { projects = [] } = Astro.props;

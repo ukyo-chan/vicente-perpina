@@ -1,5 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeProjectCard from '../components/projects/HomeProjectCard.astro';
+import { getHomeFeaturedProjects, getHomeHighlights, loadProjects, projectDateLabel, projectPrimaryHref } from '../lib/projects';
+
+const projects = await loadProjects();
+const featuredProjects = getHomeFeaturedProjects(projects);
+const homeHighlights = getHomeHighlights(projects);
 ---
 <BaseLayout
   title="Vicente Perpiñá Giner · Ilustración, cómic y docencia"
@@ -43,36 +49,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="featured-grid">
-          <a class="featured-card reveal" href="/obra/#oceanografic">
-            <span class="project-year">2026</span>
-            <span class="project-type">Ilustración · Oceanogràfic</span>
-            <h3>Galería interactiva sobre los polos</h3>
-            <p>Participación en el proyecto visual de trece módulos, coordinado gráficamente por MacDiego.</p>
-            <span class="card-link">Ver proyecto →</span>
-          </a>
-
-          <a class="featured-card reveal" href="/obra/#37-ilustres">
-            <span class="project-year">2025</span>
-            <span class="project-type">Exposición · Centre del Carme</span>
-            <h3>37 Il·lustres x 37 Il·lustrats</h3>
-            <p>Reinterpretación gráfica de la artista valenciana Manuela Ballester.</p>
-            <span class="card-link">Ver proyecto →</span>
-          </a>
-
-          <a class="featured-card reveal" href="/obra/#grand-tour">
-            <span class="project-year">2012</span>
-            <span class="project-type">Beca · DKV Grand Tour</span>
-            <h3>Nueva York</h3>
-            <p>Ganador de la Beca DKV Grand Tour 2012, vinculada a la Cátedra DKV Arte y Salud de la UPV.</p>
-            <span class="card-link">Ver proyecto →</span>
-          </a>
+          {featuredProjects.map(project => <HomeProjectCard project={project} />)}
         </div>
 
-        <div class="highlight-strip reveal" aria-label="Otros hitos recientes">
-          <a href="/trayectoria/#2026"><strong>2026</strong> Invitado · Salón del Cómic de València</a>
-          <a href="/obra/#vinyetari"><strong>2025</strong> Obra seleccionada · Vinyetari 5</a>
-          <a href="/obra/#cuentos-populares"><strong>2015</strong> Cuentos populares · exposición individual</a>
-        </div>
+        {homeHighlights.length > 0 && (
+          <div class="highlight-strip reveal" aria-label="Otros hitos recientes">
+            {homeHighlights.map(project => (
+              <a href={projectPrimaryHref(project)}>
+                <strong>{projectDateLabel(project)}</strong>
+                {project.homeHighlightText ?? project.title}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </section>
 

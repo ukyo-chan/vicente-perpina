@@ -1,24 +1,24 @@
 ---
 import ProjectTags from './ProjectTags.astro';
-import { projectTypeLabel } from '../../lib/projects';
+import type { Project } from '../../lib/projects';
+import { projectDateLabel, projectTypeLabel } from '../../lib/projects';
 
 interface Props {
-  project: any;
+  project: Project;
 }
 
 const { project } = Astro.props;
-const { data } = project;
 ---
 <header class="project-detail-hero">
   <div class="container project-detail-hero__inner">
     <a class="project-back" href="/obra/">← Volver a Obra</a>
     <div class="project-detail-kicker">
-      <span>{data.fechaTexto ?? data.anio}</span>
-      <span>{projectTypeLabel(data.tipoPrincipal)}</span>
+      {projectDateLabel(project) && <span>{projectDateLabel(project)}</span>}
+      <span>{projectTypeLabel(project.type)}</span>
     </div>
-    <h1>{data.titulo}</h1>
-    {data.subtitulo && <p class="project-detail-subtitle">{data.subtitulo}</p>}
-    <p class="project-detail-summary">{data.resumen}</p>
-    <ProjectTags categories={data.categorias} />
+    <h1>{project.title}</h1>
+    {project.subtitle && <p class="project-detail-subtitle">{project.subtitle}</p>}
+    {project.summary && <p class="project-detail-summary">{project.summary}</p>}
+    <ProjectTags categories={project.categories} />
   </div>
 </header>
