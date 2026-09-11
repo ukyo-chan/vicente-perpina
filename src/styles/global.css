@@ -1605,6 +1605,14 @@ a:focus-visible {
   margin-top: 28px;
 }
 
+.teaching-markdown h3 {
+  margin: 28px 0 10px;
+  color: var(--teal-dark);
+  font-family: inherit;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.3;
+}
+
 .teaching-markdown p + p {
   margin-top: 14px;
 }

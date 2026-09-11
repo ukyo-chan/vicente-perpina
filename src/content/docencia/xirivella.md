@@ -61,7 +61,7 @@ Con las personas adultas trabajo con niveles y recorridos muy diferentes. La con
 
 ## Crear sin competir
 
-La programación parte de una idea que mantengo en mi forma de enseñar: la creatividad debe estar por delante de la competitividad. Me interesa favorecer la expresión personal, la exploración, la experimentación y la autonomía, respetando los ritmos individuales y evitando comparar los resultados como si hubiera una única manera correcta de trabajar.
+Una idea que mantengo en mi forma de enseñar es que la creatividad debe estar por delante de la competitividad. Me interesa favorecer la expresión personal, la exploración, la experimentación y la autonomía, respetando los ritmos individuales y evitando comparar los resultados como si hubiera una única manera correcta de trabajar.
 
 ## Una temporalización flexible
 
@@ -69,7 +69,7 @@ La secuencia anterior funciona como un marco de referencia flexible, no como un 
 
 ## Ejemplo de actividad diseñada
 
-Entre las actividades que he diseñado propuse «Aproximaciones al arte secuencial y la creación de personajes», una propuesta para trabajar creación de personajes, interacción y primeras nociones de viñeta, rotulación y texto. La dinámica principal era un **cadáver exquisito**: en pequeños grupos, cada participante aportaba una parte del personaje y el resultado se completaba colectivamente antes de añadir atributos, personalidad y una pequeña interacción narrativa. La planteo como una forma de unir juego creativo, narración gráfica y trabajo colaborativo.
+Una de las actividades que he diseñado es «Aproximaciones al arte secuencial y la creación de personajes», una propuesta para trabajar creación de personajes, interacción y primeras nociones de viñeta, rotulación y texto. La dinámica principal era un **cadáver exquisito**: en pequeños grupos, cada participante aportaba una parte del personaje y el resultado se completaba colectivamente antes de añadir atributos, personalidad y una pequeña interacción narrativa. La planteo como una forma de unir juego creativo, narración gráfica y trabajo colaborativo.
 
 ## Programar, observar y reajustar
 
