@@ -1,0 +1,133 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeachingSchedule from '../../components/teaching/TeachingSchedule.astro';
+import TeachingSteps from '../../components/teaching/TeachingSteps.astro';
+import {
+  loadTeachingEntries,
+  teachingFromEntry,
+  type TeachingEntry
+} from '../../lib/teaching';
+
+export async function getStaticPaths() {
+  const entries = await loadTeachingEntries();
+
+  return entries
+    .filter((entry) => entry.data.detalle)
+    .map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry }
+    }));
+}
+
+interface Props {
+  entry: TeachingEntry;
+}
+
+const { entry } = Astro.props;
+const experience = teachingFromEntry(entry);
+const { Content } = await render(entry);
+const hasBody = Boolean(entry.body?.trim());
+const title = experience.seo?.title ?? `${experience.title} · Vicente Perpiñá Giner`;
+const description = experience.seo?.description ?? experience.summary;
+const entityLine = [
+  experience.entity,
+  experience.place && !experience.entity.includes(experience.place) ? experience.place : undefined
+].filter(Boolean).join(', ');
+---
+<BaseLayout title={title} description={description}>
+  <main>
+    <section class="teaching-detail-hero">
+      <div class="container teaching-detail-hero__inner">
+        <a class="teaching-back" href="/docencia/">← Volver a Docencia</a>
+        <p class="eyebrow">Experiencia docente</p>
+        <h1>{experience.title}</h1>
+        <div class="teaching-detail-kicker">
+          <span>{experience.period}</span>
+          <span>{entityLine}</span>
+        </div>
+        <p class="teaching-detail-summary">{experience.summary}</p>
+        {experience.areas.length > 0 && (
+          <div class="teaching-detail-tags" aria-label="Áreas">
+            {experience.areas.map((area) => <span class="tag">{area}</span>)}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container teaching-detail-layout">
+        <div class="teaching-detail-content">
+          {experience.context && (
+            <section class="teaching-detail-section" aria-labelledby="contexto-title">
+              <p class="eyebrow">Contexto</p>
+              <h2 id="contexto-title">Esta experiencia</h2>
+              <p>{experience.context}</p>
+            </section>
+          )}
+
+          {experience.methodology && (
+            <section class="teaching-detail-section" aria-labelledby="metodologia-title">
+              <p class="eyebrow">Metodología</p>
+              <h2 id="metodologia-title">Cómo trabajo</h2>
+              <p>{experience.methodology}</p>
+            </section>
+          )}
+
+          {experience.schedule.length > 0 && <TeachingSchedule items={experience.schedule} />}
+
+          {experience.steps.length > 0 && <TeachingSteps steps={experience.steps} />}
+
+          {experience.resources.length > 0 && (
+            <section class="teaching-detail-section" aria-labelledby="recursos-title">
+              <p class="eyebrow">Recursos</p>
+              <h2 id="recursos-title">Recursos y materiales</h2>
+              <ul class="teaching-detail-list">
+                {experience.resources.map((resource) => <li>{resource}</li>)}
+              </ul>
+            </section>
+          )}
+
+          {hasBody && (
+            <section class="teaching-detail-section teaching-markdown">
+              <Content />
+            </section>
+          )}
+
+          {experience.gallery.length > 0 && (
+            <section class="teaching-detail-section" aria-labelledby="galeria-title">
+              <p class="eyebrow">Documentación visual</p>
+              <h2 id="galeria-title">Galería</h2>
+              <div class="teaching-gallery">
+                {experience.gallery.map((image) => (
+                  <figure>
+                    <img src={image.src} alt={image.alt} loading="lazy" />
+                    {image.pie && <figcaption>{image.pie}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {experience.links.length > 0 && (
+            <section class="teaching-detail-section" aria-labelledby="enlaces-title">
+              <p class="eyebrow">Enlaces</p>
+              <h2 id="enlaces-title">Más información</h2>
+              <div class="teaching-links">
+                {experience.links.map((link) => (
+                  <a href={link.url}>{link.texto} <span aria-hidden="true">→</span></a>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="teaching-detail-footer">
+      <div class="container">
+        <a class="btn secondary" href="/docencia/">← Volver a Docencia</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

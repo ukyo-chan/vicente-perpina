@@ -1,0 +1,22 @@
+---
+import type { TeachingScheduleItem } from '../../lib/teaching';
+
+interface Props {
+  items: TeachingScheduleItem[];
+}
+
+const { items } = Astro.props;
+---
+<section class="teaching-detail-section" aria-labelledby="temporalizacion-title">
+  <p class="eyebrow">Organización</p>
+  <h2 id="temporalizacion-title">Temporalización</h2>
+  <div class="teaching-schedule">
+    {items.map((item) => (
+      <div class="teaching-schedule-item">
+        <span class="teaching-schedule-label">{item.etiqueta}</span>
+        {item.titulo && <h3>{item.titulo}</h3>}
+        {item.detalle && <p>{item.detalle}</p>}
+      </div>
+    ))}
+  </div>
+</section>

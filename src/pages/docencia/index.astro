@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeachingTimelineItem from '../../components/teaching/TeachingTimelineItem.astro';
+import { loadTeaching } from '../../lib/teaching';
+
+const experiences = await loadTeaching();
 ---
 <BaseLayout
   title="Docencia · Vicente Perpiñá Giner"
@@ -38,85 +42,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <div class="timeline">
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2019 – act.</div>
-          <div class="timeline-content">
-            <h3>Profesor de dibujo y pintura para niños y adultos</h3>
-            <p>Casa de la Cultura de Xirivella.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2018 – act.</div>
-          <div class="timeline-content">
-            <h3>Docencia particular de dibujo y apoyo académico</h3>
-            <p>Imparto dibujo, cómic e ilustración digital, junto con dibujo técnico y apoyo académico para ESO y Bachillerato. También preparo de forma específica Dibujo Técnico para PAU/selectividad.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2025 – 2026</div>
-          <div class="timeline-content">
-            <h3>Profesor de taller de cómic · «Costura Òptica Mesclant Imatges Crítiques»</h3>
-            <p>IES El Cabanyal, València. Taller orientado a la narrativa gráfica y al desarrollo de un proyecto propio.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2021</div>
-          <div class="timeline-content">
-            <h3>Profesor de autoedición de cómic</h3>
-            <p>Curso de extensión universitaria, Universitat de València.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2018 – 2022</div>
-          <div class="timeline-content">
-            <h3>Profesor de dibujo y pintura para adultos</h3>
-            <p>Centro Cívico de El Terramelar, Paterna.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2018</div>
-          <div class="timeline-content">
-            <h3>Profesor de repaso de ESO</h3>
-            <p>Academia Acrèixer, Sedaví.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2016 – 2018</div>
-          <div class="timeline-content">
-            <h3>Profesor de dibujo, ilustración y cómic</h3>
-            <p>Academia infantil y juvenil La Torre.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2016 – 2018</div>
-          <div class="timeline-content">
-            <h3>Profesor de repaso en ESO y Bachillerato</h3>
-            <p>Academia infantil y juvenil La Torre.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2016</div>
-          <div class="timeline-content">
-            <h3>Profesor de taller de cómic y narración gráfica</h3>
-            <p>Campus DKV Fresh Art · IVAM · Universitat Politècnica de València.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item reveal">
-          <div class="timeline-date">2015 – 2018</div>
-          <div class="timeline-content">
-            <h3>Profesor/coordinador del Club de Cómic de la Facultad de Bellas Artes</h3>
-            <p>Universitat Politècnica de València.</p>
-          </div>
-        </article>
+        {experiences.map((experience) => <TeachingTimelineItem experience={experience} />)}
       </div>
 
       <div class="two-col teaching-panels">

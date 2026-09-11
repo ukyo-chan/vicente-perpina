@@ -52,6 +52,18 @@ const fuente = z.object({
 
 const fechaISO = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
+const teachingScheduleItem = z.object({
+  etiqueta: z.string(),
+  titulo: z.string().optional(),
+  detalle: z.string().optional()
+});
+
+const teachingStep = z.object({
+  numero: z.string(),
+  titulo: z.string(),
+  detalle: z.string().optional()
+});
+
 const proyectos = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/proyectos' }),
   schema: z.object({
@@ -118,4 +130,35 @@ const proyectos = defineCollection({
   })
 });
 
-export const collections = { proyectos };
+const docencia = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/docencia' }),
+  schema: z.object({
+    titulo: z.string(),
+    periodo: z.string(),
+    fechaInicio: z.string().optional(),
+    fechaFin: z.string().optional(),
+    actualidad: z.boolean().default(false),
+    entidad: z.string(),
+    lugar: z.string().optional(),
+    resumen: z.string(),
+    orden: z.number().int(),
+    publicar: z.boolean().default(true),
+    detalle: z.boolean().default(false),
+    areas: z.array(z.string()).default([]),
+
+    contexto: z.string().optional(),
+    metodologia: z.string().optional(),
+    temporalizacion: z.array(teachingScheduleItem).default([]),
+    fases: z.array(teachingStep).default([]),
+    recursos: z.array(z.string()).default([]),
+    galeria: z.array(imagen).default([]),
+    enlaces: z.array(enlace).default([]),
+
+    seo: z.object({
+      title: z.string().optional(),
+      description: z.string().optional()
+    }).optional()
+  })
+});
+
+export const collections = { proyectos, docencia };

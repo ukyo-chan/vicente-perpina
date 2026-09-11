@@ -1,0 +1,24 @@
+---
+import type { TeachingStep } from '../../lib/teaching';
+
+interface Props {
+  steps: TeachingStep[];
+}
+
+const { steps } = Astro.props;
+---
+<section class="teaching-detail-section" aria-labelledby="fases-title">
+  <p class="eyebrow">Proceso</p>
+  <h2 id="fases-title">Fases de trabajo</h2>
+  <div class="teaching-steps">
+    {steps.map((step) => (
+      <div class="teaching-step">
+        <span class="teaching-step-number">{step.numero}</span>
+        <div>
+          <h3>{step.titulo}</h3>
+          {step.detalle && <p>{step.detalle}</p>}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

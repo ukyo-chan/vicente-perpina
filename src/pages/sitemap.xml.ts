@@ -1,16 +1,19 @@
 import type { APIRoute } from 'astro';
 import { loadProjects } from '../lib/projects';
+import { loadTeaching } from '../lib/teaching';
 
 export const GET: APIRoute = async ({ site }) => {
   const base = site ?? new URL('https://vicenteperpina.com');
   const projects = await loadProjects();
+  const teaching = await loadTeaching();
   const paths = [
     '/',
     '/obra/',
     '/docencia/',
     '/trayectoria/',
     '/contacto/',
-    ...projects.filter(project => project.detail).map(project => `/proyectos/${project.id}/`)
+    ...projects.filter(project => project.detail).map(project => `/proyectos/${project.id}/`),
+    ...teaching.filter(experience => experience.detail).map(experience => `/docencia/${experience.slug}/`)
   ];
 
   const urls = paths

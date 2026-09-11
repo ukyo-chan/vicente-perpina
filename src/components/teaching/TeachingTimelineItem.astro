@@ -1,0 +1,31 @@
+---
+import type { TeachingExperience } from '../../lib/teaching';
+
+interface Props {
+  experience: TeachingExperience;
+}
+
+const { experience } = Astro.props;
+const href = experience.detail ? `/docencia/${experience.slug}/` : undefined;
+const entityLine = [
+  experience.entity,
+  experience.place && !experience.entity.includes(experience.place) ? experience.place : undefined
+].filter(Boolean).join(', ');
+---
+<article class="timeline-item reveal">
+  <div class="timeline-date">{experience.period}</div>
+
+  {href ? (
+    <a class="timeline-content timeline-content--linked" href={href}>
+      <h3>{experience.title}</h3>
+      <p>{entityLine}</p>
+      <span class="timeline-summary">{experience.summary}</span>
+      <span class="timeline-cta">Ver experiencia <span aria-hidden="true">→</span></span>
+    </a>
+  ) : (
+    <div class="timeline-content">
+      <h3>{experience.title}</h3>
+      <p>{entityLine}</p>
+    </div>
+  )}
+</article>
