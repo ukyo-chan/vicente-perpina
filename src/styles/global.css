@@ -28,6 +28,12 @@ body {
   line-height: 1.6;
 }
 
+h1,
+h2 {
+  font-family: "Bangers", cursive;
+  font-weight: 400;
+}
+
 a { color: inherit; }
 
 img {
@@ -165,8 +171,8 @@ a:focus-visible {
 .page-hero h1 {
   margin: 0;
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
-  font-weight: 700;
+  font-family: "Bangers", cursive;
+  font-weight: 400;
   line-height: 1.08;
   letter-spacing: -.035em;
 }
@@ -246,7 +252,7 @@ a:focus-visible {
 .contact-cta h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.15rem);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   color: var(--teal-dark);
   line-height: 1.2;
 }
@@ -1285,7 +1291,7 @@ a:focus-visible {
   max-width: 900px;
   margin: 0;
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: clamp(2.7rem, 6vw, 5rem);
   line-height: 1.08;
 }
@@ -1341,7 +1347,7 @@ a:focus-visible {
 .project-content h2 {
   margin: 42px 0 14px;
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   line-height: 1.22;
 }
@@ -1402,7 +1408,7 @@ a:focus-visible {
 .related-projects .section-heading h2 {
   margin: 0;
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
   line-height: 1.2;
 }
@@ -1639,6 +1645,8 @@ a:focus-visible {
   max-width: 900px;
   margin: 10px 0 18px;
   color: var(--ink);
+  font-family: "Bangers", cursive;
+  font-weight: 400;
   font-size: clamp(2.3rem, 5vw, 4.6rem);
   line-height: 1.04;
 }
@@ -1690,7 +1698,7 @@ a:focus-visible {
 .teaching-detail-section h2 {
   margin: 0 0 14px;
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
   line-height: 1.2;
 }
