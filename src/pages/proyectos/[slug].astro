@@ -36,7 +36,7 @@ const relatedProjects = getRelatedProjects(project, allProjects, 2);
 
 const title = project.seo?.title ?? `${project.title} · Vicente Perpiñá Giner`;
 const description = project.seo?.description ?? project.summary;
-const socialImage = project.image?.src ?? '/assets/img/vicente.png';
+const socialImage = project.image?.src ?? '/assets/img/vicente.jpeg';
 const gallery = project.image
   ? [project.image, ...project.gallery.filter(image => image.src !== project.image?.src)]
   : project.gallery;

@@ -12,6 +12,7 @@ const categorias = z.enum([
   'audiovisual',
   'proyecto-social',
   'divulgacion',
+  'encuentro',
   'beca'
 ]);
 

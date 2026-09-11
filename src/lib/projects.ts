@@ -10,6 +10,7 @@ export const PROJECT_CATEGORY_LABELS = {
   audiovisual: 'Audiovisual',
   'proyecto-social': 'Proyecto social',
   divulgacion: 'Divulgación',
+  encuentro: 'Encuentro',
   beca: 'Beca'
 } as const;
 

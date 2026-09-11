@@ -3,7 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getTimelineGroups, loadProjects, projectTimelineHref } from '../../lib/projects';
 
 const projects = await loadProjects();
-const timelineGroups = getTimelineGroups(projects);
+const timelineGroups = getTimelineGroups(projects.filter(project => !project.categories.includes('encuentro')));
+const encounterProjects = getTimelineGroups(
+  projects.filter(project => project.categories.includes('encuentro'))
+).flatMap(group => group.projects);
 ---
 <BaseLayout
   title="Trayectoria · Vicente Perpiñá Giner"
@@ -24,6 +27,7 @@ const timelineGroups = getTimelineGroups(projects);
     <div class="section-nav-wrap">
       <nav class="container section-nav" aria-label="Secciones de trayectoria">
         <a href="#hitos">Cronología</a>
+        <a href="#encuentros">Encuentros y divulgación</a>
         <a href="#formacion">Formación</a>
       </nav>
     </div>
@@ -35,7 +39,9 @@ const timelineGroups = getTimelineGroups(projects);
             <p class="eyebrow">Cronología</p>
             <h2>Mi recorrido</h2>
           </div>
-          <p>Aquí reúno una lectura rápida de mi recorrido creativo, editorial y profesional.</p>
+          <p>
+            Aquí reúno una lectura rápida de mi recorrido creativo, editorial y profesional.
+          </p>
         </div>
 
         <div class="career-timeline">
@@ -48,7 +54,7 @@ const timelineGroups = getTimelineGroups(projects);
                   const external = href?.startsWith('http');
 
                   return (
-                    <div>
+                    <div class="career-event">
                       {href ? (
                         <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
                           <strong>{project.timelineTitle ?? project.title}</strong>
@@ -67,6 +73,46 @@ const timelineGroups = getTimelineGroups(projects);
             </article>
           ))}
         </div>
+
+        <section class="encounters-block reveal" id="encuentros" aria-labelledby="encuentros-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Encuentros y divulgación</p>
+              <h2 id="encuentros-heading">Encuentros y divulgación</h2>
+            </div>
+            <p>
+              A lo largo de estos años también he participado en encuentros, presentaciones y mesas dedicadas al cómic, en ocasiones como moderador.
+            </p>
+          </div>
+
+          <div class="encounters-list">
+            {encounterProjects.map(project => {
+              const href = projectTimelineHref(project);
+              const external = href?.startsWith('http');
+
+              return (
+                <article class="encounter-item">
+                  <span class="encounter-context">
+                    {project.year ?? project.dateText}
+                    {project.entity && <> · {project.entity}</>}
+                  </span>
+                  <div class="encounter-content">
+                    {href ? (
+                      <a class="encounter-title" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+                        <strong>{project.timelineTitle ?? project.title}</strong>
+                      </a>
+                    ) : (
+                      <strong class="encounter-title">{project.timelineTitle ?? project.title}</strong>
+                    )}
+                    {(project.timelineDetail ?? project.summary) && (
+                      <span class="encounter-detail">{project.timelineDetail ?? project.summary}</span>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </section>
       </div>
     </section>
 

@@ -111,9 +111,7 @@ a:focus-visible {
 }
 
 .hero {
-  background:
-    radial-gradient(circle at 13% 18%, rgba(96,148,147,.10), transparent 30%),
-    linear-gradient(180deg, #f7fbfa 0%, var(--paper) 100%);
+  background: #fff;
   overflow: hidden;
 }
 
@@ -354,9 +352,9 @@ a:focus-visible {
 
 .project-year {
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: 1.45rem;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1;
 }
 
@@ -635,9 +633,9 @@ a:focus-visible {
 
 .media-year {
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .media-item h3 {
@@ -882,9 +880,9 @@ a:focus-visible {
 
 .career-number {
   color: var(--teal-dark);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Bangers", cursive;
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -904,6 +902,58 @@ a:focus-visible {
 
 .career-events span {
   color: var(--muted);
+}
+
+.encounters-block {
+  margin-top: clamp(42px, 6vw, 72px);
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
+}
+
+.encounters-block .section-heading {
+  margin-bottom: 24px;
+}
+
+.encounters-list {
+  border-top: 1px solid var(--line);
+}
+
+.encounter-item {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 24px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.encounter-context {
+  color: var(--teal-dark);
+  font-size: .88rem;
+  font-weight: 850;
+}
+
+.encounter-content {
+  display: grid;
+  gap: 4px;
+}
+
+.encounter-title {
+  color: var(--ink);
+  font-size: 1.02rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+a.encounter-title:hover,
+a.encounter-title:focus-visible {
+  color: var(--teal-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.encounter-detail {
+  color: var(--muted);
+  font-size: .92rem;
 }
 
 .two-col {
@@ -1171,6 +1221,7 @@ a:focus-visible {
 @media (max-width: 720px) {
   .project-grid { grid-template-columns: 1fr; }
   .career-year { grid-template-columns: 1fr; gap: 10px; }
+  .encounter-item { grid-template-columns: 1fr; gap: 6px; }
   .media-item { grid-template-columns: 78px 1fr; gap: 16px; }
 }
 
