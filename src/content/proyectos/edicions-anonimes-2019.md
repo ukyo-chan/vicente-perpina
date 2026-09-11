@@ -26,6 +26,9 @@ ordenTrayectoriaItem: 10
 enlaces:
 - texto: Sobre Plaça del Mercat
   url: https://valenciaplaza.com/nace-placa-del-mercat-las-revistas-de-comic-son-necesarias
+relacionados:
+- placa-del-mercat-biblioteca-rivendel-2020
+- alta-tension-placa-del-mercat-salon-2020
 verificacion:
   estado: externa
   fuentes:
