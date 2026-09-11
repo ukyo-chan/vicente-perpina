@@ -78,6 +78,12 @@ const entityLine = [
 
           {experience.steps.length > 0 && <TeachingSteps steps={experience.steps} />}
 
+          {hasBody && (
+            <section class="teaching-detail-section teaching-markdown">
+              <Content />
+            </section>
+          )}
+
           {experience.resources.length > 0 && (
             <section class="teaching-detail-section" aria-labelledby="recursos-title">
               <p class="eyebrow">Recursos</p>
@@ -85,12 +91,6 @@ const entityLine = [
               <ul class="teaching-detail-list">
                 {experience.resources.map((resource) => <li>{resource}</li>)}
               </ul>
-            </section>
-          )}
-
-          {hasBody && (
-            <section class="teaching-detail-section teaching-markdown">
-              <Content />
             </section>
           )}
 
