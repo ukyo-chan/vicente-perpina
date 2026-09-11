@@ -1038,6 +1038,18 @@ a:focus-visible {
     padding-left: 38px;
   }
 
+  .timeline-content--linked {
+    padding: 12px 13px;
+  }
+
+  .timeline-content--linked .timeline-summary {
+    display: none;
+  }
+
+  .timeline-content--linked .timeline-cta {
+    margin-top: 8px;
+  }
+
   .media-item { grid-template-columns: 1fr; gap: 4px; }
   .project-card, .editorial-card, .panel { padding: 22px; }
 
@@ -1680,10 +1692,6 @@ a:focus-visible {
 }
 
 @media (max-width: 620px) {
-  .timeline-content--linked {
-    padding: 13px 14px;
-  }
-
   .teaching-step {
     grid-template-columns: 1fr;
     gap: 5px;
