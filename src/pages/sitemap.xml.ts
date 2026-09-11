@@ -11,6 +11,7 @@ export const GET: APIRoute = async ({ site }) => {
     '/obra/',
     '/docencia/',
     '/trayectoria/',
+    '/prensa/',
     '/contacto/',
     ...projects.filter(project => project.detail).map(project => `/proyectos/${project.id}/`),
     ...teaching.filter(experience => experience.detail).map(experience => `/docencia/${experience.slug}/`)

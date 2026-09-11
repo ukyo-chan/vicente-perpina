@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PressCard from '../../components/press/PressCard.astro';
+import { getFeaturedPress, getPressArchive, loadPressEntries } from '../../lib/press';
+import { loadProjects } from '../../lib/projects';
+
+const pressEntries = await loadPressEntries();
+const projects = await loadProjects();
+const projectsById = new Map(projects.map(project => [project.id, project]));
+const featuredPress = getFeaturedPress(pressEntries);
+const archivePress = getPressArchive(pressEntries);
+---
+
+<BaseLayout
+  title="Prensa y medios · Vicente Perpiñá Giner"
+  description="Reúno entrevistas, reportajes, crónicas y apariciones en prensa, radio y otros medios relacionadas con mi trabajo."
+>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Archivo de apariciones</p>
+        <h1>Prensa y medios</h1>
+        <p>
+          Aquí reúno entrevistas, reportajes, crónicas y apariciones relacionadas con mi trabajo en ilustración, cómic, edición
+          y proyectos culturales.
+        </p>
+      </div>
+    </section>
+
+    <section class="section press-featured-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Selección</p>
+            <h2>En primer plano</h2>
+          </div>
+          <p>Algunas conversaciones y coberturas que ayudan a leer mi trayectoria y mis proyectos.</p>
+        </div>
+
+        <div class="press-featured-grid">
+          {featuredPress.map(item => (
+            <PressCard
+              item={item}
+              relatedProject={item.relatedProjectId ? projectsById.get(item.relatedProjectId) : undefined}
+              featured
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="archivo">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Archivo completo</p>
+            <h2>Todas las apariciones</h2>
+          </div>
+          <p>Una cronología abierta que iré ampliando con nuevas referencias y materiales.</p>
+        </div>
+
+        <div class="press-archive">
+          {archivePress.map(item => (
+            <PressCard
+              item={item}
+              relatedProject={item.relatedProjectId ? projectsById.get(item.relatedProjectId) : undefined}
+            />
+          ))}
+        </div>
+
+        <p class="portfolio-note press-note">
+          Algunas referencias siguen en el archivo aunque todavía no tengan un enlace externo estable.
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

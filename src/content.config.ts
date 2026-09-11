@@ -64,6 +64,8 @@ const teachingStep = z.object({
   detalle: z.string().optional()
 });
 
+const prensaTipo = z.enum(['radio', 'entrevista', 'reportaje', 'cronica', 'aparicion']);
+
 const proyectos = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/proyectos' }),
   schema: z.object({
@@ -161,4 +163,22 @@ const docencia = defineCollection({
   })
 });
 
-export const collections = { proyectos, docencia };
+const prensa = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/prensa' }),
+  schema: z.object({
+    titulo: z.string(),
+    fecha: z.string().optional(),
+    fechaOrden: z.string().regex(/^\d{4}(?:-\d{2})?(?:-\d{2})?$/).optional(),
+    medio: z.string(),
+    programa: z.string().optional(),
+    tipos: z.array(prensaTipo).min(1),
+    descripcion: z.string(),
+    url: z.string().url().optional(),
+    proyectoRelacionado: z.string().optional(),
+    duracion: z.string().optional(),
+    destacado: z.boolean().default(false),
+    ordenDestacado: z.number().int().optional()
+  })
+});
+
+export const collections = { proyectos, docencia, prensa };
