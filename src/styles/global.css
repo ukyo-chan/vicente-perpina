@@ -150,7 +150,7 @@ a:focus-visible {
 .doodle {
   position: absolute;
   color: var(--teal);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Handlee", "Segoe Print", "Bradley Hand", cursive;
   font-size: clamp(1rem, 2vw, 1.35rem);
   transform: rotate(-7deg);
 }
@@ -323,7 +323,7 @@ a:focus-visible {
   margin: 44px auto 0;
   text-align: center;
   color: var(--teal);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: "Handlee", "Segoe Print", "Bradley Hand", cursive;
   font-size: clamp(1.45rem, 3vw, 2rem);
 }
 

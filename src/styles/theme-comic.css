@@ -12,8 +12,10 @@
   --comic-surface: #f7f7f4;
   --comic-surface-dark: #e4e4e0;
   --comic-outline: #252525;
-  --comic-dot: rgba(20, 20, 20, .14);
-  --comic-dot-ink: rgba(20, 20, 20, .16);
+  --comic-gold: #c89a2b;
+  --comic-dot: rgba(200, 154, 43, .18);
+  --comic-dot-ink: rgba(200, 154, 43, .22);
+  --comic-dot-strong: rgba(200, 154, 43, .24);
   --comic-shadow: rgba(20, 20, 20, .16);
 }
 
@@ -82,9 +84,12 @@
 
 .theme-comic .hero h1,
 .theme-comic .page-hero h1,
-.theme-comic .project-detail-hero h1 {
-  color: var(--comic-outline);
-  text-shadow: 2px 2px 0 rgba(20, 20, 20, .16);
+.theme-comic .project-detail-hero h1,
+.theme-comic .section-heading h2,
+.theme-comic .teaching-callout h2,
+.theme-comic .contact-cta h2 {
+  color: var(--comic-gold);
+  text-shadow: 3px 3px 0 rgba(45, 45, 45, .24);
 }
 
 .theme-comic .hero-copy,
@@ -117,6 +122,32 @@
   z-index: 1;
 }
 
+/* White structural sections get a partial halftone entry from the top-right corner. */
+.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra)::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(420px, 38%);
+  height: 180px;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--comic-dot-strong) 0 1.2px, transparent 1.5px);
+  background-size: 9px 9px;
+  clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 64%);
+}
+
+.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra) > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .theme-comic .section-heading h2::after {
   content: "";
   display: block;
@@ -125,6 +156,10 @@
   margin-top: 9px;
   background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.1px, transparent 1.4px);
   background-size: 7px 7px;
+}
+
+.theme-comic .timeline-item::before {
+  background: var(--comic-gold);
 }
 
 /* Main cards suggest comic speech bubbles without tails or extra markup. */
@@ -214,5 +249,11 @@
 @media (max-width: 620px) {
   .theme-comic .section.soft:not(.project-detail-extra) {
     background-size: 8px 8px, 100% 100%;
+  }
+
+  .theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra)::before {
+    width: min(240px, 58%);
+    height: 140px;
+    background-size: 8px 8px;
   }
 }
