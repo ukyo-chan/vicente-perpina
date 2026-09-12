@@ -1,28 +1,75 @@
 /* Optional comic-print variant. Remove `theme-comic` from BaseLayout to disable it. */
 .theme-comic {
-  --ink: #242424;
-  --teal: #707070;
-  --teal-dark: #292929;
-  --teal-soft: #dededb;
-  --teal-pale: #f0f0ed;
-  --paper: #fbfaf7;
-  --muted: #606060;
-  --line: #bfc0bd;
-  --shadow: 4px 4px 0 rgba(20, 20, 20, .16);
   --comic-surface: #f7f7f4;
   --comic-surface-dark: #e4e4e0;
+  --comic-portrait-surface: #e1e1de;
   --comic-outline: #252525;
+  --comic-outline-rgb: 37 37 37;
+  --comic-border-muted: #5a5a5a;
   --comic-gold: #c89a2b;
-  --comic-dot: rgba(200, 154, 43, .18);
-  --comic-dot-ink: rgba(200, 154, 43, .22);
-  --comic-dot-strong: rgba(200, 154, 43, .24);
-  --comic-shadow: rgba(20, 20, 20, .16);
+  --comic-dot: rgb(200 154 43 / .18);
+  --comic-dot-ink: rgb(200 154 43 / .22);
+  --comic-dot-strong: rgb(200 154 43 / .24);
+  --comic-shadow: rgb(20 20 20 / .16);
+  --comic-title-shadow: #000;
+
+  --color-text: #242424;
+  --color-text-muted: #606060;
+  --color-heading: #292929;
+  --color-link: #292929;
+  --color-accent: #707070;
+  --color-nav: #292929;
+  --color-copy: #606060;
+  --color-summary: #606060;
+  --color-subtitle: #606060;
+  --color-panel-text: #606060;
+  --color-control-text: #606060;
+  --color-chip-text: #606060;
+  --color-strong-text: #606060;
+  --color-card-heading: #606060;
+  --color-data-text: #292929;
+  --color-on-dark: #fff;
+  --color-accent-rgb: 112 112 112;
+  --color-shadow-rgb: 20 20 20;
+  --color-on-dark-rgb: 255 255 255;
+
+  --surface-page: #fbfaf7;
+  --surface-page-rgb: 251 250 247;
+  --surface-card: #fff;
+  --surface-card-rgb: 255 255 255;
+  --surface-soft: #f0f0ed;
+  --surface-soft-rgb: 240 240 237;
+  --surface-emphasis: #dededb;
+  --surface-tint: #e4e4e0;
+  --surface-gallery: #f0f0ed;
+  --surface-hero-rgb: 226 226 222;
+  --surface-detail-overlay-rgb: 242 242 239;
+  --surface-dark: #292929;
+  --surface-card-accent: #303030;
+  --surface-lightbox: #202020;
+  --surface-lightbox-rgb: 20 20 20;
+
+  --border-subtle: #bfc0bd;
+  --border-divider: #dededb;
+  --focus-ring: var(--comic-outline);
+  --focus-ring-strong: var(--comic-outline);
+  --shadow-elevated: 4px 4px 0 var(--comic-shadow);
+
+  --ink: var(--color-text);
+  --teal: var(--color-accent);
+  --teal-dark: var(--color-heading);
+  --teal-soft: var(--surface-emphasis);
+  --teal-pale: var(--surface-soft);
+  --paper: var(--surface-page);
+  --muted: var(--color-text-muted);
+  --line: var(--border-subtle);
+  --shadow: var(--shadow-elevated);
 }
 
 /* Monochrome interface surfaces; artwork and photographs are not filtered. */
 .theme-comic .site-header {
-  background: rgba(251, 250, 247, .96);
-  border-bottom-color: rgba(37, 37, 37, .24);
+  background: rgb(var(--surface-page-rgb) / .96);
+  border-bottom-color: rgb(var(--comic-outline-rgb) / .24);
 }
 
 .theme-comic .hero,
@@ -33,17 +80,17 @@
 }
 
 .theme-comic .hero {
-  background: var(--paper);
+  background: var(--surface-page);
 }
 
 .theme-comic .page-hero {
   background-color: var(--comic-surface);
   background-image:
-    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
-    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .62));
+    radial-gradient(circle, var(--comic-dot) 0 1.5px, transparent 1.8px),
+    linear-gradient(135deg, rgb(var(--surface-hero-rgb) / .9), rgb(var(--surface-page-rgb) / .62));
   background-position: 0 0, 0 0;
-  background-size: 9px 9px, 100% 100%;
-  border-bottom-color: rgba(37, 37, 37, .2);
+  background-size: 7px 7px, 100% 100%;
+  border-bottom-color: rgb(var(--comic-outline-rgb) / .2);
 }
 
 .theme-comic .hero-grid,
@@ -53,9 +100,9 @@
 }
 
 .theme-comic .portrait-bg {
-  background-color: #e1e1de;
-  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.1px, transparent 1.4px);
-  background-size: 9px 9px;
+  background-color: var(--comic-portrait-surface);
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.5px, transparent 1.8px);
+  background-size: 7px 7px;
   border-radius: 50%;
 }
 
@@ -65,71 +112,67 @@
 
 .theme-comic .project-detail-hero {
   background:
-    radial-gradient(circle at 88% 18%, rgba(40, 40, 40, .13), transparent 28%),
-    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .58));
-  border-bottom-color: rgba(37, 37, 37, .2);
+    radial-gradient(circle at 88% 18%, rgb(var(--color-shadow-rgb) / .13), transparent 28%),
+    linear-gradient(135deg, rgb(var(--surface-hero-rgb) / .9), rgb(var(--surface-page-rgb) / .58));
+  border-bottom-color: rgb(var(--comic-outline-rgb) / .2);
 }
 
-.theme-comic .project-detail-hero:not(.project-detail-hero--with-image) {
+.theme-comic .project-detail-hero:not(.project-detail-hero--with-image),
+.theme-comic .teaching-detail-hero {
   background-color: var(--comic-surface);
   background-image:
-    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
-    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .58));
-  background-size: 9px 9px, 100% 100%;
+    radial-gradient(circle, var(--comic-dot) 0 1.5px, transparent 1.8px),
+    linear-gradient(135deg, rgb(var(--surface-hero-rgb) / .9), rgb(var(--surface-page-rgb) / .58));
+  background-position: 0 0, 0 0;
+  background-size: 7px 7px, 100% 100%;
+  border-bottom-color: rgb(var(--comic-outline-rgb) / .2);
 }
 
 .theme-comic .project-detail-hero--with-image::after {
-  background: linear-gradient(90deg, rgba(242, 242, 239, .96) 0%, rgba(242, 242, 239, .88) 35%, rgba(251, 250, 247, .62) 58%, rgba(251, 250, 247, .3) 78%, rgba(251, 250, 247, .12) 100%);
+  background: linear-gradient(90deg, rgb(var(--surface-detail-overlay-rgb) / .96) 0%, rgb(var(--surface-detail-overlay-rgb) / .88) 35%, rgb(var(--surface-page-rgb) / .62) 58%, rgb(var(--surface-page-rgb) / .3) 78%, rgb(var(--surface-page-rgb) / .12) 100%);
 }
 
 .theme-comic .hero h1,
 .theme-comic .page-hero h1,
 .theme-comic .project-detail-hero h1,
+.theme-comic .teaching-detail-hero h1,
+.theme-comic .project-content h2,
+.theme-comic .project-detail-extra h2,
+.theme-comic .teaching-detail-section h2,
 .theme-comic .section-heading h2,
 .theme-comic .teaching-callout h2,
 .theme-comic .contact-cta h2 {
   color: var(--comic-gold);
-  text-shadow: 1px 3px #000000;
-}
-
-.theme-comic .hero-copy,
-.theme-comic .page-hero p,
-.theme-comic .project-detail-subtitle,
-.theme-comic .project-detail-summary,
-.theme-comic .project-content p,
-.theme-comic .project-content strong,
-.theme-comic .project-related-card h3,
-.theme-comic .project-related-subtitle {
-  color: var(--muted);
+  text-shadow: 1px 3px var(--comic-title-shadow);
 }
 
 /* The old pale-green sections become full, regular halftone surfaces. */
-.theme-comic .section.soft:not(.project-detail-extra) {
+.theme-comic .section.soft {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background-color: var(--comic-surface);
   background-image:
-    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
-    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(240, 240, 237, .78));
+    radial-gradient(circle, var(--comic-dot) 0 1.5px, transparent 1.8px),
+    linear-gradient(135deg, rgb(var(--surface-hero-rgb) / .9), rgb(var(--surface-soft-rgb) / .78));
   background-position: 0 0, 0 0;
-  background-size: 9px 9px, 100% 100%;
-  border-block: 1px solid rgba(37, 37, 37, .2);
+  background-size: 7px 7px, 100% 100%;
+  border-block: 1px solid rgb(var(--comic-outline-rgb) / .2);
 }
 
-.theme-comic .section.soft:not(.project-detail-extra) > .container {
+.theme-comic .section.soft > .container {
   position: relative;
   z-index: 1;
 }
 
 /* White structural sections get a partial halftone entry from the top-right corner. */
-.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra) {
+.theme-comic main > .section:not(.soft):not(.project-detail-extra) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
 
-.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra)::before {
+.theme-comic main > .section:not(.soft):not(.project-detail-extra)::before {
   content: "";
   position: absolute;
   z-index: 0;
@@ -138,12 +181,12 @@
   width: min(420px, 38%);
   height: 180px;
   pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot-strong) 0 1.2px, transparent 1.5px);
-  background-size: 9px 9px;
+  background-image: radial-gradient(circle, var(--comic-dot-strong) 0 1.6px, transparent 1.9px);
+  background-size: 7px 7px;
   clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 64%);
 }
 
-.theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra) > .container {
+.theme-comic main > .section:not(.soft):not(.project-detail-extra) > .container {
   position: relative;
   z-index: 1;
 }
@@ -186,7 +229,7 @@
   border: 10px solid var(--comic-outline);
   border-radius: 52px 14px 44px 10px / 38px 18px 50px 14px;
   background-color: var(--comic-surface);
-  box-shadow: 8px 8px 0 rgba(20, 20, 20, .20);
+  box-shadow: 8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
 }
 
 .theme-comic .card {
@@ -211,21 +254,21 @@
 }
 
 .theme-comic .card p {
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .theme-comic .editorial-card {
-  border-color: #5a5a5a;
+  border-color: var(--comic-border-muted);
   border-radius: 24px 16px 22px 14px / 20px 18px 24px 16px;
   background-color: var(--comic-surface);
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .12);
+  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .12);
 }
 
 .theme-comic .project-card--accent {
   border-color: var(--comic-outline);
-  background: #303030;
-  color: #fff;
-  box-shadow: 4px 4px 0 rgba(20, 20, 20, .2);
+  background: var(--surface-card-accent);
+  color: var(--color-on-dark);
+  box-shadow: 4px 4px 0 rgb(var(--color-shadow-rgb) / .2);
 }
 
 /* Medium graphic intensity for controls and compact metadata surfaces. */
@@ -242,7 +285,7 @@
 
 .theme-comic .btn.primary {
   background: var(--comic-outline);
-  color: #fff;
+  color: var(--color-on-dark);
   box-shadow: 4px 4px 0 var(--comic-shadow);
 }
 
@@ -258,21 +301,21 @@
 .theme-comic .portfolio-filter[aria-pressed="true"] {
   background: var(--comic-surface-dark);
   color: var(--comic-outline);
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .22);
+  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .22);
 }
 
 .theme-comic .panel {
   border: 4px solid var(--comic-outline);
   border-radius: 18px 6px 24px 8px / 14px 10px 20px 12px;
   background: var(--comic-surface);
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .13);
+  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .13);
 }
 
 .theme-comic .archive-panel {
   border: 3px dashed var(--comic-outline);
   border-radius: 24px 7px 18px 11px / 16px 12px 22px 9px;
   background: var(--comic-surface);
-  box-shadow: 2px 2px 0 rgba(20, 20, 20, .13);
+  box-shadow: 2px 2px 0 rgb(var(--color-shadow-rgb) / .13);
 }
 
 .theme-comic .archive-panel h3 {
@@ -281,8 +324,8 @@
 
 .theme-comic .archive-tags span {
   border-color: var(--comic-outline);
-  background: #fff;
-  color: var(--muted);
+  background: var(--surface-card);
+  color: var(--color-text-muted);
 }
 
 .theme-comic .portfolio-note {
@@ -290,21 +333,21 @@
   border-left: 10px solid var(--comic-gold);
   border-radius: 4px 14px 6px 10px / 4px 10px 4px 12px;
   background: var(--comic-surface);
-  color: var(--muted);
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .14);
+  color: var(--color-text-muted);
+  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .14);
 }
 
 .theme-comic .contact-cta,
 .theme-comic .teaching-callout,
 .theme-comic .project-facts {
-  border-color: #5a5a5a;
+  border-color: var(--comic-border-muted);
   background: var(--comic-surface);
 }
 
 .theme-comic .contact-cta,
 .theme-comic .teaching-callout {
   border-radius: 24px 16px 22px 14px / 20px 18px 24px 16px;
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .12);
+  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .12);
 }
 
 .theme-comic .highlight-strip {
@@ -315,7 +358,7 @@
 }
 
 .theme-comic .highlight-strip a {
-  color: var(--muted);
+  color: var(--color-text-muted);
 }
 
 .theme-comic .highlight-strip a + a {
@@ -326,20 +369,15 @@
   color: var(--comic-outline);
 }
 
-.theme-comic button:focus-visible,
-.theme-comic a:focus-visible {
-  outline-color: var(--comic-outline);
-}
-
 @media (max-width: 620px) {
-  .theme-comic .section.soft:not(.project-detail-extra) {
-    background-size: 8px 8px, 100% 100%;
+  .theme-comic .section.soft {
+    background-size: 7px 7px, 100% 100%;
   }
 
-  .theme-comic main > .section:not(.soft):not(.project-detail-section):not(.project-detail-extra)::before {
+  .theme-comic main > .section:not(.soft):not(.project-detail-extra)::before {
     width: min(240px, 58%);
     height: 140px;
-    background-size: 8px 8px;
+    background-size: 7px 7px;
   }
 }
 
