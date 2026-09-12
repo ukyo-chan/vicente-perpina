@@ -352,6 +352,50 @@ a:focus-visible {
   box-shadow: var(--shadow);
 }
 
+.featured-card--with-image {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.featured-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.featured-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,254,253,.96) 0%, rgba(255,254,253,.86) 46%, rgba(255,254,253,.48) 74%, rgba(255,254,253,.22) 100%);
+}
+
+.featured-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  opacity: .38;
+  filter: grayscale(.16) saturate(.9) contrast(.96);
+  transition: opacity .22s ease, filter .22s ease, transform .22s ease;
+}
+
+.featured-card--with-image > :not(.featured-card-media) {
+  position: relative;
+  z-index: 1;
+}
+
+.featured-card--with-image:hover .featured-card-media img,
+.featured-card--with-image:focus-visible .featured-card-media img {
+  opacity: .55;
+  filter: grayscale(.08) saturate(1) contrast(.98);
+  transform: scale(1.02);
+}
+
 .project-year {
   color: var(--teal-dark);
   font-family: "Bangers", cursive;
@@ -1323,6 +1367,16 @@ a.encounter-title:focus-visible {
   .media-item--with-image:focus-within .project-card-media img {
     transform: none;
   }
+
+  .featured-card--with-image:hover,
+  .featured-card--with-image:focus-visible {
+    transform: none;
+  }
+
+  .featured-card--with-image:hover .featured-card-media img,
+  .featured-card--with-image:focus-visible .featured-card-media img {
+    transform: none;
+  }
 }
 
 @media (max-width: 980px) {
@@ -1380,6 +1434,7 @@ a.encounter-title:focus-visible {
   .project-card--with-image .project-card-media img,
   .editorial-card--with-image .project-card-media img,
   .media-item--with-image .project-card-media img { opacity: .26; }
+  .featured-card--with-image .featured-card-media img { opacity: .40; }
   .project-card-hit-label { left: 22px; bottom: 22px; }
   .career-year { grid-template-columns: 1fr; gap: 10px; }
   .career-events { gap: 18px; }

@@ -10,8 +10,14 @@ const { project } = Astro.props;
 const title = project.homeTitle ?? project.title;
 const type = project.homeType ?? projectTypeLabel(project.type);
 const summary = project.homeSummary ?? project.summary;
+const image = project.image;
 ---
-<a class="featured-card reveal" href={projectPrimaryHref(project)}>
+<a class:list={['featured-card', 'reveal', image && 'featured-card--with-image']} href={projectPrimaryHref(project)}>
+  {image && (
+    <div class="featured-card-media" aria-hidden="true">
+      <img src={image.src} alt="" loading="lazy" decoding="async" />
+    </div>
+  )}
   <span class="project-year">{projectDateLabel(project)}</span>
   <span class="project-type">{type}</span>
   <h3>{title}</h3>
