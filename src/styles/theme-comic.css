@@ -89,7 +89,7 @@
 .theme-comic .teaching-callout h2,
 .theme-comic .contact-cta h2 {
   color: var(--comic-gold);
-  text-shadow: 3px 3px 0 rgba(45, 45, 45, .24);
+  text-shadow: 1px 3px #000000;
 }
 
 .theme-comic .hero-copy,
