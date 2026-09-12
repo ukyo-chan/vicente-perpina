@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import '../styles/slice4.css';
+import '../styles/theme-comic.css';
 
 interface Props {
   title: string;
@@ -47,7 +48,7 @@ const socialImage = new URL(image, Astro.site);
     <title>{title}</title>
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
-  <body>
+  <body class="theme-comic">
     <Header />
     <slot />
     <Footer />
