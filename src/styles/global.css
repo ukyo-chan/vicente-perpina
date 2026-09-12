@@ -672,7 +672,7 @@ a:focus-visible {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.4) 46%, rgba(255,255,255,.18) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.36) 46%, rgba(255,255,255,.14) 100%);
   transition: background 420ms cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -682,8 +682,8 @@ a:focus-visible {
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  opacity: .16;
-  filter: grayscale(.45) saturate(.65) contrast(.9);
+  opacity: .24;
+  filter: grayscale(.28) saturate(.8) contrast(.92);
   transform: scale(1.01);
   transition:
     opacity 420ms cubic-bezier(.22, 1, .36, 1),
@@ -701,30 +701,30 @@ a:focus-visible {
 .project-card--with-image:focus-within .project-card-media img,
 .editorial-card--with-image:focus-within .project-card-media img,
 .media-item--with-image:focus-within .project-card-media img {
-  opacity: .52;
-  filter: grayscale(.2) saturate(.95) contrast(.97);
+  opacity: .58;
+  filter: grayscale(.08) saturate(1.05) contrast(.98);
   transform: scale(1.03);
 }
 
 .project-card--with-image:focus-within .project-card-media::after,
 .editorial-card--with-image:focus-within .project-card-media::after,
 .media-item--with-image:focus-within .project-card-media::after {
-  background: linear-gradient(90deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.28) 46%, rgba(255,255,255,.1) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,.46) 0%, rgba(255,255,255,.22) 46%, rgba(255,255,255,.06) 100%);
 }
 
 @media (hover: hover) {
   .project-card--with-image:hover .project-card-media img,
   .editorial-card--with-image:hover .project-card-media img,
   .media-item--with-image:hover .project-card-media img {
-    opacity: .52;
-    filter: grayscale(.2) saturate(.95) contrast(.97);
+    opacity: .58;
+    filter: grayscale(.08) saturate(1.05) contrast(.98);
     transform: scale(1.03);
   }
 
   .project-card--with-image:hover .project-card-media::after,
   .editorial-card--with-image:hover .project-card-media::after,
   .media-item--with-image:hover .project-card-media::after {
-    background: linear-gradient(90deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.28) 46%, rgba(255,255,255,.1) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,.46) 0%, rgba(255,255,255,.22) 46%, rgba(255,255,255,.06) 100%);
   }
 }
 
@@ -1379,7 +1379,7 @@ a.encounter-title:focus-visible {
   .project-grid { grid-template-columns: 1fr; }
   .project-card--with-image .project-card-media img,
   .editorial-card--with-image .project-card-media img,
-  .media-item--with-image .project-card-media img { opacity: .18; }
+  .media-item--with-image .project-card-media img { opacity: .26; }
   .project-card-hit-label { left: 22px; bottom: 22px; }
   .career-year { grid-template-columns: 1fr; gap: 10px; }
   .career-events { gap: 18px; }
@@ -1632,8 +1632,23 @@ a.encounter-title:focus-visible {
 .project-gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 26px;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.project-gallery-grid--single {
+  grid-template-columns: 1fr;
+}
+
+.project-gallery-grid--single > figure {
+  width: min(100%, 620px);
+  margin-inline: auto;
+}
+
+.project-gallery-grid--sequence > figure:first-child,
+.project-gallery-grid--editorial > figure:first-child,
+.project-gallery-grid--editorial > figure:nth-child(2) {
+  grid-column: 1 / -1;
 }
 
 .project-gallery figure {

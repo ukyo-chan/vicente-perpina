@@ -4,14 +4,21 @@ interface Props {
 }
 
 const { images = [] } = Astro.props;
+const layoutClass = images.length >= 4
+  ? 'project-gallery-grid--editorial'
+  : images.length === 3
+    ? 'project-gallery-grid--sequence'
+    : images.length === 2
+      ? 'project-gallery-grid--pair'
+      : 'project-gallery-grid--single';
 ---
 {images.length > 0 && (
   <section class="project-gallery" aria-labelledby="galeria-proyecto">
     <h2 id="galeria-proyecto">Galería</h2>
-    <div class="project-gallery-grid">
+    <div class:list={['project-gallery-grid', layoutClass]}>
       {images.map(image => (
         <figure>
-          <img src={image.src} alt={image.alt} loading="lazy" />
+          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
           {image.pie && <figcaption>{image.pie}</figcaption>}
         </figure>
       ))}
