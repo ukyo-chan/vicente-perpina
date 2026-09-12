@@ -650,6 +650,122 @@ a:focus-visible {
   color: var(--muted);
 }
 
+/* Optional primary images stay decorative in compact portfolio cards. */
+.project-card--with-image,
+.editorial-card--with-image,
+.media-item--with-image {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.project-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.project-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.4) 46%, rgba(255,255,255,.18) 100%);
+  transition: background 420ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.project-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: .16;
+  filter: grayscale(.45) saturate(.65) contrast(.9);
+  transform: scale(1.01);
+  transition:
+    opacity 420ms cubic-bezier(.22, 1, .36, 1),
+    transform 620ms cubic-bezier(.22, 1, .36, 1),
+    filter 420ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.project-card--with-image > :not(.project-card-media):not(.project-card-hit-area),
+.editorial-card--with-image > :not(.project-card-media):not(.project-card-hit-area),
+.media-item--with-image > :not(.project-card-media):not(.project-card-hit-area) {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card--with-image:focus-within .project-card-media img,
+.editorial-card--with-image:focus-within .project-card-media img,
+.media-item--with-image:focus-within .project-card-media img {
+  opacity: .52;
+  filter: grayscale(.2) saturate(.95) contrast(.97);
+  transform: scale(1.03);
+}
+
+.project-card--with-image:focus-within .project-card-media::after,
+.editorial-card--with-image:focus-within .project-card-media::after,
+.media-item--with-image:focus-within .project-card-media::after {
+  background: linear-gradient(90deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.28) 46%, rgba(255,255,255,.1) 100%);
+}
+
+@media (hover: hover) {
+  .project-card--with-image:hover .project-card-media img,
+  .editorial-card--with-image:hover .project-card-media img,
+  .media-item--with-image:hover .project-card-media img {
+    opacity: .52;
+    filter: grayscale(.2) saturate(.95) contrast(.97);
+    transform: scale(1.03);
+  }
+
+  .project-card--with-image:hover .project-card-media::after,
+  .editorial-card--with-image:hover .project-card-media::after,
+  .media-item--with-image:hover .project-card-media::after {
+    background: linear-gradient(90deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.28) 46%, rgba(255,255,255,.1) 100%);
+  }
+}
+
+.project-card--linked {
+  cursor: pointer;
+  padding-bottom: 68px;
+}
+
+.project-card-hit-area {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  border-radius: inherit;
+  color: var(--teal-dark);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.project-card-hit-label {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  pointer-events: none;
+}
+
+.project-card--linked > :not(.project-card-media):not(.project-card-hit-area) {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.project-card--linked .project-actions {
+  z-index: 3;
+}
+
+.project-card--linked .project-actions .text-link {
+  position: relative;
+  z-index: 4;
+  pointer-events: auto;
+}
+
 .press-featured-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1198,6 +1314,15 @@ a.encounter-title:focus-visible {
     transition-duration: .01ms !important;
   }
   .js .reveal { opacity: 1; transform: none; }
+  .project-card-media img,
+  .project-card--with-image:hover .project-card-media img,
+  .editorial-card--with-image:hover .project-card-media img,
+  .media-item--with-image:hover .project-card-media img,
+  .project-card--with-image:focus-within .project-card-media img,
+  .editorial-card--with-image:focus-within .project-card-media img,
+  .media-item--with-image:focus-within .project-card-media img {
+    transform: none;
+  }
 }
 
 @media (max-width: 980px) {
@@ -1252,6 +1377,10 @@ a.encounter-title:focus-visible {
 
 @media (max-width: 720px) {
   .project-grid { grid-template-columns: 1fr; }
+  .project-card--with-image .project-card-media img,
+  .editorial-card--with-image .project-card-media img,
+  .media-item--with-image .project-card-media img { opacity: .18; }
+  .project-card-hit-label { left: 22px; bottom: 22px; }
   .career-year { grid-template-columns: 1fr; gap: 10px; }
   .career-events { gap: 18px; }
   .career-area + .career-area { padding-top: 14px; }
@@ -1302,6 +1431,7 @@ a.encounter-title:focus-visible {
   .press-card-medium { margin-top: 0; }
   .press-actions { justify-content: flex-start; }
   .project-card, .editorial-card, .panel { padding: 22px; }
+  .project-card--linked { padding-bottom: 62px; }
 
   .footer-row {
     align-items: flex-start;

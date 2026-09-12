@@ -87,6 +87,8 @@ export interface Project {
   entity?: string;
   place?: string;
   dates?: string;
+  time?: string;
+  address?: string;
 
   published: boolean;
   detail: boolean;
@@ -156,6 +158,8 @@ export function projectFromEntry(entry: ProjectEntry): Project {
     entity: data.entidad,
     place: data.lugar,
     dates: data.fechas,
+    time: data.hora,
+    address: data.direccion,
 
     published: data.publicar,
     detail: data.detalle,
@@ -208,6 +212,32 @@ export function projectDateLabel(project: Project): string {
   if (project.dateText) return project.dateText;
   if (project.year) return String(project.year);
   return '';
+}
+
+export function projectPeriodLabel(project: Project): string | undefined {
+  const yearLabel = project.year ? String(project.year) : undefined;
+  const dateText = project.dateText?.trim();
+  const hasRange = Boolean(project.startDate || project.endDate || dateText?.match(/[–—→]/));
+
+  if (hasRange) {
+    if (project.dates && project.dates !== yearLabel) return project.dates;
+    if (dateText && dateText !== yearLabel) return dateText;
+
+    const start = project.startDate ? formatProjectDate(project.startDate) : undefined;
+    const end = project.endDate ? formatProjectDate(project.endDate) : undefined;
+    return [start, end].filter(Boolean).join(' – ') || undefined;
+  }
+
+  return undefined;
+}
+
+function formatProjectDate(value: string): string {
+  return new Intl.DateTimeFormat('es-ES', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC'
+  }).format(new Date(`${value}T00:00:00Z`));
 }
 
 export function projectPrimaryHref(project: Project): string {

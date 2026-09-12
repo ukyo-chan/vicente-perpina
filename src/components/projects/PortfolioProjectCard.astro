@@ -16,21 +16,33 @@ const date = projectDateLabel(project);
 const firstLink = project.links[0];
 const detailHref = project.detail ? `/proyectos/${project.id}/` : undefined;
 const categories = project.categories.join(' ');
+const image = project.image;
+const linked = Boolean(image && detailHref);
 ---
 {layout === 'media' ? (
   <article
-    class="media-item reveal"
+    class:list={['media-item', image && 'media-item--with-image', linked && 'project-card--linked', 'reveal']}
     id={anchor}
     data-project-item
     data-project-categories={categories}
   >
+    {image && (
+      <div class="project-card-media" aria-hidden="true">
+        <img src={image.src} alt="" loading="lazy" decoding="async" />
+      </div>
+    )}
+    {linked && detailHref && (
+      <a class="project-card-hit-area" href={detailHref} aria-label={`Abrir ficha: ${title}`}>
+        <span class="project-card-hit-label">Ver ficha →</span>
+      </a>
+    )}
     <span class="media-year">{date}</span>
     <div>
       <h3>{title}</h3>
       {summary && <p>{summary}</p>}
-      {(detailHref || firstLink) && (
+      {((detailHref && !linked) || firstLink) && (
         <div class="project-actions">
-          {detailHref && <a class="text-link" href={detailHref}>Ver ficha →</a>}
+          {detailHref && !linked && <a class="text-link" href={detailHref}>Ver ficha →</a>}
           {firstLink && <a class="text-link text-link--muted" href={firstLink.url} target="_blank" rel="noopener">{firstLink.texto} ↗</a>}
         </div>
       )}
@@ -38,17 +50,33 @@ const categories = project.categories.join(' ');
   </article>
 ) : layout === 'editorial' ? (
   <article
-    class:list={['editorial-card', project.appearance === 'note' && 'editorial-card--note', 'reveal']}
+    class:list={[
+      'editorial-card',
+      project.appearance === 'note' && 'editorial-card--note',
+      image && 'editorial-card--with-image',
+      linked && 'project-card--linked',
+      'reveal'
+    ]}
     id={anchor}
     data-project-item
     data-project-categories={categories}
   >
+    {image && (
+      <div class="project-card-media" aria-hidden="true">
+        <img src={image.src} alt="" loading="lazy" decoding="async" />
+      </div>
+    )}
+    {linked && detailHref && (
+      <a class="project-card-hit-area" href={detailHref} aria-label={`Abrir ficha: ${title}`}>
+        <span class="project-card-hit-label">Ver ficha →</span>
+      </a>
+    )}
     <span class="project-year">{date}</span>
     <h3>{title}</h3>
     {summary && <p>{summary}</p>}
-    {(detailHref || firstLink) && (
+    {((detailHref && !linked) || firstLink) && (
       <div class="project-actions">
-        {detailHref && <a class="text-link" href={detailHref}>Ver ficha →</a>}
+        {detailHref && !linked && <a class="text-link" href={detailHref}>Ver ficha →</a>}
         {firstLink && <a class="text-link text-link--muted" href={firstLink.url} target="_blank" rel="noopener">{firstLink.texto} ↗</a>}
       </div>
     )}
@@ -59,21 +87,33 @@ const categories = project.categories.join(' ');
       'project-card',
       project.appearance === 'lead' && 'project-card--lead',
       project.appearance === 'accent' && 'project-card--accent',
+      image && 'project-card--with-image',
+      linked && 'project-card--linked',
       'reveal'
     ]}
     id={anchor}
     data-project-item
     data-project-categories={categories}
   >
+    {image && (
+      <div class="project-card-media" aria-hidden="true">
+        <img src={image.src} alt="" loading="lazy" decoding="async" />
+      </div>
+    )}
+    {linked && detailHref && (
+      <a class="project-card-hit-area" href={detailHref} aria-label={`Abrir ficha: ${title}`}>
+        <span class="project-card-hit-label">Ver ficha →</span>
+      </a>
+    )}
     <div class="project-meta">
       {date && <span>{date}</span>}
       {meta && <span>{meta}</span>}
     </div>
     <h3>{title}</h3>
     {summary && <p>{summary}</p>}
-    {(detailHref || firstLink) && (
+    {((detailHref && !linked) || firstLink) && (
       <div class="project-actions">
-        {detailHref && <a class="text-link" href={detailHref}>Ver ficha →</a>}
+        {detailHref && !linked && <a class="text-link" href={detailHref}>Ver ficha →</a>}
         {firstLink && <a class="text-link text-link--muted" href={firstLink.url} target="_blank" rel="noopener">{firstLink.texto} ↗</a>}
       </div>
     )}

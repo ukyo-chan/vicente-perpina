@@ -86,6 +86,8 @@ const proyectos = defineCollection({
     entidad: z.string().optional(),
     lugar: z.string().optional(),
     fechas: z.string().optional(),
+    hora: z.string().optional(),
+    direccion: z.string().optional(),
 
     publicar: z.boolean().default(true),
     detalle: z.boolean().default(false),

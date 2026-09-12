@@ -1,18 +1,28 @@
 ---
 import type { Project } from '../../lib/projects';
-import { projectDateLabel } from '../../lib/projects';
+import { projectPeriodLabel } from '../../lib/projects';
 
 interface Props {
   project: Project;
 }
 
 const { project } = Astro.props;
+const year = project.year ? String(project.year) : undefined;
+const period = projectPeriodLabel(project);
+const date = !period && project.dateText && project.dateText !== year
+  ? project.dateText
+  : !period && project.dates && project.dates !== year
+    ? project.dates
+    : undefined;
+const location = [project.address, project.place].filter(Boolean).join(' · ');
 const rows = [
-  ['Año', projectDateLabel(project)],
+  ['Año', year],
+  ['Fecha', date],
+  ['Periodo', period],
+  ['Hora', project.time],
   ['Rol', project.role],
-  ['Entidad / proyecto', project.entity],
-  ['Lugar', project.place],
-  ['Fechas', project.dates],
+  ['Espacio / entidad', project.entity],
+  ['Lugar', location],
   ['Colaboración', project.collaborators.length ? project.collaborators.join(' · ') : undefined]
 ].filter(([, value]) => Boolean(value));
 ---

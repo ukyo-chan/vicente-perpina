@@ -9,9 +9,14 @@ resumen: "Participé en una exposición colectiva en No Land Tattoo Parlour. Cad
 rol: "Artista participante · intervención con pintura acrílica"
 entidad: "No Land Tattoo Parlour"
 lugar: "València"
-fechas: "22 de diciembre de 2017 · 19:00 · C/ Lepanto, 13"
+hora: "19:00"
+direccion: "C/ Lepanto, 13"
 publicar: true
-detalle: false
+detalle: true
+imagenPrincipal:
+  src: "/assets/img/proyectos/nino-jesus-no-land-2017-cartel-original.jpg"
+  alt: "Cartel de la exposición colectiva celebrada en No Land Tattoo Parlour el 22 de diciembre de 2017"
+  pie: "Cartel de la exposición colectiva · No Land Tattoo Parlour · 2017"
 mostrarObra: true
 mostrarTrayectoria: true
 obraResumen: "Intervine una figura de escayola de un Niño Jesús con pintura acrílica, buscando el aspecto de una imagen religiosa antigua pendiente de restauración."
@@ -28,3 +33,11 @@ verificacion:
   fuentes:
     - nombre: "Cartel publicado en Facebook de No Land Tattoo Parlour (2017)"
 ---
+
+## El proyecto
+
+En diciembre de 2017 participé en una exposición colectiva en No Land Tattoo Parlour, en València. La dinámica consistía en que cada artista recibía una figura de escayola de un Niño Jesús para intervenirla.
+
+## La intervención
+
+Trabajé mi figura con pintura acrílica buscando el aspecto de una antigua imagen religiosa pendiente de restauración. Utilicé un envejecimiento deliberado, pátina, verdín y pequeñas picaduras, desconchados y otros deterioros intencionados. Quería que pareciera una figura religiosa antigua marcada por el paso del tiempo, no una figura nueva simplemente pintada.
