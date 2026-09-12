@@ -1,16 +1,42 @@
 /* Optional comic-print variant. Remove `theme-comic` from BaseLayout to disable it. */
 .theme-comic {
-  --comic-dot: rgba(30, 49, 29, .28);
-  --comic-dot-teal: rgba(63, 110, 109, .3);
-  --comic-shadow: rgba(30, 49, 29, .23);
+  --ink: #242424;
+  --teal: #707070;
+  --teal-dark: #292929;
+  --teal-soft: #dededb;
+  --teal-pale: #f0f0ed;
+  --paper: #fbfaf7;
+  --muted: #606060;
+  --line: #bfc0bd;
+  --shadow: 5px 5px 0 rgba(20, 20, 20, .15);
+  --comic-surface: #f7f7f4;
+  --comic-surface-dark: #e4e4e0;
+  --comic-outline: #252525;
+  --comic-dot: rgba(20, 20, 20, .3);
+  --comic-dot-ink: rgba(20, 20, 20, .27);
+  --comic-shadow: rgba(20, 20, 20, .2);
 }
 
-/* Keep the graphic language in the outer surfaces, away from long text and artwork. */
+/* Keep the graphic language in outer surfaces, away from long text and artwork. */
+.theme-comic .site-header {
+  background: rgba(251, 250, 247, .96);
+  border-bottom-color: rgba(37, 37, 37, .24);
+}
+
 .theme-comic .hero,
 .theme-comic .page-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+}
+
+.theme-comic .hero {
+  background: var(--paper);
+}
+
+.theme-comic .page-hero {
+  background: linear-gradient(135deg, rgba(226, 226, 222, .94), rgba(251, 250, 247, .62));
+  border-bottom-color: rgba(37, 37, 37, .2);
 }
 
 .theme-comic .hero::after,
@@ -19,9 +45,9 @@
   position: absolute;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot) 0 1px, transparent 1.35px);
+  background-image: radial-gradient(circle, var(--comic-dot) 0 1.25px, transparent 1.5px);
   background-size: 9px 9px;
-  opacity: .55;
+  opacity: .62;
   clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 72%);
 }
 
@@ -35,7 +61,7 @@
 .theme-comic .page-hero::after {
   inset: 0 0 0 auto;
   width: min(360px, 42%);
-  opacity: .42;
+  opacity: .5;
 }
 
 .theme-comic .hero-grid,
@@ -44,10 +70,17 @@
   z-index: 1;
 }
 
+.theme-comic .project-detail-hero {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(40, 40, 40, .13), transparent 28%),
+    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .58));
+  border-bottom-color: rgba(37, 37, 37, .2);
+}
+
 .theme-comic .project-detail-hero--with-image::after {
   background-image:
-    linear-gradient(90deg, rgba(238, 247, 246, .96) 0%, rgba(238, 247, 246, .88) 35%, rgba(255, 254, 253, .62) 58%, rgba(255, 254, 253, .32) 78%, rgba(255, 254, 253, .16) 100%),
-    radial-gradient(circle, var(--comic-dot-teal) 0 1px, transparent 1.35px);
+    linear-gradient(90deg, rgba(242, 242, 239, .96) 0%, rgba(242, 242, 239, .88) 35%, rgba(251, 250, 247, .62) 58%, rgba(251, 250, 247, .3) 78%, rgba(251, 250, 247, .12) 100%),
+    radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
   background-position: 0 0, right top;
   background-size: 100% 100%, 9px 9px;
 }
@@ -55,31 +88,83 @@
 .theme-comic .hero h1,
 .theme-comic .page-hero h1,
 .theme-comic .project-detail-hero h1 {
-  text-shadow: 2px 2px 0 rgba(96, 148, 147, .2);
+  color: var(--comic-outline);
+  text-shadow: 2px 2px 0 rgba(20, 20, 20, .16);
 }
 
-.theme-comic .section.soft {
-  background: linear-gradient(135deg, rgba(220, 235, 234, .94), rgba(239, 247, 246, .82));
-  border-block: 1px solid rgba(63, 110, 109, .18);
+.theme-comic .hero-copy,
+.theme-comic .page-hero p,
+.theme-comic .project-detail-subtitle,
+.theme-comic .project-detail-summary,
+.theme-comic .project-content p,
+.theme-comic .project-content strong,
+.theme-comic .project-related-card h3,
+.theme-comic .project-related-subtitle {
+  color: var(--muted);
+}
+
+/* Selected soft surfaces get a larger, controlled halftone field. */
+.theme-comic .section.soft:not(.project-detail-extra) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(226, 226, 222, .96), rgba(240, 240, 237, .86));
+  border-block: 1px solid rgba(37, 37, 37, .2);
+}
+
+.theme-comic .section.soft:not(.project-detail-extra)::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(520px, 48%);
+  height: 190px;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
+  background-size: 9px 9px;
+  opacity: .34;
+  clip-path: polygon(27% 0, 100% 0, 100% 100%, 0 70%);
+}
+
+.theme-comic .section.soft:not(.project-detail-extra) > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .theme-comic .section-heading h2::after {
   content: "";
   display: block;
-  width: 64px;
+  width: 68px;
   height: 9px;
   margin-top: 9px;
-  background-image: radial-gradient(circle, var(--comic-dot-teal) 0 1px, transparent 1.35px);
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
   background-size: 7px 7px;
 }
 
-/* A small halftone corner gives cards a printed accent without covering their content. */
-.theme-comic .card,
+/* Main cards now suggest comic speech bubbles without tails or extra markup. */
 .theme-comic .featured-card,
 .theme-comic .project-card,
-.theme-comic .editorial-card,
 .theme-comic .project-related-card {
-  position: relative;
+  border: 2px solid var(--comic-outline);
+  border-radius: 28px 22px 30px 24px;
+  background-color: var(--comic-surface);
+  box-shadow: 5px 5px 0 var(--comic-shadow);
+}
+
+.theme-comic .card,
+.theme-comic .editorial-card {
+  border-color: #5a5a5a;
+  border-radius: 22px 18px 24px 20px;
+  background-color: var(--comic-surface);
+  box-shadow: 4px 4px 0 rgba(20, 20, 20, .13);
+}
+
+.theme-comic .project-card--accent {
+  border-color: var(--comic-outline);
+  background: #303030;
+  color: #fff;
+  box-shadow: 5px 5px 0 rgba(20, 20, 20, .28);
 }
 
 .theme-comic .card::before,
@@ -92,27 +177,17 @@
   z-index: 0;
   top: 0;
   right: 0;
-  width: 118px;
-  height: 86px;
+  width: 128px;
+  height: 94px;
   pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot-teal) 0 1px, transparent 1.35px);
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
   background-size: 8px 8px;
-  opacity: .78;
+  opacity: .82;
   clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.theme-comic .card,
-.theme-comic .featured-card,
-.theme-comic .project-card,
-.theme-comic .editorial-card,
-.theme-comic .project-related-card {
-  border-color: rgba(63, 110, 109, .38);
-  box-shadow: 4px 4px 0 rgba(30, 49, 29, .1);
-}
-
-.theme-comic .project-card--accent {
-  border-color: var(--teal-dark);
-  box-shadow: 4px 4px 0 rgba(30, 49, 29, .2);
+.theme-comic .card::after {
+  background: rgba(20, 20, 20, .06);
 }
 
 .theme-comic .card > *,
@@ -124,40 +199,76 @@
   z-index: 1;
 }
 
-.theme-comic .project-card--accent::before {
-  --comic-dot-teal: rgba(255, 255, 255, .3);
-}
-
-/* Keep the existing rounded language, adding only a restrained print-like offset. */
+/* Medium graphic intensity for controls and compact metadata surfaces. */
 .theme-comic .btn,
 .theme-comic .portfolio-filter,
 .theme-comic .tag,
 .theme-comic .project-tags span,
 .theme-comic .teaching-detail-tags .tag,
 .theme-comic .press-type {
-  border-color: rgba(63, 110, 109, .52);
+  border-color: var(--comic-outline);
+  border-radius: 13px 999px 999px 15px;
   box-shadow: 3px 3px 0 var(--comic-shadow);
 }
 
 .theme-comic .btn.primary {
+  background: var(--comic-outline);
+  color: #fff;
   box-shadow: 4px 4px 0 var(--comic-shadow);
 }
 
+.theme-comic .btn.secondary,
+.theme-comic .portfolio-filter,
+.theme-comic .tag,
+.theme-comic .project-tags span,
+.theme-comic .teaching-detail-tags .tag {
+  background: var(--comic-surface);
+  color: var(--comic-outline);
+}
+
 .theme-comic .portfolio-filter[aria-pressed="true"] {
-  background: var(--teal-soft);
-  box-shadow: 3px 3px 0 rgba(96, 148, 147, .28);
+  background: var(--comic-surface-dark);
+  color: var(--comic-outline);
+  box-shadow: 3px 3px 0 rgba(20, 20, 20, .28);
+}
+
+.theme-comic .archive-panel,
+.theme-comic .portfolio-note,
+.theme-comic .panel,
+.theme-comic .contact-cta,
+.theme-comic .teaching-callout,
+.theme-comic .project-facts {
+  border-color: #5a5a5a;
+  background: var(--comic-surface);
+}
+
+.theme-comic .archive-panel,
+.theme-comic .contact-cta,
+.theme-comic .teaching-callout {
+  border-radius: 22px 18px 24px 20px;
+  box-shadow: 4px 4px 0 rgba(20, 20, 20, .12);
+}
+
+.theme-comic .portfolio-note {
+  border-left-color: var(--comic-outline);
 }
 
 @media (max-width: 620px) {
   .theme-comic .hero::after {
     width: 150px;
     height: 150px;
-    opacity: .42;
+    opacity: .46;
   }
 
   .theme-comic .page-hero::after {
     width: 190px;
-    opacity: .32;
+    opacity: .38;
+  }
+
+  .theme-comic .section.soft:not(.project-detail-extra)::before {
+    width: 250px;
+    height: 150px;
+    opacity: .28;
   }
 
   .theme-comic .card::before,
@@ -165,8 +276,8 @@
   .theme-comic .project-card::before,
   .theme-comic .editorial-card::before,
   .theme-comic .project-related-card::before {
-    width: 96px;
-    height: 72px;
-    opacity: .64;
+    width: 104px;
+    height: 78px;
+    opacity: .7;
   }
 }
