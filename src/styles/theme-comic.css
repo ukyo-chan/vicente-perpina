@@ -8,16 +8,16 @@
   --paper: #fbfaf7;
   --muted: #606060;
   --line: #bfc0bd;
-  --shadow: 5px 5px 0 rgba(20, 20, 20, .15);
+  --shadow: 4px 4px 0 rgba(20, 20, 20, .16);
   --comic-surface: #f7f7f4;
   --comic-surface-dark: #e4e4e0;
   --comic-outline: #252525;
-  --comic-dot: rgba(20, 20, 20, .3);
-  --comic-dot-ink: rgba(20, 20, 20, .27);
-  --comic-shadow: rgba(20, 20, 20, .2);
+  --comic-dot: rgba(20, 20, 20, .14);
+  --comic-dot-ink: rgba(20, 20, 20, .16);
+  --comic-shadow: rgba(20, 20, 20, .16);
 }
 
-/* Keep the graphic language in outer surfaces, away from long text and artwork. */
+/* Monochrome interface surfaces; artwork and photographs are not filtered. */
 .theme-comic .site-header {
   background: rgba(251, 250, 247, .96);
   border-bottom-color: rgba(37, 37, 37, .24);
@@ -35,39 +35,30 @@
 }
 
 .theme-comic .page-hero {
-  background: linear-gradient(135deg, rgba(226, 226, 222, .94), rgba(251, 250, 247, .62));
+  background-color: var(--comic-surface);
+  background-image:
+    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .62));
+  background-position: 0 0, 0 0;
+  background-size: 9px 9px, 100% 100%;
   border-bottom-color: rgba(37, 37, 37, .2);
-}
-
-.theme-comic .hero::after,
-.theme-comic .page-hero::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot) 0 1.25px, transparent 1.5px);
-  background-size: 9px 9px;
-  opacity: .62;
-  clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 72%);
-}
-
-.theme-comic .hero::after {
-  top: 0;
-  right: 0;
-  width: clamp(150px, 20vw, 260px);
-  height: 220px;
-}
-
-.theme-comic .page-hero::after {
-  inset: 0 0 0 auto;
-  width: min(360px, 42%);
-  opacity: .5;
 }
 
 .theme-comic .hero-grid,
 .theme-comic .page-hero > .container {
   position: relative;
   z-index: 1;
+}
+
+.theme-comic .portrait-bg {
+  background-color: #e1e1de;
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.1px, transparent 1.4px);
+  background-size: 9px 9px;
+  border-radius: 50%;
+}
+
+.theme-comic .portrait {
+  border-radius: 50%;
 }
 
 .theme-comic .project-detail-hero {
@@ -77,12 +68,16 @@
   border-bottom-color: rgba(37, 37, 37, .2);
 }
 
-.theme-comic .project-detail-hero--with-image::after {
+.theme-comic .project-detail-hero:not(.project-detail-hero--with-image) {
+  background-color: var(--comic-surface);
   background-image:
-    linear-gradient(90deg, rgba(242, 242, 239, .96) 0%, rgba(242, 242, 239, .88) 35%, rgba(251, 250, 247, .62) 58%, rgba(251, 250, 247, .3) 78%, rgba(251, 250, 247, .12) 100%),
-    radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
-  background-position: 0 0, right top;
-  background-size: 100% 100%, 9px 9px;
+    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(251, 250, 247, .58));
+  background-size: 9px 9px, 100% 100%;
+}
+
+.theme-comic .project-detail-hero--with-image::after {
+  background: linear-gradient(90deg, rgba(242, 242, 239, .96) 0%, rgba(242, 242, 239, .88) 35%, rgba(251, 250, 247, .62) 58%, rgba(251, 250, 247, .3) 78%, rgba(251, 250, 247, .12) 100%);
 }
 
 .theme-comic .hero h1,
@@ -103,28 +98,18 @@
   color: var(--muted);
 }
 
-/* Selected soft surfaces get a larger, controlled halftone field. */
+/* The old pale-green sections become full, regular halftone surfaces. */
 .theme-comic .section.soft:not(.project-detail-extra) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(226, 226, 222, .96), rgba(240, 240, 237, .86));
+  background-color: var(--comic-surface);
+  background-image:
+    radial-gradient(circle, var(--comic-dot) 0 1.1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(226, 226, 222, .9), rgba(240, 240, 237, .78));
+  background-position: 0 0, 0 0;
+  background-size: 9px 9px, 100% 100%;
   border-block: 1px solid rgba(37, 37, 37, .2);
-}
-
-.theme-comic .section.soft:not(.project-detail-extra)::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  width: min(520px, 48%);
-  height: 190px;
-  pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
-  background-size: 9px 9px;
-  opacity: .34;
-  clip-path: polygon(27% 0, 100% 0, 100% 100%, 0 70%);
 }
 
 .theme-comic .section.soft:not(.project-detail-extra) > .container {
@@ -138,65 +123,33 @@
   width: 68px;
   height: 9px;
   margin-top: 9px;
-  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
+  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.1px, transparent 1.4px);
   background-size: 7px 7px;
 }
 
-/* Main cards now suggest comic speech bubbles without tails or extra markup. */
+/* Main cards suggest comic speech bubbles without tails or extra markup. */
 .theme-comic .featured-card,
 .theme-comic .project-card,
 .theme-comic .project-related-card {
-  border: 2px solid var(--comic-outline);
-  border-radius: 28px 22px 30px 24px;
+  border: 10px solid var(--comic-outline);
+  border-radius: 52px 14px 44px 10px / 38px 18px 50px 14px;
   background-color: var(--comic-surface);
-  box-shadow: 5px 5px 0 var(--comic-shadow);
+  box-shadow: 8px 8px 0 rgba(20, 20, 20, .20);
 }
 
 .theme-comic .card,
 .theme-comic .editorial-card {
   border-color: #5a5a5a;
-  border-radius: 22px 18px 24px 20px;
+  border-radius: 24px 16px 22px 14px / 20px 18px 24px 16px;
   background-color: var(--comic-surface);
-  box-shadow: 4px 4px 0 rgba(20, 20, 20, .13);
+  box-shadow: 3px 3px 0 rgba(20, 20, 20, .12);
 }
 
 .theme-comic .project-card--accent {
   border-color: var(--comic-outline);
   background: #303030;
   color: #fff;
-  box-shadow: 5px 5px 0 rgba(20, 20, 20, .28);
-}
-
-.theme-comic .card::before,
-.theme-comic .featured-card::before,
-.theme-comic .project-card::before,
-.theme-comic .editorial-card::before,
-.theme-comic .project-related-card::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  width: 128px;
-  height: 94px;
-  pointer-events: none;
-  background-image: radial-gradient(circle, var(--comic-dot-ink) 0 1.25px, transparent 1.5px);
-  background-size: 8px 8px;
-  opacity: .82;
-  clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.theme-comic .card::after {
-  background: rgba(20, 20, 20, .06);
-}
-
-.theme-comic .card > *,
-.theme-comic .featured-card > :not(.featured-card-media),
-.theme-comic .project-card > :not(.project-card-media):not(.project-card-hit-area),
-.theme-comic .editorial-card > :not(.project-card-media):not(.project-card-hit-area),
-.theme-comic .project-related-body {
-  position: relative;
-  z-index: 1;
+  box-shadow: 4px 4px 0 rgba(20, 20, 20, .2);
 }
 
 /* Medium graphic intensity for controls and compact metadata surfaces. */
@@ -229,7 +182,7 @@
 .theme-comic .portfolio-filter[aria-pressed="true"] {
   background: var(--comic-surface-dark);
   color: var(--comic-outline);
-  box-shadow: 3px 3px 0 rgba(20, 20, 20, .28);
+  box-shadow: 3px 3px 0 rgba(20, 20, 20, .22);
 }
 
 .theme-comic .archive-panel,
@@ -245,39 +198,21 @@
 .theme-comic .archive-panel,
 .theme-comic .contact-cta,
 .theme-comic .teaching-callout {
-  border-radius: 22px 18px 24px 20px;
-  box-shadow: 4px 4px 0 rgba(20, 20, 20, .12);
+  border-radius: 24px 16px 22px 14px / 20px 18px 24px 16px;
+  box-shadow: 3px 3px 0 rgba(20, 20, 20, .12);
 }
 
 .theme-comic .portfolio-note {
   border-left-color: var(--comic-outline);
 }
 
+.theme-comic button:focus-visible,
+.theme-comic a:focus-visible {
+  outline-color: var(--comic-outline);
+}
+
 @media (max-width: 620px) {
-  .theme-comic .hero::after {
-    width: 150px;
-    height: 150px;
-    opacity: .46;
-  }
-
-  .theme-comic .page-hero::after {
-    width: 190px;
-    opacity: .38;
-  }
-
-  .theme-comic .section.soft:not(.project-detail-extra)::before {
-    width: 250px;
-    height: 150px;
-    opacity: .28;
-  }
-
-  .theme-comic .card::before,
-  .theme-comic .featured-card::before,
-  .theme-comic .project-card::before,
-  .theme-comic .editorial-card::before,
-  .theme-comic .project-related-card::before {
-    width: 104px;
-    height: 78px;
-    opacity: .7;
+  .theme-comic .section.soft:not(.project-detail-extra) {
+    background-size: 8px 8px, 100% 100%;
   }
 }
