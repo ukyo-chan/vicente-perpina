@@ -8,8 +8,14 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const image = project.image;
 ---
-<header class="project-detail-hero">
+<header class:list={['project-detail-hero', image && 'project-detail-hero--with-image']}>
+  {image && (
+    <div class="project-detail-hero__media" aria-hidden="true">
+      <img src={image.src} alt="" loading="eager" decoding="async" />
+    </div>
+  )}
   <div class="container project-detail-hero__inner">
     <a class="project-back" href="/obra/">← Volver a Obra</a>
     <div class="project-detail-kicker">

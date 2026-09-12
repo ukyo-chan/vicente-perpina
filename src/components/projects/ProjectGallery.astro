@@ -4,24 +4,132 @@ interface Props {
 }
 
 const { images = [] } = Astro.props;
-const layoutClass = images.length >= 4
-  ? 'project-gallery-grid--editorial'
-  : images.length === 3
-    ? 'project-gallery-grid--sequence'
-    : images.length === 2
-      ? 'project-gallery-grid--pair'
-      : 'project-gallery-grid--single';
 ---
 {images.length > 0 && (
-  <section class="project-gallery" aria-labelledby="galeria-proyecto">
+  <section class="project-gallery" aria-labelledby="galeria-proyecto" data-project-gallery>
     <h2 id="galeria-proyecto">Galería</h2>
-    <div class:list={['project-gallery-grid', layoutClass]}>
-      {images.map(image => (
+    <div class="project-gallery-grid">
+      {images.map((image, index) => (
         <figure>
-          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+          <button
+            type="button"
+            class="project-gallery-trigger"
+            data-lightbox-index={index}
+            data-lightbox-caption={image.pie ?? image.alt}
+            aria-label={`Ampliar imagen: ${image.alt}`}
+          >
+            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+          </button>
           {image.pie && <figcaption>{image.pie}</figcaption>}
         </figure>
       ))}
     </div>
+
+    <dialog class="project-lightbox" data-project-lightbox aria-label="Visor de imágenes del proyecto">
+      <div class="project-lightbox-panel">
+        <div class="project-lightbox-toolbar">
+          <span class="project-lightbox-counter" data-lightbox-counter aria-live="polite"></span>
+          <button type="button" class="project-lightbox-close" data-lightbox-close aria-label="Cerrar imagen">×</button>
+        </div>
+        <div class="project-lightbox-stage">
+          {images.length > 1 && (
+            <button type="button" class="project-lightbox-nav" data-lightbox-prev aria-label="Imagen anterior">←</button>
+          )}
+          <figure class="project-lightbox-figure">
+            <img class="project-lightbox__image" data-lightbox-image alt="" />
+            <figcaption class="project-lightbox__caption" data-lightbox-viewer-caption></figcaption>
+          </figure>
+          {images.length > 1 && (
+            <button type="button" class="project-lightbox-nav" data-lightbox-next aria-label="Imagen siguiente">→</button>
+          )}
+        </div>
+      </div>
+    </dialog>
   </section>
 )}
+
+<script>
+  document.querySelectorAll('[data-project-gallery]').forEach((gallery) => {
+    const dialog = gallery.querySelector('[data-project-lightbox]');
+    const closeButton = gallery.querySelector('[data-lightbox-close]');
+    const previousButton = gallery.querySelector('[data-lightbox-prev]');
+    const nextButton = gallery.querySelector('[data-lightbox-next]');
+    const lightboxImage = gallery.querySelector('[data-lightbox-image]');
+    const lightboxCaption = gallery.querySelector('[data-lightbox-viewer-caption]');
+    const counter = gallery.querySelector('[data-lightbox-counter]');
+    const triggers = Array.from(gallery.querySelectorAll('[data-lightbox-index]'));
+
+    if (!(dialog instanceof HTMLDialogElement)
+      || !(closeButton instanceof HTMLButtonElement)
+      || !(lightboxImage instanceof HTMLImageElement)
+      || !(lightboxCaption instanceof HTMLElement)
+      || !(counter instanceof HTMLElement)) {
+      return;
+    }
+
+    const items = triggers.map((trigger) => {
+      const thumbnail = trigger.querySelector('img');
+      return {
+        src: thumbnail?.getAttribute('src') ?? '',
+        alt: thumbnail?.getAttribute('alt') ?? '',
+        caption: trigger.getAttribute('data-lightbox-caption') ?? thumbnail?.getAttribute('alt') ?? '',
+      };
+    });
+
+    let currentIndex = 0;
+    let lastTrigger = null;
+
+    function updateLightbox(index) {
+      currentIndex = (index + items.length) % items.length;
+      const item = items[currentIndex];
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.alt;
+      lightboxCaption.textContent = item.caption;
+      counter.textContent = `${currentIndex + 1} / ${items.length}`;
+    }
+
+    function closeLightbox() {
+      if (dialog.open) dialog.close();
+      lastTrigger?.focus();
+      lastTrigger = null;
+    }
+
+    function moveLightbox(delta) {
+      if (items.length < 2) return;
+      updateLightbox(currentIndex + delta);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const index = Number(trigger.getAttribute('data-lightbox-index'));
+        lastTrigger = trigger;
+        updateLightbox(index);
+        if (!dialog.open) dialog.showModal();
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    previousButton?.addEventListener('click', () => moveLightbox(-1));
+    nextButton?.addEventListener('click', () => moveLightbox(1));
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) closeLightbox();
+    });
+
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeLightbox();
+    });
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        moveLightbox(-1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        moveLightbox(1);
+      }
+    });
+  });
+</script>
