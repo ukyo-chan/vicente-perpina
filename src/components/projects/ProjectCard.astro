@@ -8,15 +8,25 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const image = project.image;
 ---
-<a class="project-related-card" href={`/proyectos/${project.id}/`}>
-  <div class="project-related-meta">
-    <span>{projectDateLabel(project)}</span>
-    <span>{projectTypeLabel(project.type)}</span>
+<a
+  class:list={['project-related-card', image && 'project-related-card--with-image']}
+  href={`/proyectos/${project.id}/`}
+>
+  {image && (
+    <div class="project-related-media" aria-hidden="true">
+      <img src={image.src} alt="" loading="lazy" decoding="async" />
+    </div>
+  )}
+  <div class="project-related-body">
+    <div class="project-related-meta">
+      <span>{projectDateLabel(project)}</span>
+      <span>{projectTypeLabel(project.type)}</span>
+    </div>
+    <h3>{project.title}</h3>
+    {project.subtitle && <p class="project-related-subtitle">{project.subtitle}</p>}
+    <ProjectTags categories={project.categories.slice(0, 3)} />
+    <span class="project-related-link">Ver proyecto →</span>
   </div>
-  <h3>{project.title}</h3>
-  {project.subtitle && <p class="project-related-subtitle">{project.subtitle}</p>}
-  {project.summary && <p>{project.summary}</p>}
-  <ProjectTags categories={project.categories.slice(0, 3)} />
-  <span class="project-related-link">Ver proyecto →</span>
 </a>
