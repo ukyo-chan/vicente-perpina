@@ -1,7 +1,7 @@
 ---
 titulo: "Presentación de Otis y Loui, cobradores de morosos: Capítulo 4"
 anio: 2026
-fechaTexto: "2026 · XV Jornadas Cómic VLC"
+fechaTexto: "22 de mayo de 2026 · XV Jornadas Cómic VLC"
 tipoPrincipal: comic
 categorias: [comic, encuentro]
 resumen: "Moderé la presentación de Otis y Loui, cobradores de morosos: Capítulo 4, de José Jorques, dentro de las XV Jornadas Cómic VLC celebradas en La Nau."

@@ -15,10 +15,10 @@ mostrarTrayectoria: false
 anchor: llibre-festes-alfafar-2017
 enlaces:
 - texto: Llibre de Festes 2017
-  url: https://www.alfafar.es/storage/2017/08/LLIBRE-FESTES-ALFAFAR-2017-COMPLET.pdf
+  url: https://issuu.com/aytoalfafar/docs/llibre_festes_alfafar_2017_complet
 verificacion:
   estado: externa
   fuentes:
   - nombre: Ajuntament d’Alfafar
-    url: https://www.alfafar.es/storage/2017/08/LLIBRE-FESTES-ALFAFAR-2017-COMPLET.pdf
+    url: https://issuu.com/aytoalfafar/docs/llibre_festes_alfafar_2017_complet
 ---

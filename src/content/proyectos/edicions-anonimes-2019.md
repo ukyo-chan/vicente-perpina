@@ -29,6 +29,7 @@ enlaces:
 relacionados:
 - placa-del-mercat-biblioteca-rivendel-2020
 - alta-tension-placa-del-mercat-salon-2020
+- eso-no-es-comic-2025
 verificacion:
   estado: externa
   fuentes:

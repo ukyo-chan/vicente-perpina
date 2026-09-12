@@ -40,12 +40,12 @@ const entityLine = [
     <section class="teaching-detail-hero">
       <div class="container teaching-detail-hero__inner">
         <a class="teaching-back" href="/docencia/">← Volver a Docencia</a>
-        <p class="eyebrow">Experiencia docente</p>
-        <h1>{experience.title}</h1>
         <div class="teaching-detail-kicker">
           <span>{experience.period}</span>
-          <span>{entityLine}</span>
+          <span>Experiencia docente</span>
         </div>
+        <h1>{experience.title}</h1>
+        <p class="teaching-detail-subtitle">{entityLine}</p>
         <p class="teaching-detail-summary">{experience.summary}</p>
         {experience.areas.length > 0 && (
           <div class="teaching-detail-tags" aria-label="Áreas">

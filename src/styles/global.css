@@ -73,7 +73,9 @@ a:focus-visible {
 
 .brand {
   text-decoration: none;
-  font-weight: 800;
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  font-weight: 400;
   letter-spacing: -.02em;
   color: var(--teal-dark);
   white-space: nowrap;
@@ -904,10 +906,14 @@ a:focus-visible {
   color: var(--muted);
 }
 
-.encounters-block {
-  margin-top: clamp(42px, 6vw, 72px);
-  padding-top: 34px;
+.encounters-section {
+  padding-block: 58px;
   border-top: 1px solid var(--line);
+}
+
+.encounters-block {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .encounters-block .section-heading {
@@ -1169,7 +1175,7 @@ a.encounter-title:focus-visible {
 }
 
 @media (max-width: 980px) {
-  .brand { font-size: .92rem; }
+  .brand { font-size: 1.7rem; }
   .nav-links a { padding-inline: 9px; font-size: .88rem; }
   .teaching-callout { grid-template-columns: 1fr; }
   .teaching-callout .btn { justify-self: start; }
@@ -1368,7 +1374,8 @@ a.encounter-title:focus-visible {
   margin-top: 22px;
 }
 
-.project-tags span {
+.project-tags span,
+.teaching-detail-tags .tag {
   padding: 7px 11px;
   border: 1px solid rgba(96,148,147,.32);
   border-radius: 999px;
@@ -1670,9 +1677,11 @@ a.encounter-title:focus-visible {
 }
 
 .teaching-detail-hero {
-  padding: 58px 0 54px;
-  background: var(--teal-pale);
-  border-bottom: 1px solid rgba(96,148,147,.16);
+  padding-block: 58px 54px;
+  border-bottom: 1px solid rgba(96,148,147,.18);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(96,148,147,.16), transparent 28%),
+    linear-gradient(135deg, rgba(220,235,234,.78), rgba(255,254,253,.48));
 }
 
 .teaching-detail-hero__inner {
@@ -1683,6 +1692,7 @@ a.encounter-title:focus-visible {
   display: inline-block;
   margin-bottom: 30px;
   color: var(--teal-dark);
+  font-size: .92rem;
   font-weight: 800;
   text-decoration: none;
 }
@@ -1694,44 +1704,56 @@ a.encounter-title:focus-visible {
 
 .teaching-detail-hero h1 {
   max-width: 900px;
-  margin: 10px 0 18px;
-  color: var(--ink);
+  margin: 0;
+  color: var(--teal-dark);
   font-family: "Bangers", cursive;
   font-weight: 400;
-  font-size: clamp(2.3rem, 5vw, 4.6rem);
-  line-height: 1.04;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  line-height: 1.08;
 }
 
 .teaching-detail-kicker {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
+  gap: 8px 18px;
+  margin-bottom: 14px;
   color: var(--teal-dark);
-  font-size: .82rem;
-  font-weight: 850;
-  letter-spacing: .05em;
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: .09em;
   text-transform: uppercase;
+}
+
+.teaching-detail-kicker span + span {
+  position: relative;
 }
 
 .teaching-detail-kicker span + span::before {
   content: "·";
-  margin: 0 10px;
+  position: absolute;
+  left: -11px;
   color: var(--teal);
 }
 
+.teaching-detail-subtitle {
+  margin: 14px 0 0;
+  color: #40524c;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 720;
+}
+
 .teaching-detail-summary {
-  max-width: 740px;
-  margin: 24px 0 0;
-  color: #4e5d58;
+  max-width: 790px;
+  margin: 22px 0 0;
+  color: #4b5a55;
   font-size: 1.12rem;
-  line-height: 1.65;
 }
 
 .teaching-detail-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .teaching-detail-layout {

@@ -35,6 +35,7 @@ ordenTrayectoria: 2020
 ordenTrayectoriaItem: 20
 relacionados:
   - edicions-anonimes-2019
+  - eso-no-es-comic-2025
 enlaces:
   - texto: "Crónica de la exposición en dos sedes"
     url: "https://gothamnewszine.blogspot.com/2020/02/exposicion-placa-del-mercat-en-valencia.html"

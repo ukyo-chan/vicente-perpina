@@ -1,13 +1,13 @@
 ---
 titulo: "Cuentos populares"
-subtitulo: "Exposición individual de dibujos y bocetos"
+subtitulo: "Exposición individual de dibujo, cómic, ilustración y pintura"
 anio: 2015
 fechaInicio: "2015-04-15"
 fechaFin: "2015-05-17"
 tipoPrincipal: exposicion
 categorias: [dibujo, ilustracion, exposicion]
 seccion: obra-exposiciones
-resumen: "Exposición individual presentada en Nuevo Centro Espai d'Art dentro del programa de Ámbito Cultural, acompañada por un catálogo propio."
+resumen: "Exposición individual presentada en Nuevo Centro Espai d'Art dentro del programa de Ámbito Cultural, acompañada por un catálogo propio. El conjunto original reunió trabajos de cómic, ilustración y pintura, además de esculturas, material videográfico y fanzines."
 rol: "Artista · exposición individual"
 entidad: "Nuevo Centro Espai d'Art · Ámbito Cultural"
 lugar: "València"
@@ -17,7 +17,7 @@ detalle: true
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: cuentos-populares
-obraResumen: "Muestra de dibujos y bocetos celebrada del 15 de abril al 17 de mayo en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural. La exposición contó con catálogo propio."
+obraResumen: "Muestra individual celebrada del 15 de abril al 17 de mayo en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural. El conjunto reunió cómic, ilustración, pintura, esculturas, material videográfico y fanzines, y contó con catálogo propio."
 obraMeta: "Exposición individual"
 hitoHome: true
 ordenHitoHome: 3
@@ -29,10 +29,10 @@ ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Ficha del catálogo en la Universitat de València"
     url: "https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050"
-relacionados: [37-ilustres-2025, dkv-grand-tour-2012]
+relacionados: [37-ilustres-2025, dkv-grand-tour-2012, cuentos-apocopados-2015, ilustrafic-2-2015]
 verificacion:
-  estado: externa
-  notas: "La ficha bibliográfica confirma la exposición, las fechas, el espacio y la existencia del catálogo."
+  estado: mixta
+  notas: "La ficha bibliográfica confirma la exposición, las fechas, el espacio y la existencia del catálogo; Vicente confirma directamente la amplitud de soportes y lenguajes del conjunto original."
   fuentes:
     - nombre: "Universitat de València · Producció Científica"
       url: "https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050"
@@ -41,7 +41,9 @@ verificacion:
 ---
 ## El proyecto
 
-Con **Cuentos populares** presenté una exposición individual centrada en dibujos y bocetos vinculados al imaginario de los relatos tradicionales. Se celebró entre el **15 de abril y el 17 de mayo de 2015** en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural.
+Con **Cuentos populares** presenté una exposición individual vinculada al imaginario de los relatos tradicionales. Se celebró entre el **15 de abril y el 17 de mayo de 2015** en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural.
+
+La documentación bibliográfica describe la muestra como una exposición de dibujos y bocetos. Además, según la confirmación directa de Vicente, el conjunto original incluía trabajos de **cómic, ilustración y pintura**, junto con **esculturas, material videográfico y fanzines**.
 
 La muestra contó además con **catálogo propio**, un elemento especialmente valioso para documentar esta etapa de mi producción artística.
 

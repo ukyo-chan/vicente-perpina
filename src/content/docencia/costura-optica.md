@@ -19,16 +19,19 @@ contexto: >-
   Participé como profesor en el taller de cómic «Costura Òptica Mesclant Imatges Crítiques» del IES El Cabanyal, en València.
   Diseñé la propuesta para acercar al alumnado de primer ciclo de ESO, interesado e iniciado en la creación de cómic,
   al proceso completo de creación de historietas. Tomé como punto de partida «Concepción Arenal: vida, drets, i impacte social»
-  y planteé el proyecto con vistas al Concurso Escolar del Salón del Cómic de València de marzo de 2026. Conecté el lenguaje
+  y planteé el proyecto para trabajar hacia el Concurso Escolar del Salón del Cómic de València de marzo de 2026. Conecté el lenguaje
   del cómic, la narración gráfica, la creación visual, el pensamiento crítico, la igualdad, los derechos sociales y la convivencia.
   La ratio máxima prevista era de 25 alumnos. La propuesta se vinculó a competencias y objetivos de EPVA del primer ciclo de ESO,
   especialmente en lenguaje visual, creación planificada, comunicación multimodal, competencia digital y conciencia cultural.
+  La última sesión opcional también se realizó: digitalicé los trabajos, seleccioné tres cómics y los envié al concurso.
+  Al final del curso hubo una presentación y una entrega de premios. No presento aquí como hecho confirmado la producción de un fanzine colectivo
+  ni que alguno de los cómics enviados obtuviera un premio o una mención.
 metodologia: >-
   Planteé el taller como una progresión de conocer, experimentar, planificar, producir y compartir. Partí de una explicación
   breve y participativa y del análisis de referentes visuales; después propuse juegos de creación colectiva y experimentación gráfica,
   antes de pasar al diseño individual, el guion y el storyboard. La producción se apoyaba en orientación individual, puesta en común
-  y feedback entre iguales y docente. La reflexión final ayudaba a revisar el contenido y el lenguaje visual; la digitalización y la
-  edición quedaban como una fase opcional prevista.
+  y feedback entre iguales y docente. La reflexión final ayudaba a revisar el contenido y el lenguaje visual. En la fase final realizada,
+  digitalicé los trabajos y seleccioné tres cómics para enviarlos al concurso; el fanzine colectivo no se presenta como resultado confirmado.
 temporalizacion:
   - etiqueta: "5 nov. 2025 · Sesión 1"
     titulo: "Introducción, narrativa gráfica y experimentación"
@@ -40,8 +43,8 @@ temporalizacion:
     titulo: "Finalización y presentación de los proyectos"
     detalle: "La planificación contemplaba terminar dibujo, color y texto, preparar portada y contraportada, compartir los proyectos y reflexionar sobre cómo contar la realidad mediante el cómic. Duración: 2 horas."
   - etiqueta: "15 dic. 2025 · Sesión 4 · opcional"
-    titulo: "Digitalización, selección y edición del fanzine colectivo"
-    detalle: "Fase opcional prevista para digitalizar, retocar y maquetar el fanzine colectivo, preparar archivos y valorar un posible envío al concurso o una exposición. Duración prevista: 1,5–2 horas; sin alumnado o con un grupo reducido."
+    titulo: "Digitalización y selección de trabajos"
+    detalle: "La última sesión opcional se realizó y se dedicó a digitalizar los trabajos y seleccionar tres cómics para enviarlos al concurso. La edición del fanzine colectivo no se presenta como un resultado confirmado."
 fases:
   - numero: "01"
     titulo: "Contextualizar"
@@ -59,12 +62,12 @@ fases:
     titulo: "Compartir y reflexionar"
     detalle: "Presentación, feedback y reflexión sobre el contenido y el lenguaje gráfico."
   - numero: "06"
-    titulo: "Editar y difundir · opcional"
-    detalle: "Fase opcional prevista para la digitalización, la maquetación y la preparación para la difusión."
+    titulo: "Digitalizar, seleccionar y compartir"
+    detalle: "Digitalización de los trabajos, selección de tres cómics y envío al concurso; al final del curso hubo una presentación y una entrega de premios."
 recursos:
   - "Papel DIN A4 o bloc de dibujo A4, lápiz, goma, regla, rotulador y color."
   - "Técnica libre, referentes visuales y storyboard para combinar imagen, texto y secuencia."
-  - "Posibilidad de tableta u ordenador para ilustración, edición y maquetación; digitalización final prevista en PDF o JPG."
+  - "Posibilidad de tableta u ordenador para ilustración, edición y maquetación; los trabajos fueron digitalizados para la selección y el envío de tres cómics al concurso."
 seo:
   title: "Taller de cómic «Costura Òptica Mesclant Imatges Crítiques» · Vicente Perpiñá"
   description: "Taller de cómic de Vicente Perpiñá en el IES El Cabanyal, con narrativa gráfica, Concepción Arenal y pensamiento crítico."
