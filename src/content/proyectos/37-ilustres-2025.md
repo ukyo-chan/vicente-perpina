@@ -48,5 +48,3 @@ La muestra se presentó en la **Sala Contraforts del Centre del Carme** y estuvo
 ## Mi participación
 
 Trabajé a partir de la figura de **Manuela Ballester**, artista valenciana vinculada a la ilustración, el cartelismo, la pintura y el compromiso cultural. Mi intervención forma parte de un proyecto donde la ilustración funciona también como lectura crítica y recuperación de referentes.
-
-Cuando tenga la imagen de la obra y material expositivo propio, podré incorporar una galería específica a esta ficha.

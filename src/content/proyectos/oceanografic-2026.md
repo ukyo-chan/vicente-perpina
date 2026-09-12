@@ -45,5 +45,3 @@ La propuesta combina contenido científico, divulgación y lenguaje gráfico. La
 ## Mi participación
 
 Formé parte del grupo de ilustradores locales invitados a intervenir en el proyecto. Mi participación sitúa la ilustración en un contexto especialmente afín a mi trabajo: una imagen creada no solo como obra, sino también como herramienta de **comunicación y divulgación**.
-
-Podré ampliar la ficha cuando tenga fotografías propias de la instalación y la identificación exacta del módulo que desarrollé.

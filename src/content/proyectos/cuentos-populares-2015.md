@@ -43,12 +43,10 @@ verificacion:
 
 Con **Cuentos populares** presenté una exposición individual vinculada al imaginario de los relatos tradicionales. Se celebró entre el **15 de abril y el 17 de mayo de 2015** en Nuevo Centro Espai d'Art, dentro del programa de Ámbito Cultural.
 
-La documentación bibliográfica describe la muestra como una exposición de dibujos y bocetos. Además, según la confirmación directa de Vicente, el conjunto original incluía trabajos de **cómic, ilustración y pintura**, junto con **esculturas, material videográfico y fanzines**.
+La muestra reunía dibujos y bocetos, trabajos de **cómic, ilustración y pintura**, además de **esculturas, material videográfico y fanzines**.
 
 La muestra contó además con **catálogo propio**, un elemento especialmente valioso para documentar esta etapa de mi producción artística.
 
 ## Una línea de investigación y creación
 
 Mi interés por los cuentos populares no aparece de forma aislada en mi trayectoria. En esos años investigué también la transformación histórica y visual de los relatos tradicionales y su relación con la animación y el imaginario colectivo.
-
-Cuando incorpore reproducciones del catálogo y una selección de obra, esta ficha podrá funcionar también como pequeña exposición digital.

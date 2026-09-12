@@ -890,10 +890,36 @@ a:focus-visible {
 
 .career-events {
   display: grid;
-  gap: 16px;
+  gap: 22px;
 }
 
-.career-events div {
+.career-area {
+  display: grid;
+  gap: 9px;
+}
+
+.career-area + .career-area {
+  padding-top: 18px;
+  border-top: 1px solid rgba(96,148,147,.18);
+}
+
+.career-area-title {
+  margin: 0;
+  color: var(--teal-dark);
+  font-family: inherit;
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.career-area-events {
+  display: grid;
+  gap: 13px;
+}
+
+.career-event {
   display: grid;
   gap: 2px;
 }
@@ -1227,6 +1253,8 @@ a.encounter-title:focus-visible {
 @media (max-width: 720px) {
   .project-grid { grid-template-columns: 1fr; }
   .career-year { grid-template-columns: 1fr; gap: 10px; }
+  .career-events { gap: 18px; }
+  .career-area + .career-area { padding-top: 14px; }
   .encounter-item { grid-template-columns: 1fr; gap: 6px; }
   .media-item { grid-template-columns: 78px 1fr; gap: 16px; }
 }

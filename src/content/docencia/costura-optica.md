@@ -24,14 +24,13 @@ contexto: >-
   La ratio máxima prevista era de 25 alumnos. La propuesta se vinculó a competencias y objetivos de EPVA del primer ciclo de ESO,
   especialmente en lenguaje visual, creación planificada, comunicación multimodal, competencia digital y conciencia cultural.
   La última sesión opcional también se realizó: digitalicé los trabajos, seleccioné tres cómics y los envié al concurso.
-  Al final del curso hubo una presentación y una entrega de premios. No presento aquí como hecho confirmado la producción de un fanzine colectivo
-  ni que alguno de los cómics enviados obtuviera un premio o una mención.
+  Al final del curso hubo una presentación y una entrega de premios.
 metodologia: >-
   Planteé el taller como una progresión de conocer, experimentar, planificar, producir y compartir. Partí de una explicación
   breve y participativa y del análisis de referentes visuales; después propuse juegos de creación colectiva y experimentación gráfica,
   antes de pasar al diseño individual, el guion y el storyboard. La producción se apoyaba en orientación individual, puesta en común
   y feedback entre iguales y docente. La reflexión final ayudaba a revisar el contenido y el lenguaje visual. En la fase final realizada,
-  digitalicé los trabajos y seleccioné tres cómics para enviarlos al concurso; el fanzine colectivo no se presenta como resultado confirmado.
+  digitalicé los trabajos y seleccioné tres cómics para enviarlos al concurso.
 temporalizacion:
   - etiqueta: "5 nov. 2025 · Sesión 1"
     titulo: "Introducción, narrativa gráfica y experimentación"
@@ -44,7 +43,7 @@ temporalizacion:
     detalle: "La planificación contemplaba terminar dibujo, color y texto, preparar portada y contraportada, compartir los proyectos y reflexionar sobre cómo contar la realidad mediante el cómic. Duración: 2 horas."
   - etiqueta: "15 dic. 2025 · Sesión 4 · opcional"
     titulo: "Digitalización y selección de trabajos"
-    detalle: "La última sesión opcional se realizó y se dedicó a digitalizar los trabajos y seleccionar tres cómics para enviarlos al concurso. La edición del fanzine colectivo no se presenta como un resultado confirmado."
+    detalle: "La última sesión opcional se realizó y se dedicó a digitalizar los trabajos y seleccionar tres cómics para enviarlos al concurso."
 fases:
   - numero: "01"
     titulo: "Contextualizar"

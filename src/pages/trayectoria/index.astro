@@ -1,9 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getTimelineGroups, loadProjects, projectTimelineHref } from '../../lib/projects';
+import { getTimelineGroups, loadProjects, PROJECT_SECTIONS, projectTimelineHref } from '../../lib/projects';
 
 const projects = await loadProjects();
-const timelineGroups = getTimelineGroups(projects.filter(project => !project.categories.includes('encuentro')));
+const timelineGroups = getTimelineGroups(
+  projects.filter(project => !project.categories.includes('encuentro'))
+).map(group => ({
+  ...group,
+  areas: PROJECT_SECTIONS
+    .map(section => ({
+      id: section.id,
+      title: section.title,
+      projects: group.projects.filter(project => project.section === section.id)
+    }))
+    .filter(area => area.projects.length > 0)
+}));
 const encounterProjects = getTimelineGroups(
   projects.filter(project => project.categories.includes('encuentro'))
 ).flatMap(group => group.projects);
@@ -49,26 +60,33 @@ const encounterProjects = getTimelineGroups(
             <article class="career-year reveal" id={group.id}>
               <div class="career-number">{group.label}</div>
               <div class="career-events">
-                {group.projects.map(project => {
-                  const href = projectTimelineHref(project);
-                  const external = href?.startsWith('http');
+                {group.areas.map(area => (
+                  <section class="career-area" aria-labelledby={`${group.id}-${area.id}`}>
+                    <h3 class="career-area-title" id={`${group.id}-${area.id}`}>{area.title}</h3>
+                    <div class="career-area-events">
+                      {area.projects.map(project => {
+                        const href = projectTimelineHref(project);
+                        const external = href?.startsWith('http');
 
-                  return (
-                    <div class="career-event">
-                      {href ? (
-                        <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
-                          <strong>{project.timelineTitle ?? project.title}</strong>
-                          {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
-                        </a>
-                      ) : (
-                        <span class="career-event-static">
-                          <strong>{project.timelineTitle ?? project.title}</strong>
-                          {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
-                        </span>
-                      )}
+                        return (
+                          <div class="career-event">
+                            {href ? (
+                              <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+                                <strong>{project.timelineTitle ?? project.title}</strong>
+                                {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
+                              </a>
+                            ) : (
+                              <span class="career-event-static">
+                                <strong>{project.timelineTitle ?? project.title}</strong>
+                                {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
-                  );
-                })}
+                  </section>
+                ))}
               </div>
             </article>
           ))}

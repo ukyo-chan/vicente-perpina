@@ -44,5 +44,3 @@ La obra pasó a formar parte de **Vinyetari 5**, volumen publicado por Editorial
 ## Mi participación
 
 El proyecto conecta dos líneas constantes de mi trayectoria: la **narrativa gráfica** y el trabajo en colaboración. La inclusión de la historieta en la antología sitúa el trabajo dentro de un contexto editorial profesional y de creación contemporánea en catalán.
-
-Ampliaré la ficha con imágenes de la publicación o páginas de la historieta cuando seleccione material autorizado para la web.

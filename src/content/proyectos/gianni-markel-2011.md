@@ -38,5 +38,3 @@ El proyecto construye la figura de un artista ficticio y utiliza el formato docu
 ## Mi participación
 
 Participé como coautor en la concepción y realización de la pieza audiovisual. Este trabajo anticipa una línea que también aparece en otros momentos de mi trayectoria: el interés por cruzar **dibujo, relato, animación, vídeo y construcción narrativa** más allá de una única disciplina.
-
-En esta primera ficha me centro en la parte del proyecto documentada directamente por la memoria académica. Podré incorporar información sobre la circulación posterior de la pieza cuando disponga de una fuente pública estable que permita presentarla con el mismo nivel de precisión.

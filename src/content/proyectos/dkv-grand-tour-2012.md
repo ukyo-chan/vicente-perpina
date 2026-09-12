@@ -75,6 +75,6 @@ El programa Grand Tour incluía además la presentación posterior de los trabaj
 
 Después de la estancia, mi trabajo formó parte de distintas presentaciones vinculadas al programa. En septiembre de 2013 se incluyó en la exposición **Becas DKV Grand Tour 2011–2012**, celebrada en la Galería del Tossal de València.
 
-En 2013, la exposición del quinto aniversario reunió en Málaga trabajos de artistas participantes en las cinco primeras ediciones, en el Archivo Municipal y la Sala Moreno Villa. La memoria de la Cátedra DKV también documenta una presentación posterior en el Museo de Arte Contemporáneo Gas Natural de A Coruña, inaugurada en enero de 2014.
+En 2013, la exposición del quinto aniversario reunió en Málaga trabajos de artistas participantes en las cinco primeras ediciones, en el Archivo Municipal y la Sala Moreno Villa. En enero de 2014, mi trabajo se presentó también en el Museo de Arte Contemporáneo Gas Natural de A Coruña.
 
-El catálogo polaco **Artystyczna Podróż Hestii 2013** me identifica como ganador del Grand Tour DKV 2012 y recoge la obra **Trzy portrety**. Lo conservo como referencia del intercambio internacional del programa, sin atribuirle una sede concreta que esa fuente no especifica.
+En el catálogo polaco **Artystyczna Podróż Hestii 2013** aparezco como ganador del Grand Tour DKV 2012 junto a la obra **Trzy portrety**.

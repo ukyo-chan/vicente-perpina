@@ -8,8 +8,8 @@ categorias:
 - divulgacion
 - encuentro
 seccion: ilustracion-editorial
-resumen: "Participé en Ilustrafic 2 con una aportación dedicada al valor de la imagen en las adaptaciones de cuentos clásicos, su vigencia y su influencia en el imaginario colectivo. El trabajo quedó publicado en las actas del congreso."
-rol: "Comunicación · publicación en actas"
+resumen: "Participé como ponente en Ilustrafic 2 con «El valor de la imagen en la adaptación de cuentos clásicos. Vigencia, valores e impacto en el imaginario colectivo». El trabajo quedó además publicado en el Libro de actas del congreso."
+rol: "Ponente · autor del trabajo publicado en el Libro de actas"
 entidad: "Ilustrafic 2 · Universitat Politècnica de València"
 fechas: "1–3 de octubre de 2015"
 publicar: true
@@ -18,18 +18,18 @@ mostrarObra: false
 mostrarTrayectoria: true
 trayectoriaFecha: '2015'
 trayectoriaTitulo: "El valor de la imagen en la adaptación de cuentos clásicos. Vigencia, valores e impacto en el imaginario colectivo"
-trayectoriaDetalle: "Comunicación · publicación en actas"
+trayectoriaDetalle: "Ponente · publicación en el Libro de actas"
 ordenTrayectoria: 2015
 ordenTrayectoriaItem: 40
 relacionados:
 - cuentos-populares-2015
 enlaces:
-- texto: "Aportación publicada en las actas de Ilustrafic 2"
+- texto: "Trabajo publicado en el Libro de actas de Ilustrafic 2"
   url: https://doi.org/10.4995/ILUSTRAFIC/ILUSTRAFIC2015/464
 verificacion:
-  estado: externa
-  notas: "La documentación institucional confirma el congreso, la participación de Vicente, el título de la aportación y su publicación en las actas."
+  estado: mixta
+  notas: "El Libro de actas documenta el congreso, la autoría, el título del trabajo y su publicación; Vicente confirma directamente su participación como ponente."
   fuentes:
-  - nombre: "Ilustrafic 2 · Universitat Politècnica de València"
+  - nombre: "Ilustrafic 2 · Libro de actas · Universitat Politècnica de València"
     url: https://doi.org/10.4995/ILUSTRAFIC/ILUSTRAFIC2015/464
 ---
