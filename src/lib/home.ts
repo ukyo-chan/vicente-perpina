@@ -8,6 +8,13 @@ import type { TeachingExperience } from './teaching';
 
 export type HomeAreaPattern = 'a' | 'b' | 'c';
 
+export interface HomeAreaEditorial {
+  contextTitle: string;
+  contextText: string;
+  archiveTitle: string;
+  archiveText: string;
+}
+
 interface HomeAreaBase {
   id: string;
   title: string;
@@ -21,6 +28,7 @@ export interface HomeProjectArea extends HomeAreaBase {
   kind: 'projects';
   id: ProjectSectionId;
   projects: Project[];
+  editorial: HomeAreaEditorial;
 }
 
 export interface HomeTeachingArea extends HomeAreaBase {
@@ -38,11 +46,55 @@ export interface HomeRecentWindow {
 }
 
 const HOME_AREA_ORDER = [
-  { kind: 'projects', section: 'obra-exposiciones', href: '/obra/#obra-exposiciones', ctaLabel: 'Explorar obra y exposiciones' },
-  { kind: 'projects', section: 'comic-edicion', href: '/obra/#comic-edicion', ctaLabel: 'Explorar cómic y edición' },
+  {
+    kind: 'projects',
+    section: 'obra-exposiciones',
+    href: '/obra/#obra-exposiciones',
+    ctaLabel: 'Explorar obra y exposiciones',
+    editorial: {
+      contextTitle: 'Dibujo en el espacio expositivo',
+      contextText: 'Proyectos individuales y colectivos donde el dibujo y la ilustración dialogan con el espacio expositivo.',
+      archiveTitle: 'Más obra en el archivo',
+      archiveText: 'El archivo reúne otras exposiciones y proyectos desarrollados a lo largo de mi trayectoria.'
+    }
+  },
+  {
+    kind: 'projects',
+    section: 'comic-edicion',
+    href: '/obra/#comic-edicion',
+    ctaLabel: 'Explorar cómic y edición',
+    editorial: {
+      contextTitle: 'Publicar también es crear',
+      contextText: 'Creación gráfica, autoedición y proyectos colectivos donde la publicación funciona también como espacio de encuentro.',
+      archiveTitle: 'Cómic, edición y autoedición',
+      archiveText: 'El archivo reúne publicaciones y proyectos editoriales de distintas etapas de mi trayectoria.'
+    }
+  },
   { kind: 'teaching', id: 'docencia', href: '/docencia/', ctaLabel: 'Explorar mi experiencia docente' },
-  { kind: 'projects', section: 'ilustracion-editorial', href: '/obra/#ilustracion-editorial', ctaLabel: 'Explorar ilustración editorial' },
-  { kind: 'projects', section: 'animacion-audiovisual', href: '/obra/#animacion-audiovisual', ctaLabel: 'Explorar animación y audiovisual' }
+  {
+    kind: 'projects',
+    section: 'ilustracion-editorial',
+    href: '/obra/#ilustracion-editorial',
+    ctaLabel: 'Explorar ilustración editorial',
+    editorial: {
+      contextTitle: 'Ilustrar también es acompañar un texto',
+      contextText: 'Encargos de portada e interior y proyectos donde la ilustración acompaña y amplía el contenido escrito.',
+      archiveTitle: 'Más trabajo editorial',
+      archiveText: 'El archivo reúne otros encargos y proyectos de ilustración editorial.'
+    }
+  },
+  {
+    kind: 'projects',
+    section: 'animacion-audiovisual',
+    href: '/obra/#animacion-audiovisual',
+    ctaLabel: 'Explorar animación y audiovisual',
+    editorial: {
+      contextTitle: 'Imagen en movimiento',
+      contextText: 'Animación y audiovisual vinculados a mi formación y a distintas etapas de mi práctica artística.',
+      archiveTitle: 'Más proyectos audiovisuales',
+      archiveText: 'El archivo reúne otros trabajos de animación y creación audiovisual.'
+    }
+  }
 ] as const;
 
 const HOME_PATTERNS: HomeAreaPattern[] = ['a', 'b', 'c'];
@@ -60,13 +112,30 @@ export function getHomeRecentWindow(currentYear = new Date().getFullYear()): Hom
   return { currentYear, cutoffYear: currentYear - 2 };
 }
 
-export function projectActivityYear(project: Project): number | undefined {
-  return project.year ?? yearFromDate(project.startDate) ?? yearFromDate(project.endDate);
+export function projectLatestActivityYear(project: Project): number | undefined {
+  const structuredDateYears = [
+    yearFromDate(project.endDate),
+    yearFromDate(project.startDate)
+  ].filter((year): year is number => year !== undefined);
+
+  if (structuredDateYears.length > 0) {
+    const knownYears = project.year === undefined
+      ? structuredDateYears
+      : [...structuredDateYears, project.year];
+    return Math.max(...knownYears);
+  }
+
+  const fallbackYears = [
+    project.year,
+    lastYearFromSimpleRange(project.dateText)
+  ].filter((year): year is number => year !== undefined);
+
+  return fallbackYears.length > 0 ? Math.max(...fallbackYears) : undefined;
 }
 
 export function isProjectRecent(project: Project, currentYear = new Date().getFullYear()): boolean {
   const { cutoffYear } = getHomeRecentWindow(currentYear);
-  const activityYear = projectActivityYear(project);
+  const activityYear = projectLatestActivityYear(project);
   return activityYear !== undefined && activityYear >= cutoffYear && activityYear <= currentYear;
 }
 
@@ -142,7 +211,8 @@ export function getHomeActiveAreas(
       href: definition.href,
       ctaLabel: definition.ctaLabel,
       pattern,
-      projects: recentProjects.slice(0, 4)
+      projects: recentProjects.slice(0, 4),
+      editorial: definition.editorial
     });
   }
 
@@ -179,4 +249,13 @@ function compareTeachingRecency(
 function yearFromDate(value?: string): number | undefined {
   const match = value?.match(/^\d{4}/);
   return match ? Number(match[0]) : undefined;
+}
+
+function lastYearFromSimpleRange(value?: string): number | undefined {
+  const match = value?.match(/^\s*(\d{4})\s*[-\u2013\u2014]\s*(\d{4})\s*$/u);
+  if (!match) return undefined;
+
+  const startYear = Number(match[1]);
+  const endYear = Number(match[2]);
+  return endYear >= startYear ? endYear : undefined;
 }

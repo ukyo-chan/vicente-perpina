@@ -29,8 +29,8 @@ const featuredExperience = area.kind === 'teaching' ? area.experiences[0] : unde
           <HomeComicTextPanel
             variant="speech"
             kicker="Sobre esta área"
-            title="Una práctica en movimiento"
-            text={area.description}
+            title={area.editorial.contextTitle}
+            text={area.editorial.contextText}
           />
         )}
 
@@ -38,8 +38,8 @@ const featuredExperience = area.kind === 'teaching' ? area.experiences[0] : unde
           <HomeComicTextPanel
             variant="caption"
             kicker="Archivo abierto"
-            title="Más allá de lo reciente"
-            text="El resto del recorrido de esta área permanece disponible en el archivo de Obra."
+            title={area.editorial.archiveTitle}
+            text={area.editorial.archiveText}
           />
         )}
 
