@@ -1,0 +1,38 @@
+---
+interface Props {
+  variant: 'speech' | 'caption' | 'areas' | 'cta' | 'closing';
+  kicker?: string;
+  title: string;
+  text?: string;
+  href?: string;
+  linkLabel?: string;
+  items?: string[];
+}
+
+const { variant, kicker, title, text, href, linkLabel, items = [] } = Astro.props;
+const classes = ['home-comic-panel', 'home-comic-text-panel', `home-comic-text-panel--${variant}`];
+---
+{href ? (
+  <a class:list={classes} href={href}>
+    {kicker && <span class="home-comic-panel-kicker">{kicker}</span>}
+    <h3>{title}</h3>
+    {text && <p>{text}</p>}
+    {items.length > 0 && (
+      <ul class="home-comic-area-list">
+        {items.map(item => <li>{item}</li>)}
+      </ul>
+    )}
+    {linkLabel && <span class="home-comic-panel-link">{linkLabel} →</span>}
+  </a>
+) : (
+  <article class:list={classes}>
+    {kicker && <span class="home-comic-panel-kicker">{kicker}</span>}
+    <h3>{title}</h3>
+    {text && <p>{text}</p>}
+    {items.length > 0 && (
+      <ul class="home-comic-area-list">
+        {items.map(item => <li>{item}</li>)}
+      </ul>
+    )}
+  </article>
+)}

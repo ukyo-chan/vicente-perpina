@@ -1,0 +1,33 @@
+---
+import type { Project } from '../../lib/projects';
+import { projectDateLabel, projectPrimaryHref, projectTypeLabel } from '../../lib/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const title = project.homeTitle ?? project.title;
+const type = project.homeType ?? projectTypeLabel(project.type);
+const summary = project.homeSummary ?? project.summary;
+const image = project.image;
+---
+<a
+  class:list={['home-comic-panel', 'home-comic-project-panel', image ? 'home-comic-project-panel--visual' : 'home-comic-project-panel--text']}
+  href={projectPrimaryHref(project)}
+>
+  {image && (
+    <span class="home-comic-project-media">
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    </span>
+  )}
+  <span class="home-comic-project-body">
+    <span class="home-comic-project-meta">
+      <span>{projectDateLabel(project)}</span>
+      <span>{type}</span>
+    </span>
+    <h3>{title}</h3>
+    {!image && summary && <span class="home-comic-project-summary">{summary}</span>}
+    <span class="home-comic-panel-link">Ver proyecto →</span>
+  </span>
+</a>

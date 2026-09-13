@@ -70,3 +70,7 @@ export async function loadTeaching(): Promise<TeachingExperience[]> {
     .map(teachingFromEntry)
     .sort((first, second) => first.order - second.order);
 }
+
+export function teachingPrimaryHref(experience: TeachingExperience): string {
+  return experience.detail ? `/docencia/${experience.slug}/` : '/docencia/';
+}

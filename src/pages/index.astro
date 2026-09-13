@@ -1,11 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeProjectCard from '../components/projects/HomeProjectCard.astro';
-import { getHomeFeaturedProjects, getHomeHighlights, loadProjects, projectDateLabel, projectPrimaryHref } from '../lib/projects';
+import HomeComicArea from '../components/home/HomeComicArea.astro';
+import HomeComicTextPanel from '../components/home/HomeComicTextPanel.astro';
+import { getHomeActiveAreas, getHomeRecentWindow } from '../lib/home';
+import { loadProjects } from '../lib/projects';
+import { loadTeaching } from '../lib/teaching';
 
 const projects = await loadProjects();
-const featuredProjects = getHomeFeaturedProjects(projects);
-const homeHighlights = getHomeHighlights(projects);
+const teaching = await loadTeaching();
+const currentYear = new Date().getFullYear();
+const recentWindow = getHomeRecentWindow(currentYear);
+const homeAreas = getHomeActiveAreas(projects, teaching, currentYear);
 ---
 <BaseLayout
   title="Vicente Perpiñá Giner · Ilustración, cómic y docencia"
@@ -38,73 +43,60 @@ const homeHighlights = getHomeHighlights(projects);
       </div>
     </section>
 
-    <section class="section soft">
+    <section class="home-recent-work" aria-labelledby="home-recent-title">
       <div class="container">
-        <div class="section-heading reveal">
+        <div class="home-recent-intro reveal">
           <div>
-            <p class="eyebrow">Selección</p>
-            <h2>Proyectos destacados</h2>
+            <p class="eyebrow">{recentWindow.cutoffYear}–{recentWindow.currentYear}</p>
+            <h2 id="home-recent-title">Trabajo reciente</h2>
           </div>
-          <p>Aquí reúno una trayectoria pública que cruza ilustración, exposición, cómic y proyectos culturales.</p>
+          <p>Aquí reúno las áreas en las que mi trabajo está más activo ahora.</p>
         </div>
 
-        <div class="featured-grid">
-          {featuredProjects.map(project => <HomeProjectCard project={project} />)}
+        <div class="home-comic-areas">
+          {homeAreas.map((area, index) => (
+            <HomeComicArea area={area} number={String(index + 1).padStart(2, '0')} />
+          ))}
         </div>
-
-        {homeHighlights.length > 0 && (
-          <div class="highlight-strip reveal" aria-label="Otros hitos recientes">
-            {homeHighlights.map(project => (
-              <a href={projectPrimaryHref(project)}>
-                <strong>{projectDateLabel(project)}</strong>
-                {project.homeHighlightText ?? project.title}
-              </a>
-            ))}
-          </div>
-        )}
       </div>
     </section>
 
-    <section class="section">
+    <section class="home-closing-section" aria-labelledby="home-closing-title">
       <div class="container">
-        <div class="section-heading reveal">
+        <div class="home-closing-heading reveal">
           <div>
-            <p class="eyebrow">Perfil</p>
-            <h2>Crear, editar, enseñar</h2>
+            <p class="eyebrow">El archivo continúa</p>
+            <h2 id="home-closing-title">Seguir explorando</h2>
           </div>
-          <p>Mi práctica artística y mi experiencia docente forman parte de un mismo recorrido profesional.</p>
+          <p>Trayectoria, prensa y contacto completan el recorrido.</p>
         </div>
 
-        <div class="cards">
-          <a class="card reveal" href="/obra/">
-            <span class="card-kicker">01 · Obra, cómic y edición</span>
-            <h3>Ilustración, cómic y proyectos editoriales</h3>
-            <p>Reúno proyectos de dibujo e ilustración, exposiciones, autoedición, antologías, Edicions Anònimes, Plaça del Mercat y cómic de carácter social.</p>
-          </a>
-
-          <a class="card reveal" href="/docencia/">
-            <span class="card-kicker">02 · Docencia</span>
-            <h3>El arte también educa</h3>
-            <p>Enseño dibujo, pintura, ilustración, cómic y dibujo técnico a niños, jóvenes y adultos.</p>
-          </a>
-
-          <a class="card reveal" href="/trayectoria/">
-            <span class="card-kicker">03 · Trayectoria</span>
-            <h3>Más de quince años de recorrido</h3>
-            <p>En mi trayectoria reúno formación artística, animación, audiovisual, proyectos públicos y experiencia educativa.</p>
-          </a>
-
-          <a class="card reveal" href="/prensa/">
-            <span class="card-kicker">04 · Prensa</span>
-            <h3>Prensa y medios</h3>
-            <p>Mi archivo de prensa reúne entrevistas, reportajes, crónicas y apariciones vinculadas a mi trabajo.</p>
-          </a>
+        <div class="home-closing-grid reveal">
+          <HomeComicTextPanel
+            variant="closing"
+            kicker="Trayectoria"
+            title="Mi recorrido"
+            text="Cronología, encuentros y base académica."
+            href="/trayectoria/"
+            linkLabel="Recorrer mi trayectoria"
+          />
+          <HomeComicTextPanel
+            variant="closing"
+            kicker="En medios"
+            title="Prensa y medios"
+            text="Entrevistas, reportajes, crónicas y otras apariciones."
+            href="/prensa/"
+            linkLabel="Consultar prensa"
+          />
+          <HomeComicTextPanel
+            variant="closing"
+            kicker="Contacto"
+            title="Hablemos"
+            text="Si quieres contar conmigo para un proyecto, puedes escribirme."
+            href="/contacto/"
+            linkLabel="Contactar"
+          />
         </div>
-
-        <p class="quote reveal">
-          <span>«Un gran poder conlleva una gran responsabilidad»</span>
-          <cite>— Stan Lee</cite>
-        </p>
       </div>
     </section>
   </main>

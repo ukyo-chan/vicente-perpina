@@ -1,0 +1,94 @@
+---
+import type { HomeArea } from '../../lib/home';
+import { teachingPrimaryHref } from '../../lib/teaching';
+import HomeComicProjectPanel from './HomeComicProjectPanel.astro';
+import HomeComicTextPanel from './HomeComicTextPanel.astro';
+
+interface Props {
+  area: HomeArea;
+  number: string;
+}
+
+const { area, number } = Astro.props;
+const headerHasCta = area.kind === 'projects' && area.projects.length >= 4;
+const featuredExperience = area.kind === 'teaching' ? area.experiences[0] : undefined;
+---
+<section class:list={['home-comic-area', `home-comic-area--pattern-${area.pattern}`]} aria-labelledby={`home-area-${area.id}`}>
+  <header class="home-comic-area-header reveal">
+    <span class="home-comic-area-number">{number}</span>
+    <h2 id={`home-area-${area.id}`}>{area.title}</h2>
+    {headerHasCta && <a href={area.href}>{area.ctaLabel} →</a>}
+  </header>
+
+  <div class="home-comic-strip reveal">
+    {area.kind === 'projects' ? (
+      <>
+        {area.projects.map(project => <HomeComicProjectPanel project={project} />)}
+
+        {area.projects.length <= 2 && (
+          <HomeComicTextPanel
+            variant="speech"
+            kicker="Sobre esta área"
+            title="Una práctica en movimiento"
+            text={area.description}
+          />
+        )}
+
+        {area.projects.length === 1 && (
+          <HomeComicTextPanel
+            variant="caption"
+            kicker="Archivo abierto"
+            title="Más allá de lo reciente"
+            text="El resto del recorrido de esta área permanece disponible en el archivo de Obra."
+          />
+        )}
+
+        {area.projects.length < 4 && (
+          <HomeComicTextPanel
+            variant="cta"
+            kicker="Seguir explorando"
+            title={area.title}
+            href={area.href}
+            linkLabel={area.ctaLabel}
+          />
+        )}
+      </>
+    ) : (
+      <>
+        <HomeComicTextPanel
+          variant="speech"
+          kicker="Mi forma de enseñar"
+          title="Enseñar desde la práctica artística"
+          text="Trabajo desde el dibujo, la pintura, la ilustración, el cómic y el dibujo técnico, adaptando el acompañamiento a distintos ritmos y necesidades."
+        />
+
+        {featuredExperience && (
+          <a class="home-comic-panel home-comic-teaching-panel" href={teachingPrimaryHref(featuredExperience)}>
+            <span class="home-comic-project-meta">
+              <span>{featuredExperience.period}</span>
+              <span>{featuredExperience.entity}</span>
+            </span>
+            <h3>{featuredExperience.title}</h3>
+            <p>{featuredExperience.summary}</p>
+            <span class="home-comic-panel-link">Ver experiencia →</span>
+          </a>
+        )}
+
+        <HomeComicTextPanel
+          variant="areas"
+          kicker="Áreas de trabajo"
+          title="Del dibujo a la narración visual"
+          items={area.disciplines}
+        />
+
+        <HomeComicTextPanel
+          variant="cta"
+          kicker="Docencia"
+          title="Mi experiencia docente"
+          href={area.href}
+          linkLabel={area.ctaLabel}
+        />
+      </>
+    )}
+  </div>
+</section>

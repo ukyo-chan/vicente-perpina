@@ -3,14 +3,16 @@ import SocialLinks from './SocialLinks.astro';
 ---
 <footer class="site-footer">
   <div class="container footer-row">
-    <div>© <span data-year></span> Vicente Perpiñá Giner</div>
+    <div class="footer-copyright">© <span data-year></span> Vicente Perpiñá Giner</div>
     <div class="footer-links">
-      <a href="/obra/">Obra</a>
-      <a href="/docencia/">Docencia</a>
-      <a href="/trayectoria/">Trayectoria</a>
-      <a href="/prensa/">Prensa</a>
-      <a href="/contacto/">Contacto</a>
-      <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
+      <div class="footer-nav-links">
+        <a href="/obra/">Obra</a>
+        <a href="/docencia/">Docencia</a>
+        <a href="/trayectoria/">Trayectoria</a>
+        <a href="/prensa/">Prensa</a>
+        <a href="/contacto/">Contacto</a>
+        <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
+      </div>
       <SocialLinks placement="footer" />
     </div>
   </div>
