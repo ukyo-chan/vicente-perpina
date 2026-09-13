@@ -29,7 +29,7 @@ ordenTrayectoriaItem: 10
 enlaces:
   - texto: "Ficha del catálogo en la Universitat de València"
     url: "https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050"
-relacionados: [37-ilustres-2025, dkv-grand-tour-2012, cuentos-apocopados-2015, ilustrafic-2-2015]
+relacionados: [37-ilustres-2025, dkv-grand-tour-2012, cuentos-apocopados-2015, ilustrafic-2-2015, insertar-feminismo-aqui-2016]
 verificacion:
   estado: mixta
   notas: "La ficha bibliográfica confirma la exposición, las fechas, el espacio y la existencia del catálogo; Vicente confirma directamente la amplitud de soportes y lenguajes del conjunto original."
