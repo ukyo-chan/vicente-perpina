@@ -75,18 +75,55 @@
 
 .theme-comic .site-header .nav-links a[aria-current="page"] {
   position: relative;
+  isolation: isolate;
   background: transparent;
   color: var(--comic-outline);
 }
 
-.theme-comic .site-header .nav-links a[aria-current="page"]::after {
-  content: "";
+.theme-comic .site-header .nav-links a[aria-current="page"] > span {
+  position: relative;
+  z-index: 1;
+}
+
+.theme-comic .nav-active-ring {
   position: absolute;
-  inset: 1px -4px 0;
-  border: 3px solid var(--comic-gold);
-  border-radius: 51% 46% 53% 48% / 55% 48% 52% 45%;
+  z-index: 0;
+  top: 0;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 100%;
+  overflow: visible;
   pointer-events: none;
   transform: rotate(-2.5deg);
+}
+
+.theme-comic .nav-active-ring path {
+  fill: none;
+  stroke: var(--comic-gold);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1.06 1;
+  stroke-dashoffset: 1.06;
+  vector-effect: non-scaling-stroke;
+  animation: comic-nav-ring-draw .72s cubic-bezier(.45, 0, .2, 1) .06s forwards;
+}
+
+@keyframes comic-nav-ring-draw {
+  from {
+    stroke-dashoffset: 1.06;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-comic .nav-active-ring path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
 
 .theme-comic .social-icon-link,

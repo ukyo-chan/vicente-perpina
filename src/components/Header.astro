@@ -7,6 +7,15 @@ const isCurrent = (route) => {
   if (route === '/') return pathname === '/';
   return pathname === route || pathname.startsWith(`${route}`);
 };
+
+const navigation = [
+  { href: '/', label: 'Inicio', current: isCurrent('/') },
+  { href: '/obra/', label: 'Obra', current: isCurrent('/obra/') || pathname.startsWith('/proyectos/') },
+  { href: '/docencia/', label: 'Docencia', current: isCurrent('/docencia/') },
+  { href: '/trayectoria/', label: 'Trayectoria', current: isCurrent('/trayectoria/') },
+  { href: '/prensa/', label: 'Prensa', current: isCurrent('/prensa/') },
+  { href: '/contacto/', label: 'Contacto', current: isCurrent('/contacto/') }
+];
 ---
 <header class="site-header">
   <div class="container navbar">
@@ -16,12 +25,25 @@ const isCurrent = (route) => {
       <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
     </div>
     <nav class="nav-links" aria-label="Navegación principal">
-      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Inicio</a>
-      <a href="/obra/" aria-current={(isCurrent('/obra/') || pathname.startsWith('/proyectos/')) ? 'page' : undefined}>Obra</a>
-      <a href="/docencia/" aria-current={isCurrent('/docencia/') ? 'page' : undefined}>Docencia</a>
-      <a href="/trayectoria/" aria-current={isCurrent('/trayectoria/') ? 'page' : undefined}>Trayectoria</a>
-      <a href="/prensa/" aria-current={isCurrent('/prensa/') ? 'page' : undefined}>Prensa</a>
-      <a href="/contacto/" aria-current={isCurrent('/contacto/') ? 'page' : undefined}>Contacto</a>
+      {navigation.map(({ href, label, current }) => (
+        <a href={href} aria-current={current ? 'page' : undefined}>
+          <span>{label}</span>
+          {current && (
+            <svg
+              class="nav-active-ring"
+              viewBox="0 0 100 44"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                pathLength="1"
+                d="M 7 22 C 7 9, 23 3, 49 3 C 76 2, 94 8, 95 21 C 96 34, 79 41, 51 41 C 24 42, 6 35, 7 22 Z"
+              ></path>
+            </svg>
+          )}
+        </a>
+      ))}
       <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
       <SocialLinks placement="header" />
     </nav>
