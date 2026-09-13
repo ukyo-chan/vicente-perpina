@@ -2,9 +2,11 @@
 titulo: "¡Eso no es cómic! Fanzines: vanguardia e innovación del cómic en España"
 anio: 2025
 fechaTexto: "16 de mayo – 9 de noviembre de 2025"
+fechaInicio: "2025-05-16"
+fechaFin: "2025-11-09"
 tipoPrincipal: exposicion
 categorias: [exposicion, comic, edicion]
-seccion: comic-edicion
+seccion: obra-exposiciones
 resumen: "Plaça del Mercat formó parte de la selección de publicaciones y fanzines reunida en esta exposición del IVAM sobre la experimentación y la autoedición en el cómic."
 rol: "Publicación vinculada a mi trayectoria"
 entidad: "IVAM Centre Julio González"

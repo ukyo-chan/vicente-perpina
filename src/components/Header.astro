@@ -1,4 +1,6 @@
 ---
+import SocialLinks from './SocialLinks.astro';
+
 const pathname = Astro.url.pathname;
 
 const isCurrent = (route) => {
@@ -9,7 +11,10 @@ const isCurrent = (route) => {
 <header class="site-header">
   <div class="container navbar">
     <a class="brand" href="/">VICENTE PERPIÑÁ GINER</a>
-    <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <div class="mobile-header-actions">
+      <SocialLinks placement="header-mobile" />
+      <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
     <nav class="nav-links" aria-label="Navegación principal">
       <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Inicio</a>
       <a href="/obra/" aria-current={(isCurrent('/obra/') || pathname.startsWith('/proyectos/')) ? 'page' : undefined}>Obra</a>
@@ -18,6 +23,7 @@ const isCurrent = (route) => {
       <a href="/prensa/" aria-current={isCurrent('/prensa/') ? 'page' : undefined}>Prensa</a>
       <a href="/contacto/" aria-current={isCurrent('/contacto/') ? 'page' : undefined}>Contacto</a>
       <a href="https://blog.vicenteperpina.com" target="_blank" rel="noopener">Blog</a>
+      <SocialLinks placement="header" />
     </nav>
   </div>
 </header>
