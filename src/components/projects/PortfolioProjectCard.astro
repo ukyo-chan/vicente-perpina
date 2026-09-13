@@ -15,7 +15,6 @@ const meta = project.obraMeta ?? project.entity ?? projectTypeLabel(project.type
 const date = projectDateLabel(project);
 const firstLink = project.links[0];
 const detailHref = project.detail ? `/proyectos/${project.id}/` : undefined;
-const categories = project.categories.join(' ');
 const image = project.image;
 const linked = Boolean(image && detailHref);
 ---
@@ -23,8 +22,6 @@ const linked = Boolean(image && detailHref);
   <article
     class:list={['media-item', image && 'media-item--with-image', linked && 'project-card--linked', 'reveal']}
     id={anchor}
-    data-project-item
-    data-project-categories={categories}
   >
     {image && (
       <div class="project-card-media" aria-hidden="true">
@@ -58,8 +55,6 @@ const linked = Boolean(image && detailHref);
       'reveal'
     ]}
     id={anchor}
-    data-project-item
-    data-project-categories={categories}
   >
     {image && (
       <div class="project-card-media" aria-hidden="true">
@@ -92,8 +87,6 @@ const linked = Boolean(image && detailHref);
       'reveal'
     ]}
     id={anchor}
-    data-project-item
-    data-project-categories={categories}
   >
     {image && (
       <div class="project-card-media" aria-hidden="true">

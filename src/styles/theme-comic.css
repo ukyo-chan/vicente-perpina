@@ -140,6 +140,35 @@
   background: var(--comic-gold);
 }
 
+.theme-comic .menu-button {
+  border: 3px solid var(--comic-outline);
+  border-radius: 46% 40% 48% 42% / 43% 49% 40% 52%;
+  background: var(--comic-surface);
+  color: var(--comic-outline);
+  box-shadow: 2px 2px 0 var(--comic-gold);
+  font-size: 1.45rem;
+  line-height: 1;
+  transform: rotate(-1.5deg);
+  transition:
+    transform .18s ease,
+    background-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.theme-comic .menu-button:hover,
+.theme-comic .menu-button:focus-visible,
+.theme-comic .menu-button[aria-expanded="true"] {
+  background: var(--comic-gold);
+  box-shadow: 3px 3px 0 var(--comic-shadow);
+  transform: translate(-1px, -1px) rotate(1deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-comic .menu-button {
+    transition: none;
+  }
+}
+
 .theme-comic .hero,
 .theme-comic .page-hero {
   position: relative;
@@ -358,7 +387,6 @@
 
 /* Medium graphic intensity for controls and compact metadata surfaces. */
 .theme-comic .btn,
-.theme-comic .portfolio-filter,
 .theme-comic .tag,
 .theme-comic .project-tags span,
 .theme-comic .teaching-detail-tags .tag,
@@ -375,18 +403,11 @@
 }
 
 .theme-comic .btn.secondary,
-.theme-comic .portfolio-filter,
 .theme-comic .tag,
 .theme-comic .project-tags span,
 .theme-comic .teaching-detail-tags .tag {
   background: var(--comic-surface);
   color: var(--comic-outline);
-}
-
-.theme-comic .portfolio-filter[aria-pressed="true"] {
-  background: var(--comic-surface-dark);
-  color: var(--comic-outline);
-  box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .22);
 }
 
 .theme-comic .panel {

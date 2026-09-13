@@ -4,15 +4,6 @@ import PortfolioProjectCard from '../../components/projects/PortfolioProjectCard
 import { PROJECT_SECTIONS, getObraArchiveProjects, getObraProjects, loadProjects } from '../../lib/projects';
 
 const projects = await loadProjects();
-const filters = [
-  ['todos', 'Todos'],
-  ['ilustracion', 'Ilustración'],
-  ['exposicion', 'Exposición'],
-  ['comic', 'Cómic'],
-  ['edicion', 'Edición'],
-  ['animacion', 'Animación'],
-  ['audiovisual', 'Audiovisual']
-] as const;
 ---
 <BaseLayout
   title="Obra y proyectos · Vicente Perpiñá Giner"
@@ -36,24 +27,6 @@ const filters = [
       </nav>
     </div>
 
-    <section class="portfolio-filter-wrap" aria-label="Filtrar proyectos">
-      <div class="container portfolio-filter-inner">
-        <div class="portfolio-filters" role="group" aria-label="Categoría">
-          {filters.map(([value, label], index) => (
-            <button
-              class="portfolio-filter"
-              type="button"
-              data-project-filter={value}
-              aria-pressed={index === 0 ? 'true' : 'false'}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <p class="portfolio-filter-status" data-filter-status aria-live="polite"></p>
-      </div>
-    </section>
-
     {PROJECT_SECTIONS.map(section => {
       const sectionProjects = getObraProjects(projects, section.id);
       const archiveProjects = getObraArchiveProjects(projects, section.id);
@@ -63,7 +36,6 @@ const filters = [
         <section
           class:list={['section', soft && 'soft']}
           id={section.id}
-          data-project-section
         >
           <div class="container">
             <div class="section-heading reveal">
@@ -93,17 +65,12 @@ const filters = [
             )}
 
             {archiveProjects.length > 0 && (
-              <div class="archive-panel reveal" data-project-archive>
+              <div class="archive-panel reveal">
                 <p class="eyebrow">Autoedición y colaboraciones</p>
                 <h3>Otros proyectos gráficos</h3>
                 <div class="archive-tags">
                   {archiveProjects.map(project => (
-                    <span
-                      data-project-item
-                      data-project-categories={project.categories.join(' ')}
-                    >
-                      {project.title}
-                    </span>
+                    <span>{project.title}</span>
                   ))}
                 </div>
               </div>
@@ -120,8 +87,4 @@ const filters = [
       );
     })}
   </main>
-
-  <script>
-    import '../../scripts/portfolio-filter.js';
-  </script>
 </BaseLayout>
