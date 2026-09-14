@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ImageGallery from '../../components/gallery/ImageGallery.astro';
 import TeachingSchedule from '../../components/teaching/TeachingSchedule.astro';
 import TeachingSteps from '../../components/teaching/TeachingSteps.astro';
 import {
@@ -97,15 +98,12 @@ const entityLine = [
           {experience.gallery.length > 0 && (
             <section class="teaching-detail-section" aria-labelledby="galeria-title">
               <p class="eyebrow">Documentación visual</p>
-              <h2 id="galeria-title">Galería</h2>
-              <div class="teaching-gallery">
-                {experience.gallery.map((image) => (
-                  <figure>
-                    <img src={image.src} alt={image.alt} loading="lazy" />
-                    {image.pie && <figcaption>{image.pie}</figcaption>}
-                  </figure>
-                ))}
-              </div>
+              <ImageGallery
+                images={experience.gallery}
+                heading="Galería"
+                headingId="galeria-title"
+                lightboxLabel="Visor de imágenes"
+              />
             </section>
           )}
 

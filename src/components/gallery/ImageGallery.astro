@@ -1,0 +1,329 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+  pie?: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  heading?: string;
+  headingId?: string;
+  sectionClass?: string;
+  lightboxLabel?: string;
+}
+
+const {
+  images = [],
+  heading = 'Galería',
+  headingId,
+  sectionClass,
+  lightboxLabel = 'Visor de imágenes'
+} = Astro.props;
+---
+{images.length > 0 && (
+  <section
+    class:list={['image-gallery', sectionClass]}
+    aria-labelledby={headingId}
+    aria-label={headingId ? undefined : heading}
+    data-image-gallery
+  >
+    <h2 id={headingId}>{heading}</h2>
+    <div class="image-gallery-grid">
+      {images.map((image, index) => (
+        <figure>
+          <button
+            type="button"
+            class="image-gallery-trigger"
+            data-lightbox-index={index}
+            data-lightbox-caption={image.pie ?? image.alt}
+            aria-label={`Ampliar imagen: ${image.alt}`}
+          >
+            <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+          </button>
+          {image.pie && <figcaption>{image.pie}</figcaption>}
+        </figure>
+      ))}
+    </div>
+
+    <dialog class="image-lightbox" data-image-lightbox aria-label={lightboxLabel}>
+      <div class="image-lightbox-panel">
+        <div class="image-lightbox-toolbar">
+          <span class="image-lightbox-counter" data-lightbox-counter aria-live="polite"></span>
+          <div class="image-lightbox-actions">
+            <button type="button" class="image-lightbox-zoom" data-lightbox-zoom aria-label="Ampliar imagen" title="Ampliar imagen">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="10.5" cy="10.5" r="5.75"></circle>
+                <path d="m15 15 5 5"></path>
+                <path data-lightbox-zoom-sign d="M10.5 7.5v6 M7.5 10.5h6"></path>
+              </svg>
+            </button>
+            <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="Cerrar imagen">×</button>
+          </div>
+        </div>
+
+        <div class="image-lightbox-stage" data-lightbox-stage>
+          {images.length > 1 && (
+            <button type="button" class="image-lightbox-nav image-lightbox-nav--previous" data-lightbox-prev aria-label="Imagen anterior">←</button>
+          )}
+          <div class="image-lightbox-media" data-lightbox-media>
+            <img class="image-lightbox-image" data-lightbox-image alt="" draggable="false" />
+          </div>
+          {images.length > 1 && (
+            <button type="button" class="image-lightbox-nav image-lightbox-nav--next" data-lightbox-next aria-label="Imagen siguiente">→</button>
+          )}
+        </div>
+
+        <p class="image-lightbox-caption" data-lightbox-caption-viewer></p>
+      </div>
+    </dialog>
+  </section>
+)}
+
+<script>
+  const ZOOM_SCALE = 2;
+  const SWIPE_THRESHOLD = 50;
+  const DRAG_THRESHOLD = 7;
+
+  document.querySelectorAll('[data-image-gallery]').forEach((gallery) => {
+    const dialog = gallery.querySelector('[data-image-lightbox]');
+    const closeButton = gallery.querySelector('[data-lightbox-close]');
+    const zoomButton = gallery.querySelector('[data-lightbox-zoom]');
+    const zoomSign = gallery.querySelector('[data-lightbox-zoom-sign]');
+    const previousButton = gallery.querySelector('[data-lightbox-prev]');
+    const nextButton = gallery.querySelector('[data-lightbox-next]');
+    const media = gallery.querySelector('[data-lightbox-media]');
+    const lightboxImage = gallery.querySelector('[data-lightbox-image]');
+    const lightboxCaption = gallery.querySelector('[data-lightbox-caption-viewer]');
+    const counter = gallery.querySelector('[data-lightbox-counter]');
+    const triggers = Array.from(gallery.querySelectorAll('[data-lightbox-index]'));
+
+    if (!(dialog instanceof HTMLDialogElement)
+      || !(closeButton instanceof HTMLButtonElement)
+      || !(zoomButton instanceof HTMLButtonElement)
+      || !(media instanceof HTMLElement)
+      || !(lightboxImage instanceof HTMLImageElement)
+      || !(lightboxCaption instanceof HTMLElement)
+      || !(counter instanceof HTMLElement)
+      || triggers.length === 0) {
+      return;
+    }
+
+    const items = triggers.map((trigger) => {
+      const thumbnail = trigger.querySelector('img');
+      return {
+        src: thumbnail?.getAttribute('src') ?? '',
+        alt: thumbnail?.getAttribute('alt') ?? '',
+        caption: trigger.getAttribute('data-lightbox-caption') ?? thumbnail?.getAttribute('alt') ?? ''
+      };
+    });
+
+    let currentIndex = 0;
+    let zoomed = false;
+    let translateX = 0;
+    let translateY = 0;
+    let lastTrigger = null;
+    let activePointerId = null;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let startTranslateX = 0;
+    let startTranslateY = 0;
+    let pointerMoved = false;
+    let dragging = false;
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getPanBounds() {
+      const mediaRect = media.getBoundingClientRect();
+      const naturalWidth = lightboxImage.naturalWidth;
+      const naturalHeight = lightboxImage.naturalHeight;
+
+      if (!mediaRect.width || !mediaRect.height || !naturalWidth || !naturalHeight) {
+        return { maxX: 0, maxY: 0 };
+      }
+
+      const fitScale = Math.min(mediaRect.width / naturalWidth, mediaRect.height / naturalHeight);
+      const scaledWidth = naturalWidth * fitScale * ZOOM_SCALE;
+      const scaledHeight = naturalHeight * fitScale * ZOOM_SCALE;
+
+      return {
+        maxX: Math.max(0, (scaledWidth - mediaRect.width) / 2),
+        maxY: Math.max(0, (scaledHeight - mediaRect.height) / 2)
+      };
+    }
+
+    function applyTransform() {
+      if (!zoomed) {
+        lightboxImage.style.transform = '';
+        lightboxImage.style.cursor = 'zoom-in';
+        return;
+      }
+
+      const { maxX, maxY } = getPanBounds();
+      translateX = clamp(translateX, -maxX, maxX);
+      translateY = clamp(translateY, -maxY, maxY);
+      lightboxImage.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${ZOOM_SCALE})`;
+      lightboxImage.style.cursor = dragging ? 'grabbing' : 'grab';
+    }
+
+    function updateZoomControl() {
+      dialog.dataset.zoomed = String(zoomed);
+      zoomButton.setAttribute('aria-label', zoomed ? 'Ajustar imagen' : 'Ampliar imagen');
+      zoomButton.setAttribute('title', zoomed ? 'Ajustar imagen' : 'Ampliar imagen');
+      zoomSign?.setAttribute('d', zoomed ? 'M7.5 10.5h6' : 'M10.5 7.5v6 M7.5 10.5h6');
+    }
+
+    function resetZoom() {
+      zoomed = false;
+      translateX = 0;
+      translateY = 0;
+      dragging = false;
+      updateZoomControl();
+      applyTransform();
+    }
+
+    function setZoomed(value) {
+      zoomed = value;
+      translateX = 0;
+      translateY = 0;
+      updateZoomControl();
+      applyTransform();
+    }
+
+    function updateImage(index) {
+      currentIndex = (index + items.length) % items.length;
+      resetZoom();
+      const item = items[currentIndex];
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.alt;
+      lightboxCaption.textContent = item.caption;
+      counter.textContent = `${currentIndex + 1} / ${items.length}`;
+    }
+
+    function moveLightbox(delta) {
+      if (items.length < 2) return;
+      updateImage(currentIndex + delta);
+    }
+
+    function closeLightbox() {
+      resetZoom();
+      if (dialog.open) dialog.close();
+      lastTrigger?.focus();
+      lastTrigger = null;
+    }
+
+    function openLightbox(index, trigger) {
+      lastTrigger = trigger;
+      updateImage(index);
+      if (!dialog.open) dialog.showModal();
+      closeButton.focus();
+    }
+
+    function finishPointer(event, cancelled = false) {
+      if (activePointerId !== event.pointerId) return;
+
+      const deltaX = event.clientX - pointerStartX;
+      const deltaY = event.clientY - pointerStartY;
+      const pointerType = event.pointerType;
+      const wasMoved = pointerMoved;
+      const wasZoomed = zoomed;
+      activePointerId = null;
+      dragging = false;
+      if (media.hasPointerCapture(event.pointerId)) media.releasePointerCapture(event.pointerId);
+      applyTransform();
+
+      if (cancelled || wasMoved) {
+        if (!wasZoomed
+          && !cancelled
+          && pointerType !== 'mouse'
+          && Math.abs(deltaX) >= SWIPE_THRESHOLD
+          && Math.abs(deltaX) > Math.abs(deltaY)) {
+          moveLightbox(deltaX < 0 ? 1 : -1);
+        }
+        return;
+      }
+
+      setZoomed(!wasZoomed);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const index = Number(trigger.getAttribute('data-lightbox-index'));
+        openLightbox(index, trigger);
+      });
+    });
+
+    zoomButton.addEventListener('click', () => setZoomed(!zoomed));
+    closeButton.addEventListener('click', closeLightbox);
+    previousButton?.addEventListener('click', () => moveLightbox(-1));
+    nextButton?.addEventListener('click', () => moveLightbox(1));
+
+    media.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      activePointerId = event.pointerId;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      startTranslateX = translateX;
+      startTranslateY = translateY;
+      pointerMoved = false;
+      dragging = false;
+      media.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    media.addEventListener('pointermove', (event) => {
+      if (activePointerId !== event.pointerId) return;
+      const deltaX = event.clientX - pointerStartX;
+      const deltaY = event.clientY - pointerStartY;
+
+      if (Math.hypot(deltaX, deltaY) >= DRAG_THRESHOLD) pointerMoved = true;
+      if (!zoomed || !pointerMoved) return;
+
+      dragging = true;
+      translateX = startTranslateX + deltaX;
+      translateY = startTranslateY + deltaY;
+      applyTransform();
+      event.preventDefault();
+    });
+
+    media.addEventListener('pointerup', (event) => finishPointer(event));
+    media.addEventListener('pointercancel', (event) => finishPointer(event, true));
+
+    lightboxImage.addEventListener('load', () => {
+      if (zoomed) applyTransform();
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) closeLightbox();
+    });
+
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeLightbox();
+    });
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        moveLightbox(-1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        moveLightbox(1);
+      } else if (event.key === '+') {
+        event.preventDefault();
+        setZoomed(true);
+      } else if (event.key === '-' || event.key === '0') {
+        event.preventDefault();
+        setZoomed(false);
+      }
+    });
+
+    const resetOnResize = () => {
+      if (dialog.open) resetZoom();
+    };
+    window.addEventListener('resize', resetOnResize);
+    window.visualViewport?.addEventListener('resize', resetOnResize);
+  });
+</script>
