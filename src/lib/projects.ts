@@ -253,18 +253,6 @@ export function projectTimelineHref(project: Project): string | undefined {
   return project.links[0]?.url;
 }
 
-export function getHomeFeaturedProjects(projects: Project[]): Project[] {
-  return projects
-    .filter(project => project.featuredHome)
-    .sort((a, b) => (a.homeOrder ?? 999) - (b.homeOrder ?? 999));
-}
-
-export function getHomeHighlights(projects: Project[]): Project[] {
-  return projects
-    .filter(project => project.homeHighlight)
-    .sort((a, b) => (a.homeHighlightOrder ?? 999) - (b.homeHighlightOrder ?? 999));
-}
-
 export function getObraProjects(projects: Project[], section: ProjectSectionId): Project[] {
   return projects
     .filter(project => project.showInObra && !project.archiveInObra && project.section === section)

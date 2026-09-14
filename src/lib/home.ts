@@ -113,24 +113,14 @@ export function getHomeRecentWindow(currentYear = new Date().getFullYear()): Hom
 }
 
 export function projectLatestActivityYear(project: Project): number | undefined {
-  const structuredDateYears = [
+  const candidateYears = [
     yearFromDate(project.endDate),
-    yearFromDate(project.startDate)
-  ].filter((year): year is number => year !== undefined);
-
-  if (structuredDateYears.length > 0) {
-    const knownYears = project.year === undefined
-      ? structuredDateYears
-      : [...structuredDateYears, project.year];
-    return Math.max(...knownYears);
-  }
-
-  const fallbackYears = [
+    yearFromDate(project.startDate),
     project.year,
     lastYearFromSimpleRange(project.dateText)
   ].filter((year): year is number => year !== undefined);
 
-  return fallbackYears.length > 0 ? Math.max(...fallbackYears) : undefined;
+  return candidateYears.length > 0 ? Math.max(...candidateYears) : undefined;
 }
 
 export function isProjectRecent(project: Project, currentYear = new Date().getFullYear()): boolean {
@@ -144,8 +134,13 @@ export function getRecentObraProjects(
   section: ProjectSectionId,
   currentYear = new Date().getFullYear()
 ): Project[] {
-  return getObraProjects(projects.filter(project => project.published), section)
-    .filter(project => isProjectRecent(project, currentYear));
+  const obraProjects = getObraProjects(projects.filter(project => project.published), section);
+
+  return obraProjects
+    .filter(project => isProjectRecent(project, currentYear))
+    .map((project, originalIndex) => ({ project, originalIndex }))
+    .sort(compareProjectHomeRecency)
+    .map(item => item.project);
 }
 
 export function isTeachingRecent(
@@ -222,6 +217,22 @@ export function getHomeActiveAreas(
 function getTeachingDisciplines(experiences: TeachingExperience[]): string[] {
   const available = new Set(experiences.flatMap(experience => experience.areas));
   return TEACHING_DISCIPLINE_PRIORITY.filter(discipline => available.has(discipline));
+}
+
+interface HomeProjectCandidate {
+  project: Project;
+  originalIndex: number;
+}
+
+function compareProjectHomeRecency(
+  first: HomeProjectCandidate,
+  second: HomeProjectCandidate
+): number {
+  const firstLatest = projectLatestActivityYear(first.project) ?? -Infinity;
+  const secondLatest = projectLatestActivityYear(second.project) ?? -Infinity;
+
+  if (firstLatest !== secondLatest) return secondLatest - firstLatest;
+  return first.originalIndex - second.originalIndex;
 }
 
 function compareTeachingRecency(
