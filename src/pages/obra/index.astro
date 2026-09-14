@@ -94,7 +94,6 @@ const projects = await loadProjects();
   const projectGrids = Array.from(document.querySelectorAll('.project-grid'));
   const pendingGrids = new WeakSet();
   const gridResizeObservers = [];
-  const gridVisibilityObservers = [];
 
   function getGridCards(grid) {
     return Array.from(grid.children).filter((child) =>
@@ -196,17 +195,6 @@ const projects = await loadProjects();
       gridResizeObservers.push(resizeObserver);
     } else {
       window.addEventListener('resize', () => scheduleGridUpdate(grid));
-    }
-
-    if ('MutationObserver' in window) {
-      const visibilityObserver = new MutationObserver(() => scheduleGridUpdate(grid));
-      visibilityObserver.observe(grid, {
-        attributes: true,
-        attributeFilter: ['class', 'hidden', 'style'],
-        childList: true,
-        subtree: true
-      });
-      gridVisibilityObservers.push(visibilityObserver);
     }
   });
 </script>

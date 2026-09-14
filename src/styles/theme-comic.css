@@ -372,6 +372,8 @@
 
 /* Project grids read as a shared comic page: outer edges are heavier than gutters. */
 .theme-comic .project-grid > .project-card {
+  --project-card-main-shadow: 8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+  --project-card-top-shadow: 0 0 0 transparent;
   --grid-border-top: 5px;
   --grid-border-right: 5px;
   --grid-border-bottom: 5px;
@@ -392,14 +394,14 @@
     var(--grid-radius-tl-x) var(--grid-radius-tr-x) var(--grid-radius-br-x) var(--grid-radius-bl-x) /
     var(--grid-radius-tl-y) var(--grid-radius-tr-y) var(--grid-radius-br-y) var(--grid-radius-bl-y);
   background-color: var(--surface-card);
-  box-shadow: 8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+  box-shadow:
+    var(--project-card-top-shadow),
+    var(--project-card-main-shadow);
 }
 
 .theme-comic .project-grid > .project-card.is-grid-top {
   --grid-border-top: 5px;
-  box-shadow:
-    0 -2px 0 rgb(var(--comic-outline-rgb) / .28),
-    8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+  --project-card-top-shadow: 0 -2px 0 rgb(var(--comic-outline-rgb) / .28);
 }
 
 .theme-comic .project-grid > .project-card.is-grid-right {
@@ -522,10 +524,11 @@
 }
 
 .theme-comic .project-grid > .project-card.project-card--accent {
+  --project-card-main-shadow: 8px 8px 0 var(--comic-gold);
+
   border-color: var(--comic-outline);
   background: var(--comic-outline);
   color: var(--color-on-dark);
-  box-shadow: 8px 8px 0 var(--comic-gold);
 }
 
 .theme-comic .project-grid > .project-card.project-card--accent .project-meta {
