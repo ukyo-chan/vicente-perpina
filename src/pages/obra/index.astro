@@ -88,3 +88,125 @@ const projects = await loadProjects();
     })}
   </main>
 </BaseLayout>
+
+<script>
+  const gridPositionClasses = ['is-grid-top', 'is-grid-right', 'is-grid-bottom', 'is-grid-left', 'is-grid-row-filler'];
+  const projectGrids = Array.from(document.querySelectorAll('.project-grid'));
+  const pendingGrids = new WeakSet();
+  const gridResizeObservers = [];
+  const gridVisibilityObservers = [];
+
+  function getGridCards(grid) {
+    return Array.from(grid.children).filter((child) =>
+      child instanceof HTMLElement && child.classList.contains('project-card')
+    );
+  }
+
+  function isVisibleCard(card) {
+    if (card.hidden) return false;
+
+    const style = window.getComputedStyle(card);
+    return style.display !== 'none'
+      && style.visibility !== 'hidden'
+      && card.getClientRects().length > 0;
+  }
+
+  function getColumnCount(grid) {
+    const style = window.getComputedStyle(grid);
+    const declaredColumnCount = Number.parseInt(style.getPropertyValue('--project-grid-column-count'), 10);
+
+    if (Number.isInteger(declaredColumnCount) && declaredColumnCount > 0) {
+      return declaredColumnCount;
+    }
+
+    const columns = style.gridTemplateColumns
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+    return Math.max(1, columns.length);
+  }
+
+  function setPositionClass(card, className, active) {
+    if (card.classList.contains(className) !== active) {
+      card.classList.toggle(className, active);
+    }
+  }
+
+  function updateProjectGridEdges(grid) {
+    const cards = getGridCards(grid);
+    const visibleCards = cards.filter(isVisibleCard);
+    const visiblePositions = new Map(visibleCards.map((card, index) => [card, index]));
+    const columnCount = getColumnCount(grid);
+    const rowCount = visibleCards.length > 0 ? Math.ceil(visibleCards.length / columnCount) : 0;
+
+    cards.forEach((card) => {
+      const index = visiblePositions.get(card);
+
+      if (index === undefined) {
+        gridPositionClasses.forEach((className) => setPositionClass(card, className, false));
+        if (card.style.getPropertyValue('--grid-column-span')) {
+          card.style.removeProperty('--grid-column-span');
+        }
+        return;
+      }
+
+      const row = Math.floor(index / columnCount);
+      const column = index % columnCount;
+      const rowStart = row * columnCount;
+      const itemsInRow = Math.min(columnCount, visibleCards.length - rowStart);
+      const isLastVisibleCard = index === visibleCards.length - 1;
+      const fillsIncompleteRow = columnCount > 1
+        && row === rowCount - 1
+        && itemsInRow < columnCount
+        && isLastVisibleCard;
+      const columnSpan = fillsIncompleteRow ? columnCount - column : 1;
+
+      setPositionClass(card, 'is-grid-top', row === 0);
+      setPositionClass(card, 'is-grid-right', column === itemsInRow - 1);
+      setPositionClass(card, 'is-grid-bottom', row === rowCount - 1);
+      setPositionClass(card, 'is-grid-left', column === 0);
+      setPositionClass(card, 'is-grid-row-filler', fillsIncompleteRow);
+
+      const currentSpan = card.style.getPropertyValue('--grid-column-span');
+      if (fillsIncompleteRow && currentSpan !== String(columnSpan)) {
+        card.style.setProperty('--grid-column-span', String(columnSpan));
+      } else if (!fillsIncompleteRow && currentSpan) {
+        card.style.removeProperty('--grid-column-span');
+      }
+    });
+  }
+
+  function scheduleGridUpdate(grid) {
+    if (pendingGrids.has(grid)) return;
+
+    pendingGrids.add(grid);
+    window.requestAnimationFrame(() => {
+      pendingGrids.delete(grid);
+      updateProjectGridEdges(grid);
+    });
+  }
+
+  projectGrids.forEach((grid) => {
+    scheduleGridUpdate(grid);
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(() => scheduleGridUpdate(grid));
+      resizeObserver.observe(grid);
+      gridResizeObservers.push(resizeObserver);
+    } else {
+      window.addEventListener('resize', () => scheduleGridUpdate(grid));
+    }
+
+    if ('MutationObserver' in window) {
+      const visibilityObserver = new MutationObserver(() => scheduleGridUpdate(grid));
+      visibilityObserver.observe(grid, {
+        attributes: true,
+        attributeFilter: ['class', 'hidden', 'style'],
+        childList: true,
+        subtree: true
+      });
+      gridVisibilityObservers.push(visibilityObserver);
+    }
+  });
+</script>

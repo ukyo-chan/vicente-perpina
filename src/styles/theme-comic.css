@@ -338,12 +338,155 @@
 
 /* Main cards suggest comic speech bubbles without tails or extra markup. */
 .theme-comic .featured-card,
-.theme-comic .project-card,
 .theme-comic .project-related-card {
   border: 10px solid var(--comic-outline);
   border-radius: 52px 14px 44px 10px / 38px 18px 50px 14px;
   background-color: var(--comic-surface);
   box-shadow: 8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+}
+
+.theme-comic .project-grid > .project-card .project-meta {
+  color: var(--color-text-muted);
+}
+
+.theme-comic .project-grid > .project-card .project-meta span:first-child {
+  color: var(--comic-gold);
+}
+
+.theme-comic .project-grid > .project-card h3 {
+  color: var(--comic-outline);
+}
+
+.theme-comic .project-grid > .project-card p {
+  color: var(--color-text-muted);
+}
+
+.theme-comic .project-grid > .project-card .text-link,
+.theme-comic .project-grid > .project-card .project-card-hit-label {
+  color: var(--comic-outline);
+  text-decoration: underline;
+  text-decoration-color: var(--comic-gold);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+}
+
+/* Project grids read as a shared comic page: outer edges are heavier than gutters. */
+.theme-comic .project-grid > .project-card {
+  --grid-border-top: 5px;
+  --grid-border-right: 5px;
+  --grid-border-bottom: 5px;
+  --grid-border-left: 5px;
+  --grid-radius-tl-x: 34px;
+  --grid-radius-tr-x: 18px;
+  --grid-radius-br-x: 26px;
+  --grid-radius-bl-x: 12px;
+  --grid-radius-tl-y: 20px;
+  --grid-radius-tr-y: 12px;
+  --grid-radius-br-y: 22px;
+  --grid-radius-bl-y: 10px;
+
+  border-color: var(--comic-outline);
+  border-style: solid;
+  border-width: var(--grid-border-top) var(--grid-border-right) var(--grid-border-bottom) var(--grid-border-left);
+  border-radius:
+    var(--grid-radius-tl-x) var(--grid-radius-tr-x) var(--grid-radius-br-x) var(--grid-radius-bl-x) /
+    var(--grid-radius-tl-y) var(--grid-radius-tr-y) var(--grid-radius-br-y) var(--grid-radius-bl-y);
+  background-color: var(--surface-card);
+  box-shadow: 8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+}
+
+.theme-comic .project-grid > .project-card.is-grid-top {
+  --grid-border-top: 5px;
+  box-shadow:
+    0 -2px 0 rgb(var(--comic-outline-rgb) / .28),
+    8px 8px 0 rgb(var(--color-shadow-rgb) / .20);
+}
+
+.theme-comic .project-grid > .project-card.is-grid-right {
+  --grid-border-right: 10px;
+}
+
+.theme-comic .project-grid > .project-card.is-grid-bottom {
+  --grid-border-bottom: 10px;
+}
+
+.theme-comic .project-grid > .project-card.is-grid-left {
+  --grid-border-left: 10px;
+}
+
+.theme-comic .project-grid > .project-card.is-grid-row-filler {
+  grid-column-end: span var(--grid-column-span, 1);
+}
+
+/* Only exterior corners get the expressive radius; interior corners stay restrained. */
+.theme-comic .project-grid > .project-card.is-grid-top.is-grid-left {
+  --grid-radius-tl-x: clamp(46px, 9vw, 127px);
+  --grid-radius-tl-y: clamp(11px, 1.2vw, 18px);
+  --grid-radius-tr-x: 20px;
+  --grid-radius-tr-y: 9px;
+}
+
+.theme-comic .project-grid > .project-card.is-grid-top.is-grid-right {
+  --grid-radius-tl-x: 24px;
+  --grid-radius-tl-y: 10px;
+  --grid-radius-tr-x: clamp(46px, 9vw, 127px);
+  --grid-radius-tr-y: clamp(11px, 1.2vw, 18px);
+}
+
+.theme-comic .project-grid > .project-card.is-grid-bottom.is-grid-right {
+  --grid-radius-br-x: clamp(46px, 9vw, 127px);
+  --grid-radius-br-y: clamp(26px, 3.5vw, 56px);
+}
+
+.theme-comic .project-grid > .project-card.is-grid-bottom.is-grid-left {
+  --grid-radius-bl-x: clamp(46px, 9vw, 127px);
+  --grid-radius-bl-y: clamp(26px, 3.5vw, 56px);
+}
+
+/* One-column grids keep both vertical edges exterior while internal rows stay lighter. */
+.theme-comic .project-grid > .project-card.is-grid-left:not(.is-grid-top):not(.is-grid-bottom),
+.theme-comic .project-grid > .project-card.is-grid-right:not(.is-grid-top):not(.is-grid-bottom) {
+  --grid-radius-tl-x: 28px;
+  --grid-radius-tr-x: 20px;
+  --grid-radius-br-x: 22px;
+  --grid-radius-bl-x: 16px;
+  --grid-radius-tl-y: 16px;
+  --grid-radius-tr-y: 11px;
+  --grid-radius-br-y: 18px;
+  --grid-radius-bl-y: 12px;
+}
+
+@media (max-width: 720px) {
+  .theme-comic .project-grid > .project-card {
+    --grid-radius-tl-x: 28px;
+    --grid-radius-tr-x: 17px;
+    --grid-radius-br-x: 24px;
+    --grid-radius-bl-x: 13px;
+    --grid-radius-tl-y: 16px;
+    --grid-radius-tr-y: 10px;
+    --grid-radius-br-y: 20px;
+    --grid-radius-bl-y: 11px;
+  }
+
+  .theme-comic .project-grid > .project-card.is-grid-top.is-grid-left {
+    --grid-radius-tl-x: 68px;
+    --grid-radius-tl-y: 14px;
+  }
+
+  .theme-comic .project-grid > .project-card.is-grid-top.is-grid-right {
+    --grid-radius-tr-x: 68px;
+    --grid-radius-tr-y: 14px;
+  }
+
+  .theme-comic .project-grid > .project-card.is-grid-bottom.is-grid-right {
+    --grid-radius-br-x: 68px;
+    --grid-radius-br-y: 34px;
+  }
+
+  .theme-comic .project-grid > .project-card.is-grid-bottom.is-grid-left {
+    --grid-radius-bl-x: 68px;
+    --grid-radius-bl-y: 34px;
+  }
 }
 
 .theme-comic .card {
@@ -378,11 +521,35 @@
   box-shadow: 3px 3px 0 rgb(var(--color-shadow-rgb) / .12);
 }
 
-.theme-comic .project-card--accent {
+.theme-comic .project-grid > .project-card.project-card--accent {
   border-color: var(--comic-outline);
-  background: var(--surface-card-accent);
+  background: var(--comic-outline);
   color: var(--color-on-dark);
-  box-shadow: 4px 4px 0 rgb(var(--color-shadow-rgb) / .2);
+  box-shadow: 8px 8px 0 var(--comic-gold);
+}
+
+.theme-comic .project-grid > .project-card.project-card--accent .project-meta {
+  color: rgb(var(--color-on-dark-rgb) / .72);
+}
+
+.theme-comic .project-grid > .project-card.project-card--accent .project-meta span:first-child,
+.theme-comic .project-grid > .project-card.project-card--accent h3 {
+  color: var(--comic-gold);
+}
+
+.theme-comic .project-grid > .project-card.project-card--accent p {
+  color: rgb(var(--color-on-dark-rgb) / .82);
+}
+
+.theme-comic .project-grid > .project-card.project-card--accent .text-link,
+.theme-comic .project-grid > .project-card.project-card--accent .project-card-hit-label {
+  color: var(--color-on-dark);
+  text-decoration-color: var(--comic-gold);
+}
+
+.theme-comic .project-grid > .project-card.project-card--accent .text-link:focus-visible,
+.theme-comic .project-grid > .project-card.project-card--accent .project-card-hit-area:focus-visible {
+  outline-color: var(--comic-gold);
 }
 
 /* Medium graphic intensity for controls and compact metadata surfaces. */

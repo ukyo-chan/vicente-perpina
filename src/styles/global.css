@@ -1041,8 +1041,10 @@ a:focus-visible {
 }
 
 .project-grid {
+  --project-grid-column-count: 2;
+
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--project-grid-column-count), minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -1975,7 +1977,7 @@ a.encounter-title:focus-visible {
 }
 
 @media (max-width: 720px) {
-  .project-grid { grid-template-columns: 1fr; }
+  .project-grid { --project-grid-column-count: 1; }
   .project-card--with-image .project-card-media img,
   .editorial-card--with-image .project-card-media img,
   .media-item--with-image .project-card-media img { opacity: .26; }
