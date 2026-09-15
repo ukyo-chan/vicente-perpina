@@ -90,6 +90,7 @@
   z-index: 0;
   top: 0;
   left: -5px;
+  display: block;
   width: calc(100% + 10px);
   height: 100%;
   overflow: visible;
@@ -138,6 +139,17 @@
 .theme-comic .nav-links a.social-icon-link:hover {
   border-color: var(--comic-outline);
   background: var(--comic-gold);
+}
+
+.theme-comic .footer-theme-switch {
+  border-color: rgb(var(--comic-outline-rgb) / .34);
+  background: var(--surface-page);
+  color: var(--comic-border-muted);
+}
+
+.theme-comic .footer-theme-switch button[aria-pressed="true"] {
+  background: var(--comic-gold);
+  color: var(--comic-outline);
 }
 
 .theme-comic .menu-button {
@@ -1154,6 +1166,84 @@
   padding: 6px 0 6px 13px;
   border-left: 5px solid var(--comic-gold);
   color: var(--comic-outline);
+}
+
+.theme-comic .teaching-panel--collapsible-profiles {
+  border-width: 3px;
+  box-shadow: 4px 4px 0 var(--comic-shadow);
+}
+
+.theme-comic .teaching-profile-details {
+  border: 3px solid var(--comic-outline);
+  border-radius: 9px 16px 8px 13px / 12px 8px 15px 9px;
+  background: var(--surface-card);
+  box-shadow: 4px 4px 0 var(--comic-shadow);
+}
+
+.theme-comic .teaching-profile-details:nth-of-type(even) {
+  border-radius: 15px 7px 13px 9px / 8px 14px 7px 12px;
+}
+
+.theme-comic .teaching-profile-details[open] {
+  box-shadow: 5px 5px 0 var(--comic-gold);
+}
+
+.theme-comic .teaching-profile-summary {
+  position: relative;
+  isolation: isolate;
+  background: var(--comic-surface);
+}
+
+.theme-comic .teaching-profile-summary::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 76px;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--comic-dot-strong) 0 1.3px, transparent 1.6px);
+  background-size: 7px 7px;
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+  opacity: .55;
+}
+
+.theme-comic .teaching-profile-summary:hover .teaching-profile-title {
+  color: var(--comic-gold);
+}
+
+.theme-comic .teaching-profile-summary:focus-visible {
+  outline-color: var(--comic-gold);
+}
+
+.theme-comic .teaching-profile-title {
+  width: fit-content;
+  max-width: calc(100% - 42px);
+  padding-left: 11px;
+  border-left: 5px solid var(--comic-gold);
+  color: var(--comic-outline);
+}
+
+.theme-comic .teaching-profile-period {
+  color: var(--comic-outline);
+  font-family: "Bangers", cursive;
+  font-size: .95rem;
+  font-weight: 400;
+}
+
+.theme-comic .teaching-profile-toggle {
+  padding: 3px 8px 2px;
+  border: 2px solid var(--comic-outline);
+  border-radius: 4px 7px 3px 6px;
+  background: var(--comic-gold);
+  color: var(--comic-outline);
+  box-shadow: 2px 2px 0 var(--comic-shadow);
+}
+
+.theme-comic .teaching-profile-content {
+  border-top: 3px solid var(--comic-outline);
+  background: var(--surface-card);
 }
 
 /* Resources are an auxiliary work-material box, not another speech bubble. */

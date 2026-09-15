@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ImageGallery from '../../components/gallery/ImageGallery.astro';
+import TeachingCollapsibleProfiles from '../../components/teaching/TeachingCollapsibleProfiles.astro';
 import TeachingSchedule from '../../components/teaching/TeachingSchedule.astro';
 import TeachingSteps from '../../components/teaching/TeachingSteps.astro';
 import {
@@ -29,6 +30,7 @@ const { entry } = Astro.props;
 const experience = teachingFromEntry(entry);
 const { Content } = await render(entry);
 const hasBody = Boolean(entry.body?.trim());
+const collapsibleProfilesHtml = experience.collapsibleProfiles ? entry.rendered?.html : undefined;
 const title = experience.seo?.title ?? `${experience.title} · Vicente Perpiñá Giner`;
 const description = experience.seo?.description ?? experience.summary;
 const entityLine = [
@@ -80,8 +82,18 @@ const entityLine = [
           {experience.steps.length > 0 && <TeachingSteps steps={experience.steps} />}
 
           {hasBody && (
-            <section class="teaching-detail-section teaching-panel teaching-panel--markdown teaching-markdown">
-              <Content />
+            <section
+              class:list={[
+                'teaching-detail-section',
+                'teaching-panel',
+                'teaching-panel--markdown',
+                'teaching-markdown',
+                { 'teaching-panel--collapsible-profiles': Boolean(collapsibleProfilesHtml) }
+              ]}
+            >
+              {collapsibleProfilesHtml
+                ? <TeachingCollapsibleProfiles html={collapsibleProfilesHtml} />
+                : <Content />}
             </section>
           )}
 

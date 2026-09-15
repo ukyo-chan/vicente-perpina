@@ -18,6 +18,8 @@ areas:
   - PAU / selectividad
 contexto: "Desde 2018 he desarrollado distintas experiencias de docencia particular en dos vertientes: la enseñanza artística y el apoyo académico. En la primera, trabajo según el nivel real, los intereses y el objetivo de cada persona o grupo; en la segunda, acompaño procesos de ESO, Bachillerato, Dibujo Técnico y preparación de PAU/selectividad. La docencia puede desarrollarse de forma presencial u online."
 metodologia: "No aplico el mismo recorrido a todo el mundo. Parto de lo que cada persona sabe hacer, de lo que quiere aprender y de sus intereses para fijar un objetivo de trabajo y adaptar los ejercicios, las herramientas y el ritmo. Así puedo combinar la mejora técnica con aquello que da sentido al proceso: el retrato, la figura, la ilustración, el cómic, la narrativa gráfica o la incorporación de una herramienta digital."
+presentacion:
+  perfilesColapsables: true
 seo:
   title: "Docencia particular de dibujo y apoyo académico · Vicente Perpiñá"
   description: "Experiencia docente particular de Vicente Perpiñá en dibujo, cómic, narrativa gráfica e ilustración digital, junto con apoyo académico para ESO, Bachillerato, Dibujo Técnico y PAU."

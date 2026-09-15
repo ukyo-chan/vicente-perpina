@@ -159,6 +159,10 @@ const docencia = defineCollection({
     galeria: z.array(imagen).default([]),
     enlaces: z.array(enlace).default([]),
 
+    presentacion: z.object({
+      perfilesColapsables: z.boolean().default(false)
+    }).optional(),
+
     seo: z.object({
       title: z.string().optional(),
       description: z.string().optional()

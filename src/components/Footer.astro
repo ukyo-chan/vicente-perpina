@@ -2,6 +2,11 @@
 import SocialLinks from './SocialLinks.astro';
 ---
 <footer class="site-footer">
+  <div class="footer-theme-switch" role="group" aria-label="Estilo visual">
+    <button type="button" data-visual-theme="teal" aria-pressed="false">Teal</button>
+    <span aria-hidden="true">·</span>
+    <button type="button" data-visual-theme="comic" aria-pressed="true">Cómic</button>
+  </div>
   <div class="container footer-row">
     <div class="footer-copyright">© <span data-year></span> Vicente Perpiñá Giner</div>
     <div class="footer-links">

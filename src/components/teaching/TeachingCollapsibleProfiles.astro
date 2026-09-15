@@ -1,0 +1,37 @@
+---
+import { createCollapsibleTeachingProfiles } from '../../lib/teaching-markdown';
+
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+const parts = createCollapsibleTeachingProfiles(html);
+---
+
+{parts.map((part) => part.type === 'html' ? (
+  <Fragment set:html={part.html} />
+) : (
+  <details class="teaching-profile-details">
+    <summary class="teaching-profile-summary">
+      <span
+        class="teaching-profile-title"
+        id={part.id}
+        role="heading"
+        aria-level="3"
+        set:html={part.titleHtml}
+      />
+      {part.periodHtml && (
+        <span class="teaching-profile-period" set:html={part.periodHtml} />
+      )}
+      {part.teaserHtml && (
+        <span class="teaching-profile-teaser" set:html={part.teaserHtml} />
+      )}
+      <span class="teaching-profile-toggle teaching-profile-toggle--more">Ver más <span aria-hidden="true">↓</span></span>
+      <span class="teaching-profile-toggle teaching-profile-toggle--less">Ver menos <span aria-hidden="true">↑</span></span>
+    </summary>
+    {part.contentHtml && (
+      <div class="teaching-profile-content" set:html={part.contentHtml} />
+    )}
+  </details>
+))}

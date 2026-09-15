@@ -28,6 +28,7 @@ export interface TeachingExperience {
   resources: string[];
   gallery: TeachingImage[];
   links: TeachingLink[];
+  collapsibleProfiles: boolean;
   seo?: TeachingEntry['data']['seo'];
 }
 
@@ -55,6 +56,7 @@ export function teachingFromEntry(entry: TeachingEntry): TeachingExperience {
     resources: data.recursos,
     gallery: data.galeria,
     links: data.enlaces,
+    collapsibleProfiles: data.presentacion?.perfilesColapsables ?? false,
     seo: data.seo
   };
 }

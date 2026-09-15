@@ -22,7 +22,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
 ---
 <!doctype html>
-<html lang="es">
+<html lang="es" class="theme-comic">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,9 +45,16 @@ const socialImage = new URL(image, Astro.site);
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Handlee&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      try {
+        if (localStorage.getItem('vicente-visual-theme') === 'teal') {
+          document.documentElement.classList.remove('theme-comic');
+        }
+      } catch {}
+    </script>
   </head>
-  <body class="theme-comic">
+  <body>
     <Header />
     <slot />
     <Footer />

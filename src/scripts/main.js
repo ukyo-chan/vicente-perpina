@@ -54,3 +54,32 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
 document.querySelectorAll('[data-year]').forEach(el => {
   el.textContent = new Date().getFullYear();
 });
+
+const visualThemeButtons = document.querySelectorAll('[data-visual-theme]');
+const visualThemeStorageKey = 'vicente-visual-theme';
+
+function setVisualTheme(theme, persist = false) {
+  const useComicTheme = theme === 'comic';
+  document.documentElement.classList.toggle('theme-comic', useComicTheme);
+
+  visualThemeButtons.forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.visualTheme === theme));
+  });
+
+  if (!persist) return;
+
+  try {
+    localStorage.setItem(visualThemeStorageKey, theme);
+  } catch {}
+}
+
+if (visualThemeButtons.length > 0) {
+  const initialTheme = document.documentElement.classList.contains('theme-comic') ? 'comic' : 'teal';
+  setVisualTheme(initialTheme);
+
+  visualThemeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      setVisualTheme(button.dataset.visualTheme, true);
+    });
+  });
+}
