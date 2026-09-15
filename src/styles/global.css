@@ -54,6 +54,7 @@
   --muted: var(--color-text-muted);
   --line: var(--border-subtle);
   --shadow: var(--shadow-elevated);
+  --heading-font: "Cabin Sketch", cursive;
   --radius: 24px;
   --max: 1160px;
 }
@@ -76,7 +77,7 @@ body {
 
 h1,
 h2 {
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-weight: 400;
 }
 
@@ -119,7 +120,7 @@ a:focus-visible {
 
 .brand {
   text-decoration: none;
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: -.02em;
@@ -284,7 +285,7 @@ a:focus-visible {
 .page-hero h1 {
   margin: 0;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -.035em;
@@ -365,7 +366,7 @@ a:focus-visible {
 .contact-cta h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.15rem);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   color: var(--color-heading);
   line-height: 1.2;
 }
@@ -511,7 +512,7 @@ a:focus-visible {
 
 .project-year {
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: 1.45rem;
   font-weight: 400;
   line-height: 1;
@@ -596,7 +597,7 @@ a:focus-visible {
 .home-comic-area-header h2 {
   margin: 0;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-weight: 400;
   line-height: 1.08;
 }
@@ -640,7 +641,7 @@ a:focus-visible {
 
 .home-comic-area-number {
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: 1.35rem;
   line-height: 1;
 }
@@ -1203,7 +1204,7 @@ a:focus-visible {
 
 .media-year {
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: 1.35rem;
   font-weight: 400;
 }
@@ -1566,7 +1567,7 @@ a:focus-visible {
 
 .career-number {
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
   line-height: 1.1;
@@ -2219,7 +2220,7 @@ a.encounter-title:focus-visible {
   max-width: 900px;
   margin: 0;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(2.7rem, 6vw, 5rem);
   line-height: 1.08;
 }
@@ -2276,7 +2277,7 @@ a.encounter-title:focus-visible {
 .project-content h2 {
   margin: 42px 0 14px;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   line-height: 1.22;
 }
@@ -2337,7 +2338,7 @@ a.encounter-title:focus-visible {
 .related-projects .section-heading h2 {
   margin: 0;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
   line-height: 1.2;
 }
@@ -2865,7 +2866,7 @@ a.encounter-title:focus-visible {
   max-width: 900px;
   margin: 0;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-weight: 400;
   font-size: clamp(2.7rem, 6vw, 5rem);
   line-height: 1.08;
@@ -2953,7 +2954,7 @@ a.encounter-title:focus-visible {
 .teaching-detail-section h2 {
   margin: 0 0 14px;
   color: var(--color-heading);
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
   line-height: 1.2;
 }
@@ -3297,7 +3298,7 @@ a.encounter-title:focus-visible {
 }
 
 .career-life-interlude__content strong {
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.55rem, 3vw, 2.2rem);
   font-weight: 400;
   letter-spacing: .02em;
@@ -3461,7 +3462,7 @@ a.encounter-title:focus-visible {
 
 .biography-vicent__label {
   margin: 0 0 9px !important;
-  font-family: "Bangers", cursive;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3.5vw, 2.5rem);
   letter-spacing: .03em;
   line-height: 1;

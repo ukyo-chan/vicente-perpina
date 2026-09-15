@@ -1,5 +1,6 @@
 /* Optional comic-print variant. Remove `theme-comic` from BaseLayout to disable it. */
 .theme-comic {
+  --heading-font: "Bangers", cursive;
   --comic-surface: #f7f7f4;
   --comic-surface-dark: #e4e4e0;
   --comic-portrait-surface: #e1e1de;
