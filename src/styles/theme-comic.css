@@ -876,3 +876,114 @@
     align-self: flex-start;
   }
 }
+
+/* Personal biography: the timeline interruption and the story share one visual gesture. */
+.theme-comic .career-life-interlude {
+  color: var(--comic-gold);
+  transform: rotate(-.25deg);
+  transition: transform .18s ease, background-color .18s ease;
+}
+
+.theme-comic .career-life-interlude:hover,
+.theme-comic .career-life-interlude:focus-visible {
+  background: rgb(200 154 43 / .08);
+  transform: translateX(4px) rotate(.15deg);
+}
+
+.theme-comic .career-life-interlude:focus-visible {
+  outline-color: var(--comic-outline);
+}
+
+.theme-comic .career-life-interlude__line,
+.theme-comic .biography-vicent__line {
+  filter: drop-shadow(1px 2px 0 var(--comic-title-shadow));
+}
+
+.theme-comic .career-life-interlude__content strong,
+.theme-comic .biography-vicent__label {
+  color: var(--comic-gold);
+  text-shadow: 1px 3px var(--comic-title-shadow);
+}
+
+.theme-comic .biography-hero {
+  background-image:
+    radial-gradient(circle, var(--comic-dot-strong) 0 1.6px, transparent 1.9px),
+    linear-gradient(120deg, rgb(var(--surface-hero-rgb) / .94), rgb(var(--surface-page-rgb) / .72));
+}
+
+.theme-comic .biography-hero__lead {
+  color: var(--color-heading) !important;
+  text-shadow: none;
+}
+
+.theme-comic .biography-story::before {
+  background: var(--comic-gold);
+}
+
+.theme-comic .biography-chapter::before {
+  border-color: var(--surface-page);
+  background: var(--comic-gold);
+  box-shadow: 1px 2px 0 var(--comic-outline);
+}
+
+.theme-comic .biography-chapter__body {
+  border-top: 3px solid var(--comic-outline);
+}
+
+.theme-comic .biography-chapter h2,
+.theme-comic .biography-vicent h2 {
+  color: var(--comic-gold);
+  text-shadow: 1px 3px var(--comic-title-shadow);
+}
+
+.theme-comic .biography-chapter__era {
+  color: var(--comic-outline);
+  font-family: "Bangers", cursive;
+  font-size: .95rem;
+  font-weight: 400;
+}
+
+.theme-comic .biography-note {
+  color: var(--comic-gold);
+  font-family: "Handlee", "Segoe Print", "Bradley Hand", cursive;
+  font-size: 1.08em;
+  font-weight: 700;
+}
+
+.theme-comic .biography-note--strong {
+  font-size: 1.25em;
+  transform: rotate(-2deg);
+}
+
+.theme-comic .biography-vicent {
+  border: 5px solid var(--comic-outline);
+  border-radius: 20px 7px 28px 10px / 14px 12px 20px 8px;
+  background-color: var(--surface-dark);
+  background-image: radial-gradient(circle, rgb(200 154 43 / .2) 0 1.4px, transparent 1.7px);
+  background-size: 8px 8px;
+  box-shadow: 7px 7px 0 var(--comic-gold);
+  color: var(--comic-gold);
+  transform: rotate(-.3deg);
+}
+
+.theme-comic .biography-vicent__body p {
+  color: rgb(var(--color-on-dark-rgb) / .88);
+}
+
+.theme-comic .biography-closing__line {
+  padding-left: 16px;
+  border-left: 5px solid var(--comic-gold);
+  color: var(--comic-outline);
+}
+
+.theme-comic .biography-actions {
+  border-top: 3px solid var(--comic-outline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-comic .career-life-interlude,
+  .theme-comic .career-life-interlude:hover,
+  .theme-comic .career-life-interlude:focus-visible {
+    transform: none;
+  }
+}

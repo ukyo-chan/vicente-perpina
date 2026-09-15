@@ -3040,3 +3040,303 @@ a.encounter-title:focus-visible {
   display: grid;
   gap: 2px;
 }
+
+/* Biographical interlude within the professional timeline. */
+.career-life-interlude {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  padding-block: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: inherit;
+  text-decoration: none;
+}
+
+.career-life-interlude__line,
+.biography-vicent__line {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+}
+
+.career-life-interlude__line::after,
+.biography-vicent__line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 0;
+  height: 0;
+  border-block: 7px solid transparent;
+  border-left: 12px solid currentColor;
+  transform: translateY(-50%);
+}
+
+.career-life-interlude__content {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.career-life-interlude__content strong {
+  font-family: "Bangers", cursive;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.career-life-interlude__content strong span {
+  font-size: .72em;
+}
+
+.career-life-interlude__content small {
+  color: var(--color-text-muted);
+  font-size: .9rem;
+}
+
+/* Narrative biography. Structural rules remain independent from the comic skin. */
+.biography-hero__inner {
+  max-width: 930px;
+}
+
+.biography-back {
+  display: inline-flex;
+  margin-bottom: 30px;
+  color: var(--color-link);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.biography-back:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.biography-hero__lead {
+  max-width: none !important;
+  margin: 18px 0 9px !important;
+  color: var(--color-heading) !important;
+  font-family: inherit;
+  font-size: clamp(.82rem, 1.4vw, .98rem) !important;
+  font-weight: 850;
+  letter-spacing: .11em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.biography-hero__copy {
+  max-width: 720px !important;
+}
+
+.biography-section {
+  padding-top: 74px;
+}
+
+.biography-story {
+  --biography-rail-x: 129px;
+  position: relative;
+  display: grid;
+  gap: 0;
+  max-width: 1020px;
+}
+
+.biography-story::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 110px;
+  left: var(--biography-rail-x);
+  width: 2px;
+  background: var(--border-subtle);
+  transform: translateX(-50%);
+}
+
+.biography-chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 50px;
+  padding-block: 34px 44px;
+}
+
+.biography-chapter::before {
+  content: "";
+  position: absolute;
+  top: calc(61px + clamp(1.08rem, 2.16vw, 1.728rem));
+  left: var(--biography-rail-x);
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--surface-page);
+  border-radius: 50%;
+  background: var(--color-heading);
+  transform: translate(-50%, -50%);
+}
+
+.biography-chapter__era {
+  margin: 0;
+  padding-top: calc(27px + clamp(1.08rem, 2.16vw, 1.728rem) - .675em);
+  color: var(--color-heading);
+  font-size: .8rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  line-height: 1.35;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.biography-chapter__body {
+  max-width: 720px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.biography-chapter--wide .biography-chapter__body {
+  max-width: 790px;
+}
+
+.biography-chapter--offset .biography-chapter__body {
+  margin-left: clamp(0px, 6vw, 72px);
+}
+
+.biography-chapter h2,
+.biography-vicent h2 {
+  margin: 0 0 15px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.biography-chapter__body p,
+.biography-vicent__body p {
+  margin: 0;
+  color: var(--color-copy);
+}
+
+.biography-chapter__body p + p,
+.biography-vicent__body p + p {
+  margin-top: 16px;
+}
+
+.biography-note {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.biography-vicent {
+  grid-template-columns: minmax(100px, .55fr) minmax(0, 1.45fr);
+  align-items: center;
+  gap: 34px;
+  margin-block: 34px 44px;
+  padding: clamp(30px, 5vw, 52px);
+  border: 2px solid var(--border-subtle);
+  scroll-margin-top: 110px;
+}
+
+.biography-vicent::before {
+  display: none;
+}
+
+.biography-vicent__body {
+  max-width: 650px;
+}
+
+.biography-vicent__label {
+  margin: 0 0 9px !important;
+  font-family: "Bangers", cursive;
+  font-size: clamp(1.65rem, 3.5vw, 2.5rem);
+  letter-spacing: .03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.biography-vicent__label span {
+  font-size: .7em;
+}
+
+.biography-closing__line {
+  max-width: 680px;
+  font-family: "Handlee", "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(1.08rem, 2vw, 1.3rem);
+  font-weight: 700;
+}
+
+.biography-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 0 154px;
+  padding-top: 34px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 720px) {
+  .career-life-interlude {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 16px;
+    padding-block: 20px;
+  }
+
+  .career-life-interlude__content small {
+    font-size: .82rem;
+  }
+
+  .biography-story::before {
+    bottom: 120px;
+  }
+
+  .biography-story {
+    --biography-rail-x: 8px;
+  }
+
+  .biography-chapter {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 28px 0 36px 34px;
+  }
+
+  .biography-chapter::before {
+    top: calc(56px + 2.43rem);
+  }
+
+  .biography-chapter__era {
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .biography-chapter__body {
+    padding-top: 18px;
+  }
+
+  .biography-chapter--offset .biography-chapter__body {
+    margin-left: 0;
+  }
+
+  .biography-vicent {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 20px;
+    margin-block: 24px 34px;
+    padding: 28px 22px;
+  }
+
+  .biography-actions {
+    margin-left: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .biography-vicent {
+    grid-template-columns: 1fr;
+  }
+
+  .biography-vicent__line {
+    width: 72px;
+  }
+
+  .biography-actions {
+    display: grid;
+  }
+}

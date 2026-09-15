@@ -18,6 +18,9 @@ const timelineGroups = getTimelineGroups(
 const encounterProjects = getTimelineGroups(
   projects.filter(project => project.categories.includes('encuentro'))
 ).flatMap(group => group.projects);
+const vicentTimelineGroupId = timelineGroups.find(group =>
+  group.order === 2021 || group.projects.some(project => project.year === 2021)
+)?.id;
 ---
 <BaseLayout
   title="Trayectoria · Vicente Perpiñá Giner"
@@ -57,38 +60,54 @@ const encounterProjects = getTimelineGroups(
 
         <div class="career-timeline">
           {timelineGroups.map(group => (
-            <article class="career-year reveal" id={group.id}>
-              <div class="career-number">{group.label}</div>
-              <div class="career-events">
-                {group.areas.map(area => (
-                  <section class="career-area" aria-labelledby={`${group.id}-${area.id}`}>
-                    <h3 class="career-area-title" id={`${group.id}-${area.id}`}>{area.title}</h3>
-                    <div class="career-area-events">
-                      {area.projects.map(project => {
-                        const href = projectTimelineHref(project);
-                        const external = href?.startsWith('http');
+            <>
+              <article class="career-year reveal" id={group.id}>
+                <div class="career-number">{group.label}</div>
+                <div class="career-events">
+                  {group.areas.map(area => (
+                    <section class="career-area" aria-labelledby={`${group.id}-${area.id}`}>
+                      <h3 class="career-area-title" id={`${group.id}-${area.id}`}>{area.title}</h3>
+                      <div class="career-area-events">
+                        {area.projects.map(project => {
+                          const href = projectTimelineHref(project);
+                          const external = href?.startsWith('http');
 
-                        return (
-                          <div class="career-event">
-                            {href ? (
-                              <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
-                                <strong>{project.timelineTitle ?? project.title}</strong>
-                                {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
-                              </a>
-                            ) : (
-                              <span class="career-event-static">
-                                <strong>{project.timelineTitle ?? project.title}</strong>
-                                {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
-                              </span>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </section>
-                ))}
-              </div>
-            </article>
+                          return (
+                            <div class="career-event">
+                              {href ? (
+                                <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+                                  <strong>{project.timelineTitle ?? project.title}</strong>
+                                  {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
+                                </a>
+                              ) : (
+                                <span class="career-event-static">
+                                  <strong>{project.timelineTitle ?? project.title}</strong>
+                                  {(project.timelineDetail ?? project.summary) && <span>{project.timelineDetail ?? project.summary}</span>}
+                                </span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </article>
+
+              {group.id === vicentTimelineGroupId && (
+                <a
+                  class="career-life-interlude reveal"
+                  href="/trayectoria/una-vida-dibujando/#vicent-2021"
+                  aria-label="Vicent, 2021. La vida cambió de ritmo. El dibujo siguió ahí. Leer Una vida dibujando"
+                >
+                  <span class="career-life-interlude__line" aria-hidden="true"></span>
+                  <span class="career-life-interlude__content">
+                    <strong>VICENT <span>· 2021</span></strong>
+                    <small>La vida cambió de ritmo. El dibujo siguió ahí.</small>
+                  </span>
+                </a>
+              )}
+            </>
           ))}
         </div>
 
