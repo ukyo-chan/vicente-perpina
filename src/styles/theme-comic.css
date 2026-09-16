@@ -332,6 +332,77 @@
   background: var(--comic-gold);
 }
 
+/* Detailed teaching entries read as compact editorial speech bubbles. */
+.theme-comic .timeline-content--linked {
+  --comic-timeline-node-center: 15px;
+  --comic-timeline-bubble-lift: 18px;
+  /* Keep the thin tail attached to the straight upper-left border. */
+  --comic-timeline-tail-top: calc(var(--comic-timeline-node-center) + var(--comic-timeline-bubble-lift) - 20px);
+  position: relative;
+  top: calc(4px - var(--comic-timeline-bubble-lift));
+  z-index: 0;
+  overflow: visible;
+  border: 4px solid var(--comic-outline);
+  border-radius: 20px 9px 25px 11px / 15px 10px 21px 9px;
+  background: var(--comic-surface);
+  box-shadow: 5px 5px 0 var(--comic-shadow);
+  color: var(--comic-outline);
+}
+
+.theme-comic .timeline-content--linked::before,
+.theme-comic .timeline-content--linked::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  transform: rotate(-3deg);
+  transform-origin: 0 50%;
+}
+
+.theme-comic .timeline-content--linked::before {
+  z-index: 0;
+  top: var(--comic-timeline-tail-top);
+  left: -24px;
+  width: 24px;
+  height: 19px;
+  background: var(--comic-outline);
+}
+
+.theme-comic .timeline-content--linked::after {
+  z-index: 1;
+  top: calc(var(--comic-timeline-tail-top) + 3px);
+  left: -17px;
+  width: 18px;
+  height: 13px;
+  background: var(--comic-surface);
+}
+
+.theme-comic .timeline-content--linked > * {
+  position: relative;
+  z-index: 2;
+}
+
+.theme-comic .timeline-content--linked:hover,
+.theme-comic .timeline-content--linked:focus-visible {
+  border-color: var(--comic-outline);
+  background: var(--comic-surface);
+  box-shadow: 6px 6px 0 var(--comic-shadow);
+  transform: translateY(-2px);
+}
+
+.theme-comic .timeline-content--linked:focus-visible {
+  outline: 3px solid var(--comic-gold);
+  outline-offset: 4px;
+}
+
+.theme-comic .timeline-content--linked .timeline-cta {
+  color: var(--comic-outline);
+  text-decoration: underline;
+  text-decoration-color: var(--comic-gold);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
 /* Decorative handwritten labels are temporarily hidden without removing their markup. */
 .theme-comic .doodle,
 .theme-comic .contact-quote {
@@ -878,9 +949,59 @@
 }
 
 @media (max-width: 720px) {
+  .theme-comic .timeline-content--linked {
+    --comic-timeline-tail-top: calc(var(--comic-timeline-node-center) + var(--comic-timeline-bubble-lift) - 18px);
+    box-shadow: 4px 4px 0 var(--comic-shadow);
+  }
+
+  .theme-comic .timeline-content--linked:hover,
+  .theme-comic .timeline-content--linked:focus-visible {
+    box-shadow: 5px 5px 0 var(--comic-shadow);
+  }
+
+  .theme-comic .timeline-content--linked::before {
+    left: -20px;
+    width: 20px;
+    height: 17px;
+  }
+
+  .theme-comic .timeline-content--linked::after {
+    left: -14px;
+    width: 15px;
+    height: 11px;
+  }
+
   .theme-comic .highlight-strip a + a {
     border-left: 0;
     border-top: 3px solid var(--comic-outline);
+  }
+}
+
+@media (max-width: 620px) {
+  .theme-comic .timeline-content--linked {
+    --comic-timeline-bubble-lift: 0px;
+    top: 0;
+    /* The date row is .88rem × 1.6, followed by a 5px grid gap. */
+    --comic-timeline-tail-top: calc(var(--comic-timeline-node-center) - 1.408rem - 9px);
+  }
+
+  .theme-comic .timeline-content--linked::before,
+  .theme-comic .timeline-content--linked::after {
+    clip-path: polygon(100% 58%, 0 0, 100% 100%);
+    transform: none;
+  }
+
+  .theme-comic .timeline-content--linked::before {
+    left: -18px;
+    width: 18px;
+    height: 48px;
+  }
+
+  .theme-comic .timeline-content--linked::after {
+    top: calc(var(--comic-timeline-tail-top) + 12px);
+    left: -12px;
+    width: 13px;
+    height: 32px;
   }
 }
 
