@@ -49,6 +49,161 @@
   --chalk-muted: #d8e7e4;
 }
 
+/* Teaching details: soft editorial bands and vertical learning sequences. */
+.theme-teal .teaching-detail-hero {
+  padding-block: clamp(32px, 4vw, 48px);
+}
+
+.theme-teal .teaching-detail-hero .teaching-back {
+  margin-bottom: 22px;
+}
+
+.theme-teal .teaching-detail-hero h1 {
+  max-width: 1000px;
+  font-size: clamp(2.15rem, 3.8vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -.015em;
+}
+
+.theme-teal .teaching-detail-subtitle {
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  line-height: 1.4;
+}
+
+.theme-teal .teaching-detail-summary {
+  margin-top: 18px;
+  font-size: 1.04rem;
+}
+
+.theme-teal .teaching-detail-tags {
+  margin-top: 18px;
+}
+
+.theme-teal .teaching-detail-main {
+  padding-block: clamp(40px, 5vw, 64px);
+}
+
+.theme-teal .teaching-detail-content {
+  gap: clamp(28px, 4vw, 46px);
+}
+
+.theme-teal .teaching-panel {
+  padding: clamp(22px, 3vw, 36px);
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-card);
+  box-shadow: none;
+}
+
+.theme-teal .teaching-panel > .eyebrow {
+  margin-bottom: 8px;
+  color: var(--color-heading);
+}
+
+.theme-teal .teaching-detail-section h2 {
+  font-size: clamp(1.75rem, 2.8vw, 2.3rem);
+}
+
+.theme-teal .teaching-panel--context {
+  border-left: 4px solid var(--color-heading);
+  background: var(--surface-emphasis);
+}
+
+.theme-teal .teaching-panel--methodology {
+  border-top: 2px solid var(--border-subtle);
+  background: var(--surface-tint);
+}
+
+.theme-teal .teaching-panel--schedule {
+  border-top: 1px solid var(--border-divider);
+  background: #faf8f2;
+}
+
+.theme-teal .teaching-panel--steps {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-soft);
+}
+
+.theme-teal .teaching-panel--markdown {
+  border-top: 2px solid var(--border-subtle);
+}
+
+.theme-teal .teaching-markdown h2:not(:first-child) {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top-color: var(--border-subtle);
+}
+
+.theme-teal .teaching-panel--resources {
+  border-left: 4px solid var(--color-accent);
+  background: #faf8f2;
+}
+
+.theme-teal .teaching-panel--gallery,
+.theme-teal .teaching-panel--links {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.theme-teal .teaching-schedule,
+.theme-teal .teaching-steps {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.theme-teal .teaching-schedule-item,
+.theme-teal .teaching-step {
+  padding: 20px 24px;
+  border: 0;
+  border-left: 6px solid var(--color-accent);
+  border-radius: 0;
+  background: var(--surface-card);
+  box-shadow: none;
+}
+
+.theme-teal .teaching-schedule-label {
+  color: var(--color-heading);
+  font-size: .83rem;
+  letter-spacing: .045em;
+}
+
+.theme-teal .teaching-step {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.theme-teal .teaching-step-number {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 2px solid var(--color-accent);
+  border-radius: 0;
+  background: transparent;
+  font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .theme-teal .teaching-detail-hero h1 {
+    font-size: clamp(2rem, 4.9vw, 2.15rem);
+  }
+
+  .theme-teal .teaching-panel {
+    padding: 20px 18px;
+  }
+
+  .theme-teal .teaching-schedule-item,
+  .theme-teal .teaching-step {
+    padding: 16px;
+    border-left-width: 4px;
+  }
+
+  .theme-teal .teaching-step {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
 /* Biography hero and chapter annotations. */
 .theme-teal .biography-hero {
   background-image:
