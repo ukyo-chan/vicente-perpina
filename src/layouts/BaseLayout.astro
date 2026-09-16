@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import '../styles/theme-teal.css';
 import '../styles/theme-comic.css';
 
 interface Props {
@@ -42,16 +43,20 @@ const socialImage = new URL(image, Astro.site);
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cabin+Sketch&family=Handlee&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cabin+Sketch&family=Handlee&family=Kalam&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
     <script is:inline>
       document.documentElement.classList.add('js');
       try {
-        if (localStorage.getItem('vicente-visual-theme') === 'teal') {
-          document.documentElement.classList.remove('theme-comic');
-        }
-      } catch {}
+        const savedTheme = localStorage.getItem('vicente-visual-theme');
+        const themeClass = savedTheme === 'teal' ? 'theme-teal' : 'theme-comic';
+        document.documentElement.classList.remove('theme-teal', 'theme-comic');
+        document.documentElement.classList.add(themeClass);
+      } catch {
+        document.documentElement.classList.remove('theme-teal');
+        document.documentElement.classList.add('theme-comic');
+      }
     </script>
   </head>
   <body>

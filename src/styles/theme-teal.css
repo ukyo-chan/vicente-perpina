@@ -1,0 +1,370 @@
+/* Teal theme: clean workshop palette with chalk gestures in the biography. */
+.theme-teal {
+  --heading-font: "Cabin Sketch", cursive;
+
+  --color-text: #1e311d;
+  --color-text-muted: #66746f;
+  --color-heading: #3f6e6d;
+  --color-link: #3f6e6d;
+  --color-accent: #609493;
+  --color-nav: #3e4d48;
+  --color-copy: #46554f;
+  --color-summary: #4b5a55;
+  --color-subtitle: #40524c;
+  --color-panel-text: #4e5d58;
+  --color-control-text: #52625c;
+  --color-chip-text: #53615c;
+  --color-strong-text: #30433c;
+  --color-card-heading: #283b34;
+  --color-data-text: #354740;
+  --color-on-dark: #fff;
+  --color-accent-rgb: 96 148 147;
+  --color-shadow-rgb: 30 49 29;
+  --color-on-dark-rgb: 255 255 255;
+
+  --surface-page: #fffefd;
+  --surface-page-rgb: 255 254 253;
+  --surface-card: #fff;
+  --surface-card-rgb: 255 255 255;
+  --surface-soft: #eff7f6;
+  --surface-soft-rgb: 239 247 246;
+  --surface-emphasis: #dcebea;
+  --surface-tint: #f3f9f8;
+  --surface-gallery: #eef5f4;
+  --surface-hero-rgb: 220 235 234;
+  --surface-detail-overlay-rgb: 238 247 246;
+  --surface-dark: #3f6e6d;
+  --surface-card-accent: #3f6e6d;
+  --surface-lightbox: #152421;
+  --surface-lightbox-rgb: 12 21 20;
+
+  --border-subtle: #c9dddb;
+  --border-divider: #e5efee;
+  --focus-ring: rgb(var(--color-accent-rgb) / .45);
+  --focus-ring-strong: rgb(var(--color-accent-rgb) / .9);
+  --shadow-elevated: 0 18px 50px rgb(var(--color-shadow-rgb) / .10);
+
+  --chalkboard-surface: #315b5a;
+  --chalk-color: #f3f2e9;
+  --chalk-muted: #d8e7e4;
+}
+
+/* Biography hero and chapter annotations. */
+.theme-teal .biography-hero {
+  background-image:
+    linear-gradient(112deg, rgb(var(--surface-hero-rgb) / .82), transparent 52%),
+    linear-gradient(135deg, rgb(var(--surface-hero-rgb) / .56), rgb(var(--surface-page-rgb) / .56));
+}
+
+.theme-teal .biography-hero h1,
+.theme-teal .biography-chapter:not(.biography-vicent) h2 {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.theme-teal .biography-hero h1::after,
+.theme-teal .biography-chapter:not(.biography-vicent) h2::after {
+  content: "";
+  display: block;
+  width: min(72%, 290px);
+  height: 3px;
+  margin: 7px 0 0 3px;
+  border-radius: 48% 52% 44% 56%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(var(--color-accent-rgb) / .62) 0 17px,
+      rgb(var(--color-accent-rgb) / .36) 17px 22px,
+      rgb(var(--color-accent-rgb) / .54) 22px 39px
+    );
+  box-shadow: 0 2px 0 rgb(var(--color-accent-rgb) / .08);
+  pointer-events: none;
+  transform: rotate(-.3deg);
+  transform-origin: left center;
+}
+
+.theme-teal .biography-chapter:not(.biography-vicent) h2::after {
+  width: min(48%, 180px);
+  height: 2px;
+  margin-top: 8px;
+  opacity: .58;
+}
+
+/* Chalk rail: continuous at first glance, imperfect on closer inspection. */
+.theme-teal .biography-story::before {
+  z-index: 0;
+  width: 3px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgb(var(--color-accent-rgb) / .76) 0 17px,
+      rgb(var(--color-accent-rgb) / .52) 17px 22px,
+      rgb(var(--color-accent-rgb) / .68) 22px 39px
+    );
+  box-shadow: 1px 0 0 rgb(var(--surface-page-rgb) / .76);
+}
+
+.theme-teal .biography-story::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 22px;
+  bottom: 114px;
+  left: calc(var(--biography-rail-x) + 2px);
+  width: 1px;
+  background: repeating-linear-gradient(
+    180deg,
+    rgb(var(--color-accent-rgb) / .26) 0 11px,
+    transparent 11px 15px
+  );
+  pointer-events: none;
+}
+
+.theme-teal .biography-chapter {
+  z-index: 1;
+}
+
+.theme-teal .biography-chapter::before {
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  border: 3px solid var(--surface-page);
+  border-radius: 46% 54% 49% 51%;
+  background: var(--chalk-color);
+  box-shadow:
+    0 0 0 2px rgb(var(--color-accent-rgb) / .86),
+    1px 1px 0 4px rgb(var(--color-accent-rgb) / .12),
+    inset 0 0 0 3px rgb(var(--color-accent-rgb) / .22);
+  transform: translate(-50%, -50%) rotate(-4deg);
+}
+
+.theme-teal .biography-chapter__era {
+  color: var(--color-heading);
+  font-family: var(--heading-font);
+  font-size: .98rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-transform: none;
+}
+
+.theme-teal .biography-note {
+  position: relative;
+  color: var(--color-heading);
+  font-family: "Kalam", cursive;
+  font-size: 1.08em;
+  font-weight: 700;
+  letter-spacing: .015em;
+  transform: rotate(-.35deg);
+}
+
+.theme-teal .biography-note::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -.08em;
+  left: 0;
+  height: 2px;
+  border-radius: 50%;
+  background: rgb(var(--color-accent-rgb) / .34);
+  pointer-events: none;
+  transform: rotate(-1deg);
+}
+
+.theme-teal .biography-note--strong {
+  font-size: 1.22em;
+  transform: rotate(-1.25deg);
+}
+
+.theme-teal .doodle,
+.theme-teal .quote,
+.theme-teal .biography-closing__line {
+  font-family: "Kalam", cursive;
+}
+
+/* The trajectory interlude introduces the same chalk line without becoming a board. */
+.theme-teal .career-life-interlude {
+  color: var(--color-heading);
+}
+
+.theme-teal .career-life-interlude:hover,
+.theme-teal .career-life-interlude:focus-visible {
+  background: rgb(var(--color-accent-rgb) / .07);
+}
+
+.theme-teal .career-life-interlude__line,
+.theme-teal .biography-vicent__line {
+  height: 4px;
+  color: var(--color-accent);
+  border-radius: 48% 52% 46% 54%;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    currentColor 4% 61%,
+    transparent 63% 65%,
+    currentColor 67% 96%,
+    transparent 100%
+  );
+  box-shadow: 0 2px 0 rgb(var(--color-accent-rgb) / .12);
+  transform: rotate(-.45deg);
+}
+
+.theme-teal .career-life-interlude__line::before,
+.theme-teal .biography-vicent__line::before {
+  content: "";
+  position: absolute;
+  inset: 1px 5% auto 2%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0 8%,
+    currentColor 9% 43%,
+    transparent 44% 48%,
+    currentColor 49% 88%,
+    transparent 90%
+  );
+  opacity: .28;
+  pointer-events: none;
+  transform: translateY(1px) rotate(.35deg);
+}
+
+.theme-teal .career-life-interlude__line::after,
+.theme-teal .biography-vicent__line::after {
+  top: 50%;
+  right: 1px;
+  width: 12px;
+  height: 10px;
+  border: 0;
+  border-top: 3px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: translate(-1px, -50%) rotate(45deg) skew(-4deg, -2deg);
+}
+
+.theme-teal .career-life-interlude__content strong {
+  color: var(--color-heading);
+  text-shadow: 0 1px 0 rgb(var(--surface-page-rgb) / .9);
+}
+
+/* VICENT · 2021: a used workshop chalkboard rather than a polished UI card. */
+.theme-teal .biography-vicent {
+  isolation: isolate;
+  overflow: hidden;
+  margin-block: 52px 62px;
+  border: 2px solid rgb(216 231 228 / .48);
+  border-radius: 2px 0 3px 1px / 1px 3px 0 2px;
+  background-color: var(--chalkboard-surface);
+  background-image:
+    radial-gradient(ellipse 42% 15% at 21% 24%, rgb(243 242 233 / .065), transparent 72%),
+    radial-gradient(ellipse 35% 11% at 74% 62%, rgb(216 231 228 / .052), transparent 74%),
+    radial-gradient(ellipse 18% 30% at 92% 28%, rgb(35 71 70 / .22), transparent 76%),
+    linear-gradient(176deg, transparent 0 31%, rgb(243 242 233 / .026) 33%, transparent 37%),
+    linear-gradient(3deg, transparent 0 68%, rgb(216 231 228 / .022) 70%, transparent 74%);
+  box-shadow:
+    inset 0 0 34px rgb(10 31 30 / .22),
+    2px 3px 0 rgb(var(--color-shadow-rgb) / .08);
+  color: var(--chalk-color);
+}
+
+.theme-teal .biography-vicent::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 10px 9px 9px 10px;
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, rgb(243 242 233 / .36) 0 38%, transparent 39% 42%, rgb(243 242 233 / .25) 43% 79%, transparent 80% 82%, rgb(243 242 233 / .31) 83%) top left / calc(100% - 13px) 1px no-repeat,
+    linear-gradient(90deg, rgb(243 242 233 / .24) 0 19%, transparent 20% 23%, rgb(243 242 233 / .34) 24% 68%, transparent 69% 72%, rgb(243 242 233 / .22) 73%) bottom left / calc(100% - 8px) 1px no-repeat,
+    linear-gradient(180deg, rgb(243 242 233 / .29) 0 44%, transparent 45% 49%, rgb(243 242 233 / .21) 50% 84%, transparent 85%) top left / 1px calc(100% - 11px) no-repeat,
+    linear-gradient(180deg, rgb(243 242 233 / .22) 0 26%, transparent 27% 30%, rgb(243 242 233 / .33) 31% 76%, transparent 77% 80%, rgb(243 242 233 / .2) 81%) top right / 1px calc(100% - 15px) no-repeat;
+  box-shadow: none;
+  pointer-events: none;
+  transform: rotate(-.06deg);
+}
+
+.theme-teal .biography-vicent::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 16px 22px;
+  background:
+    linear-gradient(177deg, transparent 0 18%, rgb(243 242 233 / .026) 20%, transparent 24%),
+    linear-gradient(2deg, transparent 0 46%, rgb(216 231 228 / .035) 48% 49%, transparent 53%),
+    linear-gradient(179deg, transparent 0 74%, rgb(243 242 233 / .022) 76%, transparent 80%);
+  filter: blur(.35px);
+  pointer-events: none;
+}
+
+.theme-teal .biography-vicent > * {
+  position: relative;
+  z-index: 2;
+}
+
+.theme-teal .biography-vicent__line {
+  color: var(--chalk-muted);
+  box-shadow: 0 2px 0 rgb(243 242 233 / .10);
+}
+
+.theme-teal .biography-vicent__label {
+  color: var(--chalk-color);
+  font-family: "Cabin Sketch", cursive;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-shadow: 1px 1px 0 rgb(216 231 228 / .16);
+}
+
+.theme-teal .biography-vicent h2 {
+  color: var(--chalk-muted);
+  font-family: var(--heading-font);
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+
+.theme-teal .biography-vicent__body p {
+  color: rgb(243 242 233 / .92);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.72;
+}
+
+.theme-teal .biography-vicent__body .biography-vicent__label {
+  font-family: "Cabin Sketch", cursive;
+}
+
+.theme-teal .biography-closing h2::after {
+  width: min(82%, 330px);
+  background: linear-gradient(90deg, rgb(var(--color-accent-rgb) / .58), rgb(var(--color-accent-rgb) / .13), transparent);
+}
+
+.theme-teal .biography-closing__line {
+  padding-left: 15px;
+  border-left: 3px double rgb(var(--color-accent-rgb) / .56);
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .theme-teal .biography-story::after {
+    bottom: 124px;
+  }
+
+  .theme-teal .biography-vicent {
+    margin-block: 42px 48px;
+    background-image:
+      radial-gradient(ellipse 52% 13% at 20% 21%, rgb(243 242 233 / .055), transparent 74%),
+      radial-gradient(ellipse 42% 10% at 78% 68%, rgb(216 231 228 / .045), transparent 76%),
+      linear-gradient(177deg, transparent 0 45%, rgb(243 242 233 / .022) 47%, transparent 52%);
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-teal .biography-vicent__line {
+    width: 64px;
+  }
+
+  .theme-teal .biography-vicent__label {
+    font-size: clamp(1.9rem, 10vw, 2.5rem);
+  }
+}

@@ -1,45 +1,43 @@
 :root {
-  /* Semantic color tokens: core text and interaction. */
-  --color-text: #1e311d;
-  --color-text-muted: #66746f;
-  --color-heading: #3f6e6d;
-  --color-link: #3f6e6d;
-  --color-accent: #609493;
-  --color-nav: #3e4d48;
-  --color-copy: #46554f;
-  --color-summary: #4b5a55;
-  --color-subtitle: #40524c;
-  --color-panel-text: #4e5d58;
-  --color-control-text: #52625c;
-  --color-chip-text: #53615c;
-  --color-strong-text: #30433c;
-  --color-card-heading: #283b34;
-  --color-data-text: #354740;
+  /* Neutral semantic fallbacks for unstyled or partial rendering. */
+  --color-text: #292929;
+  --color-text-muted: #686868;
+  --color-heading: #363636;
+  --color-link: #363636;
+  --color-accent: #6c6c6c;
+  --color-nav: #3f3f3f;
+  --color-copy: #505050;
+  --color-summary: #555;
+  --color-subtitle: #484848;
+  --color-panel-text: #555;
+  --color-control-text: #5b5b5b;
+  --color-chip-text: #5b5b5b;
+  --color-strong-text: #383838;
+  --color-card-heading: #303030;
+  --color-data-text: #3f3f3f;
   --color-on-dark: #fff;
-  --color-accent-rgb: 96 148 147;
-  --color-shadow-rgb: 30 49 29;
+  --color-accent-rgb: 108 108 108;
+  --color-shadow-rgb: 30 30 30;
   --color-on-dark-rgb: 255 255 255;
 
-  /* Semantic color tokens: surfaces and image overlays. */
-  --surface-page: #fffefd;
-  --surface-page-rgb: 255 254 253;
+  --surface-page: #fff;
+  --surface-page-rgb: 255 255 255;
   --surface-card: #fff;
   --surface-card-rgb: 255 255 255;
-  --surface-soft: #eff7f6;
-  --surface-soft-rgb: 239 247 246;
-  --surface-emphasis: #dcebea;
-  --surface-tint: #f3f9f8;
-  --surface-gallery: #eef5f4;
-  --surface-hero-rgb: 220 235 234;
-  --surface-detail-overlay-rgb: 238 247 246;
-  --surface-dark: #3f6e6d;
-  --surface-card-accent: #3f6e6d;
-  --surface-lightbox: #152421;
-  --surface-lightbox-rgb: 12 21 20;
+  --surface-soft: #f3f3f1;
+  --surface-soft-rgb: 243 243 241;
+  --surface-emphasis: #e7e7e4;
+  --surface-tint: #f7f7f5;
+  --surface-gallery: #f1f1ef;
+  --surface-hero-rgb: 235 235 232;
+  --surface-detail-overlay-rgb: 245 245 243;
+  --surface-dark: #353535;
+  --surface-card-accent: #3a3a3a;
+  --surface-lightbox: #202020;
+  --surface-lightbox-rgb: 20 20 20;
 
-  /* Semantic color tokens: borders and effects. */
-  --border-subtle: #c9dddb;
-  --border-divider: #e5efee;
+  --border-subtle: #d4d4d1;
+  --border-divider: #e8e8e5;
   --focus-ring: rgb(var(--color-accent-rgb) / .45);
   --focus-ring-strong: rgb(var(--color-accent-rgb) / .9);
   --shadow-elevated: 0 18px 50px rgb(var(--color-shadow-rgb) / .10);
@@ -54,7 +52,7 @@
   --muted: var(--color-text-muted);
   --line: var(--border-subtle);
   --shadow: var(--shadow-elevated);
-  --heading-font: "Cabin Sketch", cursive;
+  --heading-font: Inter, ui-sans-serif, system-ui, sans-serif;
   --radius: 24px;
   --max: 1160px;
 }
@@ -2845,7 +2843,7 @@ a.encounter-title:focus-visible {
 }
 
 .teaching-detail-hero__inner {
-  max-width: 980px;
+  max-width: var(--max);
 }
 
 .teaching-back {
@@ -2917,13 +2915,13 @@ a.encounter-title:focus-visible {
 }
 
 .teaching-detail-layout {
-  max-width: 980px;
+  max-width: var(--max);
 }
 
 .teaching-detail-content {
   display: grid;
   gap: clamp(30px, 4.5vw, 44px);
-  max-width: 780px;
+  max-width: none;
 }
 
 .teaching-detail-section + .teaching-detail-section {
@@ -2960,7 +2958,7 @@ a.encounter-title:focus-visible {
 }
 
 .teaching-detail-section p {
-  max-width: 720px;
+  max-width: none;
   margin: 0;
   color: var(--color-panel-text);
   line-height: 1.75;
@@ -3315,7 +3313,7 @@ a.encounter-title:focus-visible {
   font-size: .9rem;
 }
 
-/* Narrative biography. Structural rules remain independent from the comic skin. */
+/* Narrative biography: shared structure and responsive layout. */
 .biography-hero__inner {
   max-width: 930px;
 }

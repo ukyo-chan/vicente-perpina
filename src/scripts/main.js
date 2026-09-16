@@ -59,22 +59,25 @@ const visualThemeButtons = document.querySelectorAll('[data-visual-theme]');
 const visualThemeStorageKey = 'vicente-visual-theme';
 
 function setVisualTheme(theme, persist = false) {
-  const useComicTheme = theme === 'comic';
-  document.documentElement.classList.toggle('theme-comic', useComicTheme);
+  const activeTheme = theme === 'teal' ? 'teal' : 'comic';
+  const activeThemeClass = activeTheme === 'teal' ? 'theme-teal' : 'theme-comic';
+
+  document.documentElement.classList.remove('theme-teal', 'theme-comic');
+  document.documentElement.classList.add(activeThemeClass);
 
   visualThemeButtons.forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.visualTheme === theme));
+    button.setAttribute('aria-pressed', String(button.dataset.visualTheme === activeTheme));
   });
 
   if (!persist) return;
 
   try {
-    localStorage.setItem(visualThemeStorageKey, theme);
+    localStorage.setItem(visualThemeStorageKey, activeTheme);
   } catch {}
 }
 
 if (visualThemeButtons.length > 0) {
-  const initialTheme = document.documentElement.classList.contains('theme-comic') ? 'comic' : 'teal';
+  const initialTheme = document.documentElement.classList.contains('theme-teal') ? 'teal' : 'comic';
   setVisualTheme(initialTheme);
 
   visualThemeButtons.forEach(button => {
