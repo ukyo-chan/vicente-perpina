@@ -49,6 +49,11 @@
   --chalk-muted: #d8e7e4;
 }
 
+.theme-teal .social-icon-link,
+.theme-teal .nav-links a.social-icon-link {
+  border-radius: 12px;
+}
+
 /* Teaching details: soft editorial bands and vertical learning sequences. */
 .theme-teal .teaching-detail-hero {
   padding-block: clamp(32px, 4vw, 48px);
