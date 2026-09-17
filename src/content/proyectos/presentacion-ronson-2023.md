@@ -11,11 +11,12 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2023"
 trayectoriaTitulo: "Presentación de Ronson y conversación con César Sebastián"
 trayectoriaDetalle: "Presentación y conversación · César Sebastián"
 ordenTrayectoria: 2023
-ordenTrayectoriaItem: 30
+ordenTrayectoriaItem: 40
 verificacion:
   estado: mixta
   notas: "La actividad y el contexto del Salón están documentados externamente; Vicente confirma directamente la presentación y la conversación con César Sebastián."

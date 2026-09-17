@@ -16,6 +16,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: '2015'
 trayectoriaTitulo: "El valor de la imagen en la adaptación de cuentos clásicos. Vigencia, valores e impacto en el imaginario colectivo"
 trayectoriaDetalle: "Ponente · publicación en el Libro de actas"

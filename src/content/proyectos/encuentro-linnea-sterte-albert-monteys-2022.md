@@ -11,6 +11,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2022"
 trayectoriaTitulo: "Los universos infinitos de la ciencia ficción en el cómic"
 trayectoriaDetalle: "Moderación · Linnea Sterte y Albert Monteys"

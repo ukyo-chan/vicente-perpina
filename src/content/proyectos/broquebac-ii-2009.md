@@ -13,7 +13,7 @@ mostrarObra: true
 mostrarTrayectoria: true
 anchor: broquebac-ii
 relacionados: [broquebac-i-2008]
-trayectoriaFecha: 2009–11
+trayectoriaFecha: "2009"
 trayectoriaDetalle: Animación · selección oficial Animadrid 2009
 ordenTrayectoria: 2009
 ordenTrayectoriaItem: 20

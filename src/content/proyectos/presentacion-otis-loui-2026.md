@@ -12,6 +12,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2026"
 trayectoriaTitulo: "Presentación de Otis y Loui, cobradores de morosos: Capítulo 4"
 trayectoriaDetalle: "Moderación · José Jorques"

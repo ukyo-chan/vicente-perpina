@@ -11,11 +11,12 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2023"
 trayectoriaTitulo: "Presentación de Las tres heridas de Miguel Hernández y conversación con Carles Esquembre"
 trayectoriaDetalle: "Presentación y conversación · Carles Esquembre"
 ordenTrayectoria: 2023
-ordenTrayectoriaItem: 40
+ordenTrayectoriaItem: 30
 verificacion:
   estado: mixta
   notas: "La actividad y el contexto del Salón están documentados externamente; Vicente confirma directamente la presentación y la conversación con Carles Esquembre."

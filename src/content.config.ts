@@ -111,6 +111,7 @@ const proyectos = defineCollection({
     ordenHitoHome: z.number().int().optional(),
     homeHitoTexto: z.string().optional(),
 
+    bloqueTrayectoria: z.enum(['cronologia', 'actividad-publica']).optional(),
     trayectoriaFecha: z.string().optional(),
     trayectoriaTitulo: z.string().optional(),
     trayectoriaDetalle: z.string().optional(),

@@ -12,7 +12,7 @@ detalle: false
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: la-taronja
-trayectoriaFecha: 2009–11
+trayectoriaFecha: "2009"
 trayectoriaDetalle: Animación tradicional · Animadrid 2009 · Cortomieres 2010
 ordenTrayectoria: 2009
 ordenTrayectoriaItem: 10

@@ -22,8 +22,8 @@ mostrarTrayectoria: true
 anchor: elles
 obraResumen: "Con Carlos Mercé coimpulsé y coedité esta publicación coral de Edicions Anònimes. Ilustré un artículo del primer número y realicé material gráfico promocional para el segundo."
 obraMeta: "Dos números · Edicions Anònimes"
-trayectoriaFecha: "2020–2024"
-trayectoriaDetalle: "Coedición y promoción · ilustración de un artículo del #1 y material promocional del #2"
+trayectoriaFecha: "2020"
+trayectoriaDetalle: "Dos números entre 2020 y 2024 · coedición y promoción · ilustración de un artículo del #1 y material promocional del #2"
 ordenTrayectoria: 2020
 ordenTrayectoriaItem: 10
 enlaces:

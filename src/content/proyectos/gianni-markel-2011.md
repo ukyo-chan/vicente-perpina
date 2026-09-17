@@ -15,9 +15,9 @@ mostrarObra: true
 mostrarTrayectoria: true
 anchor: gianni-markel
 obraResumen: "Proyecto documental realizado con Luis Miguel Alonso y proyectado en sección oficial del Matamoros Cultural Fest, México."
-trayectoriaFecha: "2009–11"
+trayectoriaFecha: "2011"
 trayectoriaDetalle: "Proyecto documental · Luis Miguel Alonso y Vicente Perpiñá"
-ordenTrayectoria: 2009
+ordenTrayectoria: 2011
 ordenTrayectoriaItem: 50
 enlaces:
   - texto: "Memoria del proyecto en RIUNet"

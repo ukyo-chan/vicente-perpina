@@ -20,7 +20,7 @@ trayectoriaFecha: '2015'
 trayectoriaTitulo: Dibujo Expandido
 trayectoriaDetalle: Museo ABC · Colección DKV
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 30
+ordenTrayectoriaItem: 40
 enlaces:
 - texto: Ver exposición
   url: https://museo.abc.es/exposiciones/2015/09/dibujo-expandido/172958

@@ -3,8 +3,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getTimelineGroups, loadProjects, PROJECT_SECTIONS, projectTimelineHref } from '../../lib/projects';
 
 const projects = await loadProjects();
+const legacyYearAnchors: Record<string, string[]> = {
+  '2009': ['2009-11'],
+  '2016': ['2016-17'],
+  '2020': ['2020-2024'],
+  '2021': ['2021-22']
+};
 const timelineGroups = getTimelineGroups(
-  projects.filter(project => !project.categories.includes('encuentro'))
+  projects.filter(project => project.timelineBlock === 'cronologia')
 ).map(group => ({
   ...group,
   areas: PROJECT_SECTIONS
@@ -15,8 +21,8 @@ const timelineGroups = getTimelineGroups(
     }))
     .filter(area => area.projects.length > 0)
 }));
-const encounterProjects = getTimelineGroups(
-  projects.filter(project => project.categories.includes('encuentro'))
+const publicActivityProjects = getTimelineGroups(
+  projects.filter(project => project.timelineBlock === 'actividad-publica')
 ).flatMap(group => group.projects);
 const vicentTimelineGroupId = timelineGroups.find(group =>
   group.order === 2021 || group.projects.some(project => project.year === 2021)
@@ -32,7 +38,7 @@ const vicentTimelineGroupId = timelineGroups.find(group =>
         <p class="eyebrow">Una mirada completa</p>
         <h1>Trayectoria</h1>
         <p>
-          Llevo más de quince años conectando dibujo, ilustración, cómic, edición, animación, proyectos expositivos y docencia.
+          Desde 2004 conecto dibujo, ilustración, cómic, edición, animación, proyectos expositivos y docencia.
           Mi trayectoria artística se complementa con formación pedagógica y experiencia educativa.
         </p>
       </div>
@@ -41,7 +47,7 @@ const vicentTimelineGroupId = timelineGroups.find(group =>
     <div class="section-nav-wrap">
       <nav class="container section-nav" aria-label="Secciones de trayectoria">
         <a href="#hitos">Cronología</a>
-        <a href="#encuentros">Encuentros y divulgación</a>
+        <a href="#encuentros">Actividad pública</a>
         <a href="#formacion">Formación</a>
       </nav>
     </div>
@@ -62,7 +68,10 @@ const vicentTimelineGroupId = timelineGroups.find(group =>
           {timelineGroups.map(group => (
             <>
               <article class="career-year reveal" id={group.id}>
-                <div class="career-number">{group.label}</div>
+                <div class="career-number">
+                  {legacyYearAnchors[group.id]?.map(anchor => <span id={anchor} aria-hidden="true"></span>)}
+                  {group.label}
+                </div>
                 <div class="career-events">
                   {group.areas.map(area => (
                     <section class="career-area" aria-labelledby={`${group.id}-${area.id}`}>
@@ -128,7 +137,7 @@ const vicentTimelineGroupId = timelineGroups.find(group =>
           </div>
 
           <div class="encounters-list">
-            {encounterProjects.map(project => {
+            {publicActivityProjects.map(project => {
               const href = projectTimelineHref(project);
               const external = href?.startsWith('http');
 

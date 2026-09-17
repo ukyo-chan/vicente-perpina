@@ -10,6 +10,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 hitoHome: true
 ordenHitoHome: 1
 homeHitoTexto: Invitado · Salón del Cómic de València

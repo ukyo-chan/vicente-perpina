@@ -19,7 +19,7 @@ trayectoriaFecha: '2015'
 trayectoriaTitulo: Room Art · Migraciones visuales
 trayectoriaDetalle: La Nau · Universitat de València
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 20
+ordenTrayectoriaItem: 30
 enlaces:
 - texto: Más información
   url: https://www.uv.es/uvweb/universidad/es/listado-noticias/-room-art-2015-muestra-nau-afectan-migraciones-creatividad-1285846070123/Noticia.html?id=1285928968885

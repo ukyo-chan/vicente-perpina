@@ -112,6 +112,7 @@ export interface Project {
   homeHighlightOrder?: number;
   homeHighlightText?: string;
 
+  timelineBlock: 'cronologia' | 'actividad-publica';
   timelineDate?: string;
   timelineTitle?: string;
   timelineDetail?: string;
@@ -183,6 +184,7 @@ export function projectFromEntry(entry: ProjectEntry): Project {
     homeHighlightOrder: data.ordenHitoHome,
     homeHighlightText: data.homeHitoTexto,
 
+    timelineBlock: data.bloqueTrayectoria ?? 'cronologia',
     timelineDate: data.trayectoriaFecha,
     timelineTitle: data.trayectoriaTitulo,
     timelineDetail: data.trayectoriaDetalle,

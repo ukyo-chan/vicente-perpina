@@ -12,6 +12,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2020"
 trayectoriaTitulo: "Cómic y audiovisual. Alegrías y dolores de un proceso de adaptación"
 trayectoriaDetalle: "Moderación · Pepo Pérez, Mario Torrecillas y Artur Laperla"

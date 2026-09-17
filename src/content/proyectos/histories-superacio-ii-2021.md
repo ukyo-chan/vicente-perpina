@@ -23,9 +23,9 @@ mostrarTrayectoria: true
 anchor: histories-superacio
 obraResumen: "Realicé las ilustraciones de Odisea Interior y la historieta El segon Miracle dels peixets, dedicada a Per l’Horta, para este proyecto de cómic social que tuvo publicación en 2021 y exposición en 2022."
 obraMeta: "Cómic social · Libro y exposición en el Centre del Carme"
-trayectoriaFecha: 2021–22
+trayectoriaFecha: "2021"
 trayectoriaTitulo: "Històries de Superació II"
-trayectoriaDetalle: "Ilustraciones de Odisea Interior · historieta para Per l’Horta · publicación y exposición"
+trayectoriaDetalle: "Ilustraciones de Odisea Interior · historieta para Per l’Horta · publicación y presentación en 2021 · exposición en 2022"
 ordenTrayectoria: 2021
 ordenTrayectoriaItem: 10
 enlaces:

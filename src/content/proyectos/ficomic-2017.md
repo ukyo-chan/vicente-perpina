@@ -14,6 +14,7 @@ publicar: true
 detalle: false
 mostrarObra: false
 mostrarTrayectoria: true
+bloqueTrayectoria: actividad-publica
 trayectoriaFecha: "2017"
 trayectoriaTitulo: "FICOMIC 2017"
 trayectoriaDetalle: "Zona de fanzines · Club de Cómics BBAA-UPV"

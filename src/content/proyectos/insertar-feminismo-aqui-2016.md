@@ -25,9 +25,9 @@ obraResumen: "Una composición dedicada a Clara Campoamor que reúne retrato, ti
 obraMeta: "Ilustración · exposición colectiva"
 
 anchor: insertar-feminismo-aqui
-trayectoriaFecha: "2016–17"
+trayectoriaFecha: "2016"
 trayectoriaTitulo: "[Insertar Feminismo Aquí]"
-trayectoriaDetalle: "Las Lolas · Alfafar, Benifaió y Burjassot"
+trayectoriaDetalle: "Las Lolas · itinerancia 2016–2017 · Alfafar, Benifaió y Burjassot"
 ordenTrayectoria: 2016
 ordenTrayectoriaItem: 20
 

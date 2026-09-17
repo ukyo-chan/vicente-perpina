@@ -13,9 +13,9 @@ detalle: false
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: al-vent
-trayectoriaFecha: 2009–11
+trayectoriaFecha: "2010"
 trayectoriaDetalle: Animación, rotoscopia y diseño · videoclip de Miquel Guillem
-ordenTrayectoria: 2009
+ordenTrayectoria: 2010
 ordenTrayectoriaItem: 30
 verificacion:
   estado: vicente

@@ -19,8 +19,8 @@ mostrarTrayectoria: true
 aparienciaObra: lead
 anchor: edicions-anonimes
 obraMeta: Proyecto editorial
-trayectoriaFecha: 2019 →
-trayectoriaDetalle: Edición, autoedición y proyectos de cómic
+trayectoriaFecha: "2019"
+trayectoriaDetalle: "Proyecto editorial desde 2019 · edición, autoedición y proyectos de cómic"
 ordenTrayectoria: 2019
 ordenTrayectoriaItem: 10
 enlaces:

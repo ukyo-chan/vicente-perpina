@@ -13,9 +13,9 @@ detalle: false
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: mega-bloks-halo
-trayectoriaFecha: 2009–11
+trayectoriaFecha: "2010"
 trayectoriaDetalle: Stop-motion · decorados y vehículos · dirección de Pablo Llorens
-ordenTrayectoria: 2009
+ordenTrayectoria: 2010
 ordenTrayectoriaItem: 40
 verificacion:
   estado: vicente
