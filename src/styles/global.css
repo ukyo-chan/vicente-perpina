@@ -2092,7 +2092,7 @@ a.encounter-title:focus-visible {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    width: 100%;
+    gap: 16px;
   }
 
   .footer-links {
@@ -2102,10 +2102,10 @@ a.encounter-title:focus-visible {
   .footer-nav-links {
     grid-column: 1 / -1;
     grid-row: 2;
-    justify-content: space-between;
-    gap: clamp(6px, 2vw, 10px);
+    justify-content: flex-start;
+    gap: 10px 18px;
     margin-top: 4px;
-    font-size: clamp(.7rem, 2.7vw, .78rem);
+    font-size: .8rem;
     white-space: nowrap;
   }
 

@@ -1,5 +1,7 @@
 ---
 titulo: "EL·LE(s) · Pròxima parada"
+fecha: "2020"
+fechaOrden: "2020"
 medio: "À Punt Ràdio"
 programa: "Pròxima parada"
 tipos:
