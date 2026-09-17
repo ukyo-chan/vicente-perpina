@@ -34,6 +34,7 @@ enlaces:
 - texto: "EL·LE(s) en Valencia Plaza"
   url: https://valenciaplaza.com/libros-comic-valencia-comunitat-valenciana/el-les-la-primera-coleccion-de-vinetas-sobre-identidad-de-genero
 relacionados:
+- placa-del-mercat-2019
 - elles-2020
 - placa-del-mercat-biblioteca-rivendel-2020
 - alta-tension-placa-del-mercat-salon-2020
@@ -61,7 +62,7 @@ Carlos y yo nos conocimos en el **Club de Cómic de la Facultad de Bellas Artes*
 
 ## Plaça del Mercat
 
-**Plaça del Mercat** es una de las publicaciones centrales de Edicions Anònimes. Nació en 2019 como una revista de cómic abierta a diferentes estilos, con las historias cotidianas como punto de encuentro.
+**[Plaça del Mercat](/proyectos/placa-del-mercat-2019/)** es una de las publicaciones centrales de Edicions Anònimes. Nació en 2019 como una revista de cómic abierta a diferentes estilos, con las historias cotidianas como punto de encuentro.
 
 En sus páginas reunimos historietas y contenidos de divulgación sobre el cómic. La publicación permite compartir espacio entre autores con distintos recorridos y dar a conocer nuevas voces, sin reducir la propuesta a una única manera de dibujar o narrar.
 
