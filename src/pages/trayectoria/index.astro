@@ -3,12 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getTimelineGroups, loadProjects, PROJECT_SECTIONS, projectTimelineHref } from '../../lib/projects';
 
 const projects = await loadProjects();
-const legacyYearAnchors: Record<string, string[]> = {
-  '2009': ['2009-11'],
-  '2016': ['2016-17'],
-  '2020': ['2020-2024'],
-  '2021': ['2021-22']
-};
 const timelineGroups = getTimelineGroups(
   projects.filter(project => project.timelineBlock === 'cronologia')
 ).map(group => ({
@@ -69,7 +63,6 @@ const vicentTimelineGroupId = timelineGroups.find(group =>
             <>
               <article class="career-year reveal" id={group.id}>
                 <div class="career-number">
-                  {legacyYearAnchors[group.id]?.map(anchor => <span id={anchor} aria-hidden="true"></span>)}
                   {group.label}
                 </div>
                 <div class="career-events">

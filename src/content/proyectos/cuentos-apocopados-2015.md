@@ -21,7 +21,7 @@ trayectoriaFecha: "2015"
 trayectoriaTitulo: "Cuentos apocopados"
 trayectoriaDetalle: "Exposición individual · Mano a Mano"
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 20
+ordenTrayectoriaItem: 50
 relacionados:
   - cuentos-populares-2015
 verificacion:

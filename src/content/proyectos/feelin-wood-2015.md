@@ -23,7 +23,7 @@ trayectoriaFecha: "2015"
 trayectoriaTitulo: "Feelin’ wood"
 trayectoriaDetalle: "Rivendel · ilustración, diseño y skate"
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 60
+ordenTrayectoriaItem: 40
 enlaces:
   - texto: "Noticia de DissenyCV"
     url: "https://dissenycv.es/rivendel-fusiona-ilustracion-diseno-y-skates/"

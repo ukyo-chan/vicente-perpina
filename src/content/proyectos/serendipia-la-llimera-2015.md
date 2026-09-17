@@ -21,7 +21,7 @@ trayectoriaFecha: "2015"
 trayectoriaTitulo: "Serendipia · La Llimera"
 trayectoriaDetalle: "Portadas de discos ficticias · exposición colectiva"
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 50
+ordenTrayectoriaItem: 20
 enlaces:
   - texto: "Ficha de la exposición"
     url: "https://www.belenballesteros.es/news.html"

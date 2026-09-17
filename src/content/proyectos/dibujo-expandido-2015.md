@@ -1,6 +1,8 @@
 ---
 titulo: Dibujo Expandido · Colección DKV
 anio: 2015
+fechaInicio: "2015-09-17"
+fechaFin: "2015-11-22"
 tipoPrincipal: exposicion
 categorias:
 - dibujo
@@ -10,6 +12,7 @@ resumen: Mi obra formó parte de la selección de dibujo contemporáneo de la Co
   junto a artistas emergentes y de media carrera.
 entidad: Museo ABC · Colección DKV
 lugar: Madrid
+fechas: "17 de septiembre – 22 de noviembre de 2015"
 publicar: true
 detalle: false
 mostrarObra: true
@@ -20,7 +23,7 @@ trayectoriaFecha: '2015'
 trayectoriaTitulo: Dibujo Expandido
 trayectoriaDetalle: Museo ABC · Colección DKV
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 40
+ordenTrayectoriaItem: 60
 enlaces:
 - texto: Ver exposición
   url: https://museo.abc.es/exposiciones/2015/09/dibujo-expandido/172958

@@ -25,7 +25,7 @@ homeHitoTexto: "Cuentos populares · exposición individual"
 trayectoriaFecha: "2015"
 trayectoriaDetalle: "Exposición individual · Nuevo Centro Espai d'Art"
 ordenTrayectoria: 2015
-ordenTrayectoriaItem: 10
+ordenTrayectoriaItem: 30
 enlaces:
   - texto: "Ficha del catálogo en la Universitat de València"
     url: "https://producciocientifica.uv.es/documentos/63fd5ac902a5b52ea3dc1050"
