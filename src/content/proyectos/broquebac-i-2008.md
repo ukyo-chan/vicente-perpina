@@ -25,7 +25,7 @@ trayectoriaTitulo: "Broquebac I"
 trayectoriaDetalle: "Animación colectiva · proyección en Ca Revolta"
 ordenTrayectoria: 2008
 ordenTrayectoriaItem: 50
-relacionados: [broquebac-ii-2009]
+relacionados: [broquebac-ii-2009, arte-vih-accion-colectiva-2004-2008]
 enlaces:
   - texto: "Catálogo DKV Grand Tour 2012"
     url: "https://www.upv.es/contenidos/DKVARTE/info/U0749556.pdf"

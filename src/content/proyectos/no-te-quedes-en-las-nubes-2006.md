@@ -23,6 +23,7 @@ trayectoriaTitulo: "No te quedes en las nubes"
 trayectoriaDetalle: "Animación colectiva · proyección en la Sala Josep Renau"
 ordenTrayectoria: 2006
 ordenTrayectoriaItem: 20
+relacionados: [arte-vih-accion-colectiva-2004-2008]
 enlaces:
   - texto: "Catálogo DKV Grand Tour 2012"
     url: "https://www.upv.es/contenidos/DKVARTE/info/U0749556.pdf"
