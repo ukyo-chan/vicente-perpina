@@ -17,6 +17,26 @@ detalle: true
 mostrarObra: true
 mostrarTrayectoria: true
 archivoObra: false
+imagenPrincipal:
+  src: "/assets/img/proyectos/momic/portada-momic-02.jpg"
+  alt: "Portada del MOM!C nº2, ilustrada por Vicente Perpiñá"
+  pie: "Portada del MOM!C nº2 · Bertín y Jordi Hurtado · homenaje a Re-Animator"
+galeria:
+  - src: "/assets/img/proyectos/momic/bigotets-01.jpg"
+    alt: "Página 1 de Bigotets a les nines"
+    pie: "Bigotets a les nines · página 1"
+  - src: "/assets/img/proyectos/momic/bigotets-02.jpg"
+    alt: "Página 2 de Bigotets a les nines"
+    pie: "Bigotets a les nines · página 2"
+  - src: "/assets/img/proyectos/momic/bigotets-03.jpg"
+    alt: "Página 3 de Bigotets a les nines"
+    pie: "Bigotets a les nines · página 3"
+  - src: "/assets/img/proyectos/momic/bigotets-04.jpg"
+    alt: "Página 4 de Bigotets a les nines"
+    pie: "Bigotets a les nines · página 4"
+  - src: "/assets/img/proyectos/momic/bigotets-05.jpg"
+    alt: "Página 5 de Bigotets a les nines"
+    pie: "Bigotets a les nines · página 5"
 obraResumen: "Participé como ilustrador y autor de cómic en los tres números de esta serie colectiva, publicados entre marzo de 2010 y abril de 2011."
 obraMeta: "Fanzine colectivo · 3 números"
 trayectoriaFecha: "2010"
@@ -29,6 +49,10 @@ enlaces:
   url: https://elmomic.blogspot.com/
 - texto: "Dime Troodon · Viñeta publicada en MOM!C nº3"
   url: https://koprolitos.blogspot.com/2013/12/dime-troodon.html
+- texto: "Blog personal · Jordi & Bertín para el MOM!C"
+  url: https://blog.vicenteperpina.com/2012/12/jordi-bertin-para-el-momc.html
+- texto: "Blog personal · Bigotets a les nines"
+  url: https://blog.vicenteperpina.com/2012/12/bigotets-les-nines.html
 - texto: "MOM!C · Catálogo histórico Viñetas a pajera!"
   url: https://vinetasapajera.blogspot.com/2017/09/
 - texto: "Perfil público de Vicente Perpiñá"
@@ -57,6 +81,10 @@ verificacion:
     url: https://es.linkedin.com/in/vicenteperpinya
   - nombre: "Koprolitos · Dime Troodon (MOM!C)"
     url: https://koprolitos.blogspot.com/2013/12/dime-troodon.html
+  - nombre: "Blog personal de Vicente · Jordi & Bertín para el MOM!C"
+    url: https://blog.vicenteperpina.com/2012/12/jordi-bertin-para-el-momc.html
+  - nombre: "Blog personal de Vicente · Bigotets a les nines"
+    url: https://blog.vicenteperpina.com/2012/12/bigotets-les-nines.html
   - nombre: "Viñetas a pajera! · MOMIC"
     url: https://vinetasapajera.blogspot.com/2017/09/
 ---
@@ -67,9 +95,9 @@ Entre marzo de 2010 y abril de 2011 participé como **ilustrador y autor de cóm
 
 ## Mis colaboraciones
 
-Publiqué trabajos recurrentes como **Osito Koala** y **Ratzinger-Z**. **Bigotets a les nines** se repartió entre los números 2 y 3: dos páginas en el segundo y tres en el tercero. La viñeta **Dime Troodon** apareció en el nº3.
+Publiqué trabajos recurrentes como **Osito Koala** y **Ratzinger-Z**. [**Bigotets a les nines**](https://blog.vicenteperpina.com/2012/12/bigotets-les-nines.html) se repartió entre los números 2 y 3: dos páginas en el segundo y tres en el tercero. La viñeta [**Dime Troodon**](https://koprolitos.blogspot.com/2013/12/dime-troodon.html) apareció en el nº3.
 
-También realicé la **portada del nº2**, protagonizada por **Bertín y Jordi Hurtado** como homenaje a *Re-Animator*.
+También realicé la [**portada del nº2**](https://blog.vicenteperpina.com/2012/12/jordi-bertin-para-el-momc.html), protagonizada por **Bertín y Jordi Hurtado** como homenaje a *Re-Animator*.
 
 ## Los tres números
 
