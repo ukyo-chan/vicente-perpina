@@ -15,6 +15,10 @@ detalle: true
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: la-taronja
+imagenPrincipal:
+  src: "/assets/img/proyectos/la-taronja-2009/la-taronja.jpg"
+  alt: "Composición gráfica de La Taronja con un paisaje urbano y varias escenas ilustradas"
+  pie: "La Taronja · 2009"
 obraResumen: "Realicé este cortometraje de animación tradicional sobre la transformación de los campos de naranjos por la expansión urbanística."
 obraMeta: "Animación tradicional · 3'33''"
 trayectoriaFecha: "2009"
@@ -22,6 +26,8 @@ trayectoriaDetalle: Animación tradicional · Animadrid 2009 · Cortomieres 2010
 ordenTrayectoria: 2009
 ordenTrayectoriaItem: 10
 enlaces:
+- texto: "Blog de Vicente Perpiñá · La Taronja"
+  url: "https://blog.vicenteperpina.com/2012/12/la-taronja.html"
 - texto: "Ver entrevista y pase en UPV Televisión"
   url: "https://moneres.upv.es/tv/Polit%C3%A9cnica%20Tal%20Cual/2009-07-15%20Politalcua%20(293)%20M.%20Vidal%20(Prof.%20Proyec.%20Animaci%C3%B3n),%20V.%20Perpi%C3%B1%C3%A1%20(Lic.%20BBAA)-F.%20Casta%C3%B1a,%20R.%20Diranzo%20(Siliken)-Report.%20Casa%20Alumno.mp4"
 - texto: "Programa oficial de Animadrid 2009"
@@ -32,8 +38,10 @@ enlaces:
   url: "https://www.upv.es/contenidos/DKVARTE/info/U0749556.pdf"
 verificacion:
   estado: externa
-  notas: "El catálogo Grand Tour DKV 2012 documenta La Taronja como un cortometraje de animación tradicional de 3'33'', en Betacam, seleccionado en las secciones oficiales de Animadrid 2009 y Cortomieres 2010. El programa de Animadrid acredita a V. Perpiñá, lo incluye en la Competición Internacional de Escuelas de Animación 2 del 27 de septiembre de 2009 a las 19:00 y redondea su duración a 3'. El programa de Cortomieres lo acredita a Vicente Perpiñá, consigna 3'33'' y permite resumir su planteamiento sobre los campos de naranjos y la expansión urbanística. El archivo oficial de UPV Televisión identifica a V. Perpiñá junto a M. Vidal en el programa 293 de Politécnica tal cual, emitido el 15 de julio de 2009. No se añaden detalles sobre la conversación porque el contenido audiovisual no se ha utilizado para fundamentar el texto."
+  notas: "El catálogo Grand Tour DKV 2012 documenta La Taronja como un cortometraje de animación tradicional de 3'33'', en Betacam, seleccionado en las secciones oficiales de Animadrid 2009 y Cortomieres 2010. El programa de Animadrid acredita a V. Perpiñá, lo incluye en la Competición Internacional de Escuelas de Animación 2 del 27 de septiembre de 2009 a las 19:00 y redondea su duración a 3'. El programa de Cortomieres lo acredita a Vicente Perpiñá, consigna 3'33'' y permite resumir su planteamiento sobre los campos de naranjos y la expansión urbanística. El archivo oficial de UPV Televisión identifica a V. Perpiñá junto a M. Vidal en el programa 293 de Politécnica tal cual, emitido el 15 de julio de 2009. No se añaden detalles sobre la conversación porque el contenido audiovisual no se ha utilizado para fundamentar el texto. El blog personal de Vicente conserva material visual de la obra."
   fuentes:
+  - nombre: "Blog de Vicente Perpiñá · La Taronja"
+    url: "https://blog.vicenteperpina.com/2012/12/la-taronja.html"
   - nombre: "Grand Tour DKV 2012 · Catálogo UPV"
     url: "https://www.upv.es/contenidos/DKVARTE/info/U0749556.pdf"
   - nombre: "Animadrid 2009 · Programa completo"
@@ -48,7 +56,7 @@ verificacion:
 
 ## El cortometraje
 
-Realicé **La Taronja**, un cortometraje de **animación tradicional de 3 minutos y 33 segundos**, terminado en 2009.
+Realicé [**La Taronja**](https://blog.vicenteperpina.com/2012/12/la-taronja.html), un cortometraje de **animación tradicional de 3 minutos y 33 segundos**, terminado en 2009.
 
 ## El planteamiento
 

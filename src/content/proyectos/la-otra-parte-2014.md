@@ -17,6 +17,23 @@ detalle: true
 mostrarObra: true
 mostrarTrayectoria: true
 anchor: la-otra-parte
+imagenPrincipal:
+  src: "/assets/img/proyectos/la-otra-parte-2014/pke-meter-final.jpg"
+  alt: "PKE METER, homenaje a Harold Ramis, de Vicente Perpiñá"
+  pie: "PKE METER · homenaje a Harold Ramis · 2014"
+galeria:
+  - src: "/assets/img/proyectos/la-otra-parte-2014/pke-meter-dibujo-preparatorio.jpg"
+    alt: "Dibujo preparatorio de PKE METER"
+    pie: "PKE METER · dibujo preparatorio"
+  - src: "/assets/img/proyectos/la-otra-parte-2014/pke-meter-version-blanco-negro.jpg"
+    alt: "Versión en blanco y negro de PKE METER"
+    pie: "PKE METER · versión en blanco y negro"
+  - src: "/assets/img/proyectos/la-otra-parte-2014/pke-meter-estudio-cabeza.jpg"
+    alt: "Estudio de cabeza para PKE METER"
+    pie: "PKE METER · estudio de cabeza"
+  - src: "/assets/img/proyectos/la-otra-parte-2014/pke-meter-variante.jpg"
+    alt: "Variante de PKE METER"
+    pie: "PKE METER · variante"
 obraMeta: "Exposición colectiva · Madame Mim"
 trayectoriaFecha: "2014"
 trayectoriaTitulo: "La Otra Parte"
@@ -46,4 +63,4 @@ Participé en **La Otra Parte**, una exposición colectiva inaugurada el **4 de 
 
 ## Mi aportación
 
-Mostré **PKE METER (homenaje a Harold Ramis)**. La obra está documentada en mi blog personal, enlazado al final de esta ficha.
+Mostré [**PKE METER (homenaje a Harold Ramis)**](https://blog.vicenteperpina.com/2014/04/pke-meter-homenaje-harold-ramis.html).
