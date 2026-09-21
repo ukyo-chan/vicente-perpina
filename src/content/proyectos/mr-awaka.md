@@ -26,16 +26,16 @@ trayectoriaDetalle: "Serie autoeditada con Germán Piqueras · nº1 en 2013 y n�
 ordenTrayectoria: 2013
 ordenTrayectoriaItem: 30
 enlaces:
-- texto: "El fanzine · web oficial de Germán Piqueras"
-  url: https://germanpiqueras.com/mr-awaka/el-fanzine/
+- texto: "Mr. Awaka · página histórica de Germán Piqueras (archivo web)"
+  url: https://web.archive.org/web/20230324224606/https://germanpiqueras.com/mr-awaka/el-fanzine/
 - texto: "Perfil público de Vicente Perpiñá"
   url: https://es.linkedin.com/in/vicenteperpinya
 verificacion:
   estado: externa
-  notas: "Germán Piqueras documenta la creación conjunta del proyecto en primavera-verano de 2013, sus dos números, temáticas, características materiales, tirada y puntos de venta. El perfil público de Vicente fecha el nº1 en octubre de 2013 y el nº2 en julio de 2014, registra sus funciones como ilustrador, escritor y editor y asocia el Depósito Legal V-2251-2013 a ambos números. Gotham News aporta un relato retrospectivo de la continuidad entre MOM!C y Mr. Awaka."
+  notas: "Germán Piqueras documenta la creación conjunta del proyecto en primavera-verano de 2013, sus dos números, temáticas, características materiales, tirada y puntos de venta. El perfil público de Vicente fecha el nº1 en octubre de 2013 y el nº2 en julio de 2014, registra sus funciones como ilustrador, escritor y editor y asocia el Depósito Legal V-2251-2013 a ambos números. Gotham News aporta un relato retrospectivo de la continuidad entre MOM!C y Mr. Awaka. La página original de Germán Piqueras ya no está disponible en su dominio actual; la fuente se conserva mediante una captura de Internet Archive del 24 de marzo de 2023."
   fuentes:
-  - nombre: "Germán Piqueras · El fanzine"
-    url: https://germanpiqueras.com/mr-awaka/el-fanzine/
+  - nombre: "Germán Piqueras · El fanzine (Internet Archive, captura 24/03/2023)"
+    url: https://web.archive.org/web/20230324224606/https://germanpiqueras.com/mr-awaka/el-fanzine/
   - nombre: "LinkedIn · Perfil público de Vicente Perpiñá"
     url: https://es.linkedin.com/in/vicenteperpinya
   - nombre: "Gotham News · Presentación de Plaça del Mercat nº3"
