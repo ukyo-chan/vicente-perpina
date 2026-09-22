@@ -96,11 +96,61 @@ Las experiencias de `src/content/docencia/` se ordenan por el campo `orden`. `pu
 
 Cada archivo de `src/content/prensa/` crea una referencia en el archivo de `/prensa/`. `fechaOrden` permite ordenar cronológicamente cuando la fecha visible tiene otro formato. `destacado` y `ordenDestacado` controlan el bloque inicial; una referencia destacada sigue presente también en el archivo. `url` apunta a la fuente pública y `proyectoRelacionado`, cuando existe, enlaza con el proyecto correspondiente. No hay páginas individuales de prensa.
 
+## Verificación documental
+
+Los proyectos incluyen una capa editorial y documental en `verificacion`, formada por `estado`, las `notas` opcionales y una lista de `fuentes`. El esquema admite estos estados:
+
+- `externa`: información respaldada por documentación pública o fuentes externas.
+- `vicente`: información aportada o confirmada directamente por Vicente cuando no existe una fuente pública suficiente.
+- `mixta`: combina documentación externa con información o confirmación directa de Vicente.
+- `pendiente`: información todavía no cerrada o no suficientemente verificada.
+
+Las notas y fuentes ayudan a conservar el rigor y el contexto de las decisiones editoriales, pero no son automáticamente texto público. La verificación determina qué puede publicarse; no sustituye a la redacción pública de la ficha. Que un dato figure en `verificacion.notas` no implica que deba mostrarse en la web.
+
+## Añadir contenido
+
+Añade cada Markdown a la colección que corresponda:
+
+- proyectos: `src/content/proyectos/`;
+- experiencias docentes: `src/content/docencia/`;
+- referencias de prensa: `src/content/prensa/`.
+
+`src/content.config.ts` es la referencia para consultar los campos válidos, obligatorios y sus valores predeterminados. Este es un proyecto mínimo válido:
+
+```markdown
+---
+titulo: "Título del proyecto"
+anio: 2026
+tipoPrincipal: ilustracion
+categorias: [ilustracion]
+seccion: obra-exposiciones
+resumen: "Resumen breve del proyecto."
+publicar: true
+detalle: true
+mostrarObra: true
+mostrarTrayectoria: true
+imagenPrincipal:
+  src: "/assets/img/proyectos/titulo-del-proyecto/principal.jpg"
+  alt: "Descripción objetiva de la imagen"
+verificacion:
+  estado: externa
+  fuentes: []
+---
+
+## El proyecto
+
+Texto de la ficha.
+```
+
+El nombre del archivo determina el `<slug>`. Con `detalle: true`, Astro genera `/proyectos/<slug>/`; con `detalle: false`, la entrada puede seguir publicada en las secciones habilitadas sin tener ficha propia. Guarda sus imágenes localmente en `public/assets/img/proyectos/<slug>/` y referencia las rutas desde el frontmatter.
+
+Docencia y Prensa tienen modelos distintos porque responden a necesidades diferentes. Para añadir entradas, crea un Markdown en su colección y consulta sus campos en `src/content.config.ts`.
+
 ## Temas e interacciones
 
 `global.css` contiene la base común. `theme-comic.css` y `theme-teal.css` aplican sus variantes visuales sin duplicar la estructura. Cómic es el tema inicial; el selector discreto del pie permite cambiar a Teal y guarda la preferencia en el navegador (`vicente-visual-theme`).
 
-Las interacciones se resuelven con JavaScript del proyecto: menú móvil, selector de tema y galería con visor. La navegación y el contenido principal se generan como HTML estático.
+Las interacciones se resuelven con JavaScript del proyecto: menú móvil, selector de tema y galería con visor. El visor utiliza `<dialog>` para ampliar imágenes, muestra un contador y, cuando hay varias, permite recorrerlas con controles, teclado o swipe. Incluye zoom y desplazamiento de la imagen ampliada mediante pointer o interacción táctil, y al cerrarse devuelve el foco al elemento que lo abrió. La navegación y el contenido principal se generan como HTML estático.
 
 ## SEO y despliegue
 
