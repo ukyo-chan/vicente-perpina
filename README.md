@@ -1,177 +1,119 @@
-# Vicente Perpiñá — Astro · Slice 4
+# Vicente Perpiñá Giner · Web profesional
 
-Este slice cierra la migración estructural del portfolio: la colección de proyectos pasa a ser la **fuente de verdad** de Inicio, Obra, la cronología artística de Trayectoria y las fichas individuales.
+Portfolio profesional de [Vicente Perpiñá Giner](https://vicenteperpina.com). Reúne obra gráfica, ilustración, cómic, edición, animación, audiovisual, docencia, trayectoria y referencias de prensa. El sitio funciona como un archivo vivo: se amplía con proyectos y materiales documentados sin limitarse a una selección cerrada.
 
-## Qué incorpora
+## Tecnología
 
-- Catálogo ampliado a **28 registros** de proyecto/hito/práctica ya presentes en la web.
-- Separación entre:
-  - `publicar`: el registro puede usarse públicamente;
-  - `detalle`: genera o no una ficha `/proyectos/<slug>/`;
-  - `mostrarObra`: aparece o no en Obra;
-  - `mostrarTrayectoria`: aparece o no en la cronología;
-  - `archivoObra`: aparece como elemento compacto del archivo de autoedición.
-- `seccion` independiente de `categorias`, para que un proyecto pueda pertenecer editorialmente a una sección y a la vez tener varias categorías.
-- Inicio generado desde `destacadoHome` y `hitoHome`.
-- Obra generada completamente desde la colección.
-- Filtros de Obra por Ilustración, Exposición, Cómic, Edición, Animación y Audiovisual.
-- Cronología artística de Trayectoria generada desde la colección.
-- Relacionados: primero respeta los slugs declarados y, si faltan, completa automáticamente por afinidad de categorías/sección.
-- Soporte explícito para fechas ISO (`fechaInicio`, `fechaFin`) además de la presentación editorial (`fechaTexto`, `fechas`).
-- Sitemap estático generado en `/sitemap.xml` y `robots.txt` apuntando a él.
-- Capa `Project` intermedia para que componentes y páginas no dependan directamente del Markdown. Esto deja preparada una futura sustitución de Content Collections por Supabase/PostgreSQL u otra fuente de datos.
+- Astro con TypeScript y módulos ESM; salida estática, sin servidor de aplicación.
+- Content Collections con esquemas Zod y contenido editorial en Markdown.
+- HTML semántico, CSS propio y JavaScript ligero para las interacciones.
+- npm, GitHub Actions y GitHub Pages para construir y publicar la web.
 
-## Modelo de publicación
+La configuración de Astro está en `astro.config.mjs` y las dependencias y comandos disponibles, en `package.json`. Para desarrollo local, utiliza Node.js 24, como en el workflow de despliegue, y npm.
 
-Un registro puede existir sin ficha larga:
-
-```yaml
-publicar: true
-detalle: false
-mostrarObra: true
-mostrarTrayectoria: true
-```
-
-En ese caso aparece en Obra/Trayectoria, pero Astro no genera una URL propia.
-
-Una ficha completa usa:
-
-```yaml
-publicar: true
-detalle: true
-```
-
-y genera automáticamente:
-
-```text
-/proyectos/<slug>/
-```
-
-Los seis proyectos que ya tenían ficha en el Slice 3 mantienen `detalle: true`.
-
-## Campos editoriales principales
-
-Además de los datos generales del proyecto, el esquema admite:
-
-```yaml
-seccion: obra-exposiciones
-categorias:
-  - ilustracion
-  - exposicion
-
-anchor: oceanografic
-aparienciaObra: lead
-
-obraTitulo: "..."
-obraResumen: "..."
-obraMeta: "..."
-
-destacadoHome: true
-ordenHome: 1
-homeTitulo: "..."
-homeTipo: "..."
-homeResumen: "..."
-
-hitoHome: true
-ordenHitoHome: 1
-homeHitoTexto: "..."
-
-trayectoriaFecha: "2025"
-trayectoriaTitulo: "..."
-trayectoriaDetalle: "..."
-ordenTrayectoria: 2025
-ordenTrayectoriaItem: 10
-```
-
-Los campos específicos de Home/Obra/Trayectoria son opcionales: si no existen, se reutilizan los datos generales.
-
-## Fuente de datos y futura base de datos
-
-La web ya no pasa los `CollectionEntry` de Astro a los componentes visuales. `src/lib/projects.ts` adapta el contenido Markdown al modelo común `Project`:
-
-```text
-Astro Content Collection
-        ↓
-projectFromEntry()
-        ↓
-Project
-        ↓
-Home / Obra / Trayectoria / componentes
-```
-
-En el futuro se puede sustituir la primera parte por:
-
-```text
-Supabase / PostgreSQL
-        ↓
-Project
-        ↓
-Home / Obra / Trayectoria / componentes
-```
-
-sin reescribir la presentación.
-
-La única excepción lógica es la ruta de ficha, que sigue usando `render(entry)` para renderizar el cuerpo Markdown. Si la fuente se migra a base de datos, esa sería la capa concreta que se sustituiría por el cuerpo almacenado en BD/CMS.
-
-## Filtros de Obra
-
-Los filtros son JavaScript progresivo. Sin JavaScript se muestran todos los proyectos; con JS aparecen los botones de filtrado y se ocultan automáticamente las secciones que no tengan resultados para la categoría elegida.
-
-No se ha añadido Vue/React: para este caso un script pequeño es suficiente.
-
-## Compatibilidad de anchors
-
-Se conservan los anchors históricos importantes, por ejemplo:
-
-```text
-/obra/#oceanografic
-/obra/#37-ilustres
-/obra/#vinyetari
-/obra/#cuentos-populares
-/obra/#grand-tour
-```
-
-por lo que los enlaces antiguos y los redirects del Slice 2 siguen siendo útiles.
-
-## SEO técnico
-
-Además del canonical y Open Graph que ya existían:
-
-```text
-/sitemap.xml
-/robots.txt
-```
-
-El sitemap incluye las cinco páginas principales y todas las fichas con `detalle: true`.
-
-## Archivos a eliminar
-
-**Ninguno.**
-
-Copia el ZIP encima del Slice 3 y sobrescribe los archivos existentes.
-
-## Publicación
+## Desarrollo local
 
 ```bash
-git add -A
-git commit -m "Astro - Slice 4 - catalogo integrado"
-git push
+npm install
+npm run dev
 ```
 
-No hay que modificar GitHub Pages, GitHub Actions, DNS ni el dominio.
+Astro muestra en la terminal la dirección local del servidor. Para comprobar la versión de producción:
 
-## Comprobaciones recomendadas
+```bash
+npm run build
+npm run preview
+```
 
-Después de que la Action termine en verde:
+El build genera el sitio estático en `dist/`. `preview` sirve ese resultado; si cambias contenido o código, vuelve a ejecutar el build antes de revisarlo con `preview`.
 
-1. `/` debe seguir mostrando tres destacados y tres hitos.
-2. `/obra/` debe mostrar todo el catálogo y los filtros.
-3. Los anchors legacy de Obra deben seguir llevando al proyecto correcto.
-4. `/trayectoria/` debe construir la cronología desde los proyectos.
-5. Las seis fichas del Slice 3 deben seguir funcionando.
-6. Una ficha debe mostrar dos relacionados aunque no tenga dos slugs explícitos, gracias al fallback por afinidad.
-7. `/sitemap.xml` y `/robots.txt` deben responder correctamente.
+## Organización del proyecto
 
-## Siguiente fase
+```text
+src/
+  content.config.ts       Esquemas de las colecciones
+  content/
+    proyectos/           Fichas de obra y actividad pública
+    docencia/            Experiencias docentes
+    prensa/              Referencias de prensa
+  lib/                   Adaptación, selección y ordenación de datos
+  components/            Componentes de presentación
+  pages/                 Páginas y rutas estáticas
+  layouts/BaseLayout.astro
+  styles/
+    global.css            Base compartida
+    theme-teal.css        Variante Teal
+    theme-comic.css       Variante Cómic
+public/
+  assets/img/             Imágenes publicadas
+  CNAME                   Dominio propio
+  robots.txt
+.github/workflows/deploy.yml
+```
 
-La migración estructural queda cerrada. A partir de aquí el trabajo puede centrarse en contenido y presentación: fotografías, imágenes de obra, nuevas fichas detalladas, revisión de proyectos históricos y, cuando tenga sentido, una posible migración de la fuente de datos a Supabase/PostgreSQL o un CMS.
+`src/content.config.ts` es la referencia para los campos permitidos y obligatorios. La lógica que convierte entradas de contenido en datos para las páginas está en `src/lib/`; conviene revisarla antes de cambiar reglas de visibilidad o selección.
+
+## Páginas y contenido
+
+| Ruta | Contenido |
+| --- | --- |
+| `/` | Presentación y áreas de trabajo reciente, construidas a partir de proyectos y experiencias docentes publicados. |
+| `/obra/` | Catálogo agrupado por secciones editoriales. |
+| `/proyectos/<slug>/` | Ficha individual de un proyecto cuando tiene `detalle: true`. |
+| `/docencia/` | Experiencias docentes, formación y enfoque de enseñanza. |
+| `/docencia/<slug>/` | Ficha individual de una experiencia docente publicada con `detalle: true`. |
+| `/trayectoria/` | Cronología y bloque separado de encuentros y actividad pública. |
+| `/trayectoria/una-vida-dibujando/` | Relato biográfico. |
+| `/prensa/` | Referencias destacadas y archivo de prensa. |
+| `/contacto/` | Contacto y redes sociales. |
+
+Los nombres de archivo Markdown identifican las entradas y, cuando se genera una ficha, forman parte de su URL. No cambies un slug o un `anchor` publicado sin prever la compatibilidad de sus enlaces.
+
+### Proyectos
+
+Cada archivo en `src/content/proyectos/` contiene frontmatter y, cuando procede, el texto de la ficha. Los campos `titulo`, `tipoPrincipal`, `categorias`, `resumen` y `verificacion` describen el proyecto y su respaldo documental. `seccion` decide su ubicación editorial en Obra; no equivale a `categorias`, que pueden ser varias.
+
+Los indicadores de publicación tienen funciones distintas:
+
+| Campo | Efecto |
+| --- | --- |
+| `publicar` | Permite utilizar la entrada en el sitio público. |
+| `detalle` | Genera una ficha en `/proyectos/<slug>/`. |
+| `mostrarObra` | Incluye la entrada en Obra, según su sección. |
+| `mostrarTrayectoria` | Incluye la entrada en Trayectoria. |
+| `bloqueTrayectoria` | La sitúa en la cronología o en el bloque independiente de actividad pública. |
+| `archivoObra` | Le da el tratamiento compacto previsto para el archivo de Obra. |
+
+Inicio no se construye a partir de una lista fija de destacados: muestra las áreas que tienen actividad reciente publicada, con una ventana que comprende el año del build y los dos anteriores. Las experiencias docentes vigentes también pueden mantener activa su área. Si cambia el año, hay que volver a construir y desplegar el sitio para actualizar esa selección.
+
+Los campos `imagenPrincipal` y `galeria` permiten añadir imágenes reales del proyecto, cada una con texto alternativo apropiado. Los archivos se guardan en `public/assets/img/`, normalmente agrupados por proyecto o experiencia. `relacionados` admite identificadores de otros proyectos existentes; la presentación puede completar las sugerencias por afinidad. `enlaces` recoge recursos públicos y `verificacion` conserva el estado, las notas y las fuentes que sustentan los datos. El frontmatter también forma parte del repositorio público: no guardes información privada en él.
+
+### Docencia
+
+Las experiencias de `src/content/docencia/` se ordenan por el campo `orden`. `publicar` controla si aparecen en el sitio y `detalle` si generan una ficha propia. Según la experiencia, la ficha puede mostrar contexto, metodología, temporalización, fases, recursos, galería, enlaces y cuerpo Markdown. La formación y el enfoque general que aparecen en `/docencia/` se mantienen en la propia página, no en una colección independiente.
+
+### Prensa
+
+Cada archivo de `src/content/prensa/` crea una referencia en el archivo de `/prensa/`. `fechaOrden` permite ordenar cronológicamente cuando la fecha visible tiene otro formato. `destacado` y `ordenDestacado` controlan el bloque inicial; una referencia destacada sigue presente también en el archivo. `url` apunta a la fuente pública y `proyectoRelacionado`, cuando existe, enlaza con el proyecto correspondiente. No hay páginas individuales de prensa.
+
+## Temas e interacciones
+
+`global.css` contiene la base común. `theme-comic.css` y `theme-teal.css` aplican sus variantes visuales sin duplicar la estructura. Cómic es el tema inicial; el selector discreto del pie permite cambiar a Teal y guarda la preferencia en el navegador (`vicente-visual-theme`).
+
+Las interacciones se resuelven con JavaScript del proyecto: menú móvil, selector de tema y galería con visor. La navegación y el contenido principal se generan como HTML estático.
+
+## SEO y despliegue
+
+El sitio se construye para `https://vicenteperpina.com` con barras finales en las rutas. El layout genera los metadatos de las páginas; `src/pages/sitemap.xml.ts` genera el sitemap de las rutas públicas y `public/robots.txt` lo anuncia. `public/CNAME` configura el dominio propio. También existen redirecciones de URLs antiguas en `public/`; consérvalas al modificar rutas.
+
+El workflow `.github/workflows/deploy.yml` construye y publica en GitHub Pages al enviar cambios a `main`; también admite ejecución manual desde GitHub Actions. No se necesita backend ni despliegue de servidor.
+
+## Comprobaciones antes de publicar
+
+```bash
+npm run build
+git diff --check
+git status --short
+```
+
+Al añadir contenido, comprueba además que las imágenes y los enlaces existen, que los identificadores de `relacionados` son válidos, que las fichas con `detalle: true` se generan y que las banderas de visibilidad sitúan cada entrada donde corresponde. Si has tocado rutas o anclas, revisa también los enlaces antiguos y `dist/sitemap.xml`.
