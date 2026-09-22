@@ -1715,6 +1715,74 @@ a.encounter-title:focus-visible {
   display: block;
 }
 
+.training-group + .training-group {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-divider);
+}
+
+.training-group h4 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.training-institution {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+}
+
+.training-course-list {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--border-divider);
+  list-style: none;
+}
+
+.training-course {
+  display: grid;
+  gap: 2px;
+  padding-left: 12px;
+  color: var(--color-text-muted);
+  font-size: .93rem;
+  line-height: 1.45;
+}
+
+.training-course small {
+  color: var(--color-text-muted);
+  font-size: .8rem;
+  letter-spacing: .02em;
+}
+
+.training-accreditations {
+  margin-top: 36px;
+}
+
+.training-accreditation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.training-accreditation-group h4 {
+  margin: 0 0 10px;
+  color: var(--color-heading);
+  font-size: 1rem;
+}
+
+.training-accreditation-group ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-muted);
+  list-style: none;
+}
+
 .teaching-panels {
   margin-top: 36px;
 }
@@ -2087,6 +2155,11 @@ a.encounter-title:focus-visible {
   .press-actions { justify-content: flex-start; }
   .project-card, .editorial-card, .panel { padding: 22px; }
   .project-card--linked { padding-bottom: 62px; }
+
+  .training-accreditation-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
 
   .footer-row {
     display: grid;

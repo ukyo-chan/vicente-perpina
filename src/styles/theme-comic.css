@@ -1479,3 +1479,115 @@
     transform: none;
   }
 }
+
+/* Formación: piezas editoriales impresas dentro del tema cómic. */
+.theme-comic .training-complementary,
+.theme-comic .training-accreditations {
+  border: 3px solid var(--comic-outline);
+  background: var(--surface-card);
+  box-shadow: 5px 5px 0 var(--comic-shadow);
+}
+
+.theme-comic .training-complementary > .eyebrow,
+.theme-comic .training-accreditations > .eyebrow {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 5px 10px 4px;
+  border: 2px solid var(--comic-outline);
+  background: var(--comic-gold);
+  color: var(--comic-outline);
+  box-shadow: 2px 2px 0 var(--comic-shadow);
+  transform: rotate(-.7deg);
+  transform-origin: left center;
+}
+
+.theme-comic .training-group h4 {
+  color: var(--comic-outline);
+  text-decoration: none;
+}
+
+.theme-comic .training-year {
+  color: var(--comic-gold);
+  font-weight: 800;
+}
+
+.theme-comic .training-course-list {
+  border-left-color: var(--comic-gold);
+}
+
+.theme-comic .training-course {
+  position: relative;
+}
+
+.theme-comic .training-course::before {
+  position: absolute;
+  left: -17.5px;
+  top: .52em;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--comic-outline);
+  border-radius: 50%;
+  background: var(--comic-gold);
+  content: "";
+}
+
+.theme-comic .training-course small {
+  color: var(--color-text-muted);
+}
+
+.theme-comic .training-accreditation-grid {
+  grid-template-columns: max-content max-content max-content;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.theme-comic .training-accreditation-group {
+  padding: 0 24px;
+}
+
+.theme-comic .training-accreditation-group + .training-accreditation-group {
+  border-left: 1px solid rgb(200 154 43 / .28);
+}
+
+.theme-comic .training-accreditation-group h4 {
+  display: inline;
+  color: var(--comic-outline);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.theme-comic .training-accreditation-group .training-year {
+  color: var(--comic-gold);
+  font-weight: 800;
+}
+
+.theme-comic .training-accreditation-group ul {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) and (min-width: 621px) {
+  .theme-comic .training-accreditation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .theme-comic .training-accreditation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-comic .training-complementary,
+  .theme-comic .training-accreditations {
+    box-shadow: 4px 4px 0 var(--comic-shadow);
+  }
+
+  .theme-comic .training-accreditation-group {
+    padding: 20px 0 0;
+  }
+
+  .theme-comic .training-accreditation-group + .training-accreditation-group {
+    margin-top: 20px;
+    border-top: 1px solid rgb(200 154 43 / .28);
+    border-left: 0;
+  }
+}

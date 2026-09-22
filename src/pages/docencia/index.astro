@@ -7,10 +7,10 @@ const experiences = await loadTeaching();
 ---
 <BaseLayout
   title="Docencia · Vicente Perpiñá Giner"
-  description="Comparto mi experiencia docente en dibujo, pintura, ilustración, cómic, dibujo técnico y educación artística."
+  description="Comparto mi experiencia docente, formación y enfoque educativo en dibujo, pintura, ilustración, cómic, dibujo técnico y educación artística."
 >
   <main>
-<section class="page-hero">
+  <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Experiencia educativa</p>
       <h1>Docencia</h1>
@@ -31,7 +31,15 @@ const experiences = await loadTeaching();
     </div>
   </section>
 
-  <section class="section">
+  <div class="section-nav-wrap">
+    <nav class="container section-nav" aria-label="Secciones de docencia">
+      <a href="#experiencia">Experiencia</a>
+      <a href="#formacion">Formación</a>
+      <a href="#enfoque">Enfoque</a>
+    </nav>
+  </div>
+
+  <section class="section" id="experiencia">
     <div class="container">
       <div class="section-heading reveal">
         <div>
@@ -44,7 +52,130 @@ const experiences = await loadTeaching();
       <div class="timeline">
         {experiences.map((experience) => <TeachingTimelineItem experience={experience} />)}
       </div>
+    </div>
+  </section>
 
+  <section class="section soft" id="formacion" aria-labelledby="formacion-heading">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Formación</p>
+          <h2 id="formacion-heading">Base académica</h2>
+        </div>
+        <p>Una base artística, audiovisual y pedagógica que acompaña mi práctica docente.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-date">2014</div>
+            <div class="timeline-content">
+              <h3>Máster Universitario en Profesor/a de Educación Secundaria</h3>
+              <p>Universitat de València.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-date">2009 – 2011</div>
+            <div class="timeline-content">
+              <h3>Máster Universitario en Producción Artística: Arte y Tecnología</h3>
+              <p>Universitat Politècnica de València.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-date">2008 – 2009</div>
+            <div class="timeline-content">
+              <h3>Título propio de Especialista Profesional en Animación: Arte e Industria</h3>
+              <p>Universitat Politècnica de València.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-date">2004 – 2009</div>
+            <div class="timeline-content">
+              <h3>Licenciatura en Bellas Artes · Dibujo y Animación (optatividad)</h3>
+              <p>Universitat Politècnica de València.</p>
+            </div>
+          </article>
+        </div>
+
+        <section class="panel training-complementary reveal" aria-labelledby="training-complementary-heading">
+          <h3 class="eyebrow" id="training-complementary-heading">Formación complementaria</h3>
+
+          <div class="training-group">
+            <h4><span class="training-year">2025</span> · Inclusión e intervención psicoeducativa</h4>
+            <p class="training-institution">500&nbsp;h · Universidad Nebrija.</p>
+            <ul class="training-course-list">
+              <li class="training-course">
+                <span>Desarrollo cognitivo, sensorial, motor y psicomotor en la infancia</span>
+                <small>125&nbsp;h · 5&nbsp;ECTS</small>
+              </li>
+              <li class="training-course">
+                <span>Intervención psicoeducativa en autismo</span>
+                <small>125&nbsp;h · 5&nbsp;ECTS</small>
+              </li>
+              <li class="training-course">
+                <span>Atención psicoeducativa para niños con hiperactividad</span>
+                <small>125&nbsp;h · 5&nbsp;ECTS</small>
+              </li>
+              <li class="training-course">
+                <span>Detección e intervención de alumnado con necesidades específicas de apoyo educativo — ACNEAE</span>
+                <small>125&nbsp;h · 5&nbsp;ECTS</small>
+              </li>
+            </ul>
+          </div>
+
+          <div class="training-group">
+            <h4><span class="training-year">2024</span> · Herramientas para el aula</h4>
+            <p class="training-institution">220&nbsp;h · Universidad de Murcia.</p>
+            <ul class="training-course-list">
+              <li class="training-course">
+                <span>Aplicaciones educativas de Office en el aula</span>
+                <small>110&nbsp;h · 4,4&nbsp;ECTS</small>
+              </li>
+              <li class="training-course">
+                <span>Herramientas interactivas en el aula</span>
+                <small>110&nbsp;h · 4,4&nbsp;ECTS</small>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel training-accreditations reveal" aria-labelledby="training-accreditations-heading">
+        <h3 class="eyebrow" id="training-accreditations-heading">Idiomas y acreditaciones</h3>
+        <div class="training-accreditation-grid">
+          <section class="training-accreditation-group">
+            <h4>Valenciano</h4>
+            <ul>
+              <li><span class="training-year">2011</span> · C2 JQCV</li>
+              <li><span class="training-year">2017</span> · Capacitació en valencià</li>
+              <li><span class="training-year">2019</span> · Diploma de Mestre de Valencià</li>
+            </ul>
+          </section>
+
+          <section class="training-accreditation-group">
+            <h4>Inglés</h4>
+            <ul>
+              <li><span class="training-year">2016</span> · B2 · EOI València</li>
+              <li><span class="training-year">2025</span> · Acreditación en lenguas extranjeras · B2</li>
+            </ul>
+          </section>
+
+          <section class="training-accreditation-group">
+            <h4>Competencia digital docente</h4>
+            <ul>
+              <li><span class="training-year">2026</span> · B2 · En curso · UNED · Vila-real</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section" id="enfoque">
+    <div class="container">
       <div class="two-col teaching-panels">
         <section class="panel reveal">
           <p class="eyebrow">Enfoque</p>
