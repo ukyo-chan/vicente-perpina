@@ -10,17 +10,32 @@ import {
 
 const collaborations = getObraArchiveProjects(await loadProjects(), 'comic-edicion')
   .sort((a, b) => (a.year ?? Infinity) - (b.year ?? Infinity) || a.title.localeCompare(b.title, 'es'));
-const gallery = collaborations.flatMap(project => project.gallery.map(image => ({
-  ...image,
-  pie: [image.pie, project.title].filter(Boolean).join(' · ')
-})));
+const seenImageSources = new Set<string>();
+const gallery = collaborations.flatMap(project => {
+  const images = project.image ? [project.image, ...project.gallery] : project.gallery;
+  return images.flatMap(image => {
+    if (seenImageSources.has(image.src)) return [];
+    seenImageSources.add(image.src);
+    return [{
+      ...image,
+      pie: image.pie?.includes(project.title)
+        ? image.pie
+        : [image.pie, project.title].filter(Boolean).join(' · ')
+    }];
+  });
+});
 
 function summaryParts(project: Project): Array<{ text: string; href?: string }> {
-  const matches = project.gallery.flatMap(image =>
-    image.pie && project.summary.includes(image.pie)
-      ? [{ start: project.summary.indexOf(image.pie), title: image.pie, href: image.src }]
-      : []
-  ).sort((a, b) => a.start - b.start);
+  const images = project.image ? [project.image, ...project.gallery] : project.gallery;
+  const blogHref = project.id === 'good-god-friends'
+    ? project.links.find(link => link.texto === 'Blog de Vicente Perpiñá · Pequeño peor hombre II')?.url
+    : undefined;
+  const matches = images.flatMap(image => {
+    const title = image.pie?.split(' · ')[0];
+    return title && project.summary.includes(title)
+      ? [{ start: project.summary.indexOf(title), title, href: image.src === project.image?.src && blogHref ? blogHref : image.src }]
+      : [];
+  }).sort((a, b) => a.start - b.start);
   const parts: Array<{ text: string; href?: string }> = [];
   let offset = 0;
 
@@ -62,7 +77,7 @@ function summaryParts(project: Project): Array<{ text: string; href?: string }> 
                 <div class="project-detail-kicker"><span>{projectDateLabel(project)}</span></div>
               )}
               <p>{summaryParts(project).map(part =>
-                part.href ? <a href={part.href} data-gallery-open="galeria-proyecto">{part.text}</a> : part.text
+                part.href ? <a href={part.href} data-gallery-open={part.href.startsWith('/assets/img/') ? 'galeria-proyecto' : undefined} target={part.href.startsWith('https://') ? '_blank' : undefined} rel={part.href.startsWith('https://') ? 'noopener noreferrer' : undefined}>{part.text}</a> : part.text
               )}</p>
             </section>
           ))}

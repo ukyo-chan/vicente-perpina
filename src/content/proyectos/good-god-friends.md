@@ -15,7 +15,7 @@ publicar: true
 detalle: true
 mostrarObra: true
 mostrarTrayectoria: false
-archivoObra: false
+archivoObra: true
 imagenPrincipal:
   src: "/assets/img/proyectos/good-god-friends/pequeno-peor-hombre-ii.jpg"
   alt: "Pequeño peor hombre II, obra de Vicente Perpiñá para GOOD GOD & Friends"

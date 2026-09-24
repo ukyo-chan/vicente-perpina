@@ -245,10 +245,10 @@ function formatProjectDate(value: string): string {
 }
 
 export function projectPrimaryHref(project: Project): string {
-  if (project.detail) return `/proyectos/${project.id}/`;
   if (project.archiveInObra && project.section === 'comic-edicion') {
     return `${COMIC_COLLABORATIONS_PATH}#${project.id}`;
   }
+  if (project.detail) return `/proyectos/${project.id}/`;
   if (project.showInObra && project.anchor) return `/obra/#${project.anchor}`;
   if (project.showInObra) return `/obra/#${project.id}`;
   if (project.showInTimeline) return `/trayectoria/#${timelineGroupId(project.timelineDate ?? project.dateText ?? String(project.year ?? 'hitos'))}`;
