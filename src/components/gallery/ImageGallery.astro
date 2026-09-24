@@ -255,6 +255,23 @@ const {
       });
     });
 
+    const galleryId = gallery.querySelector('h2')?.id;
+    if (galleryId) {
+      document.querySelectorAll('[data-gallery-open]').forEach((opener) => {
+        if (!(opener instanceof HTMLAnchorElement)
+          || opener.dataset.galleryOpen !== galleryId) return;
+
+        const index = items.findIndex(item => item.src === opener.getAttribute('href'));
+        if (index < 0) return;
+
+        opener.addEventListener('click', (event) => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          openLightbox(index, opener);
+        });
+      });
+    }
+
     zoomButton.addEventListener('click', () => setZoomed(!zoomed));
     closeButton.addEventListener('click', closeLightbox);
     previousButton?.addEventListener('click', () => moveLightbox(-1));
