@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PortfolioProjectCard from '../../components/projects/PortfolioProjectCard.astro';
-import { PROJECT_SECTIONS, getObraArchiveProjects, getObraProjects, loadProjects } from '../../lib/projects';
+import {
+  COMIC_COLLABORATIONS_PATH,
+  PROJECT_SECTIONS,
+  getObraArchiveProjects,
+  getObraProjects,
+  loadProjects,
+  projectPrimaryHref
+} from '../../lib/projects';
 
 const projects = await loadProjects();
 ---
@@ -64,15 +71,16 @@ const projects = await loadProjects();
               </div>
             )}
 
-            {archiveProjects.length > 0 && (
+            {section.id === 'comic-edicion' && archiveProjects.length > 0 && (
               <div class="archive-panel reveal">
-                <p class="eyebrow">Autoedición y colaboraciones</p>
-                <h3>Otros proyectos gráficos</h3>
+                <p class="eyebrow">Colaboraciones</p>
+                <h3>Fanzines y publicaciones colectivas</h3>
                 <div class="archive-tags">
                   {archiveProjects.map(project => (
-                    <span>{project.title}</span>
+                    <a href={projectPrimaryHref(project)}>{project.title}</a>
                   ))}
                 </div>
+                <a class="text-link" href={COMIC_COLLABORATIONS_PATH}>Ver todas las colaboraciones →</a>
               </div>
             )}
 

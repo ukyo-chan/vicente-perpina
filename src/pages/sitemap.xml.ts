@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { loadProjects } from '../lib/projects';
+import { COMIC_COLLABORATIONS_PATH, loadProjects } from '../lib/projects';
 import { loadTeaching } from '../lib/teaching';
 
 export const GET: APIRoute = async ({ site }) => {
@@ -9,6 +9,7 @@ export const GET: APIRoute = async ({ site }) => {
   const paths = [
     '/',
     '/obra/',
+    COMIC_COLLABORATIONS_PATH,
     '/docencia/',
     '/trayectoria/',
     '/trayectoria/una-vida-dibujando/',

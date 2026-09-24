@@ -682,7 +682,7 @@
   color: var(--comic-outline);
 }
 
-.theme-comic .archive-tags span {
+.theme-comic .archive-tags a {
   border-color: var(--comic-outline);
   background: var(--surface-card);
   color: var(--color-text-muted);

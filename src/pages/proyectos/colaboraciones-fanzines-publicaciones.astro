@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectGallery from '../../components/projects/ProjectGallery.astro';
+import {
+  getObraArchiveProjects,
+  loadProjects,
+  projectDateLabel,
+  type Project
+} from '../../lib/projects';
+
+const collaborations = getObraArchiveProjects(await loadProjects(), 'comic-edicion')
+  .sort((a, b) => (a.year ?? Infinity) - (b.year ?? Infinity) || a.title.localeCompare(b.title, 'es'));
+const gallery = collaborations.flatMap(project => project.gallery.map(image => ({
+  ...image,
+  pie: [image.pie, project.title].filter(Boolean).join(' · ')
+})));
+
+function summaryParts(project: Project): Array<{ text: string; href?: string }> {
+  const matches = project.gallery.flatMap(image =>
+    image.pie && project.summary.includes(image.pie)
+      ? [{ start: project.summary.indexOf(image.pie), title: image.pie, href: image.src }]
+      : []
+  ).sort((a, b) => a.start - b.start);
+  const parts: Array<{ text: string; href?: string }> = [];
+  let offset = 0;
+
+  for (const match of matches) {
+    if (match.start < offset) continue;
+    parts.push({ text: project.summary.slice(offset, match.start) });
+    parts.push({ text: match.title, href: match.href });
+    offset = match.start + match.title.length;
+  }
+
+  parts.push({ text: project.summary.slice(offset) });
+  return parts;
+}
+---
+<BaseLayout
+  title="Colaboraciones en fanzines y publicaciones colectivas · Vicente Perpiñá"
+  description="Historietas y otras colaboraciones de Vicente Perpiñá en fanzines y publicaciones colectivas."
+  ogType="article"
+>
+  <main>
+    <header class="project-detail-hero">
+      <div class="container project-detail-hero__inner">
+        <a class="project-back" href="/obra/#comic-edicion">← Volver a Obra</a>
+        <div class="project-detail-kicker"><span>Cómic y edición</span></div>
+        <h1>Colaboraciones en fanzines y publicaciones colectivas</h1>
+        <p class="project-detail-summary">
+          También he publicado historietas en otros fanzines y publicaciones colectivas. Aquí recojo algunas de esas colaboraciones.
+        </p>
+      </div>
+    </header>
+
+    <section class="section project-detail-section">
+      <div class="container">
+        <article class="project-content">
+          {collaborations.map(project => (
+            <section id={project.id} class="comic-collaboration" aria-labelledby={`${project.id}-title`}>
+              <h2 id={`${project.id}-title`}>{project.title}</h2>
+              {projectDateLabel(project) && (
+                <div class="project-detail-kicker"><span>{projectDateLabel(project)}</span></div>
+              )}
+              <p>{summaryParts(project).map(part =>
+                part.href ? <a href={part.href} data-gallery-open="galeria-proyecto">{part.text}</a> : part.text
+              )}</p>
+            </section>
+          ))}
+        </article>
+      </div>
+    </section>
+
+    {gallery.length > 0 && (
+      <section class="section soft project-detail-extra">
+        <div class="container">
+          <ProjectGallery images={gallery} />
+        </div>
+      </section>
+    )}
+
+    <section class="section project-detail-extra">
+      <div class="container">
+        <div class="project-detail-footer">
+          <a class="btn secondary" href="/obra/#comic-edicion">← Volver a Obra</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

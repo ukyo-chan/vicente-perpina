@@ -1149,13 +1149,22 @@ a:focus-visible {
   gap: 10px;
 }
 
-.archive-tags span {
+.archive-tags a {
+  display: inline-block;
   padding: 9px 13px;
   border-radius: 999px;
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
   color: var(--color-chip-text);
   font-size: .9rem;
+  text-decoration: none;
+}
+
+.archive-tags a:hover,
+.archive-tags a:focus-visible {
+  border-color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .editorial-grid {
@@ -2344,6 +2353,9 @@ a.encounter-title:focus-visible {
 
 .project-content > :first-child { margin-top: 0; }
 .project-content > :last-child { margin-bottom: 0; }
+
+.comic-collaboration { scroll-margin-top: 110px; }
+.comic-collaboration:first-child h2 { margin-top: 0; }
 
 .project-content h2 {
   margin: 42px 0 14px;
